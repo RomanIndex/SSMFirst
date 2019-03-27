@@ -1,0 +1,535 @@
+input::-webkit-input-placeholder {
+         color: #d0cfcf;
+         font-size: 12px;
+    }
+input::-ms-input-placeholder {
+         color: #d0cfcf;
+         font-size: 12px;
+    }   
+input::-moz-placeholder {
+         color: #d0cfcf;
+         font-size: 12px;
+    }       
+a:focus, a:hover{
+	text-decoration: none;
+}
+.layui-layout-admin .layui-header{
+	background-color: #0b98e1;
+}
+.header{
+	/*-moz-box-shadow: 0px 2px 4px #e3e3e3;  老的 Firefox 
+    box-shadow: 0px 2px 4px #e3e3e3;*/
+    border: 0;
+}
+.header:after{
+	content: ' ';
+    display: block;
+    height: 2px;
+    margin-left: 200px;
+    margin-top: 0px;
+    -moz-box-shadow: 2px 3px 5px #eee;
+    box-shadow: 2px 3px 5px #eee;
+}
+.clicked .header:after{
+	margin-left: 0px;
+}
+.site_title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 21px;
+    width: 100%;
+    color: #ECF0F1 !important;
+    margin-left: 0 !important;
+    line-height: 46px;
+    display: block;
+    height: 46px;
+    margin: 0;
+}
+.site_title img{
+	position: relative;
+	bottom: 2px;
+}
+#tab-content{
+	display: none;
+	padding: 6px 8px 0;
+}
+.layui-nav .layui-nav-item dl a:hover{
+	color:#333;
+}
+.icon:hover{
+	cursor:pointer;
+}
+.title{
+	color: #fff;
+}
+
+.layui-nav-child{
+	right: 0;
+	left: auto;
+}
+.layui-nav-bar{
+	background-color: #fff;
+	width: 0;
+	height: 0;
+}
+.layui-bg-black,.layui-nav{
+	background-color: #ffffff;
+}
+.layui-nav-tree .layui-nav-item dl a:hover{
+	color: #0b98e1;
+	background-color: #d9ecfc;
+	
+}
+.layui-nav .layui-nav-item dl a{
+	color: #333;
+	line-height: 36px;
+}
+
+.layui-nav .layui-nav-item a{
+	color: #333333;
+}
+.layui-nav .layui-nav-item1 a,.user:hover{
+	color: #fff;
+}
+.layui-nav .layui-nav-item1 a:hover{
+	color: #fff;
+}
+.layui-nav .layui-nav-item a:hover{
+	color: #fff;
+}
+.icon-left{
+	top: 20px;
+	right: 10px;
+	display: block;
+}
+.layui-icon{
+	height: 24px;
+	width: 24px;
+    opacity: .99;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size:20px;
+    -webkit-font-smoothing: antialiased;
+}
+.layui-main .layui-icon{
+	 font-size:14px;
+	  position: relative;
+    bottom: 1px;
+}
+.layui-nav-tree .layui-nav-item i:nth-of-type(1){
+	color: #0b98e0;
+}
+
+.layui-nav-tree .layui-nav-item:nth-of-type(1) i:nth-of-type(1){
+	color: #fb3838;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(2) i:nth-of-type(1){
+	color: #0b98e0;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(3) i:nth-of-type(1){
+	color: #7f0dc1;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(4) i:nth-of-type(1){
+	color: #069b1b;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(5) i:nth-of-type(1){
+	color: #0b98e0;
+	position: relative;
+	top: 1px;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(6) i:nth-of-type(1){
+	color: #f96e1a;
+	position: relative;
+	top: 1px;
+}
+.layui-nav-tree .layui-nav-item:nth-of-type(5) a,.layui-nav-tree .layui-nav-item:nth-of-type(6) a{
+	line-height: 41px !important;
+}
+.layui-nav-tree .layui-nav-itemed i:nth-of-type(1){
+	color: #fff !important;
+}
+.layui-nav-tree li:nth-of-type(4) .layui-icon{
+    font-size: 14px;
+     width: 24px;
+    padding-left: 1px;
+}
+.layui-nav-tree li:nth-of-type(3) .layui-icon{
+    font-size: 17px;
+    width: 24px;
+    padding-left: 1px;
+}
+.layui-nav-tree li:nth-of-type(4) .data-icon{
+    font-size: 19px;
+    position: relative;
+    top: 1px;
+}
+.layui-nav .layui-nav-item a{ 
+	padding: 0 15px;
+}
+.layui-nav-tree .layui-nav-child a{   
+	padding-left: 41px;
+}
+.layui-nav-tree .layui-nav-child a:nth-of-type(3){
+	padding-left: 43px;
+}
+
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-this, .layui-nav-tree .layui-nav-child .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+	background-color: #d9ecfc;
+	color: #0b98e1;
+}
+.icon{
+	display: block;
+	position: absolute;
+	left: 200px;
+	top: 11px;
+	width: 23px;
+	height: 23px;
+	background-image: url(../images/icon1.png);
+	background-image: url(../images/icon.png);
+	/*background-position: 0 0;*/
+	background-size: 23px 23px;
+}
+.clicked .icon{
+	/*background-position: 0 23px;*/
+	background-image: url(../images/icon1.png);
+}
+
+.clicked .layui-side{
+	display: none;
+}
+.clicked .layui-body{
+	left: 0;
+	right: 0;
+}
+.clicked #tab-content{
+	width: 100%;
+	/*padding: 15px 15px 0;*/
+}
+.personimg{
+	padding-left: 30px;
+}
+.user{
+	padding-left: 5px;
+	padding-right: 15px;
+	position: relative;
+	bottom: 1px;
+}
+.layui-show{
+	top: 46px;
+}
+.layui-show dd a,.layui-show dd a span{
+	font-size: 12px;
+}
+.layui-show dd:last-child{
+	border-top: 1px solid #e3e3e3;
+	text-align: center;
+}
+.layui-show dd:last-child a{
+	color: #2d9fe7;
+}
+.layui-show dd.quit img{
+    position: relative;
+    right: 7px;
+    top: -1px;
+}
+.layui-nav .layui-nav-itemed dl dd a{
+	color: #666666;
+	font-size: 13px;
+}
+.layui-nav .layui-nav-itemed i{
+	color: #fff;
+}
+.layui-nav .layui-nav-item a:hover i{
+	color: #fff;
+}
+.layui-nav .layui-nav-item>a{
+	display: block;
+	border-left:2px solid ##8391b1;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.layui-nav .layui-nav-itemed>a{
+	border-left:2px solid #0b98e1;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	color: #fff;
+}
+.layui-tab-title{
+	left: 8px;
+}
+.layui-tab-title ul:before{
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: '';
+	width: 10px;
+	height: 40px;
+	border-bottom: 1px solid #e2e2e2;
+}
+.layui-tab-content{
+	background-color: #f5f8fb;
+}
+.layui-tab-title li{
+	line-height: 35px;
+	padding: 0 10px 0 15px;
+	color: #555;
+	transition:none;
+	-webkit-transition:none;
+}
+.layui-tab-title li .layui-tab-close:hover{
+	background-color: #FF5722;
+}
+
+.layui-tab-title li .layui-tab-close{
+	height: 18px;
+	line-height: 20px;
+	width: 18px;
+	font-size: 14px;
+}
+.layui-tab-title li:hover{
+	color: #0b98e1 ;
+}
+::-webkit-scrollbar{
+	width: 0;
+	height: 0;
+}
+/*2017.08.21修改*/
+.layui-layout-admin .layui-side{
+	/*width: 230px;*/
+}
+.layui-nav-tree .layui-nav-more,.layui-nav-item .layui-nav-more{
+	display: none;
+}
+.layui-nav-tree{
+	/*width: 230px;*/
+}
+.layui-nav-item .icon-right{
+	position: absolute;
+	display: inline-block;
+	right: 0;
+	height: 24px;
+	width: 24px;
+	font-size: 12px;
+	color: #999999;
+}
+.layui-nav-tree li:nth-of-type(3) .icon-right{
+	font-size: 12px;
+}
+.layui-nav-item .icon-down,.layui-nav-itemed .icon-right{
+	display: none;
+}
+.layui-nav-itemed .icon-down{
+	position: absolute;
+	display: inline-block;
+	right: 0;
+	height: 24px;
+	width: 24px;
+	font-size: 12px;
+	font-weight: 100;
+    color: #fff!important;
+}
+.layui-nav-tree li:nth-of-type(3) .icon-down{
+	font-size: 12px;
+}
+.layui-nav-itemed>a, .layui-nav-tree .layui-nav-title a, .layui-nav-tree .layui-nav-title a:hover{
+	background-color: #0b98e1;
+    color: #fff;
+}
+.layui-nav-tree .layui-nav-item a:hover{
+	background-color: #0b98e1;
+    color: #fff;
+}
+.layui-nav-tree .layui-nav-item>a:hover i{
+	 color: #fff !important;
+}
+.layui-nav-tree .layui-nav-item{
+	line-height: 53px;
+	position: relative;
+}
+.layui-nav-tree .layui-nav-item a{
+	height: 46px;
+	line-height: 46px;
+}
+.layui-nav-tree .layui-nav-child dd a, .layui-nav-tree .layui-nav-child dd a:hover{
+	height: 32px;
+	line-height: 32px;
+}
+.layui-layout-admin .layui-side{
+	top: 46px;
+}
+.layui-nav .layui-nav-item1{
+	line-height: 44px;
+}
+.layui-main .icon-person{
+	font-size: 20px;
+	position: relative;
+	top: 1px;
+}
+.layui-main .layui-search-icon{
+	font-size: 17px;
+	position: relative;
+	top: 2px;
+	left: 5px;
+	color: #0b98e1;
+}
+.nav_title{
+	margin-bottom: 0;
+	min-height: 46px;
+}
+.layui-nav-tree .layui-nav-item .layui-nav-child:before{
+	content: "";
+	display: block;
+    position: absolute;
+    z-index: 1;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    border: 1px dotted;
+    border-width: 0 0 0 1px;
+    border-color: #9dbdd6;
+}
+.layui-nav-tree .layui-nav-item .layui-nav-child,.layui-nav-tree .layui-nav-item .layui-nav-child dd{
+	position: relative;
+}
+.layui-nav-tree .layui-nav-item .layui-nav-child{
+	background-color: #f5f8fb;
+}
+.layui-nav-tree .layui-nav-item .layui-nav-child dd:before{
+    content: "";
+    display: block;
+    width: 7px;
+    position: absolute;
+    z-index: 1;
+    left: 20px;
+    top: 14px;
+    border: 1px dotted;
+    border-width: 1px 0 0;
+     border-color: #9dbdd6;
+}
+
+#tab-list{
+	background-color: #f5f8fb;
+}
+#tab-list .layui-tab-title{
+	background-color: #fff;
+	padding-top: 5px;
+}
+.layui-tab-title .layui-this:after{
+	    height: 35px;
+}
+.layui-tab-title .layui-this{
+	color: #0b98e1 !important;
+}
+.layui-nav-item{
+	border-bottom: 1px solid #e3e3e3;
+}
+:root .layui-tab-more .layui-tab-bar .layui-icon{
+	top:18px;
+}
+.layui-unselect.layui-tab-bar{
+	height: 75px;
+	width: 22px;
+	right: 6px;
+}
+.layui-unselect.layui-tab-bar .layui-icon{
+	width: 20px;
+    font-size: 14px;
+    top: 3px;
+}
+.layui-tab-more .layui-tab-bar .layui-icon {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.layui-fixbar {
+   right: -8px;
+    top: 0px;
+    bottom: auto;
+}
+.layui-fixbar li{
+	background-color:transparent;
+	opacity: 1;
+}
+
+/*索引样式*/
+.ui-widget-content{
+	border: 1px solid #d2d2d2 !important;
+	box-shadow: 0 2px 4px rgba(0,0,0,.12);
+	width: 212px !important;
+}
+.ui-menu .ui-menu-item:hover{
+	border: 0;
+}
+.ui-widget-content a{
+	color: #333 !important;
+    font-size: 13px;
+}
+.ui-widget-content a:hover{
+	border: 1px solid #d9ecfc;
+	color: #0b98e1 !important;
+    background-color: #d9ecfc !important;
+    border-radius: 0;
+}
+.ui-menu .ui-menu-item a.ui-state-focus,.ui-menu .ui-menu-item a.ui-state-active {
+    font-weight: normal;
+    margin: 0px !important;
+}
+.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus {
+	background: none !important;
+	border: 0 !important;
+}
+
+
+/*离失效期十个月以上*/
+.dataTablesTdBulb tr td{
+	position: relative;
+}
+/*绿色*/
+.dataTablesTdBulb tr td.green1:after{
+	content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    z-index: -1;
+    position: absolute;
+    background: #68a592;
+    left: 8px;
+    top: 7px;
+    border-radius: 65px;
+}
+/*橙色*/
+.dataTablesTdBulb tr td.orange1:after{
+	content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    z-index: -1;
+    position: absolute;
+    background: #d75432;
+    left: 8px;
+    top: 7px;
+    border-radius: 65px;
+}
+/*黄色*/
+.dataTablesTdBulb tr td.yellow1:after{
+	content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    z-index: -1;
+    position: absolute;
+    background: #ebc382;
+    left: 8px;
+    top: 7px;
+    border-radius: 65px;
+}
+
+
+
+
+
+
+
+
+

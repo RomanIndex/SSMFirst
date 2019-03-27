@@ -1,0 +1,37 @@
+{"data":
+    [
+        {
+            "id": "id-123456",
+            "name": "张三",
+            "empNo": "emp-001",
+            "type":"1",
+            "department": null,
+            "company": "",
+            "salary": 1450,
+            "createTime": 1522636731000,
+            "status":1
+        }, 
+        {
+            "id": "id-789456",
+            "name": "lisala",
+            "empNo": "emp-456",
+            "type":"2",
+            "department": "服务部",
+            "company": "XXX有限公司",
+            "salary": 0,
+            "createTime": 1524645829000,
+            "status":1
+        },
+        {
+            "id": "id-963258",
+            "name": "通天妖",
+            "empNo": "emp-541",
+            "type": null,
+            "department": "怪物部",
+            "company": "地域集团",
+            "salary": 12000,
+            "createTime": 1524898842000,
+            "status":0
+        }
+    ]
+}

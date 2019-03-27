@@ -1,0 +1,63 @@
+body{
+    color: rgb(115, 135, 156);
+    line-height: 1.471;
+}
+
+.container {
+    width: 100%;/* 控制 子iframe 重要样式 */
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+    height: -webkit-fill-available;
+}
+
+.nav-md .container.body .right_col {
+    padding: 10px 20px 0;
+    margin-left: 0px;
+    background: rgb(247, 247, 247);
+}
+
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.x_panel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(230, 233, 237);
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
+
+.x_content {
+    padding: 0 5px 60px;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+    zoom: 1;
+}
+
+/*   页面底部分页样式            */
+.dataTables_length {
+    width: 40%;
+    float: left;
+}
+
+.dataTables_info {
+    width: 60%;
+    float: left;
+}

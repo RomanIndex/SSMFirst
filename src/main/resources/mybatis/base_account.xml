@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.base.dao.IAccountDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.base.entity.Account" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="ROLE" property="role" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="AVATAR" property="avatar" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- <resultMap id="ReceiveViewMap" type="com.bf.video.view.QxyQingyingReceiveView" extends="BaseResultMap">
+    <result column="NICK" property="nick" jdbcType="VARCHAR" />
+    <result column="RECEIVE_TYPE" property="receiveType" jdbcType="VARCHAR" />
+  </resultMap> -->
+  
+  <select id="getActCount" resultType="int">
+    select count(1) from (
+        <include refid="base_query" />
+    )
+  </select>
+  
+  <select id="listAccount" resultMap="BaseResultMap">
+    select *
+    from (
+        <include refid="base_query" />
+    ) rp
+    where rp.page > (#{pageNo} - 1) * #{pageSize} and rp.page &lt;= #{pageNo} * #{pageSize}
+  </select>
+  
+  <sql id="base_query">
+    select SU.*,
+           row_number() over(order by SU.create_time DESC) page
+      from SC_USER SU
+     <include refid="where_sql" />
+  </sql>
+  
+  <sql id="where_sql">
+    <where>
+        <if test="query.account != null and query.account != ''">su.account like '%${query.account}%'</if>
+        <!-- <if test="query.isAward != null" >AND decode(ar.award_type, '', 0, 1) = #{query.isAward}</if>
+        <if test="query.scanDate != null">AND #{query.scanDate} = extract(day from m.create_time)</if> -->
+    </where>
+  </sql>
+</mapper>

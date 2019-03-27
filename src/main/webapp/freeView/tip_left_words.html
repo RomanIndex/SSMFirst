@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>demo</title>
+    <script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
+    <script>
+    $(function(){
+    	$('#teach_desc').on('keyup',function(){
+	        changeLength($(this), $('#teach_num'))
+	    })
+    });
+    
+    function changeLength(obj, num){
+        obj.on('keyup',function(){
+        var txtval = obj.val().length;
+            var str = parseInt(250 - txtval);
+            if(str > 0 ){
+                num.html('剩余可输入'+str+'字');
+            }else {
+                num.html('剩余可输入0字');
+                obj.val(obj.val().substring(0, 250));
+            }
+        })
+    };
+    </script>
+  </head>
+<body>
+
+	<div class="layui-form-item layui-form-text">
+		<label class="layui-form-label">黄金分割线（1 : 0.618）</label>
+		<div class="layui-input-block">
+			<textarea id="teach_desc" style="width: 300px; height: 182px;"></textarea><br/>
+			<span id="teach_num">剩余可输入250字</span>
+		</div>
+	</div>
+
+</body>
+</html>

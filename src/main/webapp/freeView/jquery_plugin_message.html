@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>娑�����绀烘���plugin��</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+.msg-message, .msg-info, .msg-warning, .msg-error, .msg-succeed,
+	.msg-debug, .msg-datetime, .msg-view-link {
+	padding: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-right: 2px;
+	margin-left: 2px;
+	line-height: 2em;
+	font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+	cursor: default;
+}
+
+.msg-info, .msg-warning, .msg-error, .msg-succeed, .msg-debug,
+	.msg-datetime {
+	box-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
+}
+
+.msg-warning {
+	border: 1px solid yellow;
+}
+
+.msg-error {
+	border: 1px solid red;
+}
+
+.msg-succeed {
+	border: 1px solid green;
+}
+
+.msg-debug {
+	border: 1px solid darkgray;
+}
+
+.msg-info {
+	border: 1px solid blue;
+}
+
+.msg-datetime {
+	border: 1px dotted darkgray;
+}
+</style>
+<script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+	/* �堕�存�煎����芥�� */
+	jQuery.utility = {
+		leading : function(char, width, value) {
+			var ret = value.toString();
+			while (width > 1) {
+				if (value >= (Math.pow(10, width - 1))) {
+					break;
+				} else {
+					ret = char + ret;
+				}
+				width--;
+			}
+			return ret;
+		},
+
+		now : function() {
+			var date = new Date();
+			var ret = {};
+			ret.hours = $.utility.leading('0', 2, date.getHours());
+			ret.minutes = $.utility.leading('0', 2, date.getMinutes());
+			ret.seconds = $.utility.leading('0', 2, date.getSeconds());
+			return ret;
+		}
+	};
+
+	/* 娑�����浠跺�芥�� */
+	$.fn.message = function() {
+		this.show = function(msg) {
+			this.html(msg);
+		}
+		this.clear = function() {
+			this.html('');
+		}
+		this.append = function(tag, msg) {
+			var date = $.utility.now();
+			var tagContent = "<span class='msg-" + tag + "'>" + tag
+					+ "</span><span class='msg-datetime'>" + date.hours + ":"
+					+ date.minutes + ":" + date.seconds + "</span>";
+			this.html(this.html() + "<br/>" + tagContent
+					+ "<span class='msg-message'>" + msg + "</span>");
+		}
+		this.warning = function(msg) {
+			this.append("warning", msg);
+		}
+		this.error = function(msg) {
+			this.append("error", msg);
+		}
+		this.succeed = function(msg) {
+			this.append("succeed", msg);
+		}
+		this.debug = function(msg) {
+			this.append("debug", msg);
+		}
+		this.info = function(msg) {
+			this.append("info", msg);
+		}
+		return this;
+	}
+	
+	$(document).ready(function() {
+		var msg = $("#divMessage").message();
+		msg.warning("List doesn't exist.");
+		msg.error("List doesn't exist.");
+		msg.succeed("Host web context ready.");
+		msg.debug("List title is 'Data List'.");
+		msg.info("List doesn't exist.")
+	});
+</script>
+</head>
+
+<body>
+	<div id="divMessage"></div>
+</body>
+
+</html>

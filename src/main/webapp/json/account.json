@@ -1,0 +1,11 @@
+{"data":
+    [
+        {"id":"524658364932482A8FD3F5EF6BE1F8B3","account":"ADMIN","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"admin","userType":"1","avatar":null,"createTime":1522636731000,"status":1,"remark":null},
+        {"id":"910D095F1EEC4A13B389D6EA60F672AD","account":"WW00023","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"assistant","userType":"2","avatar":null,"createTime":1524205343000,"status":1,"remark":"新增助手时创建"},
+        {"id":"3D226A8B099E4D5EAAF8C4EB534DC8AA","account":"BF00001","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"manager","userType":"2","avatar":null,"createTime":1524463989000,"status":1,"remark":"医生工作室管理员"},
+        {"id":"E883F213AC7B484C86D3D39B7B07F306","account":"WW00064","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"assistant","userType":"2","avatar":null,"createTime":1524645829000,"status":1,"remark":"新增助手时创建"},
+        {"id":"4F445DFC2F7C4F0EA1D5ADDF49B86B04","account":"WW00065","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"assistant","userType":"2","avatar":null,"createTime":1524722594000,"status":1,"remark":"新增助手时创建"},
+        {"id":"6AE42D163CDE01CDE055000000000001","account":"TEST","password":"123","role":"assistant","userType":"2","avatar":"avatar。。","createTime":1524898842000,"status":1,"remark":"测试号，勿删"},
+        {"id":"6BD1C34C97BA21EFE055000000000001","account":"EIP_USER","password":"4QrcOUm6Wau+VuBX8g+IPg==","role":"eip","userType":"3","avatar":null,"createTime":1525919874000,"status":1,"remark":"非登录账号，用来虚拟角色权限"}
+    ]
+}

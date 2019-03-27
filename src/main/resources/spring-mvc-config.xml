@@ -1,0 +1,116 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 使用[组件-扫描]的方式可以一次扫描多个Controller -->
+	<!--<context:component-scan base-package="com.ssm.*" use-default-filters="false">-->
+	 <context:component-scan base-package="com.ssm.*.web" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<!-- <context:include-filter type="regex" expression="com.ssm.*.web"/>
+		<context:include-filter type="regex" expression="com.ssm.quartz.*"/> -->
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/> -->
+	</context:component-scan>
+	
+	<!--避免IE执行AJAX时，返回JSON出现下载文件    -->
+    <!-- 注意拷贝的spring配置较老，若用的版本(4.3.2.RELEASE) jackson的类要重新配，即注意下方的222-->
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    
+	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+ 	      p:defaultEncoding="UTF-8"
+          p:maxUploadSize="320000000"
+ 	/>
+ 	
+	<!--视图解释器 -->
+	<bean id="ftlResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<!-- 使用前缀和后缀 -->
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=utf-8" />
+		<property name="order" value="0" />
+	</bean>
+	
+    <bean id="htmlResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/" />
+      <property name="suffix" value=".html" />
+      <property name="order" value="1" />
+    </bean>
+	
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/" />
+	    <property name="freemarkerSettings">
+	        <props>
+	            <prop key="template_update_delay">0</prop>
+	            <prop key="default_encoding">UTF-8</prop>
+	            <prop key="number_format">0.##########</prop>
+	            <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+	            <prop key="classic_compatible">true</prop>
+	            <prop key="template_exception_handler">ignore</prop>
+	        </props>
+	    </property>
+	</bean>
+	
+    <!-- 配置拦截器 -->
+    
+    <!-- 测试配置拦截器@author 拦截器 -->
+    <!-- 如/util/*：不会对/util/login/check 这种进行拦截，但对/util/login 这种会拦截-->
+    <!-- 如/util/**：就可以对/util/login/check 进行拦截-->
+    <!-- <mvc:mapping path="/*"/> -->  <!-- 拦截/  /test  /login  等等单层结构的请求  -->
+    <!-- <mvc:mapping path="/**/*.aspx"/> --><!-- 拦截后缀为.aspx的请求 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器，顺序执行 -->
+        <!-- 登录认证 拦截器 -->
+        <!-- <mvc:interceptor>
+            <mvc:mapping path="/util"/>如果不配置 或 配置成/**，将拦截所有的Controller
+            <bean class="com.zz.demo.util.LoginInterceptor"/>
+        </mvc:interceptor> -->
+        <!-- 权限操作 拦截器 （待开发）-->
+        <mvc:interceptor>
+            <!-- 这个必须写在前面，也就是写在【不拦截】的上面 -->
+            <mvc:mapping path="/admin/account/**"/><!--现在假设这种url的是权限拦截器所拦截的 -->
+            
+            <!-- 要拦截的 方法或类，首先要被 上面 的 path 拦截下来，其次进入 拦截器类，进入类后，如果没有添加自定义@标签，自动返回错误信息，添加了，则会根据 标签类型 相应处理 -->
+            
+            <!-- 但是排除下面这些，也就是【不拦截】请求 -->
+            <!-- <mvc:exclude-mapping path="/admin/noAuthority/page"/> -->
+            <bean class="com.ssm.base.intercept.AuthorityAnnotationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
+	<!-- 增加定时任务插件 -->
+    <task:annotation-driven />
+    <!-- 下面的配置将spirng定时任务变为多线程，因此任务之间不会相互影响了 -->
+    <task:scheduler id="qbScheduler" pool-size="10"/>
+	
+	<mvc:annotation-driven />
+	<bean class="com.ssm.base.util.SwaggerConfig" />
+	<mvc:resources mapping="/webjars/**" location="classpath:META-INF/resources/webjars/"/>
+	<mvc:resources mapping="/**" location="/" />
+	
+</beans>

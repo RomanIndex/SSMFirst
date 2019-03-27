@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width" />
+    <title>BootStrap Table 简单演示</title>
+    <!-- 1。Jquery组件引用-->
+    <script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
+    
+    <!-- <link href="../webPlug/jquery-ui-v1.12.1/jquery-ui.css" rel="stylesheet" /> -->
+    <link href="../webPlug/jquery-ui-v1.12.1/jquery-ui.theme.css" rel="stylesheet" />
+    <script src="../webPlug/jquery-ui-v1.12.1/jquery-ui.min.js"></script>
+ 
+    <!--2。bootstrap组件引用-->
+    <link href="../webPlug/bootstrap-v3.3.5/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="../webPlug/bootstrap-v3.3.5/dist/js/bootstrap.min.js"></script>
+    
+    <!-- 3.bootstrap table组件以及中文包的引用-->
+    <link href="../webPlug/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" />
+    <script src="../webPlug/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../webPlug/bootstrap-table/src/locale/bootstrap-table-zh-CN.js"></script>
+    
+    <!--4.拖放组件引用-->
+    <link href="../webPlug/bootstrap-table/src/extensions/reorder-rows/bootstrap-table-reorder-rows.css" rel="stylesheet" />
+    <script src="../webPlug/bootstrap-table/src/extensions/reorder-rows/bootstrap-table-reorder-rows.js"></script>
+    <!-- 拖放，不能少 -->
+    <script src="../webPlug/bootstrap-table/tuofang/jquery.tablednd.js"></script>
+    
+    <!--4.导出-->
+    <script src="../webPlug/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+    <script src="../webPlug/bootstrap-table/export/tableExport.js"></script>
+    
+    <!--5.过滤-->
+    <script src="../webPlug/bootstrap-table/src/extensions/filter-control/bootstrap-table-filter-control.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <h3>双表拖拽 + tab导航</h3>
+        
+        <!-- begin -->
+        <div class="panel-body" style="padding-bottom:0px;">
+    
+        <div class="panel panel-default" style="margin-bottom:0px;">
+            <div class="panel-heading">查询条件</div>
+            <div class="panel-body container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="txt_search_ordernumber" class="col-sm-4 control-label" style="margin-top:6px;">订单号</label>
+                        <span class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_search_ordernumber">
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="txt_search_bodynumber" class="col-sm-3 control-label" style="margin-top:6px;">车身号</label>
+                        <span class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_search_bodynumber">
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="txt_search_vinnumber" class="col-sm-4 control-label" style="margin-top:6px;">VIN码</label>
+                        <span class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_search_vinnumber">
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="txt_search_engin_code" class="col-sm-4 control-label" style="margin-top:6px;">发动机号</label>
+                        <span class="col-sm-8">
+                            <input type="text" class="form-control" id="txt_search_engin_code">
+                        </span>
+                    </div>
+                </div>
+                <div class="collapse" id="div_more_search">
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-md-3">
+                            <label for="txt_search_import_startdate" class="col-sm-4 control-label" style="margin-top:6px;">导入时间</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" readonly id="txt_search_import_startdate">
+                            </span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="txt_search_import_enddate" class="col-sm-3 control-label" style="margin-top:6px;">至</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" readonly id="txt_search_import_enddate">
+                            </span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="txt_search_send_startdate" class="col-sm-4 control-label" style="margin-top:6px;">下发时间</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" readonly id="txt_search_send_startdate">
+                            </span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="txt_search_send_enddate" class="col-sm-4 control-label" style="margin-top:6px;">至</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control datetimepicker" readonly id="txt_search_send_enddate">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:15px;">
+                        <div class="col-md-3">
+                            <label for="txt_search_carcode" class="col-sm-4 control-label" style="margin-top:6px;">整车编码</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control" id="txt_search_carcode">
+                            </span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="txt_search_vms" class="col-sm-3 control-label" style="margin-top:6px;">VMS号</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control" id="txt_search_vms">
+                            </span>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="txt_search_trans_code" class="col-sm-4 control-label" style="margin-top:6px;">变速箱号</label>
+                            <span class="col-sm-8">
+                                <input type="text" class="form-control" id="txt_search_trans_code">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row" style="float:right;margin-right:50px;margin-top:13px;">
+                        <div>
+                            <button type="button" id="btn_query" class="btn btn-primary" style="margin-right:20px;width:100px;">查询</button>
+                            <button type="submit" id="btn_reset" class="btn btn-default" style="margin-right:20px;width:100px;">重置</button>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+
+    <div class="collapse_div_outside">
+        <div class="collapse_div_inside"></div>
+        <span id="span_collapse" href="#div_more_search" class="collapse_div_inside_ele">展开<label class="glyphicon glyphicon-menu-down"></label></span>
+    </div>
+</div>
+
+<div id="toolbar_left" class="btn-group">
+    <form id="exp_form" class="form-inline">
+        
+        <div class="form-group">
+            <label class="control-label" for="name">keyWord：</label> 
+            <input type="text" class="form-control" name="name" placeholder="请输入要搜索关键词">
+        </div>
+        
+        <button class="btn"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+        
+        <div class="form-group">
+            <label class="control-label" for="bu">BU：</label>
+            <select class="form-control" name="bu">
+                <option value="">所有BU</option>
+                <#list buList as list>
+                <option value="${list}">${list}</option>
+                </#list>
+            </select>
+        </div>
+        
+        <button type="button" class="btn btn-default" onclick="search()" data-icon="search">查询</button>
+        <button type="button" class="btn btn-default" id="del">批量删除</button>
+    </form>
+</div>
+
+<div id="toolbar_right" class="btn-group">
+    <button id="btn_cancel" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-backward aria-hidden="true"></span>撤销
+    </button>
+    <button id="btn_insertorder" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>插单
+    </button>
+</div>
+
+<div class="panel-body" style="padding-top:0px;">
+    <div id="div_tableleft" class="col-md-6">
+        <table id="tb_order_left"></table>
+    </div>
+    <div id="div_tableright" class="col-md-6">
+        <table id="tb_order_right"></table>
+    </div>
+</div>
+        <!-- end -->
+        
+		
+		
+        
+    </div>
+    
+</body>
+<script src="/freeView/js/test.js"></script>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width" />
+<title>BootStrap Table 简单演示</title>
+<!-- 1。Jquery组件引用-->
+<script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
+
+<link href="../webPlug/jquery-ui-v1.12.1/jquery-ui.theme.css"
+	rel="stylesheet" />
+<script src="../webPlug/jquery-ui-v1.12.1/jquery-ui.min.js"></script>
+
+<!--2。bootstrap组件引用-->
+<link href="../webPlug/bootstrap-v3.3.5/dist/css/bootstrap.css"
+	rel="stylesheet" />
+<script src="../webPlug/bootstrap-v3.3.5/dist/js/bootstrap.min.js"></script>
+
+<!-- 3.bootstrap table组件以及中文包的引用-->
+<link href="../webPlug/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" />
+<script src="../webPlug/bootstrap-table/src/bootstrap-table.js"></script>
+<script src="../webPlug/bootstrap-table/src/locale/bootstrap-table-zh-CN.js"></script>
+
+<style type="text/css">
+#cron_input input{display: inline;}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h3>cron页面</h3>
+		<!-- begin -->
+		<table id="table_cron" style="display: block;" class="table table-bordered dt-responsive table-hover">
+			<thead>
+				<tr>
+					<th id="table_title" colspan="2" scope="col">常用的表达式</th>
+				</tr>
+				<tr class="text-c">
+					<th>名称</th>
+					<th>表达式</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-c">
+					<td>每隔5秒执行一次</td>
+					<td>*/5 * * * * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每隔1分钟执行一次</td>
+					<td>0 */1 * * * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每天23点执行一次</td>
+					<td>0 0 23 * * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每天凌晨1点执行一次</td>
+					<td>0 0 1 * * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每月最后一天23点执行一次</td>
+					<td>0 0 23 L * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每周星期天凌晨1点执行一次</td>
+					<td>0 0 1 ? * SUN</td>
+				</tr>
+				<tr class="text-c">
+					<td>在26分、29分、33分执行一次</td>
+					<td>0 26,29,33 * * * ?</td>
+				</tr>
+				<tr class="text-c">
+					<td>每天的0点、13点、18点、21点都执行一次</td>
+					<td>0 0 0,13,18,21 * * ?</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="form-horizontal" id="div_cron_set">
+			
+			<div class="form-group">
+	            <label class="control-label col-md-2"><span class="c-red">*是否循环：</span></label>
+	            <div class="col-md-7 skin-minimal">
+	                
+	                <div class="radio-inline">
+	                  <label>
+	                    <input type="radio" id="cycle-1" name="planExecute.isCycle" value="Y" data-for='div_cron_set' checked>
+	                    <span>是&mdash;</span>
+	                  </label>
+	                </div>
+	                <div class="radio-inline">
+	                  <label>
+	                    <input type="radio" id="cycle-2" name="planExecute.isCycle" value="N">
+	                    <span>否&mdash;</span>
+	                  </label>
+	                </div>
+	                
+	            </div>
+	            <div class="col-md-3">...col-md-3...</div>
+	        </div>
+			
+			<div class="form-group">
+                <label class="control-label col-md-2">切换时段：</label>
+                <ul class="col-md-7 nav nav-tabs">
+                    <li><a data-toggle="tab" href="#div_seconds"><span>秒</span></a></li>
+                    <li><a data-toggle="tab" href="#div_minutes"><span>分钟</span></a></li>
+                    <li><a data-toggle="tab" href="#div_hours"><span>小时</span></a></li>
+                    <li><a data-toggle="tab" href="#div_dayofMouth"><span>天</span></a></li>
+                    <li><a data-toggle="tab" href="#div_mouth"><span>月</span></a></li>
+                    <li class="active"><a data-toggle="tab" href="#div_dayofWeek"><span>星期</span></a></li>
+                </ul>
+                <div class="col-md-3">...col-md-3222...</div>
+            </div>
+			
+			<div class="form-group">
+				<label class="control-label col-md-2">具有选择：</label>
+				
+				<div class="tab-content col-md-7">
+					
+					<div class="tab-pane fade" id="div_seconds">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_seconds"><label>使用秒</label>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="div_minutes">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_minutes"><label>使用分钟</label>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="div_hours">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_hours"><label>使用小时</label>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="div_dayofMouth">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_dayofMouth"><label>使用日</label>
+						</div>
+						<div class="form-group linet">
+							<input type="radio" name="radio_dayofMouth" value="L"><label>本月最后一天</label>
+						</div>
+						<div class="form-group linet">
+							<input type="radio" name="radio_dayofMouth" value="S" checked><label>指定</label>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="div_mouth">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_mouth"><label>使用月</label>
+						</div>
+					</div>
+					
+					<div class="tab-pane fade" id="div_dayofWeek">
+						<div class="form-group linet">
+							<input type="checkbox" name="chks_dayofWeek"><label>使用周</label>
+						</div>
+						<div class="imp weekList">
+							<input type="checkbox" name="chk_dayofWeek_value" value="MON"><span>星期一</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="TUE"><span>星期二</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="WED"><span>星期三</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="THU"><span>星期四</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="FRI"><span>星期五</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="SAT"><span>星期六</span>
+							<input type="checkbox" name="chk_dayofWeek_value" value="SUN"><span>星期日</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">...col-md-3...</div>
+			</div>
+
+			<div class="form-group" style="background-color: rgb(232, 222, 222);">
+				<label class="control-label col-md-2"></label>
+				<div class=" col-md-7">
+					<label style="padding-right: 14%">秒</label> <label
+						style="padding-right: 12%">分钟</label> <label
+						style="padding-right: 11%">小时</label> <label
+						style="padding-right: 14%">天</label> <label
+						style="padding-right: 14%">月</label> <label
+						style="padding-right: 0%">星期</label>
+				</div>
+				<div class="col-md-3">...col-md-3...</div>
+			</div>
+
+			<div class="form-group" id="cron_input">
+				<label class="control-label col-md-2">表达式字段：</label>
+				<div class="col-md-7">
+					<input type="text" id="input_seconds" name="planExecute.secondsValue" class="form-control" style="width: 16%" value="*" readonly> 
+					<input type="text" id="input_minutes" name="planExecute.minutesValue" class="form-control" style="width: 16%" value="*" readonly>
+					<input type="text" id="input_hours" name="planExecute.hoursValue" class="form-control" style="width: 16%" value="*" readonly>
+					<input type="text" id="input_dayofMouth" name="planExecute.dayofMouthValue" class="form-control" style="width: 16%" value="*" readonly> 
+					<input type="text" id="input_mouth" name="planExecute.mouthValue" class="form-control" style="width: 16%" value="*" readonly> 
+					<input type="text" id="input_dayofWeek" name="planExecute.dayofWeekValue" class="form-control" style="width: 17%" value="?" readonly>
+				</div>
+				<div class="col-md-3">...col-md-3...</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-md-2"><span class="c-red">*</span>Cron表达式：</label>
+				<div class=" col-md-7">
+					<input type="text" class="form-control" name="planExecute.cronExpress" id="express" datatype="cron" nullmsg="请输入Cron表达式" value="* * * * * ?">
+					<!-- <input class="btn btn-primary" type="button" value="解析到UI" > -->
+				</div>
+				<div class="col-md-3">...col-md-3...</div>
+			</div>
+		
+		</div>
+
+		<!-- end -->
+
+	</div>
+</body>
+<script src="/freeView/js/cron.js"></script>
+</html>

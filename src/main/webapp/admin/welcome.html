@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	    <link href="../css/custom.min.css" rel="stylesheet">
+	    <link href="../css/layui.css" rel="stylesheet" media="all">
+        <link href="../css/mainIndex.css" rel="stylesheet">
+	</head>
+	<body class="nav-md">
+		<div class="container body">
+	      <div class="main_container">
+		    <div class="right_col" role="main">
+		  	  <div class="container-fluid index">
+		  	  	<div class="indexImg">
+		  	      <div class="ImgBox">
+		  	  		<img src="../img/background.png" alt="" />
+		  	  	  </div>
+		  	  	</div>
+		      </div>
+	        </div>
+	    </div>
+	    </div>
+	</body>
+	<script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript">
+		var windowHeight = ($(window).height()<800)?800:$(window).height();
+		if( $(".index")) $(".index").css('height',windowHeight);
+		$(window).resize(function() {
+		    var windowHeight = ($(window).height()<800)?800:$(window).height();
+		    if( $(".index")) $(".index").css('height',windowHeight);
+		});
+	</script>
+</html>

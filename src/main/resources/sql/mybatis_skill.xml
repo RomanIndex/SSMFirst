@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.base.dao.IMenuDao" >
+  <resultMap id="BaseMenuMap" type="com.ssm.base.entity.Menu" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SEQUENCE" property="sequence" jdbcType="DECIMAL" />
+    <result column="STYLE" property="style" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="">
+	  <!-- if 判断 字符串 相等 的写法 -->
+	  <if test="sex=='Y'.toString()"></if>
+	  
+	  <if test = 'sex== "Y"'></if>
+  </sql>
+  
+  
+</mapper>

@@ -1,0 +1,64 @@
+<style type="text/css">
+.select {
+	-moz-user-select: none; /*火狐*/
+	-webkit-user-select: none; /*webkit浏览器*/
+	-ms-user-select: none; /*IE10*/
+	-khtml-user-select: none; /*早期浏览器*/
+	user-select: none;
+}
+
+.modal-header {
+	cursor: move;
+}
+</style>
+
+<div class="modal fade" id="picModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="modal-title" id="myModalLabel">上传图片</h2>
+			</div>
+			<div class="modal-body form-horizontal form-label-left">
+
+				<!-- 后台的接受名为file,要相同名字，id为初始化文件框 -->
+				<div class="form-group text-center">
+					<div class="col-md-12">
+						<!-- <input id="file-pic" name="file" type="file" multiple> -->
+						<!-- multiple表示允许同时上传多个文件，class=“file-loading”表示标签的样式。这里很重要，如果class="file"，则中文化不能生效 -->
+						<input id="file-pic" name="file" type="file" multiple class="file-loading" />
+					</div>
+					<p class="help-block">支持jpg、jpeg、png、gif格式，大小不超过2.0M</p>
+				</div>
+				
+				<form id="picInfoForm">
+					<div class="form-group">
+						<label for="picId" class="col-md-3 control-label">图片id：</label>
+						<div class="col-md-9">
+							<input class="form-control" type="text" name="id" id="picId" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="picName" class="col-md-3 control-label">图片名称：</label>
+						<div class="col-md-9">
+							<input class="form-control" type="text" name="picName" id="picName" readonly="readonly">
+						</div>
+					</div>
+				</form>
+
+				<div class="form-group text-center">
+					<div class="col-md-10 col-md-offset-1">
+						<button type="submit" class="btn btn-primary" onclick="uploadPicture()">保存</button>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="save">测试表单</button>
+                </div> -->
+
+		</div>
+	</div>
+</div>

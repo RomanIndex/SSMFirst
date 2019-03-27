@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>鼠标跟随提示框</title> 
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <style type="text/css">
+        body {
+            font: 12px/1.8 arial;
+        }
+
+        a,
+        a:visited {
+            color: #3366cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f60;
+            text-decoration: underline;
+        }
+
+        .tip {
+            width: 200px;
+            border: 2px solid #ddd;
+            padding: 8px;
+            background: #f1f1f1;
+            color: #666;
+        }
+
+        img {
+            border: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var tip = {
+            $: function (ele) {
+                if (typeof (ele) == "object")
+                    return ele;
+                else if (typeof (ele) == "string" || typeof (ele) == "number")
+                    return document.getElementById(ele.toString());
+                return null;
+            },
+            mousePos: function (e) {
+                var x, y;
+                var e = e || window.event;
+                return {
+                    x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
+                    y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+                };
+            },
+            start: function (obj) {
+                var self = this;
+                var t = self.$("mjs:tip");
+                obj.onmousemove = function (e) {
+                    var mouse = self.mousePos(e);
+                    t.style.left = mouse.x + 10 + 'px';
+                    t.style.top = mouse.y + 10 + 'px';
+                    t.innerHTML = obj.getAttribute("tips");
+                    t.style.display = '';
+                }
+                obj.onmouseout = function () {
+                    t.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <ol>
+        <li>
+            <a href="//www.jb51.net/article/21812.htm" target="_blank">
+                <img src="//www.jb51.net/images/logo.gif" onmouseover="tip.start(this)" tips="JQuery获取元素文档大小、偏移和位置和滚动条位置的 " /></a> 
+                </li>
+        <li>
+            <a href="//www.jb51.net/article/21808.htm" target="_blank" onmouseover="tip.start(this)" tips="Javascript 实现TreeView CheckBox全选效果 ……">关于用户研究的一点思考</a> 
+        </li>
+        <li>
+            <a href="//www.jb51.net/article/21806.htm" target="_blank" onmouseover="tip.start(this)" tips="JavaScript 学习笔记（九）call和apply方法 ……">WEB重构拾趣</a> 
+       </li>
+    </ol>
+    <div id="mjs:tip" class="tip" style="position:absolute;left:0;top:0;display:none;"></div>
+</body>
+
+</html>

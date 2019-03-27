@@ -1,0 +1,9 @@
+.header h1{text-align: center;}
+.input_underline_stress{
+	border: 0;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.input_underline_slight{
+	border: 0;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://java.sun.com/xml/ns/javaee" 
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		 version="3.0">
+		 
+    <display-name>SSMMaven-web-application</display-name>
+    
+    <filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>com.ssm.base.util.SecurityFilter</filter-class>
+		<init-param>
+			<param-name>freePages</param-name>
+			<param-value>login</param-value>
+		</init-param>
+		<init-param>
+			<param-name>toPage</param-name>
+			<param-value>/login</param-value>
+		</init-param>
+	</filter>
+    <filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-mvc-config.xml</param-value>
+    </context-param> -->
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring-core-config.xml</param-value>
+    </context-param>
+	
+    <servlet>
+		<servlet-name>SSMMaven-spring-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- 将原来param-value的值抽出去用context-param，这里的param-value用空，就可以解决 定时器同时执行两次了的问题了（没有重启tomcat，改了之后就有效） -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SSMMaven-spring-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- <servlet-mapping>
+      <servlet-name>default</servlet-name>
+      <url-pattern>/swagger-ui.html</url-pattern>
+    </servlet-mapping> -->
+	
+	<!-- For root context -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    
+</web-app>
