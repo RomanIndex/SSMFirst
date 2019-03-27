@@ -29,6 +29,7 @@
           <entry key="class" value="1" />
           <entry key="java" value="25" />
           <entry key="js" value="1" />
+          <entry key="md" value="1" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
@@ -37,6 +38,7 @@
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="25" />
           <entry key="JavaScript" value="1" />
+          <entry key="Markdown" value="1" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
@@ -44,6 +46,8 @@
         <counts>
           <entry key="java" value="308" />
           <entry key="js" value="46" />
+          <entry key="md" value="395" />
+          <entry key="txt" value="31" />
           <entry key="xml" value="20" />
         </counts>
       </usages-collector>
@@ -51,6 +55,8 @@
         <counts>
           <entry key="JAVA" value="308" />
           <entry key="JavaScript" value="46" />
+          <entry key="Markdown" value="395" />
+          <entry key="PLAIN_TEXT" value="31" />
           <entry key="XML" value="20" />
         </counts>
       </usages-collector>
@@ -58,11 +64,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-core-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-621">
-              <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+            <state relative-caret-position="460">
+              <caret line="59" column="11" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="358">
+                <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -84,6 +102,9 @@
       <dir>D:\IDEAtest\SSMMaven\src\main\java</dir>
     </dirStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -95,6 +116,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/ssm/util/AESTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/util/AESUtil.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -154,7 +176,7 @@
       <path value="$PROJECT_DIR$/src/main/webapp/webPlug/jquery-ui-v1.12.1/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-161" />
     <option name="y" value="28" />
     <option name="width" value="1814" />
@@ -184,7 +206,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553691009853" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553693909821" />
     <property name="last_opened_file_path" value="D:/GithubManage/springboot-multiple-dataSources-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -367,8 +389,16 @@
       <option name="presentableId" value="Default" />
       <updated>1553647818129</updated>
       <workItem from="1553647822290" duration="4026000" />
-      <workItem from="1553657267321" duration="13994000" />
+      <workItem from="1553657267321" duration="15832000" />
     </task>
+    <task id="LOCAL-00001" summary="记录：第一次本地上传项目至github的过程">
+      <created>1553693727799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1553693727799</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -401,12 +431,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18020000" />
+    <option name="totallyTimeSpent" value="19858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19616205" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1359275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -416,7 +446,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3445287" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31310943" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40151516" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -424,7 +454,7 @@
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
       <window_info anchor="bottom" id="Application Servers" order="8" weight="0.4318182" />
       <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.17640692" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
@@ -447,6 +477,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="记录：第一次本地上传项目至github的过程" />
+    <option name="LAST_COMMIT_MESSAGE" value="记录：第一次本地上传项目至github的过程" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -641,8 +675,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-core-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621">
-          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+        <state relative-caret-position="460">
+          <caret line="59" column="11" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="358">
+            <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

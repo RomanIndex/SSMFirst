@@ -1,6 +1,8 @@
 # SSMFirst
 SSM第一个版本，以company的为基础version
 
+》》》》参考https://www.cnblogs.com/smfx1314/p/8426115.html
+
 记录一下，第一次从本地上传项目至github的过程：
 1、准备好要上传的项目，并事先删掉一些没用的，比如.classes文件
 
