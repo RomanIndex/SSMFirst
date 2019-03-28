@@ -30,7 +30,9 @@
     
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-core-config.xml</param-value>
+		<!-- classpath:**.xml 之间不能有空格，否则报错！-->
+        <param-value>classpath*:mybatis-config.xml, classpath:spring-core-config.xml,
+			classpath:applicationContext-redis.xml</param-value>
     </context-param>
 	
     <servlet>

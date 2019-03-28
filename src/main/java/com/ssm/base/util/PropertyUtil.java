@@ -27,7 +27,7 @@ public class PropertyUtil {
         InputStream in = null;
         try {
         	/*第一种，通过类加载器进行获取properties文件流*/
-            in = PropertyUtil.class.getClassLoader().getResourceAsStream("config.properties");
+            in = PropertyUtil.class.getClassLoader().getResourceAsStream("properties/config.properties");
             /*第二种，通过类进行获取properties文件流*/
             //in = PropertyUtil.class.getResourceAsStream("/jdbc.properties");
             props.load(in);

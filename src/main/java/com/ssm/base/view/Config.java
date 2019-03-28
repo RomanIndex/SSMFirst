@@ -33,7 +33,7 @@ public final class Config {
 				}
 			}
 			try {
-				config.load(Config.class.getClassLoader().getResourceAsStream("config.properties"));
+				config.load(Config.class.getClassLoader().getResourceAsStream("properties/config.properties"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
