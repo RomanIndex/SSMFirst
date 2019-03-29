@@ -30,6 +30,9 @@
 		<context:include-filter type="regex" expression="com.ssm.quartz.*"/> -->
 		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/> -->
 	</context:component-scan>
+
+	<!--异常处理器配置,需要注意的是,id必须是"CustomExceptionResolver"-->
+	<bean id="CustomExceptionResolver" class="com.ssm.base.util.CustomExceptionResolver"/>
 	
 	<!--避免IE执行AJAX时，返回JSON出现下载文件    -->
     <!-- 注意拷贝的spring配置较老，若用的版本(4.3.2.RELEASE) jackson的类要重新配，即注意下方的222-->

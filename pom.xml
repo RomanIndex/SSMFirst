@@ -45,6 +45,13 @@
         <version>4.3.13.RELEASE</version>
     </dependency>
 
+    <!-- spring data jpa 数据库持久层 -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>2.0.9.RELEASE</version>
+    </dependency>
+
       <!-- redis -->
       <dependency>
           <groupId>redis.clients</groupId>
@@ -69,6 +76,12 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-nop</artifactId>
       <version>1.7.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
     </dependency>
     
     <!-- javaBean 自动校样 -->
@@ -216,11 +229,6 @@
         <artifactId>junit</artifactId>
         <version>4.12</version>
         <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
-        <version>1.2.17</version>
     </dependency>
     
     <!-- swagger -->

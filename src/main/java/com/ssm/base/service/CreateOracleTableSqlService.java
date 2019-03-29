@@ -5,18 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ssm.common.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.ssm.base.entity.ExcelTableField;
 
 @Service 
-public class CreateTableSqlService {
+public class CreateOracleTableSqlService {
 	
 	public Map<String, String> createSql(Map<String, List<ExcelTableField>> xxMap) {
 		
@@ -31,7 +31,7 @@ public class CreateTableSqlService {
 			
 			//String tableName = clzz.getName();//全名eg：com.ssm.base.entity.AaTest
 			//tableName = tableName.substring(tableName.lastIndexOf(".") + 1);
-			String tableName = hump2underline(sheetName);//驼峰转下划线（顺便转大写）
+			String tableName = StringUtil.hump2underline(sheetName);//驼峰转下划线（顺便转大写）
 			System.out.println("（要驼峰转下划线）tableName："+ tableName);
 			
 			//createStr.append("\r\n DROP TABLE "TEXT_CREATE_SQL" CASCADE CONSTRAINTS;").append("\r\n");
@@ -94,9 +94,9 @@ public class CreateTableSqlService {
 			String sqlPath = "D:\\LocalPicDev\\实体类"+ sheetName +"建表语句.sql";
 			File file = new File(sqlPath);
 			
-			if (!file.exists()) {//文件不存在则创建文件，先创建目录  
+			if (!file.exists()) {//文件不存在则创建文件，先创建目录
                 File dir = new File(file.getParent());  
-                dir.mkdirs();  
+                dir.mkdirs();
                 file.createNewFile(); 
             }
 			
@@ -113,49 +113,5 @@ public class CreateTableSqlService {
 		}
 		
 	}
-	
-	private String hump2underline(String hump) {
-		//驼峰 转 下划线
-		StringBuilder underline = new StringBuilder();
-	    if (hump != null && hump.length() > 0) {
-	        // 将第一个字符处理成大写
-	    	underline.append(hump.substring(0, 1).toUpperCase());
-	        // 循环处理其余字符
-	        for (int i = 1; i < hump.length(); i++) {
-	            String s = hump.substring(i, i + 1);
-	            // 在大写字母前添加下划线
-	            if (s.equals(s.toUpperCase()) && !Character.isDigit(s.charAt(0))) {
-	            	underline.append("_");
-	            }
-	            // 其他字符直接转成大写
-	            underline.append(s.toUpperCase());
-	        }
-	    }
-	    
-		return underline.toString();
-	}
-	
-	/**
-     * 获取包下的所有类名称,获取的结果类似于 XXX.java
-     * @author  
-     * @date    2018年4月11日
-     * @param packageName
-     * @return
-     */
-    public static List<String> getAllClasses(String packageName){
-        List<String> classList = new ArrayList<String>();
-        String className="";
-        File f = new File(packageName);
-        if(f.exists() && f.isDirectory()){
-            File[] files = f.listFiles();
-            for (File file : files) {
-                 className = file.getName();
-                 classList.add(className);
-            }
-            return classList;
-        }else{
-            return null;
-        }
-    }
 
 }

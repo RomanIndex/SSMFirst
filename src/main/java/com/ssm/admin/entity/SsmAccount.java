@@ -8,12 +8,15 @@ import javax.persistence.Table;
 public class SsmAccount {
     private String id;
 
-    @Id
     private String empNo;
 
     private String password;
 
     private String name;
+
+    private Date createTime;
+
+    /*
 
     private String headImg;
 
@@ -33,9 +36,15 @@ public class SsmAccount {
 
     private Short source;
 
-    private Short status;
+    private Short status;*/
 
-    private Date createTime;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getId() {
         return id;
@@ -53,100 +62,12 @@ public class SsmAccount {
         this.empNo = empNo;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getHeadImg() {
-        return headImg;
-    }
-
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getBirth() {
-        return birth;
-    }
-
-    public void setBirth(String birth) {
-        this.birth = birth;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Short getRoleValues() {
-        return roleValues;
-    }
-
-    public void setRoleValues(Short roleValues) {
-        this.roleValues = roleValues;
-    }
-
-    public String getLoginUrl() {
-        return loginUrl;
-    }
-
-    public void setLoginUrl(String loginUrl) {
-        this.loginUrl = loginUrl;
-    }
-
-    public Short getOnlineStatus() {
-        return onlineStatus;
-    }
-
-    public void setOnlineStatus(Short onlineStatus) {
-        this.onlineStatus = onlineStatus;
-    }
-
-    public Short getSource() {
-        return source;
-    }
-
-    public void setSource(Short source) {
-        this.source = source;
-    }
-
-    public Short getStatus() {
-        return status;
-    }
-
-    public void setStatus(Short status) {
-        this.status = status;
     }
 
     public Date getCreateTime() {

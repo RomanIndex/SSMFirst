@@ -1,6 +1,6 @@
 var config_contextPath = "assda";
 //ajax预处理 和 后置处理，用于权限控制的页面控制
-if(window.jQuery){
+/*if(window.jQuery){
     jQuery(document).bind("ajaxSend", function(event, request, settings){
         var token = "what???";//getUserToken();
         //config_contextPath 为需要设置token的 全局host,严格判断防止 token发送到其他站点被盗取
@@ -40,7 +40,7 @@ if(window.jQuery){
             }
         }
     });
-}
+}*/
 
 function formatStatus(data){
 	return data == 0 ? "无效" : data == 1 ? "有效" : "";

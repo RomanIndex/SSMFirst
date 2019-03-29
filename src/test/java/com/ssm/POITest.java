@@ -17,7 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.alibaba.fastjson.JSONObject;
 import com.ssm.base.entity.Account;
 import com.ssm.base.entity.ExcelTableField;
-import com.ssm.base.service.CreateTableSqlService;
+import com.ssm.base.service.CreateOracleTableSqlService;
 import com.ssm.base.service.ExcelService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,7 +25,7 @@ import com.ssm.base.service.ExcelService;
 @ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
 public class POITest {
 	@Resource private ExcelService excelService;
-	@Resource private CreateTableSqlService createTableSqlService;
+	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
 	
 	@Test
 	public void test(){
@@ -61,7 +61,7 @@ public class POITest {
 		Map<String, List<ExcelTableField>> xxMap = excelService.readExcelToMap(path);
 		System.out.println(xxMap);
 		//根据 excel 导入的 表结构 生成 对应的表生成sql语句
-		createTableSqlService.createSql(xxMap);
+		createOracleTableSqlService.createSql(xxMap);
 	}
 	
 	@Test

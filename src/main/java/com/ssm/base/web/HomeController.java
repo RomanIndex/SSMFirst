@@ -99,9 +99,9 @@ public class HomeController {
     		@ApiParam(name = "password", value = "密码", required = true)@RequestParam(value = "password") String password,
     		@ApiParam(name = "boxFlag", value = "是否免登录", required = false, defaultValue = "false")@RequestParam(value = "boxFlag") boolean boxFlag) {
         Result<String> result = new Result<>();
+
         if(StringUtils.isBlank(empNo) || StringUtils.isBlank(password)){
-        	result.setMsg("账号密码不能为空！");
-        	return result;
+        	return new Result<>(Result.FAIL, "账号密码不能为空！", null, null);
         }
         
         boolean pass = false;
@@ -134,6 +134,7 @@ public class HomeController {
 			result.setMsg("登录成功，正在前往首页...");
 			result.setData("admin/index");
         }
+
         return result;
     }
 }
