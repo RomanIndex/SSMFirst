@@ -20,7 +20,7 @@ import com.ssm.base.service.FileService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class TestFile {
 	@Resource private FileService fileService;
 

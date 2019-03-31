@@ -30,7 +30,7 @@ import net.sf.json.JSONObject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class LoginCong {
 	@Autowired private SsmMenuService menuService;
 	@Autowired private SsmAccountService accountService;

@@ -41,6 +41,10 @@ public class SsmAccountService {
 		return new Result<>(0, "", "", pageModel);
 	}
 
+	public Result<?> listAccountByKey() {
+		return new Result<>(0, "", "", accountDao.selectAll());
+	}
+
 	public Result<?> getAccountByKey(String empNo) {
 		return new Result<>(0, "", "", accountDao.selectByPrimaryKey(empNo));
 	}

@@ -12,17 +12,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.ssm.base.util.DateUtil;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class AESTest {
-
-    @Test
-    public void test(){
-        System.out.println("i an a  aa  aaa !!");
-    }
 
     @Test
     public void AESTest(){

@@ -12,7 +12,7 @@ import com.ssm.base.service.TestJava8Service;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class TestJava8 {
 	@Resource private TestJava8Service java8Service;
 	
