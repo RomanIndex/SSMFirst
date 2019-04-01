@@ -22,7 +22,7 @@
         <!-- 指定Entity实体类包路径 -->
         <property name="packagesToScan">
             <list>
-                <value>com.ssm.admin.entity.jpa</value>
+                <value>com.ssm.*.entity.jpa</value>
             </list>
         </property>
         <!-- 指定JPA属性；如Hibernate中指定是否显示SQL的是否显示、方言等 -->
