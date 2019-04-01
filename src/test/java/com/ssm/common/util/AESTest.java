@@ -1,16 +1,10 @@
-package com.ssm.util;
+package com.ssm.common.util;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import com.ssm.base.util.AESUtil;
+import com.ssm.common.util.AESUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
@@ -18,7 +12,7 @@ public class AESTest {
 
     @Test
     public void AESTest(){
-        String message = "123456";
+        String message = "besb4m5";
         String encryptStr = AESUtil.encrypt(message);
         System.out.println("加密前：" + message + "，加密后：" + encryptStr);
 

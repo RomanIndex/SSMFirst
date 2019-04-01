@@ -1,5 +1,8 @@
 package com.ssm;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -8,8 +11,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.alibaba.fastjson.JSON;
+import com.ssm.base.view.Result;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -19,6 +26,7 @@ import com.ssm.base.entity.Account;
 import com.ssm.base.entity.ExcelTableField;
 import com.ssm.base.service.CreateOracleTableSqlService;
 import com.ssm.base.service.ExcelService;
+import org.springframework.web.multipart.MultipartFile;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
@@ -28,27 +36,26 @@ public class POITest {
 	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
 	
 	@Test
-	public void test(){
-		System.out.println("can i do !!!");
-	}
-
-	@Test
-	public void otcTest(){
-		String path = "D:\\LocalPicDev\\OTC\\OTC答题码.xls";//文件路径
-		String txt = excelService.readExcel(path, Account.class);
-		System.out.println(txt);
-	}
-	
-	@Test
 	/**
 	 * 导入（简单通用）
+	 *
+	 * 目前只做单页sheet的，因为 入参 就一个class类，返回对应list集合
+	 *
+	 * 考虑到后台上传的情形，要兼顾 流 的处理
 	 */
 	public void readExcel(){
-		//简单读取excel，未进行封装
-		String path = "D:\\LocalPicDev\\实体类account模拟数据.xlsx";//文件路径
-		//String path = "D:\\LocalPicDev\\实体类student表结构.xlsx";//文件路径
-		String txt = excelService.readExcel(path, Account.class);
-		System.out.println(txt);
+		String path = "D:\\LocalPicDev\\实体类account模拟数据.xlsx";
+		//String path = "D:\\LocalPicDev\\OTC\\OTC答题码.xls";
+		System.out.println("文件路径："+ path);
+		File file = new File(path);
+		try {
+			FileInputStream input = new FileInputStream(file);
+			MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(input));
+			Result result = excelService.readExcel(multipartFile, Account.class);
+			System.out.println(JSON.toJSONString(result));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

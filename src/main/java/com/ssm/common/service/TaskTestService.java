@@ -14,9 +14,9 @@ public class TaskTestService{
 	
 	private int taskCount = 0;
 
-	@Scheduled(cron = "0/6 * * * * ?")
+	@Scheduled(cron = "* 0/30 * * * ?")
 	public void executeMessageTask() {
-		System.out.println(DateFormatUtil.formatDate(new Date())+ "common.service的测试定时任务【6秒间隔】次数："+ taskCount++);
+		System.out.println(DateFormatUtil.formatDate(new Date())+ "common.service的测试定时任务【30分钟间隔】次数："+ taskCount++);
 	}
 
 	public TaskTestService() {
