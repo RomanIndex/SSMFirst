@@ -43,7 +43,7 @@ public class SecurityFilter implements Filter{
         SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, filterConfig.getServletContext());
         
         if(toPage == null || strPages == null || toPage.trim().length() == 0 || strPages.trim().length() == 0) {
-            throw new ServletException("web.xml中filterServlet没有配置初始化参数\"toPage\"或\"freePage\".");
+            throw new ServletException("web.xml中filterServlet没有配置初始化参数toPage或freePage.");
         }
         
         StringTokenizer strTokenizer = new StringTokenizer(strPages, ";");//同split()，但不推荐使用，效率低还麻烦
@@ -54,7 +54,7 @@ public class SecurityFilter implements Filter{
         }
 
         if(!isFreePage(toPage)) {
-            throw new ServletException("web.xml中filter初始化参数\"toPage\"的值必须是\"freePage\"中的某个页面.");
+            throw new ServletException("web.xml中filter初始化参数toPage的值必须是freePage中的某个页面.");
         }
 	}
 
@@ -78,7 +78,7 @@ public class SecurityFilter implements Filter{
                 	ex.printStackTrace();
                 }
         	}else {
-        		Map<String,Object> map = (Map<String, Object>) menuService.getMenuList().getData();
+        		Map<String,Object> map = (Map<String, Object>) menuService.listMenuByRole(null).getData();
         		request.getSession().setAttribute("menu", map.get("menu"));
         	}
         }

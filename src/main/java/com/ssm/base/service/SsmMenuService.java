@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ssm.admin.daoJpa.ISsmModuleDao;
+import com.ssm.admin.entity.SsmModule;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,15 @@ import com.ssm.base.view.Result;
 @Service
 public class SsmMenuService {
 	@Autowired private ISsmMenuDao menuDao;
+	@Autowired private ISsmModuleDao moduleDao;
+
+	public Result<?> save(SsmModule module){
+		moduleDao.save(module);
+		return null;
+	}
 	
-	public Result<?> getMenuList(){
+	//为什么是ByRole？如果不同角色的菜单有重复，在service过滤
+	public Result<?> listMenuByRole(String roleId){
 		//List<SsmMenu> rootMenu = menuDao.selectAll();
 		List<SsmMenu> rootMenu = menuDao.getMenuList();
 		//rootMenu.stream().forEach(item -> System.out.println(item.getMenuId() + "：" + item.getName()));
@@ -34,11 +43,11 @@ public class SsmMenuService {
 	    for (SsmMenu menu : menuList) {
 	        menu.setChildMenus(getChild(menu.getMenuId(), rootMenu));
 	    }
-	    Map<String,Object> jsonMap = new HashMap<>();
-	    jsonMap.put("menu", menuList);
+	    Map<String,Object> map = new HashMap<>();
+	    map.put("menu", menuList);
 	    //System.out.println(JSONObject.fromObject(jsonMap).toString());
 	    
-	    return new Result<>(0, "", "", jsonMap);
+	    return new Result<>(0, "", "", map);
 	}
 	
 	/**
