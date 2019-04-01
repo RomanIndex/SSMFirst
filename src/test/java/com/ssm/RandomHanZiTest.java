@@ -14,7 +14,8 @@ import com.ssm.base.service.RandomHanZiService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
+//@ContextConfiguration(locations = {"classpath:spring-core-config.xml"})
 
 /**
  * 机内码、国际码是十六进制的，区位码是十进制的

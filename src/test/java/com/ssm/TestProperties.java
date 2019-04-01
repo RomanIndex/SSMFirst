@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.ssm.base.util.PropertyUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class TestProperties {
 	
 	@Test

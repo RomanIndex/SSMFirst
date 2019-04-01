@@ -13,21 +13,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.ssm.base.util.Base64Util;
 import com.ssm.base.util.image.ImageUrl2Base64Util;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class Image2Base64Test {
 	@Resource private ImageUrl2Base64Util imageUrl2Base64Service;
-	
-	@Test
-	public void test() {
-		System.out.println("...adasdasdasd..");
-	}
 	
 	@Test
 	public void getBase64ByImgUrl(){

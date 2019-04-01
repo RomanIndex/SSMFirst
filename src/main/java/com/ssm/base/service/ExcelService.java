@@ -4,12 +4,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ssm.base.view.Result;
 import org.springframework.stereotype.Service;
 
 import com.ssm.base.entity.ExcelTableField;
 import com.ssm.base.util.poi.ReadExcel;
 import com.ssm.base.util.poi.ReadExcelToMap;
 import com.ssm.base.util.poi.WriteExcel;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ExcelService {
@@ -17,14 +19,19 @@ public class ExcelService {
 	/**
 	 *  导入
 	 *  简单 但是 根据excel表 字段 类型 精准读取
-	 * @param path
+	 * @param multipartFile
 	 * @param clzz
 	 * @return
 	 */
-	public String readExcel(String path, Class<?> clzz) {
-		Map<String, List<? extends Object>> map = ReadExcel.readExcel(path, clzz);
+	public Result<?> readExcel(MultipartFile multipartFile, Class<?> clzz) {
+		if(multipartFile.isEmpty()){
+			return new Result<>(Result.FAIL, "请先选择Excel文件", null, null);
+		}
+		Result<?> excelResult = ReadExcel.readExcel(multipartFile, clzz);
+
+		//读取完Excel数据后，一定会有处理数据的逻辑，这里省略。。
 		
-		return map.toString();
+		return new Result<>(Result.SUCCESS, "", null, excelResult);
 	}
 	
 	/**

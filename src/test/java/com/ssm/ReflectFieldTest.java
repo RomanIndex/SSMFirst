@@ -15,7 +15,7 @@ import com.ssm.base.service.ReflectFieldService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ReflectFieldTest {
 	
 	@Resource private ReflectFieldService reflectFieldService;

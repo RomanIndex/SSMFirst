@@ -1,4 +1,4 @@
-package com.ssm.base.util;
+package com.ssm.common.util;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
@@ -24,7 +24,7 @@ public class AESUtil {
      * 用户自定义的密钥，由前后端协商确定
      * ！！！（不应该在加解密方法的参数中暴露），AES的安全性，取决于密钥的安全性。
      */
-    private static final String KEY = "zhuzi";
+    private static final String KEY = "dripAward";
     /**
      * AES:算法，ECB:模式，PKCS5Padding:补码方式
      */

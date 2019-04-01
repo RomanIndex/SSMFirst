@@ -7,21 +7,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.ssm.base.builder.ConcreteBuilder;
 import com.ssm.base.builder.JZZRedPacket;
 import com.ssm.base.builder.RedPacket;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class BuilderTest {
-	
-	@Test
-	public void test(){
-		System.out.println("i an a  aa  aaa !!");
-	}
 	
 	@Test
 	public void builder(){

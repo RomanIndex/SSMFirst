@@ -20,16 +20,19 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-	
+
 	<!-- 使用[组件-扫描]的方式可以一次扫描多个Controller -->
-	<!--<context:component-scan base-package="com.ssm.*" use-default-filters="false">-->
 	 <context:component-scan base-package="com.ssm.*.web" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-		<!-- <context:include-filter type="regex" expression="com.ssm.*.web"/>
-		<context:include-filter type="regex" expression="com.ssm.quartz.*"/> -->
-		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/> -->
+
+		<!--<context:include-filter type="regex" expression="com.ssm.*.web"/>
+		<context:include-filter type="regex" expression="com.ssm.quartz.*"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>-->
 	</context:component-scan>
+
+	<!--异常处理器配置,需要注意的是,id必须是"CustomExceptionResolver"-->
+	<bean id="CustomExceptionResolver" class="com.ssm.base.util.CustomExceptionResolver"/>
 	
 	<!--避免IE执行AJAX时，返回JSON出现下载文件    -->
     <!-- 注意拷贝的spring配置较老，若用的版本(4.3.2.RELEASE) jackson的类要重新配，即注意下方的222-->
@@ -42,10 +45,10 @@
     </bean>
     
 	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
- 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+ 	<!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
  	      p:defaultEncoding="UTF-8"
           p:maxUploadSize="320000000"
- 	/>
+ 	/>-->
  	
 	<!--视图解释器 -->
 	<bean id="ftlResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -75,6 +78,8 @@
 	        </props>
 	    </property>
 	</bean>
+
+	<bean class="com.ssm.base.util.SwaggerConfig" />
 	
     <!-- 配置拦截器 -->
     
@@ -102,15 +107,8 @@
             <bean class="com.ssm.base.intercept.AuthorityAnnotationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-    
-	<!-- 增加定时任务插件 -->
-    <task:annotation-driven />
-    <!-- 下面的配置将spirng定时任务变为多线程，因此任务之间不会相互影响了 -->
-    <task:scheduler id="qbScheduler" pool-size="10"/>
-	
+
+	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven />
-	<bean class="com.ssm.base.util.SwaggerConfig" />
-	<mvc:resources mapping="/webjars/**" location="classpath:META-INF/resources/webjars/"/>
-	<mvc:resources mapping="/**" location="/" />
 	
 </beans>

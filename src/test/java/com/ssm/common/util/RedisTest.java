@@ -1,4 +1,4 @@
-package com.ssm.common;
+package com.ssm.common.util;
 
 import com.ssm.common.util.RedisUtil;
 import org.springframework.context.ApplicationContext;

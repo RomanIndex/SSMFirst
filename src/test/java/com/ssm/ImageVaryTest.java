@@ -12,25 +12,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.Thumbnails.Builder;
 import net.coobird.thumbnailator.geometry.Positions;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration("web")
-@ContextConfiguration(locations = "file:D:/eclipse-neon/workspace/SSMMaven/src/main/resources/spring-core-config.xml")
+@ContextConfiguration(locations = {"classpath:jpa-config.xml"})
+
 public class ImageVaryTest {
 	
 	private String THUMBNAILS_IMG_DIR = "D:/LocalPicDev/ImageVary/";
 	private String ORIGIN_IMG_NAME = "origin.jpg";
 	private String WATERMARK_IMG_NAME = "watermark.jpg";
-	
-	@Test
-	public void test(){
-		System.out.println("can i do Thumbnails!!!");
-	}
 	
 	@Test
 	public void size() throws IOException{

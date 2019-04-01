@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+                           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd" >
+
+    <import resource="spring-core-config.xml"/>
+
+    <!--巨坑之：jpa的dao注入失败！-->
+    <!-- 原因：xml扫描的dao路径 和 service引入的dao不是同一个，，，-->
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!-- 指定数据源 -->
+        <property name="dataSource">
+            <ref bean="dataSource"></ref>
+        </property>
+        <!-- 指定Entity实体类包路径 -->
+        <property name="packagesToScan">
+            <list>
+                <value>com.ssm.*.entity.jpa</value>
+            </list>
+        </property>
+        <!-- 指定JPA属性；如Hibernate中指定是否显示SQL的是否显示、方言等 -->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <!-- 是否生成ddl文件，自动建表，注释用下面jpaPropertie的属性 -->
+                <!-- 在连公司的库时不要改成别的，以免把表都删掉了-->
+                <property name="generateDdl" value="true"/>
+
+                <!-- 是否展示sql，这里的会覆盖jpaProperties的属性 -->
+                <property name="showSql" value="true"/>
+
+                <!-- 必要的数据库库使用的详细信息，不注释不能自动建表，报错 -->
+                <!-- 因为配置的方言和数据库版本不一样而导致的，MySql5.0以后用MySQL5Dialect -->
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+
+                <!-- mysql,自行选择 -->
+                <property name="database" value="MYSQL"/>
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <!--<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>-->
+
+                <!--update作用和generateDdl = true一样-->
+                <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
+
+                <!--格式化显示最终执行的sql-->
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Spring Data Jpa配置 -->
+
+    <!-- 指定jpa的Dao所在根包 -->
+    <!-- base-package="com.ssm.repository" 多一级目录的可以？如下。OK的-->
+    <jpa:repositories base-package="com.ssm.*.daoJpa" transaction-manager-ref="txManager" entity-manager-factory-ref="entityManagerFactory" />
+
+    <!-- Jpa 事务配置 -->
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <!-- 开启注解事务 -->
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
+
+</beans>
