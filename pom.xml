@@ -56,11 +56,11 @@
     </dependency>
     <!-- AspectJ ，多数据源 首次 用到 -->
     <!-- 是aspectj的runtime包 -->
-    <dependency>
+    <!--<dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjrt</artifactId>
       <version>1.6.11</version>
-    </dependency>
+    </dependency>-->
     <!-- 是aspectj的织入包 -->
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -68,19 +68,19 @@
       <version>1.6.11</version>
     </dependency>
     <!-- Cglib包是用来动态代理用的,基于类的代理 -->
-    <dependency>
+    <!--<dependency>
       <groupId>cglib</groupId>
       <artifactId>cglib</artifactId>
       <version>2.1</version>
-    </dependency>
+    </dependency>-->
 
     <!--实体类get/set注解-->
-    <dependency>
+    <!--<dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.16.20</version>
       <scope>provided</scope>
-    </dependency>
+    </dependency>-->
 
     <!-- spring data jpa 数据库持久层 -->
     <dependency>
@@ -94,7 +94,9 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.4.0.Final</version>
+      <!-- jdk8版本不能用5.4.0，报module-info.java几个jar包的错，因为模块化是jdk9的新特性 -->
+      <!--<version>5.4.0.Final</version>-->
+      <version>4.3.8.Final</version>
     </dependency>
     <dependency>
         <groupId>org.hibernate</groupId>

@@ -27,6 +27,10 @@
 		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"/> -->
 	</context:component-scan>
 
+	<!--aspectj 驱动器 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<!--<bean class="com.ssm.common.multiDataSource.DataSourceAspect"/>-->
+
 	<task:annotation-driven/>
 
 	<!-- **************************************引入配置文件*******************************************-->
@@ -53,13 +57,13 @@
 	<!-- 配置数据源Master -->
 	<bean id="wwMysqlDS" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<!-- 基本属性 url、user、password -->
-		<property name="driverClassName" value="${ds.driverClassName}" />
-		<property name="url" value="${ds.url}"/>
-		<property name="username" value="${ds.username}"/>
-		<property name="password" value="${ds.password}"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://172.18.1.122:3306/otctest?serverTimezone=GMT%2B8"/>
+		<property name="username" value="otc"/>
+		<property name="password" value="Otc_2019Te"/>
 
 		<!-- 配置获取连接等待超时的时间 -->
-		<property name="maxWait" value="${ds.maxWait}"/>
+		<property name="maxWait" value="6000"/>
 
 		<!-- 配置初始化大小、最小、最大 -->
 		<!--<property name="initialSize" value="${ds.initialSize}"/>
@@ -93,8 +97,8 @@
 	<bean id="aliMysqlDS" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://172.18.1.122:3306/otcdev?serverTimezone=GMT%2B8"/>
-		<property name="username" value="${ds.username}"/>
-		<property name="password" value="${ds.password}"/>
+		<property name="username" value="otc"/>
+		<property name="password" value="Otc_2019Te"/>
 		<property name="initialSize" value="0" />
 		<property name="maxActive" value="20" />
 		<property name="maxWait" value="60000" />
@@ -153,9 +157,9 @@
 	</bean>
 
 	<!-- 事务管理 通知 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<!--<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<!-- 对insert,update,delete 开头的方法进行事务管理,只要有异常就回滚 -->
+			&lt;!&ndash; 对insert,update,delete 开头的方法进行事务管理,只要有异常就回滚 &ndash;&gt;
 			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
 			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
 			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
@@ -163,36 +167,16 @@
 			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
 			<tx:method name="add*" propagation="REQUIRED"/>
 			<tx:method name="flush*" propagation="REQUIRED"/>
-			<!-- select,count,get,find开头的方法,开启只读,提高数据库访问性能 -->
+			&lt;!&ndash; select,count,get,find开头的方法,开启只读,提高数据库访问性能 &ndash;&gt;
 			<tx:method name="select*" read-only="true"/>
 			<tx:method name="count*" read-only="true"/>
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="find*" read-only="true"/>
 			<tx:method name="search*" read-only="true"/>
-			<!-- 对其他方法 使用默认的事务管理 -->
+			&lt;!&ndash; 对其他方法 使用默认的事务管理 &ndash;&gt;
 			<tx:method name="*"/>
 		</tx:attributes>
-	</tx:advice>
-
-	<!-- 自定义的拦截器 -->
-	<!--<bean id="methodAdvisor" class="com.ssm.common.multiDataSource.DataSourceAspect" />
-	<aop:config proxy-target-class="true">
-		<aop:pointcut id="baseMethods" expression="execution(* com.ssm.*.dao..*.*(..))" />
-		<aop:advisor advice-ref="methodAdvisor" pointcut-ref="baseMethods" />
-	</aop:config>-->
-
-	<!-- 事务 aop 配置 com.xxx.smp.service..*Impl.*(..)) -->
-	<!--<aop:config>
-		<aop:pointcut id="serviceMethods" expression="execution(* com.ssm.*.service..*(..))"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
-	</aop:config>
-	&lt;!&ndash; 配置使Spring采用CGLIB代理 &ndash;&gt;
-	<aop:aspectj-autoproxy proxy-target-class="true"/>-->
-
-	<!-- 声明spring对@AspectJ的支持 -->
-	<!--aspectj 驱动器 -->
-	<aop:aspectj-autoproxy proxy-target-class="true"/>
-	<!--<bean class="com.ssm.common.multiDataSource.DataSourceAspect"/>-->
+	</tx:advice>-->
 
 	<!-- 事务注解支持 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>

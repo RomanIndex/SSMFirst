@@ -37,7 +37,7 @@
 
                 <!-- 必要的数据库库使用的详细信息，不注释不能自动建表，报错 -->
                 <!-- 因为配置的方言和数据库版本不一样而导致的，MySql5.0以后用MySQL5Dialect -->
-                <!--<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect"/>-->
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
 
                 <!-- mysql,自行选择 -->
                 <property name="database" value="MYSQL"/>
