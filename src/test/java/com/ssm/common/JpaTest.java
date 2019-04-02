@@ -1,7 +1,6 @@
 package com.ssm.common;
 
 import com.alibaba.fastjson.JSON;
-import com.ssm.admin.entity.Ssm;
 import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.entity.jpa.JpaAccount;
 import com.ssm.admin.service.JpaAccountService;
@@ -32,16 +31,6 @@ public class JpaTest {
         jpaAccount.setCreateTime(Calendar.getInstance().getTime());
         jpaAccountService.add(jpaAccount);
         System.out.println("》》》"+ JSON.toJSONString(jpaAccount));
-    }
-
-    @Test
-    public void ssm(){
-        //DataSourceTypeManager.clearCustom();
-        //DataSourceTypeManager.set(DataSourceEnum.aliMysql);//有点问题，切换好像有缓存在，NO，是完全OK了，dao里的配置最后生效
-        Ssm ssm = new Ssm();
-        ssm.setName("撒的撒的");
-        jpaAccountService.ssm(ssm);
-        System.out.println("》》》"+ JSON.toJSONString(ssm));
     }
 
     @Test

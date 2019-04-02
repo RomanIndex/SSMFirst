@@ -52,26 +52,26 @@
 		<property name="filters" value="wall,stat,slf4j" />
 	</bean>
 
-	<bean id="wwMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
-		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+	<!--<bean id="wwMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
+		&lt;!&ndash;<property name="driverClassName" value="com.mysql.jdbc.Driver" />&ndash;&gt;
 		<property name="url" value="jdbc:mysql://172.18.1.122:3306/otctest?serverTimezone=GMT%2B8"/>
 		<property name="username" value="otc"/>
 		<property name="password" value="Otc_2019Te"/>
-	</bean>
+	</bean>-->
 
 	<!-- class="org.apache.commons.dbcp.BasicDataSource" -->
-	<bean id="wwOracleDS" parent="parentDataSource" init-method="init" destroy-method="close">
-		<!--<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />-->
+	<!--<bean id="wwOracleDS" parent="parentDataSource" init-method="init" destroy-method="close">
+		&lt;!&ndash;<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />&ndash;&gt;
 		<property name="url" value="jdbc:oracle:thin:@172.18.1.40:1521/EIP3DEV" />
 		<property name="username" value="UCENTER" />
 		<property name="password" value="HuaMing" />
-	</bean>
+	</bean>-->
 
 	<bean id="aliMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
-		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-		<property name="url" value="jdbc:mysql://172.18.1.122:3306/otcdev?serverTimezone=GMT%2B8"/>
-		<property name="username" value="otc"/>
-		<property name="password" value="Otc_2019Te"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://120.79.207.99:3306/SSM?serverTimezone=GMT%2B8"/>
+		<property name="username" value="SSM123456"/>
+		<property name="password" value="******"/>
 	</bean>
 
 	<!-- ******************************多数据源配置【结束】*****************************************-->
@@ -87,8 +87,8 @@
 		<property name="defaultTargetDataSource" ref="aliMysqlDS" />
 		<property name="targetDataSources">
 			<map key-type="com.ssm.common.multiDataSource.DataSourceEnum">
-				<entry key="wwMysql" value-ref="wwMysqlDS"/>
-				<entry key="wwOracle" value-ref="wwOracleDS"/>
+				<!--<entry key="wwMysql" value-ref="wwMysqlDS"/>
+				<entry key="wwOracle" value-ref="wwOracleDS"/>-->
 				<entry key="aliMysql" value-ref="aliMysqlDS"/>
 				<!-- 这里还可以加多个dataSource -->
 			</map>
