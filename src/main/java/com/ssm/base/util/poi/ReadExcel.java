@@ -1,10 +1,15 @@
 package com.ssm.base.util.poi;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import com.alibaba.fastjson.JSON;
+import com.ssm.base.service.ReflectFieldService;
 import com.ssm.base.view.Result;
+import com.ssm.common.util.MathUtil;
+import com.ssm.common.util.StringUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -13,7 +18,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.omg.CORBA.Object;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ReadExcel {
@@ -59,6 +63,10 @@ public class ReadExcel {
 
 			int numberOfSheets = wb.getNumberOfSheets();
 
+			if(numberOfSheets > 1){
+                return new Result<>(Result.FAIL, "暂时只支持单页sheet导入！", null, null);
+            }
+
 			for (int s = 0; s < numberOfSheets; s++) { // sheet工作表
 				Sheet sheetAt = wb.getSheetAt(s);
 				String sheetName = sheetAt.getSheetName(); // 获取工作表名称
@@ -68,7 +76,7 @@ public class ReadExcel {
 
 				List<String> referList = new ArrayList<>();//通常是 表头 对应 类的字段名，也可以写外面方法获取
 				//List<String> staticList = asList("JDK6", "JDK8", "JDK10");//asList 是 Arrays 的静态方法，staticList不能添加、删除等操作
-				referList = new ArrayList<>(Arrays.asList("1", "2", "3"));
+				referList = new ArrayList<>(Arrays.asList("name", "age", "money", "mobile", "createTime"));
 
 				List<Object> eachList = sheetData2ListObj(sheetAt, clzz, referList);//关键，sheet表数据 转 对应类的集合
 				//List<T> eachList = sheetData2ListObj(sheetAt, clzz);//没必要，直接指定Object就好
@@ -134,20 +142,33 @@ public class ReadExcel {
 	 * @return
 	 */
 	private static Object row2Object(Row row, Class<?> clzz, List<String> referList) {
-		Object object = null;//（？）根据clzz创建一个实例
+        Object obj = null;
 
-		int notNullLine = row.getPhysicalNumberOfCells();
+        try {
+            obj = clzz.newInstance();//根据clzz创建一个实例
 
-		for (int c = 0; c < notNullLine; c++) { // 总列(格)
-			Cell cell = row.getCell(c);
-			String cellStringVal = getStringValue(cell);;//这里只能全部当字符处理
+            int notNullLine = row.getPhysicalNumberOfCells();//应该和referList.size()相等就正常
 
-			System.out.println("第"+ c +"列取出的string是"+ cellStringVal+"，对应 类 的字段"+ referList.get(c));
+            //每一行的总列（格）
+            for (int c = 0; c < notNullLine; c++) {
+                Cell cell = row.getCell(c);
+                Object cellVal = cellStringValue(cell);//----cell值支持多种
+                String fieldName = referList.get(c);//可以从referList里取
+                System.out.println("《《 第"+ c +"列，类 的字段"+ fieldName + " = "+ cellVal.toString());
+                ReflectFieldService.setValue(obj, obj.getClass(), fieldName, clzz.getDeclaredField(fieldName).getType(), cellVal);
+            }
 
-			//（？？）往对象实例set cell的值
-		}
+            System.out.println(obj +"》》"+ JSON.toJSON(obj));
 
-		return object;
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+
+		return obj;
 	}
 
 	/**
@@ -155,35 +176,36 @@ public class ReadExcel {
 	 * @param cell
 	 * @return
 	 */
-	private static String getStringValue(Cell cell) {
-		String cellStringVal = "";
+	private static Object cellStringValue(Cell cell) {
+        Object cellVal = null;
 
 		if (cell == null) {
-			return cellStringVal;
+			return null;
 		}
 
 		//int cellType = cell.getCellType();//（3.14）
 		CellType cellType = cell.getCellTypeEnum();//（3.17）
 		switch (cellType) {
 			case _NONE: // 代表文本
-				String UnknownValue = cell.getStringCellValue();
-				System.out.print(UnknownValue + "Unknown" + "\t");
+				String text = cell.getStringCellValue();
+                cellVal = text;
 				break;
 			case STRING: // 代表文本
 				//case Cell.CELL_TYPE_STRING: // 代表文本
 				//String cellvalue = cell.getRichStringCellValue().getString();
-				String stringCellValue = cell.getStringCellValue();
-				System.out.print("{" + stringCellValue +"}" + "\t");
+				String str = cell.getStringCellValue();
+				cellVal = str;
 				break;
 			case BLANK: // 空白格
 				//case Cell.CELL_TYPE_BLANK: // 空白格
 				String blankValue = cell.getStringCellValue();
 				System.out.print(blankValue + "--（"+ cell.getErrorCellValue() +"）--" + "\t");
+				cellVal = blankValue;
 				break;
 			case BOOLEAN: // 布尔型
 				//case Cell.CELL_TYPE_BOOLEAN: // 布尔型
 				boolean booleanCellValue = cell.getBooleanCellValue();
-				System.out.print(booleanCellValue + "\t");
+				cellVal = booleanCellValue;
 				break;
 			case NUMERIC: // 数字||日期
 				//case Cell.CELL_TYPE_NUMERIC: // 数字||日期
@@ -191,35 +213,62 @@ public class ReadExcel {
 				boolean cellDateFormatted = DateUtil.isCellDateFormatted(cell);
 				if (cellDateFormatted) {
 					Date dateCellValue = cell.getDateCellValue();
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					System.out.print(sdf.format(dateCellValue) + "\t");
+					//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    //cellVal = sdf.format(dateCellValue);
+                    cellVal = dateCellValue;
+					System.out.print("\t");
 				} else {
-					double numericCellValue = cell.getNumericCellValue();
-					System.out.print(numericCellValue + "\t");
+                    double numericCellValue = cell.getNumericCellValue();
+                    cellVal = judgeCellNumeric(numericCellValue);
+					System.out.print("\t");
 				}
-
-				/*String cellvalue = "";
-				if(String.valueOf(cell.getNumericCellValue()).indexOf("E") == -1){
-					cellvalue =  String.valueOf(cell.getNumericCellValue());
-				}else {
-					cellvalue =  new DecimalFormat("#").format(cell.getNumericCellValue());
-				}*/
-
 				break;
 			case ERROR: // 错误
 				//case Cell.CELL_TYPE_ERROR: // 错误
 				byte errorCellValue = cell.getErrorCellValue();
-				System.out.print(errorCellValue + "error"+ "\t");
+                cellVal = errorCellValue;
 				break;
 			case FORMULA: // 公式
 				//case Cell.CELL_TYPE_FORMULA: // 公式
 				String cachedFormulaResultType = cell.getCellFormula();
-				//int cachedFormulaResultType = cell.getCachedFormulaResultType();
-				System.out.print(cachedFormulaResultType + "\t");
+                cellVal = cachedFormulaResultType;
 				break;
 		}
+        System.out.print(cellVal == null ? "NULL" : "-->"+ cellVal.toString());
 
-		return cellStringVal;
+		return cellVal;
 	}
+
+    private static Object judgeCellNumeric(double numericCellValue) {
+	    String numericStr = String.valueOf(numericCellValue);
+
+        System.out.println("------"+ numericStr +"-----"+ numericStr.length()+"------");
+
+        if(numericStr.indexOf("E") > -1){
+            String double2Str = new DecimalFormat("#").format(numericCellValue);//("#.00")表示保留两位小数，这里不要小数
+
+            if(double2Str.length() == 11 && StringUtil.isMobile(double2Str)){
+                return double2Str;//也不是十分严谨，够用
+            }else{
+                return numericStr;//不处理,就返回字符串
+            }
+        }
+
+        String endsWith0Regex = ".*\\.0+$";//匹配以 .000+结尾的，前面的.*不能少
+
+        if(numericStr.matches(endsWith0Regex) || MathUtil.isNumber(numericStr)){
+            //int val = Integer.parseInt(numericStr);//如果numericStr = 20.0，这种就会报错For input string: "20.0"
+            int val = Double.valueOf(numericCellValue).intValue();
+            return val;
+        }
+
+        if(MathUtil.isDouble(numericStr)){
+            Double val = Double.parseDouble(numericStr);
+            return val;
+        }
+
+        System.out.println("你是魔鬼吗？那就返回字符串"+ numericStr);
+	    return numericStr;
+    }
 
 }

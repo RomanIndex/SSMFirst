@@ -31,7 +31,7 @@ public class ExcelService {
 
 		//读取完Excel数据后，一定会有处理数据的逻辑，这里省略。。
 		
-		return new Result<>(Result.SUCCESS, "", null, excelResult);
+		return excelResult;//不要把result塞到Result的data里面
 	}
 	
 	/**

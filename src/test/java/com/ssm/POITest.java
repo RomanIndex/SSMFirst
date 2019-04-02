@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.base.view.Result;
+import com.ssm.common.entity.ComStudent;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,15 +45,18 @@ public class POITest {
 	 * 考虑到后台上传的情形，要兼顾 流 的处理
 	 */
 	public void readExcel(){
-		String path = "D:\\LocalPicDev\\实体类account模拟数据.xlsx";
+		String path = "D:\\LocalPicDev\\comStudent导入模拟数据.xlsx";
 		//String path = "D:\\LocalPicDev\\OTC\\OTC答题码.xls";
 		System.out.println("文件路径："+ path);
 		File file = new File(path);
 		try {
 			FileInputStream input = new FileInputStream(file);
+
 			MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(input));
-			Result result = excelService.readExcel(multipartFile, Account.class);
-			System.out.println(JSON.toJSONString(result));
+			Class clzz = ComStudent.class;
+			Result result = excelService.readExcel(multipartFile, clzz);
+
+			System.out.println("********"+ JSON.toJSONString(result));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

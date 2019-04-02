@@ -70,8 +70,8 @@
 	<bean id="aliMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://120.79.207.99:3306/SSM?serverTimezone=GMT%2B8"/>
-		<property name="username" value="SSM123456"/>
-		<property name="password" value="******"/>
+		<property name="username" value="SSM"/>
+		<property name="password" value="ssm123456"/>
 	</bean>
 
 	<!-- ******************************多数据源配置【结束】*****************************************-->
