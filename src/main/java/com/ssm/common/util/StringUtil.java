@@ -1,6 +1,35 @@
 package com.ssm.common.util;
 
+import org.apache.commons.lang.StringUtils;
+
 public class StringUtil {
+
+    public static boolean isMobile(String mobiles) {
+        String telRegex = "[1][3578]\\d{9}";
+        // "[1]"代表第1位为数字1，"[3578]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位。
+        if (StringUtils.isEmpty(mobiles)) {
+            return false;
+        } else{
+            return mobiles.matches(telRegex);
+        }
+    }
+
+    /**
+     * 处理字符串  如：  abc_dex ---> abcDex
+     * @param str
+     * @return
+     */
+    public static  String removeLine(String str){
+        if(null != str && str.contains("_")){
+            int i = str.indexOf("_");
+            char ch = str.charAt(i+1);
+            char newCh = (ch+"").substring(0, 1).toUpperCase().toCharArray()[0];
+            String newStr = str.replace(str.charAt(i+1), newCh);
+            String newStr2 = newStr.replace("_", "");
+            return newStr2;
+        }
+        return str;
+    }
 
     /**
      * 驼峰 转 下划线

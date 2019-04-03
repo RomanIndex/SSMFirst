@@ -3,7 +3,7 @@ package com.ssm.admin.entity;
 import java.util.Date;
 import java.util.List;
 
-public class SsmMenu {
+public class RecursionMenu {
     private String menuId;
 
     private String name;
@@ -20,7 +20,7 @@ public class SsmMenu {
 
     private Date createTime;
     
-    private List<SsmMenu> childMenus;
+    private List<RecursionMenu> childMenus;
 
     public Integer getSequence() {
 		return sequence;
@@ -38,11 +38,11 @@ public class SsmMenu {
 		this.status = status;
 	}
 
-	public List<SsmMenu> getChildMenus() {
+	public List<RecursionMenu> getChildMenus() {
 		return childMenus;
 	}
 
-	public void setChildMenus(List<SsmMenu> childMenus) {
+	public void setChildMenus(List<RecursionMenu> childMenus) {
 		this.childMenus = childMenus;
 	}
 

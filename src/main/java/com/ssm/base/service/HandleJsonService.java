@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
-import com.ssm.base.entity.Account;
+import com.ssm.common.entity.ValidateAccount;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 @Service
 public class HandleJsonService {
 
-	public String handleJson(Account account) {
+	public String handleJson(ValidateAccount validateAccount) {
 		
 		// 读取nameID.txt文件中的NAMEID字段（key）对应值（value）并存储
 		/*ArrayList<String> list = new ArrayList<String>();
@@ -62,7 +62,7 @@ public class HandleJsonService {
 				}
 				//String add = JSONObject.wrap(account).toString();
 				//JSONObject.fromObject();
-				String add = JSONObject.fromObject(account).toString();
+				String add = JSONObject.fromObject(validateAccount).toString();
 				//String quXieGang = add.replace("\\", "");
 				System.out.println("add："+ add);
 				accounts.add(add);

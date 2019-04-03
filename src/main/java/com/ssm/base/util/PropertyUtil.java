@@ -13,10 +13,15 @@ import org.apache.log4j.Logger;
 public class PropertyUtil {
 	//private static final Logger logger = LoggerFactory.getLogger(PropertyUtil.class);
 	private static Logger logger = Logger.getLogger(PropertyUtil.class);
-	
-	public static String WX_OPEN_ID = "openId";
-	
+
     private static Properties props;
+	
+    public static String WX_OPEN_ID = "openId";
+
+    public static String IMPORT_EXCEL_STUDENT = "import.excel.student";
+
+    public static String IMPORT_EXCEL_MENU = "import.excel.menu";
+
     static{
         loadProps();
     }
@@ -32,7 +37,7 @@ public class PropertyUtil {
             //in = PropertyUtil.class.getResourceAsStream("/jdbc.properties");
             props.load(in);
         } catch (FileNotFoundException e) {
-            logger.error("jdbc.properties文件未找到");
+            logger.error("properties文件未找到");
         } catch (IOException e) {
             logger.error("出现IOException");
         } finally {
@@ -41,7 +46,7 @@ public class PropertyUtil {
                     in.close();
                 }
             } catch (IOException e) {
-                logger.error("jdbc.properties文件流关闭出现异常");
+                logger.error("properties文件流关闭出现异常");
             }
         }
         logger.info("加载properties文件内容完成...........");

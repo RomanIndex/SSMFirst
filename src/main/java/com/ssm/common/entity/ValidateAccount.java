@@ -1,4 +1,4 @@
-package com.ssm.base.entity;
+package com.ssm.common.entity;
 
 import java.util.Date;
 
@@ -13,7 +13,7 @@ import com.ssm.base.itface.Update;
 
 @Table(name = "SC_USER")
 //@GroupSequence({Account.class, Add.class, Update.class})
-public class Account {
+public class ValidateAccount {
     @Id
 	private String id;
 
