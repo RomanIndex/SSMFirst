@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8bd29c7-9431-4a4b-b788-c78c33f18684" name="Default Changelist" comment="">
+    <list default="true" id="a8bd29c7-9431-4a4b-b788-c78c33f18684" name="Default Changelist" comment="项目移动和SsmModule，菜单开发">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -79,46 +79,50 @@
     <session id="795613944">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="4" />
+          <entry key="java" value="405" />
+          <entry key="txt" value="38" />
+          <entry key="xml" value="29" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="405" />
+          <entry key="PLAIN_TEXT" value="42" />
+          <entry key="XML" value="29" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+          <entry key="java" value="32" />
+          <entry key="xml" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="32" />
+          <entry key="XML" value="5" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/redis.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-core-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="59" column="11" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/CreateTableSqlService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="20" column="84" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
+            <state relative-caret-position="156">
+              <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -129,6 +133,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -165,6 +170,21 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/util/RedisUtil.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/ssm/common/RedisTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext-redis.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/common/util/AESTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/LoginCong.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/common/ValidatorEntityTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/SsmAccountTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/admin/SsmAccountTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/JpaAccountDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/util/SecurityFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/JpaAccountService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/common/JpaTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/dao/ISsmModuleDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/service/SsmMenuService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/jpa-config.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ssm/admin/SsmModuleTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmModule.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-core-config.xml" />
       </list>
     </option>
   </component>
@@ -184,7 +204,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="E:/Maven/apache-maven-3.5.2" />
+        <option name="mavenHome" value="D:/Maven/apache-maven-3.5.3" />
         <option name="userSettingsFile" value="D:\MavenStore\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -196,13 +216,27 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="SSM Maven搭建" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/src/main/webapp/admin/dist/bootstrap/package.json" />
+      <path value="$PROJECT_DIR$/src/main/webapp/webPlug/bootstrap-daterangepicker/package.json" />
+      <path value="$PROJECT_DIR$/src/main/webapp/webPlug/bootstrap-fileinput/package.json" />
+      <path value="$PROJECT_DIR$/src/main/webapp/webPlug/bootstrap-v3.3.5/package.json" />
+      <path value="$PROJECT_DIR$/src/main/webapp/webPlug/jquery-ui-v1.12.1/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-162" />
-    <option name="y" value="27" />
+    <option name="x" value="-164" />
+    <option name="y" value="25" />
     <option name="width" value="1815" />
     <option name="height" value="1000" />
   </component>
@@ -214,83 +248,113 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="daoJpa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSMFirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSMFirst" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553760469846" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554139518319" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.2053701" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.splitter.proportion" value="0.26863086" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ssm.admin" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ssm.admin.entity" />
       <recent name="com.ssm.common.dao" />
       <recent name="com.ssm.common.service" />
       <recent name="com.ssm.common.enumeration" />
@@ -313,22 +377,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RedisTest">
-    <configuration name="AESService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ssm.base.service.AESService" />
+  <component name="RunManager" selected="JUnit.SsmModuleTest.saveModule">
+    <configuration name="AESTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSMMaven" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ssm.base.service.*" />
+          <option name="PATTERN" value="com.ssm.common.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.ssm.common.util" />
+      <option name="MAIN_CLASS_NAME" value="com.ssm.common.util.AESTest" />
+      <option name="METHOD_NAME" value="AESTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedisTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ssm.common.RedisTest" />
+    <configuration name="JpaTest.account" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSMMaven" />
       <extension name="coverage">
         <pattern>
@@ -336,59 +401,31 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AESTest.AESTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SSMMaven" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ssm.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ssm.util" />
-      <option name="MAIN_CLASS_NAME" value="com.ssm.util.AESTest" />
-      <option name="METHOD_NAME" value="AESTest" />
+      <option name="PACKAGE_NAME" value="com.ssm.common" />
+      <option name="MAIN_CLASS_NAME" value="com.ssm.common.JpaTest" />
+      <option name="METHOD_NAME" value="account" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AESTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SsmModuleTest.saveModule" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSMMaven" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ssm.util.*" />
+          <option name="PATTERN" value="com.ssm.admin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ssm.util" />
-      <option name="MAIN_CLASS_NAME" value="com.ssm.util.AESTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="PACKAGE_NAME" value="com.ssm.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.ssm.admin.SsmModuleTest" />
+      <option name="METHOD_NAME" value="saveModule" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="POITest.otcTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SSMMaven" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ssm.company.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ssm.company" />
-      <option name="MAIN_CLASS_NAME" value="com.ssm.company.POITest" />
-      <option name="METHOD_NAME" value="otcTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ssmTomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M17" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_91\jre">
+    <configuration name="ssmTomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M17" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_111\jre">
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -454,6 +491,11 @@
           <option name="VM_PARAMETERS" value="" />
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
+        <EnvironmentVariables>
+          <option name="NAME" value="JAVA_TOOL_OPTIONS" />
+          <option name="VALUE" value="-Dfile.encoding=UTF-8" />
+          <option name="IS_PREDEFINED" value="false" />
+        </EnvironmentVariables>
       </ConfigurationWrapper>
       <method v="2">
         <option name="BuildArtifacts" enabled="true">
@@ -463,19 +505,15 @@
     </configuration>
     <list>
       <item itemvalue="Tomcat Server.ssmTomcat" />
-      <item itemvalue="JUnit.POITest.otcTest" />
-      <item itemvalue="Application.AESService" />
-      <item itemvalue="JUnit.AESTest.test" />
-      <item itemvalue="JUnit.AESTest.AESTest" />
-      <item itemvalue="Application.RedisTest" />
+      <item itemvalue="JUnit.AESTest" />
+      <item itemvalue="JUnit.JpaTest.account" />
+      <item itemvalue="JUnit.SsmModuleTest.saveModule" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RedisTest" />
-        <item itemvalue="JUnit.AESTest.AESTest" />
-        <item itemvalue="JUnit.AESTest.test" />
-        <item itemvalue="Application.AESService" />
-        <item itemvalue="JUnit.POITest.otcTest" />
+        <item itemvalue="JUnit.SsmModuleTest.saveModule" />
+        <item itemvalue="JUnit.JpaTest.account" />
+        <item itemvalue="JUnit.AESTest" />
       </list>
     </recent_temporary>
   </component>
@@ -494,7 +532,8 @@
       <workItem from="1553733865313" duration="4830000" />
       <workItem from="1553738944712" duration="3727000" />
       <workItem from="1553753826742" duration="6186000" />
-      <workItem from="1554127157343" duration="346000" />
+      <workItem from="1554127157343" duration="11077000" />
+      <workItem from="1554295578800" duration="377000" />
     </task>
     <task id="LOCAL-00001" summary="记录：第一次本地上传项目至github的过程">
       <created>1553693727799</created>
@@ -510,45 +549,62 @@
       <option name="project" value="LOCAL" />
       <updated>1553693972712</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="自己笔记本workspace.xml">
+      <created>1554127738472</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1554127738472</updated>
+    </task>
+    <task id="LOCAL-00004" summary="项目移动和SsmModule，菜单开发">
+      <created>1554139501423</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554139501423</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 02m 32s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 00h 57m 32s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 08m 55s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 02m 33s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 18m 30s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 05m 42s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 31m 08s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 07m 09s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 33m 16s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 10m 48s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="POITest_otcTest - 2019.03.27 at 14h 58m 04s.xml">
-      <configuration name="POITest.otcTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 12m 48s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AESTest_test - 2019.03.27 at 18h 18m 32s.xml">
-      <configuration name="AESTest.test" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 13m 52s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AESTest_AESTest - 2019.03.27 at 18h 23m 52s.xml">
-      <configuration name="AESTest.AESTest" configurationId="JUnit" />
+    <history-entry file="JpaTest_account - 2019.04.02 at 01h 15m 29s.xml">
+      <configuration name="JpaTest.account" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AESTest_AESTest - 2019.03.27 at 18h 32m 32s.xml">
-      <configuration name="AESTest.AESTest" configurationId="JUnit" />
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 18m 07s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SsmModuleTest_saveModule - 2019.04.02 at 01h 20m 41s.xml">
+      <configuration name="SsmModuleTest.saveModule" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35239000" />
+    <option name="totallyTimeSpent" value="46347000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1816354" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25268096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -557,8 +613,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.33802816" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5362473" visible="true" weight="0.24702059" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.3378016" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5362473" weight="0.31903484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40151516" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -567,8 +623,8 @@
       <window_info anchor="bottom" id="Application Servers" order="8" weight="0.4318182" />
       <window_info anchor="bottom" id="Spring" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32719395" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.46375266" side_tool="true" weight="0.42895442" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49840087" weight="0.40195015" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.46375266" side_tool="true" visible="true" weight="0.2627346" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49840087" weight="0.3538874" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="15" show_stripe_button="false" />
@@ -577,7 +633,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="right" id="Maven Projects" order="5" visible="true" weight="0.22520107" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.25134048" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -592,7 +648,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="记录：第一次本地上传项目至github的过程" />
-    <option name="LAST_COMMIT_MESSAGE" value="记录：第一次本地上传项目至github的过程" />
+    <MESSAGE value="自己笔记本workspace.xml" />
+    <MESSAGE value="项目移动和SsmModule，菜单开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目移动和SsmModule，菜单开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -607,117 +665,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/MavenStore/repository/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/web/SsmAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/SsmAccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/spring-webmvc/4.3.13.RELEASE/spring-webmvc-4.3.13.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/dao/ISsmAccountDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/apache/poi/poi/3.17/poi-3.17-sources.jar!/org/apache/poi/ss/usermodel/Workbook.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/poi/ReadExcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/Enum/ExcelTableFieldEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/poi/ReadExcelToMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/entity/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/ExcelService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/poi/WriteExcel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="51" column="66" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/commons-codec/commons-codec/1.2/commons-codec-1.2.jar!/org/apache/commons/codec/binary/Base64.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/AESService.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/POITest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/company/com/ssm/aa.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/DateTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/util/AESTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/AESUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/DateTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/util/AESTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/AESUtil.java" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -794,13 +744,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/common/RedisTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/common/RedisTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -824,29 +768,162 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/properties/redis.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state>
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/CreateTableSqlService.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/intercept/AuthorityAnnotationInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        <state relative-caret-position="139">
+          <caret line="59" column="50" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/CreateTableSqlService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/common/util/AESTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="20" column="84" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
+        <state relative-caret-position="162">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/poi/ReadExcel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="61" column="66" lean-forward="true" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/ExcelService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/POITest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/common/ValidatorEntityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="56" column="19" lean-forward="true" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/ReflectFieldService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/ReflectFieldTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/base_ssm_menu.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/JpaAccountDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="92" lean-forward="true" selection-start-line="7" selection-start-column="92" selection-end-line="7" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/SecurityFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="80" column="106" lean-forward="true" selection-start-line="80" selection-start-column="106" selection-end-line="80" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/dao/SsmDao.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/Ssm.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/JpaAccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/jpa/JpaAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="55" lean-forward="true" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MavenStore/repository/org/springframework/data/spring-data-commons/1.13.3.RELEASE/spring-data-commons-1.13.3.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/admin/SsmAccountTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="54" column="55" lean-forward="true" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/ISsmModuleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/SsmMenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/common/JpaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/admin/SsmModuleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jpa-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="687">
+          <caret line="45" column="39" lean-forward="true" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/spring-core-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="59" column="11" selection-start-line="59" selection-start-column="11" selection-end-line="59" selection-end-column="11" />
+        <state relative-caret-position="156">
+          <caret line="119" column="20" lean-forward="true" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -861,6 +938,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -868,7 +946,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -908,6 +986,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
