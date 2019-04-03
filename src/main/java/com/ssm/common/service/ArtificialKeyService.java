@@ -2,15 +2,25 @@ package com.ssm.common.service;
 
 import com.ssm.common.enumeration.ArtificialKeyEnum;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class ArtificialKeyService {
     //@Autowired private RedisDao redis;
+
+    //测试自定义生成主键，临时用
+    public String getCustomUUIDByEnum(ArtificialKeyEnum keyEnum) {
+        int sixNumber = (int) (Math.random() * 1000000);
+        String id = keyEnum.name()+ "aaa" + sixNumber;
+        return id;
+    }
 
     public String getKeyByTableEnum(ArtificialKeyEnum enumKey) {
         String redisTableKey = "MAJOR_NO_"+ enumKey.getTable();
@@ -41,4 +51,5 @@ public class ArtificialKeyService {
         String format = "%s%0"+ enumKey.getLimit() +"d";
         return String.format(format, enumKey.getPrefix(), beginNum);
     }
+
 }

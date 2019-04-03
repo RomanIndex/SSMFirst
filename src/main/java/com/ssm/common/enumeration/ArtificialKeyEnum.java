@@ -1,8 +1,11 @@
 package com.ssm.common.enumeration;
 
 public enum ArtificialKeyEnum {
-    train("TR", 6, "DNY_BASIC", "店内会"),
-    clerk("CL", 6, "OTC_CLERK", "店员");
+    account("YH", 6, "SSM_ACCOUNT", "用户"),
+    role("ROLE", 6, "SSM_ROLE", "角色"),
+    module("MOD", 6, "SSM_MODULE", "模块"),
+    privilege("PVG", 6, "SSM_PRIVILEGE", "权限"),//module + operateEnum组成
+    time("TIME", 6, "SSM_TIME_CONTROL", "时间控制");
 
     private String prefix;
     private int limit;

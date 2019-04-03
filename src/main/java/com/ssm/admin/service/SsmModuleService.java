@@ -16,6 +16,11 @@ import java.util.stream.Collectors;
 public class SsmModuleService {
     @Autowired private ISsmModuleDao moduleDao;
 
+    public Result<?> save(SsmModule module) {
+        SsmModule obj = moduleDao.save(module);
+        return new Result(Result.SUCCESS, "", null, obj);
+    }
+
     public Result<?> batchSave(List<SsmModule> modules) {
         List<SsmModule> reList = moduleDao.save(modules);
         return new Result(Result.SUCCESS, "", null, reList);

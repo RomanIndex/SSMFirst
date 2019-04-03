@@ -26,9 +26,9 @@ public class SsmModuleTest {
         int fourNumber = (int) (Math.random() * 10000);
         module.setType(1);
         module.setModuleId("MD_"+ fourNumber);
-        module.setName("iEnglishEcoding???");
-        module.setUrl("o no ,i am nonull");
-        //menuService.save(module);
+        module.setName("nameÖÐÎÄ");
+        module.setUrl("aa/nn/kkk");
+        moduleService.save(module);
         System.out.println("¡·¡·¡·"+ JSON.toJSONString(module));
     }
 

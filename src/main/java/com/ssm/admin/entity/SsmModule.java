@@ -16,7 +16,7 @@ public class SsmModule {
     @Column(columnDefinition = "int default 1")
     private Integer status;
 
-    //@Column(length = 1, nullable = false, columnDefinition="COMMENT '1：一级菜单；2：二级菜单；3：按钮'")
+    @Column(length = 1, nullable = false, columnDefinition="COMMENT '1：一级菜单；2：二级菜单；3：按钮'")
     private Integer type;
 
     @Column(columnDefinition="varchar(32) COMMENT '所属类型菜单'")
@@ -49,6 +49,8 @@ public class SsmModule {
 
     private String remark;
 
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @CreationTimestamp//创建时自动更新时间
     private Date createTime;
 
