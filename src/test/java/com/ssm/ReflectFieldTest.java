@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.alibaba.fastjson.JSON;
+import com.ssm.admin.entity.SsmAccount;
+import com.ssm.admin.entity.SsmMenu;
 import com.ssm.common.entity.ComStudent;
 import com.ssm.common.service.TestStudentService;
 import org.junit.Test;
@@ -40,6 +42,13 @@ public class ReflectFieldTest {
 	}
 
 	@Test
+	public void manyClass(){
+		int seq = 2;
+		Class clzz = reflectFieldService.testManyClass(seq, ComStudent.class, SsmMenu.class, SsmAccount.class);
+		System.out.println(clzz);
+	}
+
+	@Test
 	public void Method() throws Exception {
 		//test get
 		ComStudent student = new ComStudent();
@@ -50,8 +59,7 @@ public class ReflectFieldTest {
 
 		//test set
 		Class clzz = ComStudent.class;//clzz是入参
-		Object obj = clzz.newInstance();
-		//ComStudent student2 = new ComStudent();
+		Object obj = clzz.newInstance();//ComStudent student2 = new ComStudent();
 		String fieldName = "name";//可以从referList里取
 		String cellVal = "汪汪";
 		reflectFieldService.setValue(obj, obj.getClass(), fieldName, clzz.getDeclaredField(fieldName).getType(), cellVal);

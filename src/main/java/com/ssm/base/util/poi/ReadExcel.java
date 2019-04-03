@@ -6,10 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Splitter;
 import com.ssm.base.service.ReflectFieldService;
+import com.ssm.base.util.PropertyUtil;
 import com.ssm.base.view.Result;
+import com.ssm.common.entity.ComStudent;
 import com.ssm.common.util.MathUtil;
 import com.ssm.common.util.StringUtil;
+import com.sun.deploy.config.Config;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -33,11 +37,11 @@ public class ReadExcel {
 	 *
 	 * 参考：https://blog.csdn.net/Augus6/article/details/51463478
 	 * 将excel表封装到实体类里面（数据库结构entity）
-	 * @param clzz
+	 * @param groups
 	 * @return
 	 */
 	//public static <T> Map<String, List<? extends T>> readExcel(MultipartFile multipartFile, Class<?> clzz) {
-	public static Result<?> readExcel(MultipartFile multipartFile, Class<?> clzz) {
+	public static Result<?> readExcel(MultipartFile multipartFile, Class<?>... groups) {
 		Result result = new Result<>();
 		InputStream is = null;//InputStream is = new FileInputStream("文件路径");
 		Workbook wb = null;
@@ -47,8 +51,6 @@ public class ReadExcel {
 		//Map<String, List<? extends T>> map = new HashMap<String, List<? extends T>>();
 		//Map<String, List<? super T>> map = new HashMap<String, List<? super T>>();
 		Map<String, List<Object>> map = new HashMap<String, List<Object>>();
-
-		System.out.println(clzz);
 
 		try {
 			is = multipartFile.getInputStream();
@@ -63,24 +65,27 @@ public class ReadExcel {
 
 			int numberOfSheets = wb.getNumberOfSheets();
 
-			if(numberOfSheets > 1){
-                return new Result<>(Result.FAIL, "暂时只支持单页sheet导入！", null, null);
+			if(numberOfSheets != groups.length){
+                return new Result<>(Result.FAIL, "sheet页数 与 接收类的个数 不一致！", null, null);
             }
 
 			for (int s = 0; s < numberOfSheets; s++) { // sheet工作表
+				Class clzz = groups[s];
+				String classFullName = clzz.getName();
 				Sheet sheetAt = wb.getSheetAt(s);
 				String sheetName = sheetAt.getSheetName(); // 获取工作表名称
 				int rowsOfSheet = sheetAt.getPhysicalNumberOfRows(); // 获取当前Sheet的总行数
-				System.out.println("导入的Excel表第 "+ s +" sheet页【" + sheetName + "】，总共有 " + rowsOfSheet +" 行");
-				System.out.println("-------------【" + sheetName + "】，每一行 对应的 类： " + clzz.getName());
 
-				List<String> referList = new ArrayList<>();//通常是 表头 对应 类的字段名，也可以写外面方法获取
-				//List<String> staticList = asList("JDK6", "JDK8", "JDK10");//asList 是 Arrays 的静态方法，staticList不能添加、删除等操作
-				referList = new ArrayList<>(Arrays.asList("name", "age", "money", "mobile", "createTime"));
+				System.out.println("导入的Excel表第 "+ s +" sheet页【" + sheetName + "】，总共有 " + rowsOfSheet +" 行");
+				System.out.println("每一行 封装的 类》》" + clzz + "，.getName() = "+ classFullName);
+
+				List<String> referList = getReferListByClass(clzz);
 
 				List<Object> eachList = sheetData2ListObj(sheetAt, clzz, referList);//关键，sheet表数据 转 对应类的集合
 				//List<T> eachList = sheetData2ListObj(sheetAt, clzz);//没必要，直接指定Object就好
-				map.put(clzz.getName(), eachList);
+
+				String className = classFullName.substring(classFullName.lastIndexOf(".") + 1, classFullName.length());
+				map.put(className, eachList);
 			}
 
 			if (is != null) {
@@ -91,6 +96,19 @@ public class ReadExcel {
 		}
 
 		return new Result<>(Result.SUCCESS, "", null, map);
+	}
+
+	/**
+	 * 根据 类 获取 对应存在property里面的 属性集合
+	 * @param clzz
+	 * @return
+	 */
+	private static List<String> getReferListByClass(Class<?> clzz) {
+		String strWithComma = "";
+		if(clzz == ComStudent.class){
+			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_STUDENT);
+		}
+		return Splitter.on(",").trimResults().splitToList(strWithComma);
 	}
 
 	/**

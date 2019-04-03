@@ -45,7 +45,7 @@ public class POITest {
 	 * 考虑到后台上传的情形，要兼顾 流 的处理
 	 */
 	public void readExcel(){
-		String path = "D:\\LocalPicDev\\comStudent导入模拟数据.xlsx";
+		String path = "D:\\LocalPicDev\\comStudentImportData.xlsx";
 		//String path = "D:\\LocalPicDev\\OTC\\OTC答题码.xls";
 		System.out.println("文件路径："+ path);
 		File file = new File(path);
@@ -53,8 +53,8 @@ public class POITest {
 			FileInputStream input = new FileInputStream(file);
 
 			MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(input));
-			Class clzz = ComStudent.class;
-			Result result = excelService.readExcel(multipartFile, clzz);
+
+			Result result = excelService.readExcel(multipartFile, ComStudent.class);//支持多页sheet，但类的顺序要和sheet对应
 
 			System.out.println("********"+ JSON.toJSONString(result));
 		} catch (IOException e) {

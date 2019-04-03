@@ -23,11 +23,11 @@ public class ExcelService {
 	 * @param clzz
 	 * @return
 	 */
-	public Result<?> readExcel(MultipartFile multipartFile, Class<?> clzz) {
+	public Result<?> readExcel(MultipartFile multipartFile, Class<?>... groups) {
 		if(multipartFile.isEmpty()){
 			return new Result<>(Result.FAIL, "请先选择Excel文件", null, null);
 		}
-		Result<?> excelResult = ReadExcel.readExcel(multipartFile, clzz);
+		Result<?> excelResult = ReadExcel.readExcel(multipartFile, groups);
 
 		//读取完Excel数据后，一定会有处理数据的逻辑，这里省略。。
 		
