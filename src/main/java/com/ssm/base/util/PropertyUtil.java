@@ -20,6 +20,8 @@ public class PropertyUtil {
 
     public static String IMPORT_EXCEL_STUDENT = "import.excel.student";
 
+    public static String IMPORT_EXCEL_MENU = "import.excel.menu";
+
     static{
         loadProps();
     }

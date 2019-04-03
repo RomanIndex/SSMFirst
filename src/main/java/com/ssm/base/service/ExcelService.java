@@ -20,7 +20,7 @@ public class ExcelService {
 	 *  导入
 	 *  简单 但是 根据excel表 字段 类型 精准读取
 	 * @param multipartFile
-	 * @param clzz
+	 * @param groups
 	 * @return
 	 */
 	public Result<?> readExcel(MultipartFile multipartFile, Class<?>... groups) {

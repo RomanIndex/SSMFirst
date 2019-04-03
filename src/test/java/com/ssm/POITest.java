@@ -12,6 +12,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.alibaba.fastjson.JSON;
+import com.ssm.admin.entity.SsmModule;
+import com.ssm.admin.service.SsmModuleService;
 import com.ssm.base.view.Result;
 import com.ssm.common.entity.ComStudent;
 import org.apache.commons.io.IOUtils;
@@ -23,7 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ssm.base.entity.Account;
+import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.entity.ExcelTableField;
 import com.ssm.base.service.CreateOracleTableSqlService;
 import com.ssm.base.service.ExcelService;
@@ -35,18 +37,19 @@ import org.springframework.web.multipart.MultipartFile;
 public class POITest {
 	@Resource private ExcelService excelService;
 	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
+	@Resource private SsmModuleService moduleService;
 	
 	@Test
 	/**
 	 * 导入（简单通用）
 	 *
-	 * 目前只做单页sheet的，因为 入参 就一个class类，返回对应list集合
+	 * 已经支持多sheet导入，java可变长度参数 已成功引入
 	 *
 	 * 考虑到后台上传的情形，要兼顾 流 的处理
 	 */
 	public void readExcel(){
-		String path = "D:\\LocalPicDev\\comStudentImportData.xlsx";
-		//String path = "D:\\LocalPicDev\\OTC\\OTC答题码.xls";
+		//String path = "D:\\LocalPicDev\\comStudentImportData.xlsx";
+		String path = "D:\\LocalPicDev\\initMenuData.xlsx";
 		System.out.println("文件路径："+ path);
 		File file = new File(path);
 		try {
@@ -54,9 +57,14 @@ public class POITest {
 
 			MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(input));
 
-			Result result = excelService.readExcel(multipartFile, ComStudent.class);//支持多页sheet，但类的顺序要和sheet对应
+			//Result result = excelService.readExcel(multipartFile, ComStudent.class);//单导入模拟数据
+			Result result = excelService.readExcel(multipartFile, SsmModule.class);//单导入初始化菜单数据
 
-			System.out.println("********"+ JSON.toJSONString(result));
+			Map<String, List> map = (Map<String, List>) result.getData();
+			List<SsmModule> modules = map.get("SsmModule");
+			moduleService.batchSave(modules);
+
+			System.out.println("********"+ JSON.toJSONString(map));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +89,7 @@ public class POITest {
 	 */
 	public void writeExcel(){
 		String savePath = "D:\\LocalPicDev\\导出文件account数据.xlsx";//文件存放路径
-		List<Account> list = createList();
+		List<ValidateAccount> list = createList();
 		//实体类打@标签？不好，因为防止不同导出表格显示的 标题字段 不一致
 		LinkedHashMap<String, String> headMap = new LinkedHashMap<>();
 		headMap.put("id", "唯一标识");
@@ -90,15 +98,15 @@ public class POITest {
 		headMap.put("email", "邮箱（故意标题很长啊啊啊啊啊啊啊啊啊啊啊啊啊）");
 		headMap.put("createTime", "创建时间");
 		//根据headMap定义的字段 导出数据（支持样式的定义）（利用java的反射实现）
-		String txt = excelService.writeExcel(savePath, list, headMap, Account.class);
+		String txt = excelService.writeExcel(savePath, list, headMap, ValidateAccount.class);
 		System.out.println(txt);
 	}
 
 	//------------------生成 模拟数据------------------------
-	private List<Account> createList() {
-		List<Account> list = new ArrayList<>();
+	private List<ValidateAccount> createList() {
+		List<ValidateAccount> list = new ArrayList<>();
 		for(int i = 0; i < 3; i ++){
-			Account obj = new Account();
+			ValidateAccount obj = new ValidateAccount();
 			obj.setId("id___"+i);
 			obj.setName("name__"+ (i*i));
 			obj.setMobile((123456 * i) + "666");

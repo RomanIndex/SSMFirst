@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.ssm.admin.service.SsmAccountService;
 import com.ssm.base.Enum.AuthorityTypeEnum;
-import com.ssm.base.entity.Account;
+import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.service.HandleJsonService;
 import com.ssm.base.util.Authority;
 import com.ssm.base.view.QueryModelView;
@@ -65,9 +65,9 @@ public class TestPageController {
 	@RequestMapping(value = "admin/account/edit/inline/save", method = RequestMethod.POST)
 	public String inlineSave(String str) {
 		JSONObject JsonObject = JSONObject.parseObject(str);
-		Account account = JSONObject.toJavaObject(JsonObject, Account.class);
-		jsonService.handleJson(account);//-----------------------------
-		System.out.println(account.getId());
+		ValidateAccount validateAccount = JSONObject.toJavaObject(JsonObject, ValidateAccount.class);
+		jsonService.handleJson(validateAccount);//-----------------------------
+		System.out.println(validateAccount.getId());
 		return "成功了，success!";
 	}
 	
@@ -78,7 +78,7 @@ public class TestPageController {
 	//@Authority(AuthorityTypeEnum.Validate)
 	@RequestMapping(value = "admin/account/bt", method = RequestMethod.GET)
 	public Map<String, Object> bt(int limit, int offset, String departmentname, String statu) {
-		List<Account> list = new ArrayList<>();
+		List<ValidateAccount> list = new ArrayList<>();
 		Random rand = new Random();
 		//int randNumber = rand.nextInt(MAX - MIN + 1) + MIN
 		int randomBegin = rand.nextInt(10 - 0 + 1) + 0;//产生0-10的随机数
@@ -89,7 +89,7 @@ public class TestPageController {
 		int idSeq = 0;
 		for(int i = 0; i < circle; i++){
 			int random = (int)(Math.random()*(9999-1000+1))+1000;//产生1000-9999的随机数
-			Account obj = new Account();
+			ValidateAccount obj = new ValidateAccount();
 			obj.setId("ID_"+ idSeq);
 			obj.setAccount(i + "*"+ idPart);
 			obj.setName((random++) + "");
@@ -101,7 +101,7 @@ public class TestPageController {
 		}
 		int total = list.size();
 		int end = (offset + limit) >= total ? total : (offset + limit);
-		List<Account> rows = list.subList(offset, end);
+		List<ValidateAccount> rows = list.subList(offset, end);
 		Map<String, Object> reMap = new HashMap<>();
 		reMap.put("total", total);
 		reMap.put("rows", rows);

@@ -7,6 +7,7 @@ import java.util.*;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Splitter;
+import com.ssm.admin.entity.SsmModule;
 import com.ssm.base.service.ReflectFieldService;
 import com.ssm.base.util.PropertyUtil;
 import com.ssm.base.view.Result;
@@ -107,6 +108,8 @@ public class ReadExcel {
 		String strWithComma = "";
 		if(clzz == ComStudent.class){
 			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_STUDENT);
+		}else if(clzz == SsmModule.class){
+			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_MENU);
 		}
 		return Splitter.on(",").trimResults().splitToList(strWithComma);
 	}
@@ -137,7 +140,7 @@ public class ReadExcel {
 				continue;
 			} else {
 				int rowSeq = row.getRowNum();
-				int notNullLine = row.getPhysicalNumberOfCells();
+				int notNullLine = row.getPhysicalNumberOfCells();//应该和referList.size()相等就正常
 				System.out.println("当前行:" + rowSeq +"，有"+ notNullLine +"列值（空值不算）");
 
 				//默认第一行是标题行，不封装进对象
@@ -165,14 +168,15 @@ public class ReadExcel {
         try {
             obj = clzz.newInstance();//根据clzz创建一个实例
 
-            int notNullLine = row.getPhysicalNumberOfCells();//应该和referList.size()相等就正常
+
+			int referSize = referList.size();
 
             //每一行的总列（格）
-            for (int c = 0; c < notNullLine; c++) {
+            for (int c = 0; c < referSize; c++) {
                 Cell cell = row.getCell(c);
                 Object cellVal = cellStringValue(cell);//----cell值支持多种
                 String fieldName = referList.get(c);//可以从referList里取
-                System.out.println("《《 第"+ c +"列，类 的字段"+ fieldName + " = "+ cellVal.toString());
+                System.out.println("《《 第"+ c +"列，类 的字段"+ fieldName + " = "+ cellVal);
                 ReflectFieldService.setValue(obj, obj.getClass(), fieldName, clzz.getDeclaredField(fieldName).getType(), cellVal);
             }
 

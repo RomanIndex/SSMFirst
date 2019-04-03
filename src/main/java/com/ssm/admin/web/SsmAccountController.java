@@ -17,14 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.service.SsmAccountService;
 import com.ssm.base.Enum.AuthorityTypeEnum;
-import com.ssm.base.entity.Account;
+import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.util.Authority;
 import com.ssm.base.view.QueryModelView;
 import com.ssm.base.view.Result;
 
 import net.sf.json.JSONObject;
-
-import static com.ssm.admin.service.CheckSubmitUtil.*;
 
 @Controller
 public class SsmAccountController {
@@ -125,7 +123,7 @@ public class SsmAccountController {
 		String decStr = URLDecoder.decode(str, "utf-8");
 		System.out.println("String入参对象："+ decStr);
 		JSONObject jsonObject = JSONObject.fromObject(str);
-		SsmAccount account = (SsmAccount) JSONObject.toBean(jsonObject, Account.class);
+		SsmAccount account = (SsmAccount) JSONObject.toBean(jsonObject, ValidateAccount.class);
 		
 		return accountService.mapperSave(account, operate);
 	}

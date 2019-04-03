@@ -1,6 +1,7 @@
 package com.ssm.base.util;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -14,11 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssm.admin.entity.RecursionMenu;
+import com.ssm.admin.service.SsmModuleService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.ssm.base.service.SsmMenuService;
 import com.ssm.base.view.Config;
 
 public class SecurityFilter implements Filter{
@@ -27,7 +29,7 @@ public class SecurityFilter implements Filter{
 
 	public static Logger logger = Logger.getLogger(SecurityFilter.class.getName());
 	
-	@Autowired private SsmMenuService menuService;
+	@Autowired private SsmModuleService moduleService;
 	
 	private FilterConfig filterConfig;	// 过滤器配置对象
 	private String[] freePages;		// 不操作的页面数组
@@ -78,8 +80,8 @@ public class SecurityFilter implements Filter{
                 	ex.printStackTrace();
                 }
         	}else {
-        		Map<String,Object> map = (Map<String, Object>) menuService.listMenuByRole(null).getData();
-        		request.getSession().setAttribute("menu", map.get("menu"));
+        		List<RecursionMenu> menus = (List<RecursionMenu>) moduleService.listMenuByRoleId(null).getData();
+        		request.getSession().setAttribute("menu", menus);
         	}
         }
         

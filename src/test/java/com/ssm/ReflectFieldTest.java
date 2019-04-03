@@ -6,7 +6,7 @@ import java.util.Date;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.entity.SsmMenu;
+import com.ssm.admin.entity.RecursionMenu;
 import com.ssm.common.entity.ComStudent;
 import com.ssm.common.service.TestStudentService;
 import org.junit.Test;
@@ -44,7 +44,7 @@ public class ReflectFieldTest {
 	@Test
 	public void manyClass(){
 		int seq = 2;
-		Class clzz = reflectFieldService.testManyClass(seq, ComStudent.class, SsmMenu.class, SsmAccount.class);
+		Class clzz = reflectFieldService.testManyClass(seq, ComStudent.class, RecursionMenu.class, SsmAccount.class);
 		System.out.println(clzz);
 	}
 
