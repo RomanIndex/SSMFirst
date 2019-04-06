@@ -1,59 +1,38 @@
 package com.ssm.admin.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "SSM_ACCOUNT_ROLE")
 public class SsmAccountRole {
     @Id
-	private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
+    @Column(length = 32)
     private String empNo;
 
+    @Column(length = 32)
     private String roleId;
 
     //private String desc;//2018-08-13 02:10:xx（数据库都无此字段，不JUnit，在那瞎试？？？）
     private String remark;
 
-    private Integer type;//还有mapper，用int会默认为0，会作为查询条件使用。。。
+    private boolean status = true;
 
-    private Integer status;
+    @Column(length = 32)
+    private String validDateId;
 
-    private Date validDate;
-
+    @CreationTimestamp
     private Date createTime;
 
-    public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -73,12 +52,28 @@ public class SsmAccountRole {
         this.roleId = roleId;
     }
 
-    public Date getValidDate() {
-        return validDate;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setValidDate(Date validDate) {
-        this.validDate = validDate;
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getValidDateId() {
+        return validDateId;
+    }
+
+    public void setValidDateId(String validDateId) {
+        this.validDateId = validDateId;
     }
 
     public Date getCreateTime() {

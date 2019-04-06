@@ -1,6 +1,7 @@
 package com.ssm.admin.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -9,26 +10,23 @@ import java.util.Date;
 @Entity
 @Table(name = "SSM_MODULE")
 public class SsmModule {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private boolean status = true;
 
-    @Column(columnDefinition = "int default 1")
-    private Integer status;
+    @JoinColumn(nullable = false, columnDefinition="COMMENT '1：一级菜单；2：二级菜单；3：按钮'")
+    private short type;
 
-    @Column(length = 1, nullable = false, columnDefinition="COMMENT '1：一级菜单；2：二级菜单；3：按钮'")
-    private Integer type;
+    @JoinColumn(columnDefinition="COMMENT '同条记录，belongId的 type 一定和moduleId不相等'")
+    private String belongModule;
 
-    @Column(columnDefinition="varchar(32) COMMENT '所属类型菜单'")
-    private String belongId;
-
-    @Column(columnDefinition="varchar(32) COMMENT '父级菜单'")
+    @JoinColumn(columnDefinition="COMMENT '同条记录，parentId的 type 一定和moduleId相等'")
     private String parentId;
 
-    private Integer seq;
+    private short seq;
 
-    //insertable=false, updatable=false
-    @Column(name = "module_id", length = 32, nullable = false, unique = true)
+    @Id
+    @GeneratedValue(generator = "custom-uuid")
+    @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
+    @Column(length = 32)
     private String moduleId;
 
     @Column(length = 32, nullable = false)
@@ -40,12 +38,6 @@ public class SsmModule {
     private String url;
 
     private String image;
-
-    private String stringParam;
-
-    private Integer intParam;
-
-    private String weight;
 
     private String remark;
 
@@ -61,76 +53,12 @@ public class SsmModule {
 
     private String updateUser;
 
-    public Integer getId() {
-        return id;
+    public String getBelongModule() {
+        return belongModule;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public Integer getSeq() {
-		return seq;
-	}
-
-	public void setSeq(Integer seq) {
-		this.seq = seq;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-    public String getBelongId() {
-        return belongId;
-    }
-
-    public void setBelongId(String belongId) {
-        this.belongId = belongId;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getModuleId() {
-        return moduleId;
-    }
-
-    public void setModuleId(String moduleId) {
-        this.moduleId = moduleId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setBelongModule(String belongModule) {
+        this.belongModule = belongModule;
     }
 
     public String getStyle() {
@@ -157,28 +85,60 @@ public class SsmModule {
         this.image = image;
     }
 
-    public String getStringParam() {
-        return stringParam;
+    public short getType() {
+        return type;
     }
 
-    public void setStringParam(String stringParam) {
-        this.stringParam = stringParam;
+    public void setType(short type) {
+        this.type = type;
     }
 
-    public Integer getIntParam() {
-        return intParam;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setIntParam(Integer intParam) {
-        this.intParam = intParam;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public short getSeq() {
+        return seq;
+    }
+
+    public void setSeq(short seq) {
+        this.seq = seq;
+    }
+
+    public String getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Date getCreateTime() {

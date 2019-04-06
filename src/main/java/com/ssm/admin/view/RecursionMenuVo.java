@@ -1,9 +1,9 @@
-package com.ssm.admin.entity;
+package com.ssm.admin.view;
 
 import java.util.Date;
 import java.util.List;
 
-public class RecursionMenu {
+public class RecursionMenuVo {
     private String menuId;
 
     private String name;
@@ -14,35 +14,35 @@ public class RecursionMenu {
 
     private String icon;
 
-    private Integer sequence;
+    private short seq;
 
-    private Integer status;
+    private boolean status;
 
     private Date createTime;
-    
-    private List<RecursionMenu> childMenus;
 
-    public Integer getSequence() {
-		return sequence;
-	}
+    public short getSeq() {
+        return seq;
+    }
 
-	public void setSequence(Integer sequence) {
-		this.sequence = sequence;
-	}
+    public void setSeq(short seq) {
+        this.seq = seq;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public boolean isStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
-	public List<RecursionMenu> getChildMenus() {
+    private List<RecursionMenuVo> childMenus;
+
+	public List<RecursionMenuVo> getChildMenus() {
 		return childMenus;
 	}
 
-	public void setChildMenus(List<RecursionMenu> childMenus) {
+	public void setChildMenus(List<RecursionMenuVo> childMenus) {
 		this.childMenus = childMenus;
 	}
 

@@ -5,7 +5,7 @@ import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.ssm.admin.service.CheckSubmitUtil;
+import com.ssm.common.util.CheckSubmitUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.SsmAccountService;
+import com.ssm.admin.service.AccountService;
 import com.ssm.base.Enum.AuthorityTypeEnum;
 import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.util.Authority;
@@ -28,7 +28,7 @@ import net.sf.json.JSONObject;
 public class SsmAccountController {
 	private static Logger logger = Logger.getLogger(SsmAccountController.class);
 	
-	@Autowired private SsmAccountService accountService;
+	@Autowired private AccountService accountService;
 
 	@Authority(AuthorityTypeEnum.Validate)//不加直接返回“无权限访问页面”
 	@RequestMapping(value = "admin/account/index", method = RequestMethod.GET)
@@ -43,7 +43,7 @@ public class SsmAccountController {
 		//logger.debug("----Temperature set to {}. Old temperature was {}.", new Date(), "测试logger.debug----");
 		logger.debug("----Temperature set to {}. Old temperature was {}  测试logger.debug----");
         logger.info("----Temperature has risen above 50 degrees.测试logger.info----");
-		return accountService.mapperQuery(query);
+		return null;//accountService.mapperQuery(query);
 	}
 	
 	//这应该是一个公共接口
@@ -108,13 +108,13 @@ public class SsmAccountController {
 	@ResponseBody
 	@RequestMapping(value="admin/account/delete", method = RequestMethod.POST)
 	public Result<?> delete(String empNo) {
-		return new Result<>(0, "", "", accountService.getAccountByKey(empNo));
+		return null;//new Result<>(0, "", "", accountService.getAccountByKey(empNo));
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="admin/account/getAccountByKey", method = RequestMethod.POST)
 	public Result<?> getAccountByKey(String empNo) {
-		return new Result<>(0, "", "", accountService.getAccountByKey(empNo));
+		return null;//new Result<>(0, "", "", accountService.getAccountByKey(empNo));
 	}
 	
 	@ResponseBody
@@ -125,7 +125,7 @@ public class SsmAccountController {
 		JSONObject jsonObject = JSONObject.fromObject(str);
 		SsmAccount account = (SsmAccount) JSONObject.toBean(jsonObject, ValidateAccount.class);
 		
-		return accountService.mapperSave(account, operate);
+		return null;//accountService.mapperSave(account, operate);
 	}
 
 }

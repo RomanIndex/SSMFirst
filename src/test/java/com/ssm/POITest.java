@@ -13,9 +13,8 @@ import javax.annotation.Resource;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.entity.SsmModule;
-import com.ssm.admin.service.SsmModuleService;
+import com.ssm.admin.service.ModuleService;
 import com.ssm.base.view.Result;
-import com.ssm.common.entity.ComStudent;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +36,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class POITest {
 	@Resource private ExcelService excelService;
 	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
-	@Resource private SsmModuleService moduleService;
+	@Resource private ModuleService moduleService;
 	
 	@Test
 	/**

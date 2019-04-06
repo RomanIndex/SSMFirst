@@ -1,54 +1,48 @@
 package com.ssm.admin.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "SSM_ACCOUNT")
 public class SsmAccount {
-    private String id;
-
     @Id
+    @GeneratedValue(generator = "custom-uuid")
+    @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
+    @Column(name = "emp_no", length = 32)
     private String empNo;
 
+    @Column(length = 32)
     private String password;
 
     private String name;
 
+    @Column(length = 11)
     private String mobile;
 
     private String email;
 
+    @Column(name = "role_value", length = 32)
     private String roleValues;
 
+    @Column(name = "login_url", length = 32)
     private String loginUrl;
 
-    private int onlineStatus;
+    @Column(name = "online_status")
+    private short onlineStatus;
 
+    @Column(name = "last_login_time")
     private Date lastLoginTime;
 
     private String source;
 
-    private Integer status;
+    private boolean status = true;
 
+    @CreationTimestamp
+    @Column(name = "create_time")
     private Date createTime;
-
-    public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getEmpNo() {
         return empNo;
@@ -106,11 +100,11 @@ public class SsmAccount {
         this.loginUrl = loginUrl;
     }
 
-    public int getOnlineStatus() {
+    public short getOnlineStatus() {
         return onlineStatus;
     }
 
-    public void setOnlineStatus(int onlineStatus) {
+    public void setOnlineStatus(short onlineStatus) {
         this.onlineStatus = onlineStatus;
     }
 
@@ -128,6 +122,14 @@ public class SsmAccount {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {

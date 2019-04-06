@@ -11,34 +11,104 @@ public class SsmRole {
     @Id
     @GeneratedValue(generator = "custom-uuid")
     @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
-    private String id;
+    @Column(length = 32)
+    private String roleId;
 
-    /*private String roleId;
-
-    @Column(columnDefinition="varchar(32) COMMENT '名称'")
+    @Column(length = 32)
     private String name;
 
-    private Integer type;
+    @JoinColumn(nullable = false, columnDefinition="COMMENT '1：普通角色，2：角色组'")
+    private short type;
 
-    private int level;
+    @Column(length = 32)
+    private String groupRoleId;
 
+    @Column(columnDefinition="smallint default 0 COMMENT '级别，用户不能授权比他会员等级高的角色'")
+    private short level;
+
+    @JoinColumn(columnDefinition="COMMENT '拟定用于快速计算角色下权限的字段，待开发'")
     private String weight;
 
     private String priValues;
 
-    private Integer status;*/
+    //private String describe;//【Mysql天坑之不能用describe字段2019-4-4 : 1:24】
+    private String remark;
+
+    private boolean status = true;
 
     @CreationTimestamp
     private Date createTime;
 
-    //private String describe;//【Mysql天坑之不能用该字段2019-4-4 : 1:24】
-
-    public String getId() {
-        return id;
+    public String getWeight() {
+        return weight;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getPriValues() {
+        return priValues;
+    }
+
+    public void setPriValues(String priValues) {
+        this.priValues = priValues;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public short getLevel() {
+        return level;
+    }
+
+    public void setLevel(short level) {
+        this.level = level;
+    }
+
+    public short getType() {
+        return type;
+    }
+
+    public void setType(short type) {
+        this.type = type;
+    }
+
+    public String getGroupRoleId() {
+        return groupRoleId;
+    }
+
+    public void setGroupRoleId(String groupRoleId) {
+        this.groupRoleId = groupRoleId;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getCreateTime() {

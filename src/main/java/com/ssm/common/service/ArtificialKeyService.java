@@ -1,6 +1,7 @@
 package com.ssm.common.service;
 
 import com.ssm.common.enumeration.ArtificialKeyEnum;
+import com.ssm.common.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.UUIDGenerator;
@@ -16,9 +17,10 @@ public class ArtificialKeyService {
     //@Autowired private RedisDao redis;
 
     //测试自定义生成主键，临时用
-    public String getCustomUUIDByEnum(ArtificialKeyEnum keyEnum) {
+    public String getCustomUUIDByClass(Object object) {
+        ArtificialKeyEnum keyEnum = ArtificialKeyEnum.getEnumByClass(object.getClass());
         int sixNumber = (int) (Math.random() * 1000000);
-        String id = keyEnum.name()+ "aaa" + sixNumber;
+        String id = keyEnum.getPrefix()+ sixNumber;
         return id;
     }
 

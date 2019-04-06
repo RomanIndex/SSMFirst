@@ -1,5 +1,7 @@
 package com.ssm.common.enumeration;
 
+import com.ssm.common.util.StringUtil;
+
 public enum ArtificialKeyEnum {
     account("YH", 6, "SSM_ACCOUNT", "用户"),
     role("ROLE", 6, "SSM_ROLE", "角色"),
@@ -9,7 +11,7 @@ public enum ArtificialKeyEnum {
 
     private String prefix;
     private int limit;
-    private String table;
+    private String table;//表名，转驼峰就是 类名
     private String remark;
 
     ArtificialKeyEnum(String prefix, int limit, String table, String remark) {
@@ -17,6 +19,18 @@ public enum ArtificialKeyEnum {
         this.limit = limit;
         this.table = table;
         this.remark = remark;
+    }
+
+    public static ArtificialKeyEnum getEnumByClass(Class clzz) {
+        String classFullName = clzz.getName();
+        String className = classFullName.substring(classFullName.lastIndexOf(".") + 1, classFullName.length());
+        String table = StringUtil.hump2underline(className).toUpperCase();
+        for(ArtificialKeyEnum keyEnum : ArtificialKeyEnum.values()){
+            if(keyEnum.getTable().equalsIgnoreCase(table)){
+                return keyEnum;
+            }
+        }
+        return null;
     }
 
     public String getTable() {

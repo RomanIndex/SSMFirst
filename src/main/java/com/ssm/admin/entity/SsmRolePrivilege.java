@@ -1,30 +1,35 @@
 package com.ssm.admin.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "SSM_ROLE_PRIVILEGE")
 public class SsmRolePrivilege {
     @Id
-	private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
+    @Column(length = 32)
     private String roleId;
 
+    @Column(length = 32)
     private String priCode;
 
-    private int status;
+    private boolean status = true;
 
-    private String validDate;
+    @Column(length = 32)
+    private String validDateId;
 
+    @CreationTimestamp
     private Date createTime;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,20 +49,20 @@ public class SsmRolePrivilege {
         this.priCode = priCode;
     }
 
-    public int getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public String getValidDate() {
-        return validDate;
+    public String getValidDateId() {
+        return validDateId;
     }
 
-    public void setValidDate(String validDate) {
-        this.validDate = validDate;
+    public void setValidDateId(String validDateId) {
+        this.validDateId = validDateId;
     }
 
     public Date getCreateTime() {

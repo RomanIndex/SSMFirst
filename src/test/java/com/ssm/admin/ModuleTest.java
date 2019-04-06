@@ -1,9 +1,9 @@
 package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
-import com.ssm.admin.entity.RecursionMenu;
+import com.ssm.admin.view.RecursionMenuVo;
 import com.ssm.admin.entity.SsmModule;
-import com.ssm.admin.service.SsmModuleService;
+import com.ssm.admin.service.ModuleService;
 import com.ssm.base.view.Result;
 import org.apache.commons.lang.ObjectUtils;
 import org.junit.Test;
@@ -13,42 +13,39 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
-import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
-public class SsmModuleTest {
-    @Autowired private SsmModuleService moduleService;
+public class ModuleTest {
+    @Autowired private ModuleService moduleService;
 
     @Test
     public void saveModule(){
         SsmModule module = new SsmModule();
-        int fourNumber = (int) (Math.random() * 10000);
-        module.setType(1);
-        module.setModuleId("MD_"+ fourNumber);
-        module.setName("nameÖÐÎÄ");
+        module.setType((short) 1);
+        module.setName("name");
         module.setUrl("aa/nn/kkk");
         moduleService.save(module);
-        System.out.println("¡·¡·¡·"+ JSON.toJSONString(module));
+        System.out.println("ã€‹ã€‹ã€‹"+ JSON.toJSONString(module));
     }
 
     @Test
     public void getMenus() {
         Result<?> result = moduleService.listMenuByRoleId(null);
-        List<RecursionMenu> menus = (List<RecursionMenu>) result.getData();
+        List<RecursionMenuVo> menus = (List<RecursionMenuVo>) result.getData();
 
-        for(RecursionMenu each : menus){
-            System.out.println("¡·¡·"+ each.getName());
+        for(RecursionMenuVo each : menus){
+            System.out.println("æˆ‘å¥½"+ each.getName());
             if(ObjectUtils.notEqual(each.getChildMenus(), null) && each.getChildMenus().size() > 0){
                 cycleChild(each.getName(), each.getChildMenus());
             }
         }
     }
 
-    //µÝ¹é±éÀú£¬²¢´òÓ¡
-    private void cycleChild(String pareantName, List<RecursionMenu> childMenus) {
-        for(RecursionMenu each : childMenus){
-            System.out.println("--"+ pareantName+ "£º"+ each.getName());
+    //é€’å½’è°ƒç”¨
+    private void cycleChild(String pareantName, List<RecursionMenuVo> childMenus) {
+        for(RecursionMenuVo each : childMenus){
+            System.out.println("--"+ pareantName+ "--"+ each.getName());
             if(ObjectUtils.notEqual(each.getChildMenus(), null) && each.getChildMenus().size() > 0){
                 System.out.println(">>"+ each.getName());
                 cycleChild(each.getName(), each.getChildMenus());

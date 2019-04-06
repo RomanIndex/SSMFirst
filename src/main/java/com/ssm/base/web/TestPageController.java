@@ -17,20 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ssm.admin.service.SsmAccountService;
+import com.ssm.admin.service.AccountService;
 import com.ssm.base.Enum.AuthorityTypeEnum;
 import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.service.HandleJsonService;
 import com.ssm.base.util.Authority;
-import com.ssm.base.view.QueryModelView;
 
 @Controller
 public class TestPageController {
 	//final static Logger logger = LoggerFactory.getLogger(AccountController.class);
 	private static Logger logger = Logger.getLogger(TestPageController.class);
 	
-	@Autowired private SsmAccountService accountService;
+	@Autowired private AccountService accountService;
 	@Autowired private HandleJsonService jsonService;
 	
 	/**
@@ -39,36 +37,6 @@ public class TestPageController {
 	@RequestMapping(value = "admin/bt_and_vue", method = RequestMethod.GET)
 	public String btAndVue(Model model) {
 		return "admin/bt_and_vue";
-	}
-	
-	/**
-	 * 配合行内编辑，定义的接口
-	 */
-	@ResponseBody
-	@RequestMapping(value = "admin/account/query/inline", method = RequestMethod.POST)
-	public Map<String, Object> inline() {
-		QueryModelView query = new QueryModelView();
-        query.setPageNo(1);
-        query.setPageSize(999);
-        Object list = accountService.mapperQuery(query).getData();
-        Map<String, Object> map = new HashMap<>();
-        map.put("data", list);
-		return map;
-	}
-	
-	@RequestMapping(value = "admin/account/edit/inline", method = RequestMethod.GET)
-	public String inlineIndex(Model model) {
-		return "admin/eg_edit_innerLine";
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "admin/account/edit/inline/save", method = RequestMethod.POST)
-	public String inlineSave(String str) {
-		JSONObject JsonObject = JSONObject.parseObject(str);
-		ValidateAccount validateAccount = JSONObject.toJavaObject(JsonObject, ValidateAccount.class);
-		jsonService.handleJson(validateAccount);//-----------------------------
-		System.out.println(validateAccount.getId());
-		return "成功了，success!";
 	}
 	
 	/**

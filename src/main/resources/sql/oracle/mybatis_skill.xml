@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.admin.dao.ISsmAccountDao" >
+<mapper namespace="com.ssm.admin.daoJpa.AccountJpaDao" >
   <resultMap id="BaseMenuMap" type="com.ssm.admin.entity.SsmModule" >
     <result column="ID" property="id" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />

@@ -1,14 +1,13 @@
 package com.ssm.common;
 
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.SsmAccountService;
+import com.ssm.admin.service.AccountService;
 import com.ssm.base.view.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -21,29 +20,29 @@ import java.util.Set;
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ValidatorEntityTest {
     @Autowired
-    private SsmAccountService accountService;
+    private AccountService accountService;
 
     @Test
     public void validateAccount() throws UnsupportedEncodingException {
         //JSONObject jsonObject = JSONObject.fromObject(obj);
         //Result<?> result = accountService.mapperSave(jsonObject.toString(), "add");
-        Result<?> result = accountService.mapperSave(createAccount(), "add");
+        Result<?> result = null;//accountService.mapperSave(createAccount(), "add");
         System.out.println(result);
     }
 
     /**
-     * ¾ßÌå²Î¿¼£ºhttps://www.cnblogs.com/zengda/p/4783514.html
+     * ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½https://www.cnblogs.com/zengda/p/4783514.html
      *
-     * ÕâÖÖÊÇÓÃ ²å¼þ ×Ô´øµÄ·½·¨ºÍ·µ»Ø½á¹û£¬²»ÊÇºÜÖ±¹Û£¬¼Ó¸öutil¹¤¾ßÀà£¬×Ô¼º·â×°Ò»ÏÂ±È½ÏºÃ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô´ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½Ö±ï¿½Û£ï¿½ï¿½Ó¸ï¿½utilï¿½ï¿½ï¿½ï¿½ï¿½à£¬ï¿½Ô¼ï¿½ï¿½ï¿½×°Ò»ï¿½Â±È½Ïºï¿½
      */
     @Test
     public void validateTest() throws UnsupportedEncodingException {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         SsmAccount obj = createAccount();
-        Set<ConstraintViolation<SsmAccount>> yz = validator.validate(obj);//validate»á½«ËùÓÐµÄÊôÐÔ½øÐÐÔ¼ÊøÐ£Ñé
-        //Set<ConstraintViolation<Account>> yz = validator.validateProperty(obj, "age");//validatePropertyÊÇÕë¶ÔÄ³Ò»¸ö¾ßÌåµÄÊôÐÔ½øÐÐÐ£Ñé
-        //Set<ConstraintViolation<Account>> yz = validator.validateValue(Account.class, "email", "123qq.com");//validateValueÊÇ¶Ô¾ßÌåµÄÄ³Ò»¸öÊôÐÔºÍÌØ¶¨µÄÖµ½øÐÐÐ£Ñé
+        Set<ConstraintViolation<SsmAccount>> yz = validator.validate(obj);//validateï¿½á½«ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ð£ï¿½ï¿½
+        //Set<ConstraintViolation<Account>> yz = validator.validateProperty(obj, "age");//validatePropertyï¿½ï¿½ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
+        //Set<ConstraintViolation<Account>> yz = validator.validateValue(Account.class, "email", "123qq.com");//validateValueï¿½Ç¶Ô¾ï¿½ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½
         //assertEquals(1, yz.size());
         System.out.println(yz);
     }

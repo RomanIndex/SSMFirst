@@ -1,69 +1,43 @@
 package com.ssm.admin.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.ssm.common.enumeration.OperateEnum;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "SSM_PRIVILEGE")
 public class SsmPrivilege {
-    private String id;
+    private boolean status = true;
 
     @Id
+    @GeneratedValue(generator = "custom-uuid")
+    @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
     private String code;
 
     private String name;
 
-    private Integer type;
+    @JoinColumn(columnDefinition="COMMENT '不能给用户授予高于其会员等级的权限'")
+    private short level;
 
-    private Integer status;
-
-    private Integer level;
-
-    private String validDate;
-
+    @Column(length = 32)
     private String moduleId;
 
-    private String operateId;
+    private String operateEnumName;
 
+    @Column(length = 32)
+    private String validDateId;
+
+    @CreationTimestamp
     private Date createTime;
 
-    private String createUser;
-
-    private Date updateTime;
-
-    private String updateUser;
-
-    public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Integer getLevel() {
-		return level;
-	}
-
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-
-	public String getId() {
-        return id;
+    public String getOperateEnumName() {
+        return operateEnumName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setOperateEnumName(String operateEnumName) {
+        this.operateEnumName = operateEnumName;
     }
 
     public String getCode() {
@@ -82,12 +56,12 @@ public class SsmPrivilege {
         this.name = name;
     }
 
-    public String getValidDate() {
-        return validDate;
+    public short getLevel() {
+        return level;
     }
 
-    public void setValidDate(String validDate) {
-        this.validDate = validDate;
+    public void setLevel(short level) {
+        this.level = level;
     }
 
     public String getModuleId() {
@@ -98,12 +72,12 @@ public class SsmPrivilege {
         this.moduleId = moduleId;
     }
 
-    public String getOperateId() {
-        return operateId;
+    public String getValidDateId() {
+        return validDateId;
     }
 
-    public void setOperateId(String operateId) {
-        this.operateId = operateId;
+    public void setValidDateId(String validDateId) {
+        this.validDateId = validDateId;
     }
 
     public Date getCreateTime() {
@@ -114,27 +88,11 @@ public class SsmPrivilege {
         this.createTime = createTime;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

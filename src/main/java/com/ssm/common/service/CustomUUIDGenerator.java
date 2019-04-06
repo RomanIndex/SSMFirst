@@ -17,7 +17,7 @@ public class CustomUUIDGenerator extends UUIDGenerator {
     @Override
     public Serializable generate(SessionImplementor session, Object object) throws HibernateException {
         System.out.println("CustomUUIDGenerator Object："+ object);
-        Object id = keyService.getCustomUUIDByEnum(ArtificialKeyEnum.role);
+        Object id = keyService.getCustomUUIDByClass(object);
         System.out.println("keyService id = "+ (Serializable) id);
         if (id != null) {
             return (Serializable)id;

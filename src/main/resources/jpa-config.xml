@@ -45,8 +45,9 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <!--<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>-->
+                <!-- 生成数据库名称驼峰 转 下划线，一定要放开-->
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 
                 <!--update作用和generateDdl = true一样-->
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->

@@ -1,6 +1,5 @@
-package com.ssm.admin.service;
+package com.ssm.common.util;
 
-import com.ssm.admin.web.SsmAccountController;
 import com.ssm.base.view.Result;
 import com.ssm.base.view.TokenProccessor;
 import org.apache.log4j.Logger;
