@@ -25,8 +25,8 @@ import com.ssm.base.view.Result;
 import net.sf.json.JSONObject;
 
 @Controller
-public class SsmAccountController {
-	private static Logger logger = Logger.getLogger(SsmAccountController.class);
+public class AccountController {
+	private static Logger logger = Logger.getLogger(AccountController.class);
 	
 	@Autowired private AccountService accountService;
 
@@ -63,7 +63,6 @@ public class SsmAccountController {
 	public String preventForm(HttpServletRequest request, Model model){
 		String token = CheckSubmitUtil.addSubmitToken(request);//alt+enter（创建方法）
         model.addAttribute("token", token);
-		
         return "admin/account_form";
 	}
 	

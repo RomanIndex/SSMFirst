@@ -8,12 +8,36 @@ import com.ssm.admin.daoJpa.AccountJpaDao;
 
 @Service
 public class AccountService {
-	@Autowired private AccountJpaDao accountDao;
+	@Autowired private AccountJpaDao accountJpaDao;
 
-	public SsmAccount getAccountById(String empNo) {
-		SsmAccount account = accountDao.findOne(empNo);
+	/* -----------------------基于JPA的一套实现逻辑 -----------------------------------*/
+
+	public SsmAccount findBy(String empNo) {
+		SsmAccount account = accountJpaDao.findByEmpNoAndStatus(empNo, true);
 		return account;
 	}
+
+	public SsmAccount getAccountById(String empNo) {
+		SsmAccount account = accountJpaDao.findOne(empNo);
+		return account;
+	}
+
+	public SsmAccount save(SsmAccount obj) {
+		SsmAccount account = accountJpaDao.save(obj);
+		return account;
+	}
+
+	public SsmAccount update(String empNo) {
+		SsmAccount account = accountJpaDao.saveAndFlush(null);
+		return account;
+	}
+
+	public SsmAccount delete(String empNo) {
+		SsmAccount account = accountJpaDao.findOne(empNo);
+		return account;
+	}
+
+	/* -------------------------Mapper 的一套实现逻辑【可谓标准化、极速开发】------------------------------------ */
 
 
 	/*public Result<?> mapperQuery(QueryModelView query) {
