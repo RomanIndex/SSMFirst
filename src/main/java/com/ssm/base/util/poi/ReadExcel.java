@@ -1,6 +1,8 @@
 package com.ssm.base.util.poi;
 
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -109,7 +111,7 @@ public class ReadExcel {
 		if(clzz == ComStudent.class){
 			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_STUDENT);
 		}else if(clzz == SsmModule.class){
-			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_MENU);
+			strWithComma = PropertyUtil.getProperty(PropertyUtil.IMPORT_EXCEL_MODULE);
 		}
 		return Splitter.on(",").trimResults().splitToList(strWithComma);
 	}
@@ -168,16 +170,19 @@ public class ReadExcel {
         try {
             obj = clzz.newInstance();//根据clzz创建一个实例
 
-
 			int referSize = referList.size();
 
             //每一行的总列（格）
             for (int c = 0; c < referSize; c++) {
                 Cell cell = row.getCell(c);
-                Object cellVal = cellStringValue(cell);//----cell值支持多种
+                Object cellVal = getCellValue(cell);//----cell值支持多种（String，Integer，Double，布尔）
                 String fieldName = referList.get(c);//可以从referList里取
                 System.out.println("《《 第"+ c +"列，类 的字段"+ fieldName + " = "+ cellVal);
-                ReflectFieldService.setValue(obj, obj.getClass(), fieldName, clzz.getDeclaredField(fieldName).getType(), cellVal);
+                Class fieldClazz = clzz.getDeclaredField(fieldName).getType();
+
+                Object fieldTypeValue = getFieldTypeValue(fieldClazz, cellVal);//获取和field类型对应的set的值
+
+                ReflectFieldService.setValue(obj, obj.getClass(), fieldName, fieldClazz, fieldTypeValue);
             }
 
             System.out.println(obj +"》》"+ JSON.toJSON(obj));
@@ -193,12 +198,45 @@ public class ReadExcel {
 		return obj;
 	}
 
+	//暂时只需要处理这三种数值类型的
+	private static Object getFieldTypeValue(Class fieldClazz, Object cellVal) {
+		String methodName = null;
+
+		if(fieldClazz == int.class){
+			methodName = "intValue";
+		}else if(fieldClazz == short.class){
+			methodName = "shortValue";
+		}else if(fieldClazz == double.class){
+			methodName = "doubleValue";
+		}else if(fieldClazz == boolean.class){
+			//布尔类型，特殊处理
+			int v = Integer.valueOf(cellVal.toString()).intValue();
+			return v == 1 ? true : false;
+		}else{
+			return cellVal;
+		}
+
+		Object fieldVal = null;
+
+		try {
+			Method method = cellVal.getClass().getDeclaredMethod(methodName);
+			fieldVal = method.invoke(cellVal);
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return fieldVal;
+	}
+
 	/**
 	 * 获取每一个cell的值
 	 * @param cell
 	 * @return
 	 */
-	private static Object cellStringValue(Cell cell) {
+	private static Object getCellValue(Cell cell) {
         Object cellVal = null;
 
 		if (cell == null) {
@@ -264,7 +302,7 @@ public class ReadExcel {
     private static Object judgeCellNumeric(double numericCellValue) {
 	    String numericStr = String.valueOf(numericCellValue);
 
-        System.out.println("------"+ numericStr +"-----"+ numericStr.length()+"------");
+        System.out.println("judgeCellNumeric string："+ numericStr +"（length() = "+ numericStr.length()+"）");
 
         if(numericStr.indexOf("E") > -1){
             String double2Str = new DecimalFormat("#").format(numericCellValue);//("#.00")表示保留两位小数，这里不要小数
@@ -281,7 +319,7 @@ public class ReadExcel {
         if(numericStr.matches(endsWith0Regex) || MathUtil.isNumber(numericStr)){
             //int val = Integer.parseInt(numericStr);//如果numericStr = 20.0，这种就会报错For input string: "20.0"
             int val = Double.valueOf(numericCellValue).intValue();
-            return val;
+            return (Integer)val;
         }
 
         if(MathUtil.isDouble(numericStr)){
@@ -289,7 +327,7 @@ public class ReadExcel {
             return val;
         }
 
-        System.out.println("你是魔鬼吗？那就返回字符串"+ numericStr);
+        System.out.println("judgeCellNumeric判断 Cell数值类型 的值 是魔鬼？返回字符串："+ numericStr);
 	    return numericStr;
     }
 

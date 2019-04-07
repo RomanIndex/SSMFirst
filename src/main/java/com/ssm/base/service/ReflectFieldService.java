@@ -111,74 +111,75 @@ public class ReflectFieldService {
     /**
      * 根据属性，拿到set方法，并把值set到对象中
      * @param obj 对象
-     * @param clazz 对象的class
+     * @param objClazz 对象的class
      * @param filedName 需要设置值得属性
-     * @param typeClass set方法入参的类型？
+     * @param fieldClazz set方法入参的类型，也就是field是类型
      * @param value set的值？
      */
-    public static void setValue(Object obj, Class<?> clazz, String filedName, Class<?> typeClass, Object value){
+    public static void setValue(Object obj, Class<?> objClazz, String filedName, Class<?> fieldClazz, Object value){
         filedName = StringUtil.removeLine(filedName);
         String methodName = "set" + filedName.substring(0,1).toUpperCase() + filedName.substring(1);
         try{
-            Method method =  clazz.getDeclaredMethod(methodName, new Class[]{typeClass});
-            method.invoke(obj, new Object[]{getClassTypeValue(typeClass, value)});//要把value类型 转为 typeClass类型
+            Method method = objClazz.getDeclaredMethod(methodName, new Class[]{fieldClazz});
+            method.invoke(obj, new Object[]{getClassTypeValue(fieldClazz, value)});//要把value类型 转为 fieldClazz 类型
         }catch(Exception ex){
-            System.out.println("【"+ methodName +" = "+ value.toString()+"】value："+ value.getClass()+ "（"+ value.getClass().getName()+"）》》"
-                    + "typeClass："+typeClass+ "（"+ typeClass.getName()+ "）");
+            System.out.println("异常》》【"+ methodName +" = "+ value.toString()+"】" +
+                    "fieldClazz："+fieldClazz+ "（"+ fieldClazz.getName()+ "）<<--" +
+                    "value："+ value.getClass()+ "（"+ value.getClass().getName()+"）");
             ex.printStackTrace();
         }
     }
 
     /**
      * 通过class类型获取获取对应类型的值
-     * @param typeClass class类型
-     * @param value 值
+     * @param fieldClazz class类型
+     * @param value 值（不要传基本数据类型，传封装类型）
      * @return Object
      */
-    private static Object getClassTypeValue(Class<?> typeClass, Object value){
-        if(typeClass == int.class  || value instanceof Integer){
+    private static Object getClassTypeValue(Class<?> fieldClazz, Object value){
+        if(fieldClazz == int.class){
             if(null == value){
                 return 0;
             }
             return value;
-        }else if(typeClass == short.class){
+        }else if(fieldClazz == short.class){
             if(null == value){
                 return 0;
             }
             return value;
-        }else if(typeClass == byte.class){
+        }else if(fieldClazz == byte.class){
             if(null == value){
                 return 0;
             }
             return value;
-        }else if(typeClass == double.class){
+        }else if(fieldClazz == double.class){
             if(null == value){
                 return 0;
             }
             return value;
-        }else if(typeClass == long.class){
+        }else if(fieldClazz == long.class){
             if(null == value){
                 return 0;
             }
             return value;
-        }else if(typeClass == String.class){
+        }else if(fieldClazz == String.class){
             if(null == value){
                 return "";
             }
             return value;
-        }else if(typeClass == boolean.class){
+        }else if(fieldClazz == boolean.class){
             if(null == value){
                 return true;
             }
             return value;
-        }else if(typeClass == BigDecimal.class){
+        }else if(fieldClazz == BigDecimal.class){
             if(null == value){
                 return new BigDecimal(0);
             }
             return new BigDecimal(value+"");
         }else {
-            System.out.println("set入参类型"+ typeClass + "<-->准备set入参传入的值的类型："+ value.getClass());
-            return typeClass.cast(value);
+            System.out.println("fieldClazz魔鬼："+ fieldClazz + "--cast-->>（"+ value.getClass()+ "）");
+            return fieldClazz.cast(value);
         }
     }
 

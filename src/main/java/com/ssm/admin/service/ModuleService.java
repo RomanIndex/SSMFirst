@@ -28,7 +28,7 @@ public class ModuleService {
 
     public Result<?> listMenuByRoleId(String roleId) {
         List<SsmModule> modules = moduleDao.findAll();
-        List<RecursionMenuVo> rootMenus = getMemuFromModule(modules);
+        List<RecursionMenuVo> rootMenus = getMemuFromModule(modules);//module转成常用menu
         List<RecursionMenuVo> recursionMenuVos = recursionedMenu(rootMenus);
         return new Result<>(Result.SUCCESS, "", null, recursionMenuVos);
     }
@@ -94,9 +94,9 @@ public class ModuleService {
             menu.setParentId(each.getParentId());
             menu.setMenuId(each.getModuleId());
             menu.setName(each.getName());
-            //menu.setUrl(each.getUrl());
+            menu.setUrl(each.getUrl());
             menu.setSeq(each.getSeq());
-            //menu.setIcon(each.getStyle());
+            menu.setIcon(each.getStyle());
             menu.setCreateTime(each.getCreateTime());
             menu.setStatus(each.isStatus());
             return menu;

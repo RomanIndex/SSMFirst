@@ -22,7 +22,7 @@
                 <p>用户登录</p>
                 <div id="loginSubmit" class="login_input">
                     <div class="account"><input type="text" placeholder="账号" value="admin" id="employeeId"></div>
-                    <div><input type="password" placeholder="密码" id="password" value="111"></div>
+                    <div><input type="password" placeholder="密码" id="password" value="123456"></div>
                     <a id='login'></a>
                 </div>
                 <div class="error_tips"><span id="error"></span></div>

@@ -103,11 +103,11 @@ public class HomeController {
         }
         
         boolean pass = false;
-        if(empNo.equalsIgnoreCase("admin") && password.equals("111")) {
+        if(empNo.equalsIgnoreCase("admin") && password.equals("123456")) {
         	pass = true;
 		}else{
         	empNo = empNo.toUpperCase();
-        	SsmAccount loginUser = null;//(SsmAccount) accountService.getAccountByKey(empNo).getData();
+        	SsmAccount loginUser = accountService.getAccountById(empNo);
         	if(null != loginUser){
         		if(loginUser.getPassword().equals(password)) {
         			//记住账号

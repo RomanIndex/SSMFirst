@@ -38,7 +38,7 @@ public class POITest {
 	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
 	@Resource private ModuleService moduleService;
 	
-	@Test
+
 	/**
 	 * 导入（简单通用）
 	 *
@@ -46,6 +46,7 @@ public class POITest {
 	 *
 	 * 考虑到后台上传的情形，要兼顾 流 的处理
 	 */
+	/*@Test
 	public void readExcel(){
 		//String path = "D:\\LocalPicDev\\comStudentImportData.xlsx";
 		String path = "D:\\LocalPicDev\\initMenuData.xlsx";
@@ -67,7 +68,7 @@ public class POITest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	@Test
 	/**

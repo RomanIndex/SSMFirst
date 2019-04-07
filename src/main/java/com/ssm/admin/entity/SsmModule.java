@@ -12,13 +12,13 @@ import java.util.Date;
 public class SsmModule {
     private boolean status = true;
 
-    @JoinColumn(nullable = false, columnDefinition="COMMENT '1£ºÒ»¼¶²Ëµ¥£»2£º¶ş¼¶²Ëµ¥£»3£º°´Å¥'")
+    @JoinColumn(nullable = false, columnDefinition="COMMENT '1ï¼šæ¨¡å—ï¼›2ï¼šèœå•ï¼›3ï¼šæŒ‰é’®'")
     private short type;
 
-    @JoinColumn(columnDefinition="COMMENT 'Í¬Ìõ¼ÇÂ¼£¬belongIdµÄ type Ò»¶¨ºÍmoduleId²»ÏàµÈ'")
+    @JoinColumn(columnDefinition="COMMENT 'æ‰€å±æ¨¡å—ï¼Œä¹Ÿæ˜¯é¡¶çº§èœå•ï¼Œtypeå’Œå­èœå•ä¸€å®šä¸ç›¸åŒ'")
     private String belongModule;
 
-    @JoinColumn(columnDefinition="COMMENT 'Í¬Ìõ¼ÇÂ¼£¬parentIdµÄ type Ò»¶¨ºÍmoduleIdÏàµÈ'")
+    @JoinColumn(columnDefinition="COMMENT 'çˆ¶çº§èœå•ï¼Œtypeå’Œå­èœå•ä¸€å®šç›¸åŒ'")
     private String parentId;
 
     private short seq;
@@ -43,12 +43,12 @@ public class SsmModule {
 
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     //@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @CreationTimestamp//´´½¨Ê±×Ô¶¯¸üĞÂÊ±¼ä
+    @CreationTimestamp//åˆ›å»ºæ—¶è‡ªåŠ¨ç”Ÿæˆæ—¶é—´
     private Date createTime;
 
     private String createUser;
 
-    @UpdateTimestamp//¸üĞÂÊ±×Ô¶¯¸üĞÂÊ±¼ä
+    @UpdateTimestamp//æ•°æ®æ›´æ–°æ—¶ä¸»åŠ¨æ›´æ–°æ—¶é—´
     private Date updateTime;
 
     private String updateUser;

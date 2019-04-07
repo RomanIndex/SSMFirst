@@ -1,5 +1,6 @@
 package com.ssm.admin.service;
 
+import com.ssm.admin.entity.SsmAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,12 @@ import com.ssm.admin.daoJpa.AccountJpaDao;
 @Service
 public class AccountService {
 	@Autowired private AccountJpaDao accountDao;
+
+	public SsmAccount getAccountById(String empNo) {
+		SsmAccount account = accountDao.findOne(empNo);
+		return account;
+	}
+
 
 	/*public Result<?> mapperQuery(QueryModelView query) {
 		Example example = new Example(SsmAccount.class);
