@@ -1,12 +1,14 @@
 package com.ssm.admin.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Date;
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "SSM_ACCOUNT_ROLE")
-public class SsmAccountRole {
+public class SsmAccountRole extends SsmBaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -20,13 +22,8 @@ public class SsmAccountRole {
     //private String desc;//2018-08-13 02:10:xx（数据库都无此字段，不JUnit，在那瞎试？？？）
     private String remark;
 
-    private boolean status = true;
-
     @Column(length = 32)
     private String validDateId;
-
-    @CreationTimestamp
-    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -60,27 +57,11 @@ public class SsmAccountRole {
         this.remark = remark;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public String getValidDateId() {
         return validDateId;
     }
 
     public void setValidDateId(String validDateId) {
         this.validDateId = validDateId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

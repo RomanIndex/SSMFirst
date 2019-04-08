@@ -14,6 +14,8 @@ import java.util.Date;
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class SsmBaseEntity implements Serializable {
 
+    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     @CreationTimestamp
     private Date createTime;//强烈建议，时间字段，统一用服务器的，不要用数据库的
 

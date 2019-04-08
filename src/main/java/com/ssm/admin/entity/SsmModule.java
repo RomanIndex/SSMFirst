@@ -1,16 +1,17 @@
 package com.ssm.admin.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "SSM_MODULE")
-public class SsmModule {
-    private boolean status = true;
+public class SsmModule extends SsmBaseEntity{
 
     @JoinColumn(nullable = false, columnDefinition="COMMENT '1：模块；2：菜单；3：按钮'")
     private short type;
@@ -40,18 +41,6 @@ public class SsmModule {
     private String image;
 
     private String remark;
-
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    //@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @CreationTimestamp//创建时自动生成时间
-    private Date createTime;
-
-    private String createUser;
-
-    @UpdateTimestamp//数据更新时主动更新时间
-    private Date updateTime;
-
-    private String updateUser;
 
     public String getBelongModule() {
         return belongModule;
@@ -93,14 +82,6 @@ public class SsmModule {
         this.type = type;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public String getParentId() {
         return parentId;
     }
@@ -139,37 +120,5 @@ public class SsmModule {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
     }
 }

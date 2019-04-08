@@ -1,12 +1,16 @@
 package com.ssm.admin.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "SSM_ROLE_PRIVILEGE")
-public class SsmRolePrivilege {
+public class SsmRolePrivilege extends SsmBaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -17,13 +21,8 @@ public class SsmRolePrivilege {
     @Column(length = 32)
     private String priCode;
 
-    private boolean status = true;
-
     @Column(length = 32)
     private String validDateId;
-
-    @CreationTimestamp
-    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -49,27 +48,11 @@ public class SsmRolePrivilege {
         this.priCode = priCode;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public String getValidDateId() {
         return validDateId;
     }
 
     public void setValidDateId(String validDateId) {
         this.validDateId = validDateId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }

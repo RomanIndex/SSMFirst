@@ -2,14 +2,17 @@ package com.ssm.admin.entity;
 
 import com.ssm.common.enumeration.OperateEnum;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "SSM_PRIVILEGE")
-public class SsmPrivilege {
-    private boolean status = true;
+public class SsmPrivilege extends SsmBaseEntity{
 
     @Id
     @GeneratedValue(generator = "custom-uuid")
@@ -28,9 +31,6 @@ public class SsmPrivilege {
 
     @Column(length = 32)
     private String validDateId;
-
-    @CreationTimestamp
-    private Date createTime;
 
     public String getOperateEnumName() {
         return operateEnumName;
@@ -78,21 +78,5 @@ public class SsmPrivilege {
 
     public void setValidDateId(String validDateId) {
         this.validDateId = validDateId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 }

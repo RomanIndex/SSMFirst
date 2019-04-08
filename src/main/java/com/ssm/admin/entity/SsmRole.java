@@ -1,13 +1,17 @@
 package com.ssm.admin.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name = "SSM_ROLE")
-public class SsmRole {
+public class SsmRole extends SsmBaseEntity{
     @Id
     @GeneratedValue(generator = "custom-uuid")
     @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
@@ -17,27 +21,22 @@ public class SsmRole {
     @Column(length = 32)
     private String name;
 
-    @JoinColumn(nullable = false, columnDefinition="COMMENT '1£ºÆÕÍ¨½ÇÉ«£¬2£º½ÇÉ«×é'")
+    @JoinColumn(nullable = false, columnDefinition="COMMENT '1ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½É«ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½'")
     private short type;
 
     @Column(length = 32)
     private String groupRoleId;
 
-    @Column(columnDefinition="smallint default 0 COMMENT '¼¶±ð£¬ÓÃ»§²»ÄÜÊÚÈ¨±ÈËû»áÔ±µÈ¼¶¸ßµÄ½ÇÉ«'")
+    @Column(columnDefinition="smallint default 0 COMMENT 'ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½È¼ï¿½ï¿½ßµÄ½ï¿½É«'")
     private short level;
 
-    @JoinColumn(columnDefinition="COMMENT 'Äâ¶¨ÓÃÓÚ¿ìËÙ¼ÆËã½ÇÉ«ÏÂÈ¨ÏÞµÄ×Ö¶Î£¬´ý¿ª·¢'")
+    @JoinColumn(columnDefinition="COMMENT 'ï¿½â¶¨ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½Ù¼ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½È¨ï¿½Þµï¿½ï¿½Ö¶Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'")
     private String weight;
 
     private String priValues;
 
-    //private String describe;//¡¾MysqlÌì¿ÓÖ®²»ÄÜÓÃdescribe×Ö¶Î2019-4-4 : 1:24¡¿
+    //private String describe;//ï¿½ï¿½Mysqlï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½describeï¿½Ö¶ï¿½2019-4-4 : 1:24ï¿½ï¿½
     private String remark;
-
-    private boolean status = true;
-
-    @CreationTimestamp
-    private Date createTime;
 
     public String getWeight() {
         return weight;
@@ -53,14 +52,6 @@ public class SsmRole {
 
     public void setPriValues(String priValues) {
         this.priValues = priValues;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public short getLevel() {
@@ -109,13 +100,5 @@ public class SsmRole {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }
