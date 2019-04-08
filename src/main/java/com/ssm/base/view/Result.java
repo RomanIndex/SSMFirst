@@ -1,4 +1,7 @@
 package com.ssm.base.view;
+
+import com.ssm.admin.entity.SsmBaseEntity;
+
 /**
  * 传给前端数据的统一格式
  * code = 0时，表示调用成功，msg = OK！
@@ -28,6 +31,15 @@ public class Result<T> {
 		this.msg = msg;
 		this.detail = detail;
 		this.data = data;
+	}
+
+	public static <T extends SsmBaseEntity> Result<T> fail(String msg) {
+		return new Result<>(FAIL, msg, null, null);
+	}
+
+	public static <T extends SsmBaseEntity> Result<T> success(String msg, T entity) {
+		msg = msg == null ? "操作成功！" : msg;
+		return new Result<>(SUCCESS, msg, null, null);
 	}
 
 	public int getCode() {

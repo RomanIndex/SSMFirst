@@ -1,7 +1,7 @@
 package com.ssm.common;
 
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.impl.AccountServiceImpl;
 import com.ssm.base.view.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import java.util.Set;
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ValidatorEntityTest {
     @Autowired
-    private AccountService accountService;
+    private AccountServiceImpl accountServiceImpl;
 
     @Test
     public void validateAccount() throws UnsupportedEncodingException {

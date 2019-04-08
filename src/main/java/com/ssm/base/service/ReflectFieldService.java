@@ -183,6 +183,8 @@ public class ReflectFieldService {
         }
     }
 
+    /* --------------------JAVA可变参数-------------------------- */
+
     public Class testManyClass(int seq, Class<?>... groups) {
         System.out.println(groups);
 

@@ -8,12 +8,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.impl.AccountServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ValidateAccountTest {
-	@Autowired private AccountService accountService;
+	@Autowired private AccountServiceImpl accountServiceImpl;
 	
 }

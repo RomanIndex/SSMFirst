@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.impl.AccountServiceImpl;
 import com.ssm.base.Enum.AuthorityTypeEnum;
 import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.service.HandleJsonService;
@@ -28,7 +28,7 @@ public class TestPageController {
 	//final static Logger logger = LoggerFactory.getLogger(AccountController.class);
 	private static Logger logger = Logger.getLogger(TestPageController.class);
 	
-	@Autowired private AccountService accountService;
+	@Autowired private AccountServiceImpl accountServiceImpl;
 	@Autowired private HandleJsonService jsonService;
 	
 	/**

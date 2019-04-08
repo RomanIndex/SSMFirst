@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.impl.AccountServiceImpl;
 import com.ssm.base.util.CookieHelper;
 import com.ssm.base.util.HttpHelper;
 import com.ssm.base.view.Config;
@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiParam;
 @CrossOrigin("*")
 @Controller
 public class HomeController {
-	@Autowired private AccountService accountService;
+	@Autowired private AccountServiceImpl accountServiceImpl;
 	
 	/**
 	 * filter作用是判断登录session是否有效，有效放行，无效返回登录页面
@@ -107,7 +107,7 @@ public class HomeController {
         	pass = true;
 		}else{
         	empNo = empNo.toUpperCase();
-        	SsmAccount loginUser = accountService.getAccountById(empNo);
+        	SsmAccount loginUser = accountServiceImpl.findBy(empNo);
         	if(null != loginUser){
         		if(loginUser.getPassword().equals(password)) {
         			//记住账号

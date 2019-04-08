@@ -1,13 +1,18 @@
 package com.ssm.admin.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 @Entity
+@DynamicUpdate//更新时，不将null值更新到数据库
+@DynamicInsert
+//@SelectBeforeUpdate(true)//让数据在更新时先查一遍数据库，再返回来进行对比，如果没更改不提交更新语句
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "SSM_ACCOUNT")
-public class SsmAccount {
+public class SsmAccount extends SsmBaseEntity{
     @Id
     @GeneratedValue(generator = "custom-uuid")
     @GenericGenerator(name = "custom-uuid", strategy = "com.ssm.common.service.CustomUUIDGenerator")
@@ -37,12 +42,6 @@ public class SsmAccount {
     private Date lastLoginTime;
 
     private String source;
-
-    private boolean status = true;
-
-    @CreationTimestamp
-    @Column(name = "create_time")
-    private Date createTime;
 
     public String getEmpNo() {
         return empNo;
@@ -122,21 +121,5 @@ public class SsmAccount {
 
     public void setSource(String source) {
         this.source = source;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
     }
 }
