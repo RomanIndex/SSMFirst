@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ssm.admin.view.RecursionMenuVo;
-import com.ssm.admin.service.ModuleService;
+import com.ssm.admin.service.impl.ModuleServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -27,7 +27,7 @@ public class SecurityFilter implements Filter{
 
 	public static Logger logger = Logger.getLogger(SecurityFilter.class.getName());
 	
-	@Autowired private ModuleService moduleService;
+	@Autowired private ModuleServiceImpl moduleServiceImpl;
 	
 	private FilterConfig filterConfig;	// 过滤器配置对象
 	private String[] freePages;		// 不操作的页面数组
@@ -78,7 +78,7 @@ public class SecurityFilter implements Filter{
                 	ex.printStackTrace();
                 }
         	}else {
-        		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleService.listMenuByRoleId(null).getData();
+        		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleServiceImpl.listMenuByRoleId(null).getData();
         		request.getSession().setAttribute("menu", menus);
         	}
         }

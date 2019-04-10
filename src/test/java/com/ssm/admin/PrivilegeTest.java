@@ -1,9 +1,8 @@
 package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
-import com.ssm.admin.entity.SsmModule;
 import com.ssm.admin.entity.SsmPrivilege;
-import com.ssm.admin.service.PrivilegeService;
+import com.ssm.admin.service.impl.PrivilegeServiceImpl;
 import com.ssm.common.enumeration.OperateEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class PrivilegeTest {
-    @Autowired private PrivilegeService privilegeService;
+    @Autowired private PrivilegeServiceImpl privilegeServiceImpl;
 
     @Test
     public void savePri(){
@@ -24,7 +23,7 @@ public class PrivilegeTest {
         obj.setOperateEnumName(OperateEnum.update.name());
         obj.setValidDateId("永久有效");
         System.out.println("插入前》》"+ JSON.toJSONString(obj));
-        SsmPrivilege reObj = privilegeService.save(obj);
+        SsmPrivilege reObj = privilegeServiceImpl.save(obj);
         System.out.println("插入后》》"+ JSON.toJSONString(reObj));
     }
 }

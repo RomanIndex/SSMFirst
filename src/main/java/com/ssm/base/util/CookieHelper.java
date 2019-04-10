@@ -1,5 +1,7 @@
 package com.ssm.base.util;
 
+import com.ssm.common.util.HttpRequest;
+
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +24,7 @@ public class CookieHelper {
 		    Cookie cookie = new Cookie(name, value);
 		    cookie.setPath("/"); //设置路径，这个路径即该工程下都可以访问该cookie 如果不设置路径，那么只有设置该cookie的路径及其子路径可以访问
 		    cookie.setMaxAge(maxAge);
-		    HttpHelper.getResponse().addCookie(cookie);
+			HttpRequest.getResponse().addCookie(cookie);
 	
 	}
 	
@@ -36,7 +38,7 @@ public class CookieHelper {
 	public static void addCookie(String name, String value){
 	    Cookie cookie = new Cookie(name, value);
 	    cookie.setPath("/"); //设置路径，这个路径即该工程下都可以访问该cookie 如果不设置路径，那么只有设置该cookie的路径及其子路径可以访问
-	    HttpHelper.getResponse().addCookie(cookie);
+		HttpRequest.getResponse().addCookie(cookie);
 	}
 	
 	/**
@@ -69,7 +71,7 @@ public class CookieHelper {
 			cookie.setValue("");
 			cookie.setPath("/");
 			cookie.setMaxAge(0);
-			HttpHelper.getResponse().addCookie(cookie);
+			//HttpRequest.getResponse().
 		}
 	}
 	
@@ -126,7 +128,7 @@ public class CookieHelper {
 	 * @return
 	 */
 	private static Map<String,Cookie> readCookieMap(){  
-	    return readCookieMap(HttpHelper.getRequest());
+	    return readCookieMap(HttpRequest.getRequest());
 	}
 	
 	private static Map<String,Cookie> readCookieMap(HttpServletRequest request){ 

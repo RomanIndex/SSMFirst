@@ -2,7 +2,10 @@ package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.entity.SsmAccount;
+import com.ssm.admin.param.AccountVo;
 import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.impl.AccountServiceImpl;
+import com.ssm.admin.view.AdminQueryView;
 import com.ssm.base.view.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,11 +17,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class AccountTest {
     @Autowired private AccountService accountService;
+    @Autowired private AccountServiceImpl accountImpl;
 
     @Test
-    public void findBy(){
-        SsmAccount account = accountService.get("YH34661");
-        System.out.println(JSON.toJSON(account));
+    public void getVoById(){
+        String empNo = "YH6666";
+        AccountVo vo = accountImpl.getVoById(empNo);
+        //SsmAccount account = accountService.getById(empNo);
+        System.out.println(JSON.toJSON(vo));
+    }
+
+    @Test
+    public void jpaQuery(){
+        AdminQueryView query = new AdminQueryView();
+        query.setPageNo(1);
+        query.setPageSize(10);
+        Result result = accountService.jpaQuery(query);
+        System.out.println(JSON.toJSON(result.getData()));
     }
 
     @Test

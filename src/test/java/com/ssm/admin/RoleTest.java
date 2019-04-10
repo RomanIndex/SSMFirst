@@ -2,7 +2,7 @@ package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.entity.SsmRole;
-import com.ssm.admin.service.RoleService;
+import com.ssm.admin.service.impl.RoleServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +16,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /* jpa-config.xml里面有import spring-core，所以这里不能再加入 */
 public class RoleTest {
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleServiceImpl;
 
     @Test
     public void saveRole(){
         SsmRole obj = new SsmRole();
         obj.setType((short) 1);
         obj.setName("生成表角色");
-        roleService.save(obj);
+        roleServiceImpl.save(obj);
         System.out.println("》》》"+ JSON.toJSONString(obj));
     }
 }

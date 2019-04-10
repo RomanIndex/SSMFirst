@@ -1,8 +1,6 @@
 package com.ssm.common.service;
 
 import com.ssm.base.service.ReflectFieldService;
-import com.ssm.common.enumeration.ArtificialKeyEnum;
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.UUIDGenerator;
@@ -19,7 +17,7 @@ import java.lang.reflect.Field;
 public class CustomUUIDGenerator extends UUIDGenerator {
     ArtificialKeyService keyService = new ArtificialKeyService();
 
-    @Override
+    //@Override
     public Serializable generate(SessionImplementor session, Object object) throws HibernateException {
         System.out.println("CustomUUIDGenerator Object："+ object);
         //先获取主键属性名

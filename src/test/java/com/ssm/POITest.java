@@ -1,8 +1,5 @@
 package com.ssm;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -11,14 +8,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import com.alibaba.fastjson.JSON;
-import com.ssm.admin.entity.SsmModule;
-import com.ssm.admin.service.ModuleService;
-import com.ssm.base.view.Result;
-import org.apache.commons.io.IOUtils;
+import com.ssm.admin.service.impl.ModuleServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -28,7 +20,6 @@ import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.entity.ExcelTableField;
 import com.ssm.base.service.CreateOracleTableSqlService;
 import com.ssm.base.service.ExcelService;
-import org.springframework.web.multipart.MultipartFile;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration("web")
@@ -36,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class POITest {
 	@Resource private ExcelService excelService;
 	@Resource private CreateOracleTableSqlService createOracleTableSqlService;
-	@Resource private ModuleService moduleService;
+	@Resource private ModuleServiceImpl moduleServiceImpl;
 	
 
 	/**

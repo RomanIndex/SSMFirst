@@ -3,8 +3,7 @@ package com.ssm.admin.web;
 import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.param.AccountVo;
 import com.ssm.admin.service.AccountService;
-import com.ssm.admin.service.impl.AccountServiceImpl;
-import com.ssm.admin.service.CommonService;
+import com.ssm.admin.view.AdminQueryView;
 import com.ssm.base.view.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,21 +22,26 @@ public class AccountController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/query", method = RequestMethod.GET)
+    public Result<?> query(AdminQueryView query) {
+        return accountService.query(query);
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Result<?> add(SsmAccount obj) {
-        Result result = accountService.create(obj);
-        return result;
+        return accountService.create(obj);
     }
 
     @ResponseBody
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public Result<?> update(SsmAccount obj) {
-        return null;
+        return accountService.update(obj);
     }
 
     @ResponseBody
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     public Result<?> del(String id) {
-        return null;
+        return accountService.deleteById(id);
     }
 }

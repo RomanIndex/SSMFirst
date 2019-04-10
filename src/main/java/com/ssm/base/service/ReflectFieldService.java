@@ -71,7 +71,7 @@ public class ReflectFieldService {
             f.setAccessible(true); //设置些属性是可以访问的
             try {
                 if (f.getName().endsWith(key)) {
-                    System.out.println(f.getName()+ " >> " + f.get(obj));
+                    System.out.println("getValueByKey："+ f.getName()+ " >> " + f.get(obj));
                     return f.get(obj);
                 }
             } catch (IllegalArgumentException e) {

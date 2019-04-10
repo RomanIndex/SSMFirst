@@ -7,6 +7,8 @@ public class QueryModel {
 	private int pageNo;//第几页
 	
 	private int pageSize;//每页的记录数（即每页最多允许的条数）
+
+	private int pageStart;//mysql分页要用到
 	
 	private int totalRecords;//返回的总记录数
 	
@@ -16,12 +18,15 @@ public class QueryModel {
 	private String beginDate;//字符串类型，统一格式，方便处理，如："2017-12-01"
 	
 	private String endDate;
-	
-	private long beginTime;//时间戳类型，可以精确到秒，如：1256356654
-	
-	private long endTime;
-	
-	private String keyWord;//模糊查询关键字
+
+	public int getPageStart() {
+		pageStart = (pageNo - 1) * pageSize;
+		return pageStart;
+	}
+
+	public void setPageStart(int pageStart) {
+		this.pageStart = pageStart;
+	}
 
 	public int getPageNo() {
 		return pageNo;
@@ -61,30 +66,6 @@ public class QueryModel {
 
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
-	}
-
-	public long getBeginTime() {
-		return beginTime;
-	}
-
-	public void setBeginTime(long beginTime) {
-		this.beginTime = beginTime;
-	}
-
-	public long getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(long endTime) {
-		this.endTime = endTime;
-	}
-
-	public String getKeyWord() {
-		return keyWord;
-	}
-
-	public void setKeyWord(String keyWord) {
-		this.keyWord = keyWord;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.ssm.base.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.ssm.admin.service.AccountService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.impl.AccountServiceImpl;
 import com.ssm.base.util.CookieHelper;
-import com.ssm.base.util.HttpHelper;
 import com.ssm.base.view.Config;
 import com.ssm.base.view.Result;
 
@@ -28,7 +27,7 @@ import io.swagger.annotations.ApiParam;
 @CrossOrigin("*")
 @Controller
 public class HomeController {
-	@Autowired private AccountServiceImpl accountServiceImpl;
+	@Autowired private AccountService accountService;
 	
 	/**
 	 * filter作用是判断登录session是否有效，有效放行，无效返回登录页面
@@ -85,8 +84,8 @@ public class HomeController {
 	
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
-        HttpHelper.getRequest().getSession().removeAttribute(Config.SECURITY_LOGIN_KEY);
-        HttpHelper.getRequest().getSession().removeAttribute("menu");
+        //HttpHelper.getRequest().getSession().removeAttribute(Config.SECURITY_LOGIN_KEY);
+        //HttpHelper.getRequest().getSession().removeAttribute("menu");
         return "admin/login";
     }
 	
@@ -107,7 +106,7 @@ public class HomeController {
         	pass = true;
 		}else{
         	empNo = empNo.toUpperCase();
-        	SsmAccount loginUser = accountServiceImpl.findBy(empNo);
+			SsmAccount loginUser = accountService.getById(empNo);
         	if(null != loginUser){
         		if(loginUser.getPassword().equals(password)) {
         			//记住账号
@@ -126,8 +125,8 @@ public class HomeController {
         }
         
         if(pass){
-        	HttpSession session = HttpHelper.getRequest().getSession();
-			session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
+        	//HttpSession session = HttpHelper.getRequest().getSession();
+			//session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
 			result.setCode(0);
 			result.setMsg("登录成功，正在前往首页...");
 			result.setData("admin/index");

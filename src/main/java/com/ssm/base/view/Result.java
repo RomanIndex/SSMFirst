@@ -1,6 +1,8 @@
 package com.ssm.base.view;
 
+import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.entity.SsmBaseEntity;
+import org.springframework.data.domain.Page;
 
 /**
  * 传给前端数据的统一格式
@@ -33,13 +35,17 @@ public class Result<T> {
 		this.data = data;
 	}
 
-	public static <T extends SsmBaseEntity> Result<T> fail(String msg) {
+	public static <T> Result<?> fail(String msg) {
 		return new Result<>(FAIL, msg, null, null);
 	}
 
-	public static <T extends SsmBaseEntity> Result<T> success(String msg, T entity) {
-		msg = msg == null ? "操作成功！" : msg;
-		return new Result<>(SUCCESS, msg, null, null);
+	public static <T> Result<?> success(String msg, T data) {
+		msg = msg == null ? "OK!" : msg;
+		return new Result<>(SUCCESS, msg, null, data);
+	}
+
+	public static <T> Result<?> success(T data) {
+		return new Result<>(SUCCESS, "OK!", null, data);
 	}
 
 	public int getCode() {

@@ -2,7 +2,19 @@ package com.ssm.common.util;
 
 import org.apache.commons.lang.StringUtils;
 
+import java.io.UnsupportedEncodingException;
+
 public class StringUtil {
+
+    public static String UTF8(String para){
+        try {
+            para = para == null ? "" : para;
+            return new String(para.getBytes("ISO-8859-1"), "utf8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
 
     public static boolean isMobile(String mobiles) {
         String telRegex = "[1][3578]\\d{9}";

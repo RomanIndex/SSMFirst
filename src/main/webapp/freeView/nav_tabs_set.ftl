@@ -13,7 +13,7 @@
     </style>
     "
     script="
-    <script src='../yypz/js/common.js'></script>
+    <script src='../yypz/js/common-api.js'></script>
     <script src='../yypz/js/set_push.js'></script>
     <script>
     function init_page(){

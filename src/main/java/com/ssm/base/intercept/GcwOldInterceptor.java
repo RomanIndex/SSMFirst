@@ -2,14 +2,12 @@ package com.ssm.base.intercept;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ssm.base.util.HttpHelper;
 import com.ssm.base.view.Config;
 
 @Component
@@ -64,8 +62,8 @@ public class GcwOldInterceptor implements HandlerInterceptor{
 			String accessOpenId = request.getParameter("openId");
 			
 			if("GCW_ACCESS_VALUE".equals(accessVal)){
-				HttpSession session = HttpHelper.getRequest().getSession();
-				session.setAttribute(Config.SESSION_OPEN_ID_KEY, accessOpenId);//暂时把前端传入放在sess里，不用改所有接口
+				//HttpSession session = HttpHelper.getRequest().getSession();
+				//session.setAttribute(Config.SESSION_OPEN_ID_KEY, accessOpenId);//暂时把前端传入放在sess里，不用改所有接口
 				return true;
 			}else{
 				request.getRequestDispatcher("/gcw/session/invalid").forward(request, response);
@@ -88,8 +86,8 @@ public class GcwOldInterceptor implements HandlerInterceptor{
 		String openId = request.getParameter("openId");
 		String subscribe = request.getParameter("subscribe");
 		System.out.println("---------initSession   openId = "+ openId +"，subscribe = "+ subscribe);
-		HttpSession session = HttpHelper.getRequest().getSession();
-		session.setAttribute(Config.SESSION_OPEN_ID_KEY, openId);
+		//HttpSession session = HttpHelper.getRequest().getSession();
+		//session.setAttribute(Config.SESSION_OPEN_ID_KEY, openId);
 		
 	}
 
