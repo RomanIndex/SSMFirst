@@ -79,8 +79,9 @@
 	    </property>
 	</bean>
 
+	<!-- 引入swagger配置类全路径 -->
 	<bean class="com.ssm.base.util.SwaggerConfig" />
-	
+
     <!-- 配置拦截器 -->
     
     <!-- 测试配置拦截器@author 拦截器 -->

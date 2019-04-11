@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.ssm.admin.service.AccountService;
+import com.ssm.common.util.HttpRequest;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -125,8 +126,8 @@ public class HomeController {
         }
         
         if(pass){
-        	//HttpSession session = HttpHelper.getRequest().getSession();
-			//session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
+        	HttpSession session = HttpRequest.getRequest().getSession();
+			session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
 			result.setCode(0);
 			result.setMsg("登录成功，正在前往首页...");
 			result.setData("admin/index");
