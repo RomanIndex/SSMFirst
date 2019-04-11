@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -24,6 +26,7 @@ import com.ssm.base.service.HandleJsonService;
 import com.ssm.base.util.Authority;
 
 @Controller
+@Api(description="TestPage API", value = "用户API", tags = {"SSM后台：等待整合的一些常用页面功能"})
 public class TestPageController {
 	//final static Logger logger = LoggerFactory.getLogger(AccountController.class);
 	private static Logger logger = Logger.getLogger(TestPageController.class);
@@ -34,14 +37,28 @@ public class TestPageController {
 	/**
 	 * bootstrap 结合 vue 页面（调查问卷）
 	 */
-	@RequestMapping(value = "admin/bt_and_vue", method = RequestMethod.GET)
-	public String btAndVue(Model model) {
-		return "admin/bt_and_vue";
+	@ApiOperation(value = "一款简易的编辑器，收集题目用", notes = "/admin/collect_notepad.ftl")
+	@RequestMapping(value = "/admin/collect_notepad", method = RequestMethod.GET)
+	public String notepad() {
+		return "/admin/collect_notepad";
+	}
+
+	@ApiOperation(value = "图表最简单demo", notes = "/admin/echart_demo.ftl")
+	@RequestMapping(value = "/admin/echart_demo", method = RequestMethod.GET)
+	public String echatDemo() {
+		return "/admin/echart_demo";
+	}
+
+	@ApiOperation(value = "表单防止重复提交", notes = "/admin/echart_demo.ftl")
+	@RequestMapping(value = "/admin/resubmit_form", method = RequestMethod.GET)
+	public String resumit() {
+		return "/admin/resubmit_form";
 	}
 	
 	/**
 	 * bootstrap table 分页
 	 */
+	@ApiOperation(value = "基于bootstrap的表格", notes = "")
 	@ResponseBody
 	//@Authority(AuthorityTypeEnum.Validate)
 	@RequestMapping(value = "admin/account/bt", method = RequestMethod.GET)
@@ -74,28 +91,6 @@ public class TestPageController {
 		reMap.put("total", total);
 		reMap.put("rows", rows);
 		return reMap;
-	}
-	
-	/**
-	 * 首先，这个类 没有 被注解（@Authority）
-	 * 而 这个 url 是被 Authority拦截器 拦截下来了的
-	 * 进入拦截器方法后，authority=null，表示没有“权限”，直接返回 预定错误信息
-	 * 而只有当 拦截器验证 通过后，才会进入 方法体 内执行代码
-	 */
-	@Authority(AuthorityTypeEnum.Validate)
-	@RequestMapping(value = "admin/account/drag/index", method = RequestMethod.GET)
-	public String dragIndex(Model model) {
-		return "admin/eg_drag_in_row";
-	}
-	
-	/**
-	 * 接收 行拖拽 传到后台的数据
-	 */
-	@ResponseBody
-	@RequestMapping(value = "admin/account/drag/row", method = RequestMethod.GET)
-	public String dragRow(String jsonData) {
-		System.out.println(jsonData);
-        return "success";
 	}
 
 }

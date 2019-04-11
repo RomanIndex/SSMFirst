@@ -107,10 +107,10 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <#include "/admin/top_header.ftl">
+  <#include "/admin/master/top_header.ftl">
 
   <!-- Left side column. contains the logo and sidebar -->
-  <#include "/admin/left_menu.ftl">
+  <#include "/admin/master/left_menu.ftl">
   <!-- Content Wrapper. Contains page content -->
   
   <div class="content-wrapper">
@@ -148,7 +148,7 @@
   </footer>
 
   <!-- 右上方的页面布局、样式设置Control Sidebar -->
-  <#include "/admin/hide_setting.ftl">
+  <#include "/admin/master/hide_setting.ftl">
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

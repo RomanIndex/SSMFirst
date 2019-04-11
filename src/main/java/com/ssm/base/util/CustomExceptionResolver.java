@@ -68,7 +68,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver{
 
 		System.out.println("---------CustomExceptionResolver-----------》》》异常："+ exception);
 		
-        ModelAndView mv = new ModelAndView("admin/error");
+        ModelAndView mv = new ModelAndView("/admin/examples/error.ftl");
         return mv;
 	}
 

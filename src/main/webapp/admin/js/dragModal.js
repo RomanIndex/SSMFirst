@@ -7,6 +7,7 @@ var dragModal={
     moveTarget:null,
     topleng:0
 }
+
 $(document).on("mousedown",".modal-header",function(e){
     //webkit内核和火狐禁止文字被选中
     $('body').addClass('select')
@@ -21,13 +22,15 @@ $(document).on("mousedown",".modal-header",function(e){
     dragModal.mouseStartPoint = {"left":e.clientX,"top":  e.pageY};  
     dragModal.basePoint = dragModal.moveTarget.offset();  
     dragModal.topLeng=e.pageY-e.clientY;
-});  
-$(document).on("mouseup",function(e){       
+});
+
+$(document).on("mouseup",function(e){
     dragModal.mouseDragDown = false;  
     dragModal.moveTarget = undefined;  
     dragModal.mouseStartPoint = {"left":0,"top":  0};  
     dragModal.basePoint = {"left":0,"top":  0};  
-});  
+});
+
 $(document).on("mousemove",function(e){
     if(!dragModal.mouseDragDown || dragModal.moveTarget == undefined)return;          
     var mousX = e.clientX;  
@@ -57,7 +60,8 @@ $(document).on("mousemove",function(e){
         dragModal.mouseEndPoint.top = dragModal.mouseEndPoint.top - (dragModal.mouseStartPoint.top - dragModal.basePoint.top);           
     }
     dragModal.moveTarget.offset(dragModal.mouseEndPoint);  
-});   
+});
+
 $(document).on('hidden.bs.modal','.modal',function(e){
     $('.modal-dialog').css({'top': '0px','left': '0px'})
     $('body').removeClass('select')

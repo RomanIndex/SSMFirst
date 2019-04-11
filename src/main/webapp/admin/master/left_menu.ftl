@@ -4,7 +4,7 @@
      <!-- Sidebar user panel -->
      <div class="user-panel">
        <div class="pull-left image">
-         <img src="../admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
        </div>
        <div class="pull-left info">
          <p>Alexander Pierce</p>
@@ -48,7 +48,7 @@
          </span>
            </a>
            <ul class="treeview-menu">
-               <li><a href="base_import.ftl"><i class="fa fa-circle-o"></i>基础数据导入</a></li>
+               <li><a href="../ssm_import.ftl"><i class="fa fa-circle-o"></i>基础数据导入</a></li>
            </ul>
        </li>
        <!-- 测试菜单 -->
@@ -61,13 +61,16 @@
            </span>
          </a>
          <ul class="treeview-menu">
-           <li><a data-type="tabAdd" href="/admin/404.html"><i class="fa fa-circle-o"></i>不经过后台404页面</a></li>
-           <li><a data-type="tabAdd" data-url="/admin/account/index">用户管理（基础页面mapper/no master）</a></li>
-           <li><a data-type="tabAdd" data-url="/admin/eCharts/index">ECharts示例(data-url)</a></li>
-           <li><a data-type="tabAdd" data-url="/admin/account/edit/inline">行内编辑例子</a></li>
-           <li><a data-type="tabAdd" data-url="/freeView/bt_table_demo.html">bt表格Demo（freeView）</a></li>
-           <li><a data-type="tabAdd" data-url="/freeView/cron.html">cron tab页面（freeView）</a></li>
-           <li><a data-type="tabAdd" data-url="/admin/bt_and_vue">测试编辑器</a></li>
+           <li><a data-type="tabAdd" href="/admin/examples/404.html"><i class="fa fa-circle-o"></i>不经过后台404页面</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/account_index">SSM用户管理（--）</a></li>
+           <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_index">bootstrap_index（no master基于account）</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_edit">bootstrap_edit</a></li>
+           <li><a data-type="tabAdd" data-url="/admin/route/echart_demo">ECharts示例</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/collect_notepad">简易编辑器</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/resubmit_form">表单重复提交</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/ssm_import">SSM基础数据导入</a></li>
+             <li><a data-type="tabAdd" data-url="/freeView/bt_table_demo.html">bt表格Demo（freeView）</a></li>
+             <li><a data-type="tabAdd" data-url="/freeView/cron.html">cron tab页面（freeView）</a></li>
          </ul>
        </li>
        <li>

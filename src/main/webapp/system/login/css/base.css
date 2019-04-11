@@ -95,7 +95,7 @@ input[type=button],input[type=submit],input[type=text],input[type=password],text
     display: block;
     width: 53px;
     height: 53px;
-    background: url(../img/go.png) -5px 0px no-repeat;
+    background: url(../../../img/go.png) -5px 0px no-repeat;
 }
 .login_input a:hover{
 	background-position: -63px 0;
@@ -110,13 +110,13 @@ input[type=button],input[type=submit],input[type=text],input[type=password],text
 	color: #ffffff;
 	font-size: 12px;
 	padding-left: 25px;
-	background-image: url(../img/tick.png);
+	background-image: url(../../../img/tick.png);
 	background-repeat: no-repeat;
     background-size: 12px auto;
     background-position: 4px 1px;
 }
 .login_content .remember_me.checked{
-	background-image: url(../img/ticked.png);
+	background-image: url(../../../img/ticked.png);
 }
 .footer{
 	position: absolute;

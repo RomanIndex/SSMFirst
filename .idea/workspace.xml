@@ -9,25 +9,53 @@
     <list default="true" id="a8bd29c7-9431-4a4b-b788-c78c33f18684" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/base/util/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/base/util/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AuthTestAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AuthTestAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/base/util/CustomExceptionResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/base/util/CustomExceptionResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/EChartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/EChartsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jpa-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jpa-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/matchCenter.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/oauth2-redirect.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui-bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui-bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui-standalone-preset.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui-standalone-preset.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger-ui.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/swagger/swagger.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/TestPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ssm/base/web/TestPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/404.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/404.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/500.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/500.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/account_edit.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/bootstrap_edit.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/account_form.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/resubmit_form.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/account_index_noMaster.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/bootstrap_index.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/base_import.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/ssm_import.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/blank.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/blank.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/bt_and_vue.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/collect_notepad.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/eg_eCharts_index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/echart_demo.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/eg_edit_innerLine.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/error.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/error.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/hide_setting.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/master/hide_setting.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/index.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/index_old.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/account_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/account_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/common_time_handle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/dragModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/js/dragModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/js/eg_edit_innerLine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/left_menu.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/master/left_menu.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/login.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/lte_master.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/master/lte_master.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/master.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/old_master.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/powerPrompt.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/powerPrompt.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/tk_modal.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/examples/tk_modal.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/top_header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/master/top_header.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/date-util-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/date-util-api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/js.cookie.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/js/js.cookie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/particles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/js/particles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/system/login/js/stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/util/date.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/util/dateHandle.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,60 +92,62 @@
         <counts>
           <entry key="MF" value="1" />
           <entry key="bat" value="3" />
-          <entry key="class" value="78" />
-          <entry key="ftl" value="2" />
-          <entry key="html" value="1" />
-          <entry key="java" value="543" />
-          <entry key="js" value="4" />
+          <entry key="class" value="80" />
+          <entry key="ftl" value="39" />
+          <entry key="html" value="4" />
+          <entry key="java" value="567" />
+          <entry key="js" value="23" />
           <entry key="md" value="8" />
           <entry key="properties" value="20" />
           <entry key="sql" value="4" />
           <entry key="txt" value="2" />
-          <entry key="xml" value="95" />
+          <entry key="xml" value="98" />
           <entry key="xsd" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="78" />
-          <entry key="FTL" value="2" />
-          <entry key="HTML" value="1" />
-          <entry key="JAVA" value="543" />
-          <entry key="JavaScript" value="4" />
+          <entry key="CLASS" value="80" />
+          <entry key="FTL" value="39" />
+          <entry key="HTML" value="4" />
+          <entry key="JAVA" value="567" />
+          <entry key="JavaScript" value="23" />
           <entry key="Manifest" value="1" />
           <entry key="Markdown" value="8" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="20" />
           <entry key="SQL" value="4" />
-          <entry key="XML" value="97" />
+          <entry key="XML" value="100" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="class" value="47" />
           <entry key="dummy" value="95" />
-          <entry key="ftl" value="10" />
-          <entry key="java" value="12132" />
-          <entry key="js" value="46" />
+          <entry key="ftl" value="209" />
+          <entry key="html" value="36" />
+          <entry key="java" value="12667" />
+          <entry key="js" value="131" />
           <entry key="md" value="886" />
           <entry key="properties" value="286" />
           <entry key="sql" value="30" />
-          <entry key="txt" value="404" />
-          <entry key="xml" value="3084" />
+          <entry key="txt" value="416" />
+          <entry key="xml" value="3114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="47" />
-          <entry key="FTL" value="10" />
-          <entry key="JAVA" value="12130" />
-          <entry key="JavaScript" value="46" />
+          <entry key="FTL" value="209" />
+          <entry key="HTML" value="36" />
+          <entry key="JAVA" value="12665" />
+          <entry key="JavaScript" value="131" />
           <entry key="Markdown" value="886" />
-          <entry key="PLAIN_TEXT" value="499" />
+          <entry key="PLAIN_TEXT" value="511" />
           <entry key="Properties" value="286" />
           <entry key="RegExp" value="2" />
           <entry key="SQL" value="35" />
-          <entry key="XML" value="3079" />
+          <entry key="XML" value="3109" />
         </counts>
       </usages-collector>
     </session>
@@ -178,11 +208,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-92">
+              <caret line="128" column="129" lean-forward="true" selection-start-line="128" selection-start-column="129" selection-end-line="128" selection-end-column="129" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            <state relative-caret-position="483">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding>
                 <element signature="e#996#997#0" expanded="true" />
                 <element signature="e#1050#1051#0" expanded="true" />
@@ -190,7 +232,66 @@
                 <element signature="e#1236#1237#0" expanded="true" />
                 <element signature="e#1363#1364#0" expanded="true" />
                 <element signature="e#1412#1413#0" expanded="true" />
+                <element signature="e#1545#1546#0" expanded="true" />
+                <element signature="e#1594#1595#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="36" column="10" lean-forward="true" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/admin/AccountTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccount.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -202,9 +303,10 @@
       <list>
         <option value="FxmlFile" />
         <option value="Enum" />
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -229,29 +331,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/CommonJpaDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/CommonJpaDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/util/BeanUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccountRole.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmModule.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmPrivilege.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmRole.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmRolePrivilege.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/ModuleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/RoleService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/RoleServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/PrivilegeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/PrivilegeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountRoleService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountRoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/RolePrivilegeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/RolePrivilegeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/log.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AccountView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/dao/AccountMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/view/QueryModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/view/Result.java" />
@@ -261,9 +347,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/util/MyX509TrustManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/util/CookieHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/AccountJpaDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/freeView/nav_tabs_set.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/date-util-api.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/CommonService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/service/ReflectFieldService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccount.java" />
@@ -273,13 +357,31 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/service/CustomUUIDGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/util/HttpRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/common/util/BeanUtil.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/SwaggerConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc-config.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/jpa-config.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/util/SwaggerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/ssm/first_active.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/404.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/examples/powerPrompt.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/account_index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/js/dragModal.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/js/config.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/date-util-api.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/bt_and_vue.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/web/TestPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/admin/web/VisitPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/bootstrap_index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/system/login/login.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/master/left_menu.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_index.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml" />
       </list>
     </option>
   </component>
@@ -392,50 +494,6 @@
               <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ssm" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSMMaven" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSMMaven" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -473,7 +531,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554963814662" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554979277913" />
     <property name="last_opened_file_path" value="D:/GithubManage/springboot-multiple-dataSources-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -483,15 +541,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\IDEAtest\SSMMaven\src\main\resources\mybatis\admin" />
-      <recent name="D:\IDEAtest\SSMMaven\src\main\resources" />
-      <recent name="D:\IDEAtest\SSMMaven\src\main\resources\properties" />
-      <recent name="D:\IDEAtest\SSMMaven\src\main\resources\generate" />
-      <recent name="D:\IDEAtest\SSMMaven\src\main\resources\sql\oracle" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.ssm.common.util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\js" />
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\system\login\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.ssm.admin.web" />
@@ -500,8 +555,12 @@
       <recent name="com.ssm.admin.repository" />
       <recent name="com.ssm.common.dao" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\js" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\admin\examples" />
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\admin\master" />
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\system\login\css" />
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\system\login\js" />
+      <recent name="D:\IDEAtest\SSMMaven\src\main\webapp\system\login" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -684,9 +743,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AccountTest.getVoById" />
+        <item itemvalue="JUnit.AccountTest.jpaQuery" />
         <item itemvalue="JUnit.AccountTest.add" />
         <item itemvalue="JUnit.AccountTest.update" />
-        <item itemvalue="JUnit.AccountTest.jpaQuery" />
         <item itemvalue="JUnit.AccountTest.findBy" />
       </list>
     </recent_temporary>
@@ -727,7 +786,7 @@
       <workItem from="1554872629329" duration="5191000" />
       <workItem from="1554881739023" duration="4071000" />
       <workItem from="1554885995400" duration="23191000" />
-      <workItem from="1554963087239" duration="896000" />
+      <workItem from="1554963087239" duration="15573000" />
     </task>
     <task id="LOCAL-00001" summary="记录：第一次本地上传项目至github的过程">
       <created>1553693727799</created>
@@ -869,22 +928,17 @@
       <option name="project" value="LOCAL" />
       <updated>1554951678907</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="swagger整合优化，">
+      <created>1554964047603</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1554964047603</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AccountTest_add - 2019.04.10 at 18h 28m 44s.xml">
-      <configuration name="AccountTest.add" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AccountTest_add - 2019.04.10 at 18h 36m 45s.xml">
-      <configuration name="AccountTest.add" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AccountTest_add - 2019.04.11 at 09h 06m 36s.xml">
-      <configuration name="AccountTest.add" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AccountTest_getVoById - 2019.04.11 at 09h 07m 37s.xml">
-      <configuration name="AccountTest.getVoById" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AccountTest_jpaQuery - 2019.04.11 at 09h 08m 47s.xml">
       <configuration name="AccountTest.jpaQuery" configurationId="JUnit" />
     </history-entry>
@@ -903,9 +957,21 @@
     <history-entry file="AccountTest_add - 2019.04.11 at 10h 58m 54s.xml">
       <configuration name="AccountTest.add" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AccountTest_getVoById - 2019.04.11 at 14h 23m 08s.xml">
+      <configuration name="AccountTest.getVoById" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AccountTest_jpaQuery - 2019.04.11 at 14h 36m 32s.xml">
+      <configuration name="AccountTest.jpaQuery" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AccountTest_getVoById - 2019.04.11 at 15h 02m 11s.xml">
+      <configuration name="AccountTest.getVoById" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AccountTest_getVoById - 2019.04.11 at 18h 14m 34s.xml">
+      <configuration name="AccountTest.getVoById" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416103000" />
+    <option name="totallyTimeSpent" value="430780000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -920,7 +986,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27345416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23240939" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -930,8 +996,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.22860238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.728145" visible="true" weight="0.2881907" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.66791046" weight="0.30010834" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.728145" weight="0.46478873" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.66791046" visible="true" weight="0.38894907" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -982,7 +1048,8 @@
     <MESSAGE value="实体类继承SsmBaseEntity" />
     <MESSAGE value="大整理，sprin升5.x，jpa升2.x" />
     <MESSAGE value="pom.xml文件jar包整理和大致分类" />
-    <option name="LAST_COMMIT_MESSAGE" value="pom.xml文件jar包整理和大致分类" />
+    <MESSAGE value="swagger整合优化，" />
+    <option name="LAST_COMMIT_MESSAGE" value="swagger整合优化，" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -1023,386 +1090,320 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/param/AccountVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#251#252#0" expanded="true" />
-            <element signature="e#301#302#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#378#379#0" expanded="true" />
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/data/spring-data-jpa/2.0.9.RELEASE/spring-data-jpa-2.0.9.RELEASE.jar!/org/springframework/data/jpa/repository/JpaRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="15" column="108" lean-forward="true" selection-start-line="15" selection-start-column="108" selection-end-line="15" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/data/spring-data-commons/2.0.9.RELEASE/spring-data-commons-2.0.9.RELEASE.jar!/org/springframework/data/repository/query/QueryByExampleExecutor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="13" column="44" lean-forward="true" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/ReflectFieldTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/ModuleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/view/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="37" column="50" lean-forward="true" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#820#821#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/data/spring-data-commons/2.0.9.RELEASE/spring-data-commons-2.0.9.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="15" column="34" lean-forward="true" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/hibernate/hibernate-core/5.4.0.Final/hibernate-core-5.4.0.Final.jar!/org/hibernate/id/UUIDGenerator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/util/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/HttpHelper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/util/AESUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="84" column="57" selection-start-line="84" selection-start-column="57" selection-end-line="84" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/util/MyX509TrustManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/intercept/GcwOldInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/HttpRequest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/CookieHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1641">
-          <caret line="131" column="5" lean-forward="true" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/IPUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-717">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/freeView/nav_tabs_set.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common-api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-354">
-          <caret line="61" column="29" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/date-util-api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/daoJpa/AccountJpaDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/ReflectFieldService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="73" column="91" lean-forward="true" selection-start-line="73" selection-start-column="91" selection-end-line="73" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/data/spring-data-commons/1.13.3.RELEASE/spring-data-commons-1.13.3.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmBaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/CommonService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="20" column="28" lean-forward="true" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/spring-orm/5.0.8.RELEASE/spring-orm-5.0.8.RELEASE.jar!/org/springframework/orm/jpa/JpaTransactionManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="45" column="54" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/Base64Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/service/CustomUUIDGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="17" column="65" lean-forward="true" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/CommonServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3266">
-          <caret line="160" column="52" lean-forward="true" selection-start-line="160" selection-start-column="52" selection-end-line="160" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/util/HttpRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="68" column="31" lean-forward="true" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/FileUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/JavaSmsApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1317">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/FileService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/service/CreateOracleTableSqlService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-230">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/util/BeanUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/MavenStore/repository/org/springframework/spring-core/5.1.5.RELEASE/spring-core-5.1.5.RELEASE.jar!/org/springframework/util/ReflectionUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="399" column="38" lean-forward="true" selection-start-line="399" selection-start-column="38" selection-end-line="399" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/swagger/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-core-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1541">
-          <caret line="73" column="53" lean-forward="true" selection-start-line="73" selection-start-column="53" selection-end-line="73" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/web/SwaggerConfig.java" />
-    <entry file="jar://E:/MavenStore/repository/io/swagger/swagger-annotations/1.5.13/swagger-annotations-1.5.13-sources.jar!/io/swagger/annotations/Api.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1801">
-          <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/common/service/TestStudentService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="200" column="21" selection-start-line="200" selection-start-column="21" selection-end-line="200" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1867#1868#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#2296#2297#0" expanded="true" />
-            <element signature="e#2329#2330#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/jpa-config.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="41" column="64" lean-forward="true" selection-start-line="41" selection-start-column="64" selection-end-line="41" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/ssm/first_active.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/examples/error.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/master/hide_setting.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3640" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/examples/404.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-167">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/examples/blank.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/examples/tk_modal.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1541">
+          <caret line="67" column="38" lean-forward="true" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/ssm_import.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/eg_edit_innerLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1127">
+          <caret line="49" column="59" lean-forward="true" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/eg_edit_innerLine.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-949" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/bootstrap_edit.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5842">
+          <caret line="254" column="10" lean-forward="true" selection-start-line="254" selection-start-column="10" selection-end-line="254" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328">
+          <caret line="130" column="14" lean-forward="true" selection-start-line="130" selection-start-column="14" selection-end-line="130" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/index_old.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/picture-api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1196">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/account_index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/dragModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/eg_echart_cpx.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/eg_echart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/examples/powerPrompt.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
-          <caret line="24" column="54" lean-forward="true" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/util/SwaggerConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        <state relative-caret-position="371">
+          <caret line="62" column="33" lean-forward="true" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="897">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/util/date.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/common_time_handle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="131" column="49" lean-forward="true" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/summernote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#95#102#1" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#!!top" expanded="true" />
+            <element signature="e#66#72#0" expanded="true" />
+            <element signature="e#72#78#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1495">
-          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+        <state relative-caret-position="251">
+          <caret line="83" column="37" lean-forward="true" selection-start-line="83" selection-start-column="37" selection-end-line="83" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/admin/AccountTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/bt_fileInput.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="207">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/date-util-api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="85" column="33" lean-forward="true" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/util/dateHandle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/common-api.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/resubmit_form.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-121">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/collect_notepad.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="57" lean-forward="true" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/old_master.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/master/lte_master.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/web/TestPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="48" column="36" lean-forward="true" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1814#1815#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccount.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/base/web/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        <state relative-caret-position="1334">
+          <caret line="95" column="48" lean-forward="true" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/bootstrap_index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="182" column="21" lean-forward="true" selection-start-line="182" selection-start-column="21" selection-end-line="182" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/echart_demo.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="83" column="52" lean-forward="true" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/system/login/login.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="67" lean-forward="true" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/master/left_menu.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2461">
+          <caret line="107" column="43" lean-forward="true" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/web/VisitPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="44" column="40" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/web/AccountController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        <state relative-caret-position="483">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding>
             <element signature="e#996#997#0" expanded="true" />
             <element signature="e#1050#1051#0" expanded="true" />
@@ -1410,7 +1411,64 @@
             <element signature="e#1236#1237#0" expanded="true" />
             <element signature="e#1363#1364#0" expanded="true" />
             <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1545#1546#0" expanded="true" />
+            <element signature="e#1594#1595#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/admin/js/bootstrap_index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="128" column="129" lean-forward="true" selection-start-line="128" selection-start-column="129" selection-end-line="128" selection-end-column="129" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/entity/SsmAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/service/impl/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ssm/admin/view/AdminQueryView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/admin/account.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="36" column="10" lean-forward="true" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ssm/admin/AccountTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
         </state>
       </provider>
     </entry>

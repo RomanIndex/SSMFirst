@@ -5,8 +5,8 @@
         <meta charset="utf-8" />
         <title>SSM管理平台login页面</title>
         <LINK rel="shortcut icon" href="/images/favicon.ico">
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="/system/login/css/style.css" />
+        <link rel="stylesheet" href="/system/login/css/base.css" />
         <style>
 	      .baseBody {background-image: linear-gradient(312deg, rgb(58, 231, 243) 0%, rgb(30, 150, 229) 100%); height: 100%;}
 	    </style>
@@ -56,11 +56,11 @@
         </div>
         
     </body>
-    <script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
-    <script src="../webPlug/layer/layer.js"></script>
-    <script src="/js/particles.js" ></script>
-    <script src="/js/app.js" ></script>
-    <script src="/js/stats.js" ></script>
-    <script src="/js/js.cookie.js"></script>
-    <script src="/js/login.js"></script>
+    <script src="../../webPlug/jquery/jquery-2.2.4.min.js"></script>
+    <script src="../../webPlug/layer/layer.js"></script>
+    <script src="/system/login/js/particles.js" ></script>
+    <script src="/system/login/js/app.js" ></script>
+    <script src="/system/login/js/stats.js" ></script>
+    <script src="/system/login/js/js.cookie.js"></script>
+    <script src="/system/login/js/login.js"></script>
 </html>

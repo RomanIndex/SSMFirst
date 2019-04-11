@@ -66,13 +66,9 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 	@Override
 	public Result<?> jpaQuery(AdminQueryView query) {
 		//Sort sort = new Sort(Sort.Direction direction, List<String> properties)//多属性的Sort实例
-		//Sort.Order order = new Sort.Order(Sort.Direction.DESC, "id", Sort.NullHandling.NATIVE);
-		//Sort idSort = new Sort(Sort.Direction.DESC, "createTime");
-		Sort sort = new Sort(Sort.Direction.DESC, "createTime");//.and(idSort);
+		Sort sort = Sort.by(Sort.Direction.DESC, "createTime");//2.x写法，推荐
 
-		//Pageable pageable = new PageRequest(int page, int size, Sort sort);//参数
-		//Pageable pageable = new PageRequest(query.getPageNo(), query.getPageSize(), sort).next();//.next()等分页遍历方法
-		Pageable pageable = new PageRequest(query.getPageNo() - 1, query.getPageSize(), sort);
+		Pageable pageable = PageRequest.of(query.getPageNo() - 1, query.getPageSize(), sort);//2.x写法，推荐
 		//Pageable pageableNest = pageable.next();
 
 		Page<SsmAccount> pageData = this.page(pageable);//js取值也要对应的改
@@ -93,7 +89,7 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 		pageModel.setPageSize(query.getPageSize());
 		pageModel.setList(accountMapper.query(query));
 
-		return new Result<>(0, "", null, pageModel);
+		return Result.success(pageModel);
 	}
 
 	/* -------------------------Mapper 的一套实现逻辑【可谓标准化、极速开发】------------------------------------ */

@@ -1,3 +1,65 @@
+// local 本地; dev 开发环境; test 测试环境; pub 生产环境
+var ACTIVE = 'TEST'; //【上线前注意调整】
+var ACCOUNT = Cookies.get('account'); //当前用户
+var ACCESS_TOKEN = Cookies.get('accessToken');
+var OTC_LOGIN_ACCOUNT = Cookies.get('account');
+
+// 配置域名信息
+var CONFIGLIST = {
+    'LOCAL': {
+        'DOMAIN':  'http://localhost:8080',
+    },
+    'PUB': {
+        'DOMAIN':  'http://zzroman.com',
+    }
+};
+
+var CONFIG = CONFIGLIST[ACTIVE];  //页面通过该变量直接引用，不要删除
+var DOMAIN = CONFIG.DOMAIN;		  //配置当前公众号使用哪个域名，有页面通过该变量直接引用，不要删除
+var API_DOMAIN = CONFIG.OTC_CORE;
+var API_FILE = CONFIG.FILE;
+
+// 获取URL中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);  //获取url中"?"符后的字符串并正则匹配
+    var context = "";
+    if (r != null)
+        context = r[2];
+    reg = null;
+    r = null;
+    return context == null || context == "" || context == "undefined" ? "" : context;
+}
+
+//获取cookies
+function getCookie(cookieName) {
+    var strCookie = decodeURI(document.cookie);
+    var arrCookie = strCookie.split("; ");
+    for (var i = 0; i < arrCookie.length; i++) {
+        var arr = arrCookie[i].split("=");
+        if (cookieName == arr[0]) {
+            return arr[1];
+        }
+    }
+    return "";
+}
+
+// 网络请求配置
+/*
+$.ajaxSetup({
+    beforeSend: function(xhr) {
+        var url = arguments[1].url;
+
+        if(url.indexOf("fdfs/uploadFile") != -1 || url.indexOf("dripAward/import") != -1){
+            //。。。
+        }else if(arguments[1].type == "POST" || arguments[1].type == "post"){
+            arguments[1].data += "&access_token="+ACCESS_TOKEN;
+        }else{
+            arguments[1].url += "&access_token="+ACCESS_TOKEN;
+        }
+    }
+});*/
+
 var config_contextPath = "assda";
 //ajax预处理 和 后置处理，用于权限控制的页面控制
 /*if(window.jQuery){
@@ -41,76 +103,3 @@ var config_contextPath = "assda";
         }
     });
 }*/
-
-function formatStatus(data){
-	return data == 0 ? "无效" : data == 1 ? "有效" : "";
-}
-
-function changeLength(obj, textArea){
-	var txtval = obj.val().length;
-	var str = parseInt(250 - txtval);
-    if(str > 0 ){
-    	textArea.html('剩余可输入'+str+'字');
-    }else {
-    	textArea.html('剩余可输入0字');
-    	obj.val(obj.val().substring(0, 250));
-    }
-}
-
-//判断字符串长度
-var getBLen = function(str) {
-	if (str == null)
-		return 0;
-	if (typeof str != "string") {
-		str += "";
-	}
-	return str.replace(/[^x00-xff]/g, "01").length;
-}
-
-function clearForm(formId){
-	$("#tk").html("");
-	$("#"+ formId).get(0).reset();
-	$("#"+ formId +" :input").not(":button, :submit, :reset, :hidden, :checkbox, :radio").val("");
-	$("#"+ formId +" :input").removeAttr("checked").removeAttr("disabled")//.remove("selected");
-	$("#"+ formId +" textarea").text("")
-}
-
-String.format = function() {
-    if (arguments.length == 0)
-        return null;
-    var str = arguments[0];
-    for ( var i = 1; i < arguments.length; i++) {
-        var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
-        str = str.replace(re, arguments[i]);
-    }
-    return str;
-};
-
-//公共处理表单，入参：表单ID
-function getFormObj(formId){
-	var init_data = $('#'+ formId).serialize();//string类型，空格转加号（+）
-	var reg_data = init_data.replace(/\+/g, " ");
-	var data = decodeURIComponent(reg_data, true);
-	var param = parseQuery(data);
-	return param;
-}
-
-var parseQuery = function (query) {
-	var reg = /([^=&]+)[=\s]*([^&]*)/g;
-	var obj = {};
-	while (reg.exec(query)) {
-		obj[RegExp.$1] = RegExp.$2;
-	}
-	return obj;
-};
-
-function checkInlegalChar(param){
-	var flag = false;
-	$.each(param, function(i, item){
-		if(item.indexOf("'") >= 0){
-			flag = true;
-			return false;
-		}
-	})
-	return flag;
-}

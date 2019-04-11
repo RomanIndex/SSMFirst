@@ -47,11 +47,11 @@ public class AccountController {
 
     @ApiOperation(value = "删除用户", notes = "O(∩_∩)O哈哈~")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "员工编号", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "empNo", value = "员工编号", required = true, dataType = "String", paramType = "query"),
     })
     @ResponseBody
     @RequestMapping(value = "/del", method = RequestMethod.POST)
-    public Result<?> del(String id) {
-        return accountService.deleteById(id);
+    public Result<?> del(String empNo) {
+        return accountService.deleteById(empNo);
     }
 }

@@ -11,7 +11,7 @@ public class EChartsController {
 	
 	@RequestMapping(value = "admin/eCharts/index", method = RequestMethod.GET)
 	public String dragIndex(Model model) {
-		return "admin/eg_eCharts_index";
+		return "/admin/echart_demo.ftl";
 	}
 	
 	/**

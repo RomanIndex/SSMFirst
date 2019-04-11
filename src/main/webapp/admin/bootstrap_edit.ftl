@@ -272,5 +272,5 @@
     <script src='../js/util/date.js'></script><!-- 一些公共处理，如日期类的JS，推荐引入 -->
     <script src="../admin/js/common.js"></script>
     <script src="../admin/js/common_time_handle.js"></script>
-    <script src='../admin/js/account_edit.js'></script>
+    <script src='../admin/js/bootstrap_edit.js'></script>
 </html>

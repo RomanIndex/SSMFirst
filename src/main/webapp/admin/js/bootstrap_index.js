@@ -91,13 +91,13 @@ function initTable() {
 		"searchDelay" : 3000,
 		"serverSide": true,
 		"ajax" : function (data, callback, settings) {
-			var param = getFormObj("teamForm");
-			if(checkInlegalChar(param)){layer.msg("有不合法字符，请重新输入");return false}
+			var param = commonApi.form.getFormObj("teamForm");
+			if(commonApi.form.checkIllegalChar(param)){layer.msg("有不合法字符，请重新输入");return false}
 			param.pageNo = (data.start / data.length) + 1;
 			param.pageSize = data.length;
 			 $.ajax({
-				  type: "POST",
-				  url: "admin/account/mapperQuery",
+				  type: "GET",
+				  url: "ssm/admin/account/query",
 				  cache: false,
 				  data: param,
 				  dataType: "json",
@@ -126,7 +126,7 @@ function initTable() {
 		  { "data": "email", "title":"邮箱"},
 		  { "data": "address", "title":"地址" },
 		  { "data": "onlineStatus", "title":"在线" },
-		  { "data": "status", "title":"状态", "render": function (data, type, full, meta) {return formatStatus(data);}},
+		  { "data": "status", "title":"状态", "render": function (data, type, full, meta) {return commonApi.format.status(data);}},
 		  { "data": "createTime", "title":"创建时间", "render": function (data, type, full, meta) {return formatDate(data);}},
 		  { "data": null, "title":"操作", "render": function (data, type, full, meta) {
 				var re = '<a onclick="accountApi.getAccountDetail(this)"><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true"></a>'

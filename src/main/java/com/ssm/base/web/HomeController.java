@@ -44,50 +44,13 @@ public class HomeController {
 	 * 首先通过 filter 的校样（因为是有效登录状态，放行），然后被 权限 拦截器 拦截时，返回“无权限页面”
 	 * ：：：也行这个url比较特殊，一些 特殊页面 可以 类似处理
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String blank(Model model) {
-	    return "redirect:/login";
-	}
-	
-	@RequestMapping(value = "admin", method = RequestMethod.GET)
-	public String login(Model model){
-	    return "redirect:/admin/index";
-	}
-	
-	@RequestMapping(value = "index", method = RequestMethod.GET)
-    public String index1(Model model) {
-	    return "redirect:/admin/index";
-    }
-	
-	@RequestMapping(value = "admin/index", method = RequestMethod.GET)
-    public String index(Model model) {
-	    return "admin/index";
-    }
-	
-	/**
-	 * 无权限操作 提示页面
-	 */
-	@RequestMapping(value = "admin/noAuthority/page", method = RequestMethod.GET)
-	public String noAuthorityPage(Model model) {
-		//return "admin/powerPrompt";
-		return "admin/404";
-	}
-	
-	@RequestMapping(value = "welcome", method = RequestMethod.GET)
-    public String welcome(Model model) {
-	    return "admin/welcome";
-    }
-	
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login() {
-        return "admin/login";
-    }
 	
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
-        //HttpHelper.getRequest().getSession().removeAttribute(Config.SECURITY_LOGIN_KEY);
-        //HttpHelper.getRequest().getSession().removeAttribute("menu");
-        return "admin/login";
+        HttpRequest.getRequest().getSession().removeAttribute(Config.SECURITY_LOGIN_KEY);
+		HttpRequest.getRequest().getSession().removeAttribute("menu");
+        //return "/system/login/login.ftl";
+		return "/system/login/login";
     }
 	
     @ApiOperation(value = "登录账号密码校样", notes="可以选择免登录，有效时间*天", response = Result.class)
@@ -130,7 +93,7 @@ public class HomeController {
 			session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
 			result.setCode(0);
 			result.setMsg("登录成功，正在前往首页...");
-			result.setData("admin/index");
+			result.setData("admin/route/index");
         }
 
         return result;

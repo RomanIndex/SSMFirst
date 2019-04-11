@@ -33,7 +33,7 @@ public class AuthTestAccountController {
 	@Authority(AuthorityTypeEnum.Validate)//不加直接返回“无权限访问页面”
 	@RequestMapping(value = "admin/account/index", method = RequestMethod.GET)
 	public String index() {
-		return "admin/account_index_noMaster";
+		return "/admin/bootstrap_index.ftl";
 	}
 	
 	@ResponseBody
@@ -63,7 +63,7 @@ public class AuthTestAccountController {
 	public String preventForm(HttpServletRequest request, Model model){
 		String token = CheckSubmitUtil.addSubmitToken(request);//alt+enter（创建方法）
         model.addAttribute("token", token);
-        return "admin/account_form";
+        return "/admin/resubmit_form.ftl";
 	}
 	
 	//提交表单及校样
@@ -95,13 +95,13 @@ public class AuthTestAccountController {
 	@Authority
 	@RequestMapping(value="admin/account/add", method = RequestMethod.GET)
 	public String add(){
-		return "admin/account_edit";
+		return "/admin/bootstrap_edit.ftl";
 	}
 	
 	@Authority
 	@RequestMapping(value="admin/account/update", method = RequestMethod.GET)
 	public String update() {
-		return "admin/account_edit";
+		return "/admin/bootstrap_edit.ftl";
 	}
 	
 	@ResponseBody

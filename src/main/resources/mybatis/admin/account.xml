@@ -29,7 +29,7 @@
   <select id="getCount" resultType="int">
     select count(1) from (
         <include refid="base_query" />
-    )
+    ) rp
   </select>
   
   <select id="query" resultMap="BaseResultMap">
@@ -56,7 +56,7 @@
 
   <sql id="where_sql">
     <where>
-        <if test="name != null and name != ''">a.name like '%${name}%'</if>
+        <if test="accountKeyword != null and accountKeyword != ''">a.name like '%${accountKeyword}%'</if>
         <!-- <if test="query.isAward != null" >AND decode(ar.award_type, '', 0, 1) = #{query.isAward}</if>
         <if test="query.scanDate != null">AND #{query.scanDate} = extract(day from m.create_time)</if> -->
     </where>

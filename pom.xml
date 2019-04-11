@@ -235,6 +235,7 @@
             <version>1.2.44</version>
         </dependency>
 
+        <!-- 有些jar包里面有用到这种 解析json-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>

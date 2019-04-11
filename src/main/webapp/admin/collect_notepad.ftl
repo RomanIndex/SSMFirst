@@ -1,6 +1,6 @@
 <#import "admin/lte_master.ftl" as my>
 <@my.page 
-    title="医患咨询报表"
+    title="轻量编辑器"
     css="
         <link rel='stylesheet' href='../admin/css/bootstrap-clearmin.min.css'>
         <link rel='stylesheet' href='../admin/css/summernote.css'>

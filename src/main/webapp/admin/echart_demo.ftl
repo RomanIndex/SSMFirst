@@ -87,7 +87,7 @@
     
     <!-- ${script} js -->
     <script src='../js/util/date.js'></script><!-- 一些公共处理，如日期类的JS，推荐引入 -->
-    <script src='../admin/js/account_index.js'></script>
+    <script src='../admin/js/bootstrap_index.js'></script>
     <script src="../admin/js/fileInput.js"></script>
     <script src="../admin/js/dragModal.js"></script>
     <!-- <script src="../admin/js/eg_echart_cpx.js"></script> --><!-- 可动态拖拽 -->
