@@ -21,7 +21,7 @@ public class AccountTest {
 
     @Test
     public void getVoById(){
-        String empNo = "YH6666";
+        String empNo = "YH477675";
         AccountVo vo = accountImpl.getVoById(empNo);
         //SsmAccount account = accountService.getById(empNo);
         System.out.println(JSON.toJSON(vo));

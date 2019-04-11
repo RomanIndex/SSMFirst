@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class CustomUUIDGenerator extends UUIDGenerator {
     ArtificialKeyService keyService = new ArtificialKeyService();
 
-    //@Override
+    @Override
     public Serializable generate(SessionImplementor session, Object object) throws HibernateException {
         System.out.println("CustomUUIDGenerator Object："+ object);
         //先获取主键属性名
