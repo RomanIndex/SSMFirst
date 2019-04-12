@@ -7,53 +7,57 @@
     <packaging>war</packaging>
     <name>SSM Maven搭建</name>
 
+    <properties>
+        <spring.version>5.1.5.RELEASE</spring.version>
+    </properties>
+
     <dependencies>
         <!-- **************spring全家桶 base包************************ -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- *****************日志包*****************-->
@@ -100,24 +104,21 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <!-- jdk8版本不能用5.4.0，报module-info.java几个jar包的错，因为模块化是jdk9的新特性 -->
-            <!--<version>5.4.0.Final</version>-->
-            <!--<version>4.3.8.Final</version>-->
-            <version>5.0.12.Final</version>
+            <version>5.4.0.Final</version>
         </dependency>
 
         <!-- spring data jpa 数据库持久层 -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>2.0.9.RELEASE</version>
+            <version>2.1.5.RELEASE</version>
             <!--<version>1.11.3.RELEASE</version>-->
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <!--<version>5.4.0.Final</version> 自定义主键会失效-->
-            <!--<version>4.3.8.Final</version>-->
-            <version>5.0.12.Final</version>
+            <!-- 自定义主键会失效？看源码已修复-->
+            <version>5.4.0.Final</version>
         </dependency>
 
         <!-- javaBean 自动校样 -->

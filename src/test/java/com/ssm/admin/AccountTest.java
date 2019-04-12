@@ -21,7 +21,7 @@ public class AccountTest {
 
     @Test
     public void getVoById(){
-        String empNo = "YH477675";
+        String empNo = "YH184391";
         AccountVo vo = accountImpl.getVoById(empNo);
         //SsmAccount account = accountService.getById(empNo);
         System.out.println(JSON.toJSON(vo));
@@ -33,6 +33,15 @@ public class AccountTest {
         query.setPageNo(1);
         query.setPageSize(10);
         Result result = accountService.jpaQuery(query);
+        System.out.println(JSON.toJSON(result.getData()));
+    }
+
+    @Test
+    public void query(){
+        AdminQueryView query = new AdminQueryView();
+        query.setPageNo(1);
+        query.setPageSize(10);
+        Result result = accountService.query(query);
         System.out.println(JSON.toJSON(result.getData()));
     }
 

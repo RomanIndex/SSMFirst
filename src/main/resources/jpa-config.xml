@@ -27,18 +27,19 @@
         </property>
         <!-- 指定Jpa持久化实现厂商类,这里以Hibernate为例 -->
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="database" value="MYSQL" />
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+            </bean>
         </property>
         <property name="jpaProperties">
             <props>
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
-                <!-- 生成数据库名称驼峰 转 下划线，一定要放开-->
-                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-                <!--<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>-->
-                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
-                <prop key="hibernate.show_sql">false</prop>
+                <!-- 生成数据库名称驼峰 转 下划线，一定要放开，下面的hibernate5已经不支持 -->
+                <!--<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>-->
+                <prop key="hibernate.implicit_naming_strategy">org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl</prop>
+                <prop key="hibernate.physical_naming_strategy">com.ssm.common.service.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
-                <!--<prop key="hibernate.hbm2ddl.auto">validate</prop>-->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>

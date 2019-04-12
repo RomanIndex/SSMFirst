@@ -46,9 +46,9 @@
            r.role_id,
            r.NAME role_name,
            a.*
-      FROM ssm_account a
-      LEFT JOIN ssm_account_role ar ON ar.emp_no = a.emp_no
-      LEFT JOIN ssm_role r ON r.role_id = ar.role_id,
+      FROM SSM_ACCOUNT a
+      LEFT JOIN SSM_ACCOUNT_ROLE ar ON ar.emp_no = a.emp_no
+      LEFT JOIN SSM_ROLE r ON r.role_id = ar.role_id,
            (SELECT @curSeq := 0) pg
            <include refid="where_sql" />
      ORDER BY a.create_time DESC

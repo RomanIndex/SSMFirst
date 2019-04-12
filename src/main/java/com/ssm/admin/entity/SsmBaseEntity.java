@@ -16,13 +16,13 @@ public abstract class SsmBaseEntity implements Serializable {
     @CreationTimestamp
     private Date createTime;//强烈建议，时间字段，统一用服务器的，不要用数据库的
 
-    @Column(length = 32 )
+    @Column(length = 32)
     private String createUser;
 
     @UpdateTimestamp
     private Date updateTime;
 
-    @Column(length = 32 )
+    @Column(length = 32)
     private String updateUser;
 
     private boolean status = true;
