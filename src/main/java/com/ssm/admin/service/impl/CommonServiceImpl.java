@@ -157,8 +157,10 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
             return Result.fail("数据库没查到该 主键 数据，更新终止！");
         }
 
-        T source= this.baseRepository.getOne(this.getIdValue(entity));
-        BeanUtil.copyNullProperties(source, entity);
+        //T source= this.baseRepository.getOne(this.getIdValue(entity));
+        Optional<T> source = this.baseRepository.findById(this.getIdValue(entity));
+
+        BeanUtil.copyNullProperties(source.get(), entity);
 
         entity = this.baseRepository.saveAndFlush(entity);
 

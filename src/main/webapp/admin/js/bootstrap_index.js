@@ -48,7 +48,7 @@ $(document).on("click", "#save", function(){
  * 表单重复提交
  */
 function submitForm(){
-	window.parent.openNewTab("测试表单重复提交", "/admin/account/gotoForm")
+	window.parent.openNewTab("测试表单重复提交", "/admin/route/resubmit_form")
 }
 /**
  * 行点击事件

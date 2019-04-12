@@ -34,7 +34,7 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 	/* ---View用于mabatis，map可继承；Vo是给 调用接口返回的对象，要极具扩展性-- */
 
 	@Override
-	public AccountVo getVoById(String empNo) {
+	public Result<?> getVoById(String empNo) {
 
 		/* 公共JPA的查询 */
 		SsmAccount jpaAccount = this.getById(empNo);
@@ -60,7 +60,7 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 		/*SsmAccount mapperAccount = accountMapper.selectOne(record);
 		System.out.println("Mapper查询："+ JSON.toJSONString(mapperAccount));*/
 
-		return null;
+		return Result.success(null);
 	}
 
 	@Override

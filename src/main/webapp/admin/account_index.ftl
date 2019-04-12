@@ -5,8 +5,6 @@ css="
     <link rel='stylesheet' href='../otc/css/fix.css'/>
     "
 script="
-    <script src='../otc/js/config.js'></script>
-    <script src='../otc/js/api_config.js'></script>
     <script src='../js/picture.js'></script>
     <script src='../otc/dnh/js/banner_index.js?v2'></script>
     "

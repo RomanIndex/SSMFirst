@@ -5,6 +5,7 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
 import java.beans.PropertyDescriptor;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,6 +38,7 @@ public class BeanUtil {
             if (value != null) noEmptyName.add(p.getName());
         }
         String[] result = new String[noEmptyName.size()];
+        noEmptyName.stream().forEach(i -> System.out.println("，"+ i));
         return noEmptyName.toArray(result);
     }
 }

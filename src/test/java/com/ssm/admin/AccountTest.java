@@ -57,10 +57,10 @@ public class AccountTest {
     @Test
     public void update(){
         SsmAccount account = new SsmAccount();
-        account.setEmpNo("YH550816");
+        account.setEmpNo("YH172345");
         account.setName("张三"+ (int)(Math.random() * 10000));
-        //account.setEmail("^_^@qq.com");
-        //account.setMobile("120");
+        account.setEmail("^_^@16333.com");
+        account.setMobile("6789");
         Result result = accountService.update(account);
         System.out.println(JSON.toJSON(result));
     }
