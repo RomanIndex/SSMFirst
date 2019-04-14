@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @MappedSuperclass
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance//允许子类继承父类的注解：An entity cannot be annotated with both @Inheritance and @MappedSuperclass
 public abstract class SsmBaseEntity implements Serializable {
 
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm")

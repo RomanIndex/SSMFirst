@@ -97,6 +97,11 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
         return list == null ? new ArrayList<>() : list;
     }
 
+    @Override
+    public List<T> selectAll() {
+        return this.baseRepository.findAll();
+    }
+
     /**
      *  删除
      */

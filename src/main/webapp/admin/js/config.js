@@ -1,8 +1,9 @@
 // local 本地; dev 开发环境; test 测试环境; pub 生产环境
-var ACTIVE = 'TEST'; //【上线前注意调整】
-var ACCOUNT = Cookies.get('account'); //当前用户
-var ACCESS_TOKEN = Cookies.get('accessToken');
-var OTC_LOGIN_ACCOUNT = Cookies.get('account');
+var ACTIVE = 'LOCAL'; //【上线前注意调整】
+
+//var ACCOUNT = Cookies.get('account'); //当前用户
+//var ACCESS_TOKEN = Cookies.get('accessToken');
+//var OTC_LOGIN_ACCOUNT = Cookies.get('account');
 
 // 配置域名信息
 var CONFIGLIST = {
@@ -14,10 +15,10 @@ var CONFIGLIST = {
     }
 };
 
+var api = {};//所有页面api
+
 var CONFIG = CONFIGLIST[ACTIVE];  //页面通过该变量直接引用，不要删除
 var DOMAIN = CONFIG.DOMAIN;		  //配置当前公众号使用哪个域名，有页面通过该变量直接引用，不要删除
-var API_DOMAIN = CONFIG.OTC_CORE;
-var API_FILE = CONFIG.FILE;
 
 // 获取URL中的参数
 function getUrlParam(name) {
@@ -32,7 +33,7 @@ function getUrlParam(name) {
 }
 
 //获取cookies
-function getCookie(cookieName) {
+/*function getCookie(cookieName) {
     var strCookie = decodeURI(document.cookie);
     var arrCookie = strCookie.split("; ");
     for (var i = 0; i < arrCookie.length; i++) {
@@ -42,7 +43,7 @@ function getCookie(cookieName) {
         }
     }
     return "";
-}
+}*/
 
 // 网络请求配置
 /*

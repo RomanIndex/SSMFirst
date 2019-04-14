@@ -47,4 +47,9 @@ public class AccountController {
     public Result<?> del(String empNo) {
         return accountService.deleteById(empNo);
     }
+
+    @RequestMapping(value = "/getRole", method = RequestMethod.GET)
+    public Result<?> add(String empNo) {
+        return accountService.getRoleByEmpNo(empNo);
+    }
 }

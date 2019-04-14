@@ -1,0 +1,77 @@
+<style>
+.form-group label {
+	white-space:  nowrap;
+}
+</style>
+<!--这里用js render，方便，要Y轴滚动 -->
+<div class="modal fade bs-example-modal-lg in" id="tkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    style="display: none; padding-right: 10px; overflow-y: auto;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="myModalLabel">ACCOUNT操作</h3>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+
+                <form class="form-horizontal" id="inputForm" autocomplete="off">
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">员工编号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="" name="empNo" class="form-control col-md-12">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">名称：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="" name="name" class="form-control col-md-12">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">电话：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="" name="mobile" class="form-control col-md-12">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">邮箱：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="" name="email" class="form-control col-md-12">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">登陆首页：</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="" name="loginUrl" class="form-control col-md-12">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">来源：</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="source" name="source">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </form>
+
+                <div class="error_tips error_tips1">
+                    <span id="" style="color: red; margin-left: 27%">错误提示！！！！</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="api.account.save(this)" id="save">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

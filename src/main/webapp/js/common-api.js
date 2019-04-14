@@ -47,6 +47,125 @@ commonApi.format = {
     }
 }
 
+/**
+ * 公共 根据权限控制 页面元素 的显隐
+ * @param hasAry 拥有的权限数组
+ * @param doms 页面需要进行控制的元素
+ * @returns
+ */
+function ssmAuthCtr(hasAry, doms){
+    $.each(doms, function(index, item){
+        var that = $(this);
+        var idDom = that.attr("id");
+        var classDoms = that.attr("class");
+
+        $.each(hasAry, function(i, each){
+            if(each == "#"+ idDom){
+                that.show();
+            }
+            var name = each.replace("\.", "");
+            if(classDoms.indexOf(name) >= 0){
+                that.show();
+            }
+        })
+    })
+}
+
+//实现 批量处理表单的查询条件（ 必须 放在 InitMainTable 前面，否则报错）
+$.fn.serializeJsonObject = function() {
+    var json = {};
+    var form = this.serializeArray();
+    $.each(form, function(i, item) {
+        if (json[this.name]) {
+            if (!json[this.name].push) {
+                json[this.name] = [ json[this.name] ];
+            }
+            json[this.name].push();
+        } else {
+            if (this.value.indexOf("'") >= 0) {
+                json["valid"] = false;
+            }
+            json[this.name] = this.value || '';
+        }
+    });
+    return json;
+}
+
+var AJAX_HELPER = function (requestType, fullUrl, param) {
+    var re = {}
+    re.code = -1;
+    re.msg = "O(∩_∩)O出错啦，还请联系技术小哥~"
+    $.ajax({
+        type : requestType,
+        url : fullUrl,
+        cache : false,
+        data: param,
+        async:false,
+        //data : {"str": JSON.stringify(param)},
+        //traditional : true,
+        dataType: "json",
+        success: function(result) {
+            if (result.code == 0) {
+                layer.msg(result.msg);
+                re = result;
+            } else {
+                layer.msg(result.msg);
+            }
+        },
+        error: function (result) {
+            layer.msg("请求异常，请稍后重试！");
+        }
+    });
+    return re;
+}
+
+function queryParams(params) {
+    var temp = $("#queryForm").serializeJsonObject();
+    if(temp["valid"] != undefined && !temp["valid"]){
+        layer.msg("有不合法字符，请重新输入");
+        return false;
+    }
+    temp["pageSize"] = params.limit;
+    temp["pageNo"] = params.offset/params.limit+1;
+    //temp["sort"] = params.sort,      //排序列名
+    //temp["sortOrder"] = params.order //排位命令（desc，asc）
+    //特殊格式的条件处理...
+    return temp;
+}
+
+/**
+ * 用于server 分页，表格数据量太大的话 不想一次查询所有数据，可以使用server分页查询， 数据量小的话可以直接把sidePagination:
+ * "server" 改为 sidePagination: "client"， 同时去掉responseHandler:
+ * responseHandler就可以了
+ */
+function responseHandler(result) {
+    if (result.code == 0) {
+        return {
+            "rows" : result.data.list,
+            "total" : result.data.totalRecords
+        };
+    } else {
+        return {
+            "rows" : [],
+            "total" : 0
+        };
+    }
+}
+
+function responseJpaHandler(result) {
+    if (result.code == 0) {
+        return {
+            "rows" : result.data.content,
+            "total" : result.data.totalElements
+        };
+    } else {
+        return {
+            "rows" : [],
+            "total" : 0
+        };
+    }
+}
+
 function changeLength(obj, textArea){
 	var txtval = obj.val().length;
 	var str = parseInt(250 - txtval);

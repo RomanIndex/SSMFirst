@@ -21,7 +21,7 @@ var dateUtilApi = {
             var y = time.getFullYear()
             var m = time.getMonth()+1
             var d = time.getDate()
-            return y+'-'+add0(m)+'-'+add0(d);
+            return y+ '-' +dateUtilApi.add0(m)+ '-' +dateUtilApi.add0(d);
         }else{
             return "";
         }
@@ -36,7 +36,7 @@ var dateUtilApi = {
             var h = time.getHours();
             var mm = time.getMinutes();
             var s = time.getSeconds();
-            return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+            return y+ '-' +dateUtilApi.add0(m)+ '-' +dateUtilApi.add0(d)+' '+dateUtilApi.add0(h)+ ':' +dateUtilApi.add0(mm)+ ':' +dateUtilApi.add0(s);
         }else{
             return "";
         }

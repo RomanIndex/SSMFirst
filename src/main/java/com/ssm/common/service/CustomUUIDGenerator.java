@@ -1,6 +1,7 @@
 package com.ssm.common.service;
 
 import com.ssm.base.service.ReflectFieldService;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -38,7 +39,7 @@ public class CustomUUIDGenerator extends UUIDGenerator {
             id = ReflectFieldService.getValueByKey(object, idField);
         }
 
-        if(null == id){
+        if(null == id || StringUtils.isBlank(id.toString())){
             //注解@id的若没有set值，则取 自定义 生成的主键值
             id = keyService.getCustomUUIDByClass(object);
         }

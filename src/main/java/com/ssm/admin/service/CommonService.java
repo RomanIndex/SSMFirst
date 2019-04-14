@@ -29,6 +29,8 @@ public interface CommonService<T extends SsmBaseEntity, ID> {
 
     List<T> listByExample(T entity);
 
+    List<T> selectAll();
+
     /**
      * 删除
      */

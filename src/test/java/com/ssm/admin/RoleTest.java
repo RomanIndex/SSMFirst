@@ -23,7 +23,7 @@ public class RoleTest {
         SsmRole obj = new SsmRole();
         obj.setType((short) 1);
         obj.setName("生成表角色");
-        roleServiceImpl.save(obj);
+        roleServiceImpl.create(obj);
         System.out.println("》》》"+ JSON.toJSONString(obj));
     }
 }

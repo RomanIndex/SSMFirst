@@ -3,8 +3,12 @@ package com.ssm.admin.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.dao.AccountMapper;
 import com.ssm.admin.entity.SsmAccount;
+import com.ssm.admin.entity.SsmAccountRole;
+import com.ssm.admin.entity.SsmRole;
 import com.ssm.admin.param.AccountVo;
+import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.AccountService;
+import com.ssm.admin.service.RoleService;
 import com.ssm.admin.view.AccountView;
 import com.ssm.admin.view.AdminQueryView;
 import com.ssm.base.view.PageModel;
@@ -18,7 +22,10 @@ import org.springframework.stereotype.Service;
 
 import com.ssm.admin.daoJpa.AccountJpaDao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 4、实现 每个实体类 的接口，继承公共泛型的实现类（实现JPA的单表操作），同时实现 自己定义的接口，实现该实体类相关的业务功能
@@ -28,6 +35,8 @@ import java.util.List;
 public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> implements AccountService {
 	@Autowired private AccountJpaDao accountJpaDao;
 	@Autowired private AccountMapper accountMapper;
+	@Autowired private RoleService roleService;
+	@Autowired private AccountRoleService accountRoleService;
 
 	/* -----------------------基于JPA的一套实现逻辑 -----------------------------------*/
 
@@ -74,6 +83,17 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 		Page<SsmAccount> pageData = this.page(pageable);//js取值也要对应的改
 
 		return Result.success(pageData);
+	}
+
+	@Override
+	public Result<?> getRoleByEmpNo(String empNo) {
+		List<SsmAccountRole> accountRoles = accountRoleService.getRoleByEmpNo(empNo);
+		List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
+		List<SsmRole> totalRole = roleService.selectAll();
+ 		Map<String, Object> map = new HashMap<>();
+		map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())));
+		map.put("havedRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())));
+		return Result.success(map);
 	}
 
 	/**

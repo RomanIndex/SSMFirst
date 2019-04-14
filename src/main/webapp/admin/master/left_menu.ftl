@@ -4,7 +4,7 @@
      <!-- Sidebar user panel -->
      <div class="user-panel">
        <div class="pull-left image">
-         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+         <img src="../admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
        </div>
        <div class="pull-left info">
          <p>Alexander Pierce</p>
@@ -63,6 +63,7 @@
          <ul class="treeview-menu">
            <li><a data-type="tabAdd" href="/admin/examples/404.html"><i class="fa fa-circle-o"></i>不经过后台404页面</a></li>
              <li><a data-type="tabAdd" data-url="/admin/route/account_index">SSM用户管理（--）</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/role_index">SSM角色管理（--）</a></li>
            <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_index">bootstrap_index（no master基于account）</a></li>
              <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_edit">bootstrap_edit</a></li>
            <li><a data-type="tabAdd" data-url="/admin/route/echart_demo">ECharts示例</a></li>

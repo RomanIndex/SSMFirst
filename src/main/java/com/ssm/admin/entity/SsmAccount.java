@@ -10,7 +10,7 @@ import java.util.Date;
 @DynamicUpdate//更新时，不将null值更新到数据库
 @DynamicInsert
 //@SelectBeforeUpdate(true)//让数据在更新时先查一遍数据库，再返回来进行对比，如果没更改不提交更新语句
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)//加在父类才有意义
 @Table(name = "SSM_ACCOUNT")
 public class SsmAccount extends SsmBaseEntity{
     @Id
