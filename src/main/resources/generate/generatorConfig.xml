@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-  <classPathEntry location="D:\IDEAtest\SSMMaven\src\main\webapp\WEB-INF\lib\ojdbc6.jar" />
+  <classPathEntry location="D:\JDBCJar\mysql-connector-java-3.1.12-bin.jar" />
   <context id="context1">
     <commentGenerator>
       <property name="suppressAllComments" value="true"/>
     </commentGenerator>
-    <jdbcConnection connectionURL="jdbc:oracle:thin:@172.18.1.40:1521/EIP3DEV" driverClass="oracle.jdbc.driver.OracleDriver" userId="UCENTER" password="HuaMing" />
+    <jdbcConnection connectionURL="jdbc:mysql://120.79.207.99:3306/SSM"
+                    driverClass="com.mysql.jdbc.Driver"
+                    userId="SSM"
+                    password="ssm123456" />
     <javaTypeResolver>
   		<property name="forceBigDecimals" value="false" />
 	</javaTypeResolver>
-    <javaModelGenerator targetPackage="com.ssm.admin.entity" targetProject="D:\IDEAtest\SSMMaven\src\main\java" />
-	<sqlMapGenerator targetPackage="com.ssm.admin.entity.xml" targetProject="D:\IDEAtest\SSMMaven\src\main\java" />
+    <javaModelGenerator targetPackage="entity" targetProject="D:\LocalPicDev\ssm" />
+	<sqlMapGenerator targetPackage="xml" targetProject="D:\LocalPicDev\ssm" />
 
-	<!-- <table tableName="SSM_ACCOUNT" />
+	<table tableName="SSM_ACCOUNT" />
 	<table tableName="SSM_ROLE" />
-	<table tableName="SSM_ROLE_URL" /> -->
-	<table tableName="SSM_MENU" />
+	<table tableName="SSM_MODULE" />
+	<table tableName="SSM_PRIVILEGE" />
+      <table tableName="SSM_ACCOUNT_ROLE" />
+      <table tableName="SSM_ROLE_PRIVILEGE" />
+
   </context>
 
 </generatorConfiguration>

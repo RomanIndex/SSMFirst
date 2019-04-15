@@ -11,6 +11,16 @@ public class AdminQueryView extends QueryModel {
 
     private String privilegeKeyword;
 
+    private String operateEnum;
+
+    public String getOperateEnum() {
+        return operateEnum;
+    }
+
+    public void setOperateEnum(String operateEnum) {
+        this.operateEnum = operateEnum;
+    }
+
     public String getModuleKeyword() {
         return moduleKeyword;
     }

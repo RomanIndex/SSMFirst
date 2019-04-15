@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xml.SsmAccountRoleMapper" >
+    <resultMap id="BaseResultMap" type="entity.SsmAccountRole" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="OTHER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="emp_no" property="empNo" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+        <result column="valid_date_id" property="validDateId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <delete id="deleteByRoleIds">
+        DELETE ar
+        FROM
+            SSM.SSM_ACCOUNT_ROLE AS ar
+        WHERE
+            ar.emp_no = #{empNo}
+        <if test="delList.size() > 0">
+            AND ar.role_id IN
+            <foreach collection="delList" open="(" close=")" separator="," item="item">
+                #{item}
+            </foreach>
+        </if>
+    </delete>
+
+</mapper>

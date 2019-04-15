@@ -3,9 +3,6 @@ package com.ssm.admin.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.dao.AccountMapper;
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.entity.SsmAccountRole;
-import com.ssm.admin.entity.SsmRole;
-import com.ssm.admin.param.AccountVo;
 import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.AccountService;
 import com.ssm.admin.service.RoleService;
@@ -83,17 +80,6 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 		Page<SsmAccount> pageData = this.page(pageable);//js取值也要对应的改
 
 		return Result.success(pageData);
-	}
-
-	@Override
-	public Result<?> getRoleByEmpNo(String empNo) {
-		List<SsmAccountRole> accountRoles = accountRoleService.getRoleByEmpNo(empNo);
-		List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
-		List<SsmRole> totalRole = roleService.selectAll();
- 		Map<String, Object> map = new HashMap<>();
-		map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())));
-		map.put("havedRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())));
-		return Result.success(map);
 	}
 
 	/**

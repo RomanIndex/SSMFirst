@@ -2,6 +2,7 @@ package com.ssm.admin.service;
 
 import com.ssm.admin.entity.SsmBaseEntity;
 import com.ssm.base.view.Result;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -27,7 +28,9 @@ public interface CommonService<T extends SsmBaseEntity, ID> {
 
     T getByExample(T entity);
 
-    List<T> listByExample(T entity);
+    List<T> listByExample(Example<T> example);
+
+    List<T> selectAllById(Iterable it);
 
     List<T> selectAll();
 

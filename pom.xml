@@ -121,6 +121,13 @@
             <version>5.4.0.Final</version>
         </dependency>
 
+        <!-- 配合jpa可实现连表查询-->
+        <!--<dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>4.2.1</version>
+        </dependency>-->
+
         <!-- javaBean 自动校样 -->
         <dependency>
             <groupId>org.hibernate</groupId>

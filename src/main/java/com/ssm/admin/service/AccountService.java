@@ -13,6 +13,4 @@ public interface AccountService extends CommonService<SsmAccount, String> {
     Result<?> query(AdminQueryView query);
 
     Result<?> jpaQuery(AdminQueryView query);
-
-    Result<?> getRoleByEmpNo(String empNo);
 }

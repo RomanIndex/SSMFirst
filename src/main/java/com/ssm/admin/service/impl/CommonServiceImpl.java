@@ -2,12 +2,14 @@ package com.ssm.admin.service.impl;
 
 import com.ssm.admin.entity.SsmBaseEntity;
 import com.ssm.admin.service.CommonService;
+import com.ssm.admin.view.PrivilegeView;
 import com.ssm.base.service.ReflectFieldService;
 import com.ssm.base.view.Result;
 import com.ssm.common.util.BeanUtil;
 import org.apache.commons.lang.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -91,10 +93,14 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
     }
 
     @Override
-    public List<T> listByExample(T entity) {
-        Example<T> example = Example.of(entity);
+    public List<T> listByExample(Example<T> example) {
         List<T> list = this.baseRepository.findAll(example);
         return list == null ? new ArrayList<>() : list;
+    }
+
+    @Override
+    public List<T> selectAllById(Iterable it) {
+        return this.baseRepository.findAllById(it);
     }
 
     @Override

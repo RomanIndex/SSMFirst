@@ -7,6 +7,8 @@ import com.ssm.admin.entity.SsmModule;
 import com.ssm.base.view.Result;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,18 +17,40 @@ import java.util.stream.Collectors;
 
 @Service
 public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> implements ModuleService {
-    @Autowired private ModuleJpaDao moduleDao;
+    @Autowired private ModuleJpaDao moduleJpaDao;
 
-    public Result<?> batchSave(List<SsmModule> modules) {
-        //batchSave这个方法也不用写，知道 公共接口 有批量保存方法就行
-        return this.batchCreate(modules);
+    @Override
+    public Result<?> getTopMenu() {
+        /*SsmModule entity = new SsmModule();
+        entity.setType((short) 1);
+        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("id", lam -> lam.contains());
+        Example<SsmModule> example = Example.of(entity, matcher);
+        List<SsmModule> list = this.listByExample(example);*/
+        List<SsmModule> jpaList = moduleJpaDao.findByTypeAndParentIdIsNull(1);
+        return Result.success(jpaList);
+    }
+
+    @Override
+    public Result<?> getSecondMenu(String belongId) {
+        List<SsmModule> list = moduleJpaDao.findByTypeAndBelongId(2, belongId);
+        return Result.success(list);
+    }
+
+    //1：模块；2：菜单；3：按钮
+    @Override
+    public Result<?> getBtnMenu(String belongId) {
+        List<SsmModule> list = moduleJpaDao.findByTypeAndBelongId(3, belongId);
+        return Result.success(list);
     }
 
     public Result<?> listMenuByRoleId(String roleId) {
-        List<SsmModule> modules = moduleDao.findAll();
-        List<RecursionMenuVo> rootMenus = getMemuFromModule(modules);//module转成常用menu
+        //查询 角色 拥有的 所有菜单权限，待补充
+        List<SsmModule> modules = moduleJpaDao.findAll();
+        //module转成常用menu
+        List<RecursionMenuVo> rootMenus = getMemuFromModule(modules);
+        //递归处理menu
         List<RecursionMenuVo> recursionMenuVos = recursionedMenu(rootMenus);
-        return new Result<>(Result.SUCCESS, "", null, recursionMenuVos);
+        return Result.success(recursionMenuVos);
     }
 
     private List<RecursionMenuVo> recursionedMenu(List<RecursionMenuVo> rootMenus) {
@@ -99,4 +123,5 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         }).collect(Collectors.toList());
         return menus;
     }
+
 }

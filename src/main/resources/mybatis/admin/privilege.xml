@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.admin.dao.PrivilegeMapper" >
+    <resultMap id="BaseResultMap" type="com.ssm.admin.entity.SsmPrivilege" >
+        <id column="code" property="code" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="OTHER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="level" property="level" jdbcType="SMALLINT" />
+        <result column="module_id" property="moduleId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="operate_enum_name" property="operateEnumName" jdbcType="VARCHAR" />
+        <result column="valid_date_id" property="validDateId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="BaseViewMap" type="com.ssm.admin.view.PrivilegeView" extends="BaseResultMap">
+        <result column="MODULE_NAME" property="moduleName" jdbcType="VARCHAR" />
+        <result column="OPERATE_NAME" property="operateName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getCount" resultType="int">
+        select count(1) from (
+        <include refid="base_query" />
+        ) rp
+    </select>
+
+    <select id="query" resultMap="BaseViewMap">
+        select *
+        from (
+        <include refid="base_query" />
+        ) rp
+        limit #{pageStart}, #{pageSize}
+    </select>
+
+    <sql id="base_query">
+        SELECT @curSeq := @curSeq + 1 AS page,
+        m.NAME module_name,
+        p.*
+        FROM SSM_PRIVILEGE p
+        LEFT JOIN SSM_MODULE m ON m.module_id = p.module_id
+        (SELECT @curSeq := 0) pg
+        <include refid="where_sql" />
+        ORDER BY p.create_time DESC
+    </sql>
+
+    <sql id="where_sql">
+        <where>
+            <if test="1 == 1">p.status = 1</if>
+            <if test="privilegeKeyword != null and privilegeKeyword != ''">and (p.code like '%${privilegeKeyword}%' or p.name like '%${privilegeKeyword}%')</if>
+            <if test="moduleKeyword != null and moduleKeyword != ''">and m.name like '%${moduleKeyword}%'</if>
+            <if test="operateEnum != null and operateEnum != ''">and p.operate_enum_name = #{operateEnum}</if>
+        </where>
+    </sql>
+</mapper>
