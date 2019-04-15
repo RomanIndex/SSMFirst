@@ -9,7 +9,7 @@ import java.util.Map;
 import com.ssm.common.util.StringUtil;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class ReflectFieldService {
 	
 	/**

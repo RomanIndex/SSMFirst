@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 和 module.xml 共同一个mapperDao-->
+<mapper namespace="com.ssm.admin.dao.ModuleMapper" >
+    <resultMap id="TreegridMap" type="com.ssm.admin.view.TreegridView" >
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="type" property="type" jdbcType="TINYINT" />
+
+        <result column="id" property="id" jdbcType="NVARCHAR" />
+        <result column="Module_id" property="moduleId" jdbcType="NVARCHAR" />
+        <result column="state" property="state" jdbcType="NVARCHAR" />
+        <result column="iconCls" property="iconCls" jdbcType="NVARCHAR" />
+        <result column="checked" property="checked" jdbcType="TINYINT" /><!-- bit注意此次Boolean类型字段，数据库的表示 -->
+
+        <result column="_Parent_id" property="_parentId" jdbcType="NVARCHAR" />
+        <result column="seq" property="seq" jdbcType="TINYINT" />
+        <result column="name" property="name" jdbcType="NVARCHAR" />
+        <result column="url" property="url" jdbcType="NVARCHAR" />
+    </resultMap>
+
+    <select id="getModuleForTreegrid" resultMap="TreegridMap">
+        WITH treegrid AS (
+        SELECT f.status, f.type, CASE f.Parent_id WHEN '' THEN null ELSE f.Parent_id END _parent_id, f.Module_id, f.name, f.seq, f.url
+        FROM SSM_MODULE f
+        WHERE ISNULL(f.Parent_id, '') = ''
+        AND f.type = 2
+
+        UNION ALL
+
+        SELECT s.status, s.type, s.Parent_id _parent_id, s.Module_id, s.name, s.seq, s.url
+        FROM SSM_MODULE s
+        INNER JOIN SSM_MODULE f ON f.Module_id = s.parent_id
+        WHERE s.type = 2
+
+        UNION ALL
+
+        SELECT sb.status, sb.type, sb.belong_id _parent_id, sb.Module_id, sb.name, sb.seq, sb.url
+        FROM SSM_MODULE sb
+        INNER JOIN SSM_MODULE f ON f.Module_id = sb.belong_id
+        WHERE ISNULL(f.Parent_id, '') = ''
+        AND sb.type = 1
+
+        UNION ALL
+
+        SELECT b.status, b.type, b.Belong_id _parent_id, b.Module_id, b.name, b.seq, b.url
+        FROM SSM_MODULE s
+        INNER JOIN SSM_MODULE b ON s.Module_id = b.Belong_id
+        WHERE b.type = 1
+        )
+        SELECT * FROM treegrid t
+        WHERE 1 = 1 <if test="name != null and name != ''">and t.name LIKE '%${name}%'</if>
+    </select>
+
+</mapper>

@@ -69,7 +69,7 @@ public class ReadExcel {
 			int numberOfSheets = wb.getNumberOfSheets();
 
 			if(numberOfSheets != groups.length){
-                return new Result<>(Result.FAIL, "sheet页数 与 接收类的个数 不一致！", null, null);
+				return Result.fail("sheet页数 与 接收类的个数 不一致！");
             }
 
 			for (int s = 0; s < numberOfSheets; s++) { // sheet工作表
@@ -98,7 +98,7 @@ public class ReadExcel {
 			e.printStackTrace();
 		}
 
-		return new Result<>(Result.SUCCESS, "", null, map);
+		return Result.success(map);
 	}
 
 	/**

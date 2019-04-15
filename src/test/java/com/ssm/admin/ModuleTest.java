@@ -1,9 +1,9 @@
 package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
+import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.view.RecursionMenuVo;
 import com.ssm.admin.entity.SsmModule;
-import com.ssm.admin.service.impl.ModuleServiceImpl;
 import com.ssm.base.service.ExcelService;
 import com.ssm.base.view.Result;
 import org.apache.commons.io.IOUtils;
@@ -25,7 +25,7 @@ import java.util.Map;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ModuleTest {
-    @Autowired private ModuleServiceImpl moduleServiceImpl;
+    @Autowired private ModuleService moduleService;
     @Autowired private ExcelService excelService;
 
     @Test
@@ -53,7 +53,7 @@ public class ModuleTest {
 
             Map<String, List> map = (Map<String, List>) result.getData();
             List<SsmModule> modules = map.get("SsmModule");
-            moduleServiceImpl.batchSave(modules);
+            moduleService.batchCreate(modules);
 
             System.out.println("********"+ JSON.toJSONString(map));
         } catch (IOException e) {
@@ -63,7 +63,7 @@ public class ModuleTest {
 
     @Test
     public void getMenus() {
-        Result<?> result = moduleServiceImpl.listMenuByRoleId(null);
+        Result<?> result = null;//moduleService.listMenuByRoleId(null);
         List<RecursionMenuVo> menus = (List<RecursionMenuVo>) result.getData();
 
         for(RecursionMenuVo each : menus){

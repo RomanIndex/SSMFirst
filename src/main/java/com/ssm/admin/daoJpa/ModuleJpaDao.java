@@ -8,5 +8,5 @@ import java.util.List;
 public interface ModuleJpaDao extends JpaRepository<SsmModule, String> {
     List<SsmModule> findByTypeAndParentIdIsNull(int i);
 
-    List<SsmModule> findByTypeAndBelongId(int i, String belongId);
+    List<SsmModule> findByTypeAndBelongModule(int i, String belongId);
 }

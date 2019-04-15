@@ -1,6 +1,7 @@
 package com.ssm.admin.service.impl;
 
 import com.ssm.admin.dao.PrivilegeMapper;
+import com.ssm.admin.daoJpa.PrivilegeJpaDao;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.entity.SsmRolePrivilege;
 import com.ssm.admin.service.PrivilegeService;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String> implements PrivilegeService {
     @Autowired private PrivilegeMapper privilegeMapper;
     @Autowired private RolePrivilegeService rolePrivilegeService;
+    @Autowired private PrivilegeJpaDao privilegeJpaDao;
 
     @Override
     public Result<?> query(AdminQueryView query) {
@@ -53,5 +55,15 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
         List<String> codes = midList.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
         List<SsmPrivilege> privileges = this.selectAllById(codes);
         return Result.success(privileges);
+    }
+
+    @Override
+    public List<SsmPrivilege> getTicket(OperateEnum type) {
+        return privilegeJpaDao.findByOperateEnumName(type.name());
+    }
+
+    @Override
+    public List<SsmPrivilege> getTicket(String roleId, OperateEnum type) {
+        return privilegeJpaDao.findByOperateEnumNameAndRoleId(type.name(), roleId);
     }
 }
