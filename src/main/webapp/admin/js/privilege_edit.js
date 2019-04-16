@@ -22,7 +22,7 @@ $(function () {
             },
         },
         submitHandler: function (validator, form, submitButton) {
-            var type = $("button[name='submit']").data("type")
+            var operate = $("button[name='submit']").data("type")
             //disabled 的 input框，取不到name值，改成readonly，也是不能编辑，但是能取到name的值
             var moduleId = $("input[name='xz']:checked").next().val()
             if(moduleId == undefined){
@@ -33,24 +33,21 @@ $(function () {
             var data = $('#formId').serialize();
             var dataType = typeof(data)
             var ddd = data + "&moduleId=" + moduleId
+            if(operate == "add"){
+                url = URL_API.PRIVILEGE.add;
+            }else{
+                url = URL_API.PRIVILEGE.update;
+                //param.id = api.account.selectId;
+            }
             console.log(ddd)
             //return false;
             $("button[name='submit']").attr("disabled","disabled")
-            $.ajax({
-                type : "POST",
-                url : "mg/admin/privilege/save?operate=" +type,
-                dataType: "json",
-                data : ddd,
-                success : function(result) {
-                    if (result.code != 0) {
-                        layer.msg(result.msg, {icon: 2, time:3000});//1:成功图标；2：失败
-                        $("button[name='submit']").removeAttr("disabled")
-                    } else {
-                        layer.msg(result.msg, {icon: 1, time:3000});
-                        setTimeout('$("button[name=\'submit\']").removeAttr("disabled")',8000)
-                    }
-                }
-            })
+            var result = AJAX_HELPER("POST", url, ddd);
+            if(result.code != 0){
+                $("button[name='submit']").removeAttr("disabled")
+            }else {
+                setTimeout('$("button[name=\'submit\']").removeAttr("disabled")',8000)
+            }
         }
     });
 });

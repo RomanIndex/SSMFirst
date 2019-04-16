@@ -106,10 +106,10 @@ var AJAX_HELPER = function (requestType, fullUrl, param) {
         dataType: "json",
         success: function(result) {
             if (result.code == 0) {
-                layer.msg(result.msg);
+                layer.msg(result.msg, {icon: 1, time:3000});//1:成功图标；2：失败
                 re = result;
             } else {
-                layer.msg(result.msg);
+                layer.msg(result.msg, {icon: 2, time:3000});
             }
         },
         error: function (result) {
