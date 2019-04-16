@@ -24,6 +24,7 @@ URL_API.MODULE = {
     "add": "/ssm/admin/module/add",
     "update": "/ssm/admin/module/update",
     "del": "/ssm/admin/module/del",
+    "getTree": "/ssm/admin/module/tree",
 }
 
 URL_API.PRIVILEGE = {

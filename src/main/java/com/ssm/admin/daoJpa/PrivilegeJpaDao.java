@@ -8,5 +8,5 @@ import java.util.List;
 public interface PrivilegeJpaDao extends JpaRepository<SsmPrivilege, String> {
     List<SsmPrivilege> findByOperateEnumName(String name);
 
-    List<SsmPrivilege> findByOperateEnumNameAndRoleId(String name, String roleId);
+    List<SsmPrivilege> findByOperateEnumNameAndModuleId(String name, String moduleId);
 }

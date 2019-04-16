@@ -63,7 +63,7 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
     }
 
     @Override
-    public List<SsmPrivilege> getTicket(String roleId, OperateEnum type) {
-        return privilegeJpaDao.findByOperateEnumNameAndRoleId(type.name(), roleId);
+    public List<SsmPrivilege> getTicket(String moduleId, OperateEnum type) {
+        return privilegeJpaDao.findByOperateEnumNameAndModuleId(type.name(), moduleId);
     }
 }

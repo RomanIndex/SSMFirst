@@ -1,4 +1,4 @@
-<#import "system/tbMaster.ftl" as my>
+<#import "admin/master/lte_master.ftl" as my>
 <#assign typeList = {"查询":1, "编辑":2, "排序":3, "控制":4}>
 <@my.page 
     title="MODULE页面"

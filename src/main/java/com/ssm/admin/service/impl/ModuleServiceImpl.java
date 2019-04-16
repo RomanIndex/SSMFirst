@@ -32,7 +32,7 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         //获取所有 生成了operate = show 的module
         List<SsmPrivilege> haveTicketModules = privilegeService.getTicket(OperateEnum.select);
         //获取所有 有show票据的module
-        List<SsmPrivilege> roleGetShowTicket = privilegeService.getTicket(roleId, OperateEnum.select);
+        List<SsmPrivilege> roleGetShowTicket = privilegeService.getTicket("", OperateEnum.select);
         //所有module表之间的父子关系集合//name参数作模糊查询用
         List<TreegridView> baseTreegrid = moduleMapper.getModuleForTreegrid("");
         for(TreegridView eachModule : baseTreegrid){

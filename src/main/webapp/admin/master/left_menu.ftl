@@ -65,6 +65,7 @@
              <li><a data-type="tabAdd" data-url="/admin/route/account_index">SSM用户管理（--）</a></li>
              <li><a data-type="tabAdd" data-url="/admin/route/role_index">SSM角色管理（--）</a></li>
              <li><a data-type="tabAdd" data-url="/admin/route/privilege_index">SSM权限管理（--）</a></li>
+             <li><a data-type="tabAdd" data-url="/admin/route/module_index">SSM模块管理（--）</a></li>
            <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_index">bootstrap_index（no master基于account）</a></li>
              <li><a data-type="tabAdd" data-url="/admin/route/bootstrap_edit">bootstrap_edit</a></li>
            <li><a data-type="tabAdd" data-url="/admin/route/echart_demo">ECharts示例</a></li>

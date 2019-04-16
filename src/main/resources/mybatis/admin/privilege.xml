@@ -40,7 +40,7 @@
         p.*
         FROM SSM_PRIVILEGE p
         LEFT JOIN SSM_MODULE m ON m.module_id = p.module_id
-        (SELECT @curSeq := 0) pg
+        ,(SELECT @curSeq := 0) pg
         <include refid="where_sql" />
         ORDER BY p.create_time DESC
     </sql>

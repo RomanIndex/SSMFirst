@@ -16,5 +16,5 @@ public interface PrivilegeService extends CommonService<SsmPrivilege, String>{
 
     List<SsmPrivilege> getTicket(OperateEnum type);
 
-    List<SsmPrivilege> getTicket(String roleId, OperateEnum type);
+    List<SsmPrivilege> getTicket(String moduleId, OperateEnum type);
 }

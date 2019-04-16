@@ -64,7 +64,7 @@ api.role = {
     getUpdateModal: function(e){
         var index = $(e).parents('tr').data("index");
         var row = this.$table.bootstrapTable('getData')[index];
-        api.account.selectId = row.empNo;
+        api.role.selectId = row.roleId;
         $("#tk").load("admin/role_edit.html")
         setTimeout(function(){
             $("input[name='roleId']").val(row.roleId)
@@ -250,11 +250,11 @@ function getTreegridData(){
     });
 }
 
-var myloader = function(param,success,error){
+var myloader = function(param, success, error){
     var roleId = $("#roleId").val();
     $.ajax({
         //url:"json/treegrid.json",
-        url: "mg/admin/module/tree",
+        url: URL_API.MODULE.getTree,
         data:{
             "roleId": roleId
         },
