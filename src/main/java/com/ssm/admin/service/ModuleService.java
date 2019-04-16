@@ -7,6 +7,8 @@ import com.ssm.base.view.Result;
 import java.util.List;
 
 public interface ModuleService extends CommonService<SsmModule, String>{
+    Result<?> listMenuByRoleId(String roleId);
+
     Result<?> getTopMenu();
 
     Result<?> getSecondMenu(String belongId);

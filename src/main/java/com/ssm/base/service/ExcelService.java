@@ -25,7 +25,7 @@ public class ExcelService {
 	 */
 	public Result<?> readExcel(MultipartFile multipartFile, Class<?>... groups) {
 		if(multipartFile.isEmpty()){
-			return new Result<>(Result.FAIL, "请先选择Excel文件", null, null);
+			return Result.fail("请先选择Excel文件!");
 		}
 		Result<?> excelResult = ReadExcel.readExcel(multipartFile, groups);
 

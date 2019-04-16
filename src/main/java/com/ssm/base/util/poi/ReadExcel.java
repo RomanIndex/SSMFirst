@@ -85,7 +85,7 @@ public class ReadExcel {
 				List<String> referList = getReferListByClass(clzz);
 
 				List<Object> eachList = sheetData2ListObj(sheetAt, clzz, referList);//关键，sheet表数据 转 对应类的集合
-				//List<T> eachList = sheetData2ListObj(sheetAt, clzz);//没必要，直接指定Object就好
+				//List<T> eachList = sheetData2ListObj(sheetAt, clzz, referList);//没必要，直接指定Object就好
 
 				String className = classFullName.substring(classFullName.lastIndexOf(".") + 1, classFullName.length());
 				map.put(className, eachList);
@@ -178,6 +178,7 @@ public class ReadExcel {
                 Object cellVal = getCellValue(cell);//----cell值支持多种（String，Integer，Double，布尔）
                 String fieldName = referList.get(c);//可以从referList里取
                 System.out.println("《《 第"+ c +"列，类 的字段"+ fieldName + " = "+ cellVal);
+                //特别注意，getDeclaredField不能获取父类的属性，所有简单起见，excel已去掉父类有关的字段，但要可以【兼容父类】的
                 Class fieldClazz = clzz.getDeclaredField(fieldName).getType();
 
                 Object fieldTypeValue = getFieldTypeValue(fieldClazz, cellVal);//获取和field类型对应的set的值
@@ -199,7 +200,7 @@ public class ReadExcel {
 	}
 
 	//暂时只需要处理这三种数值类型的
-	private static Object getFieldTypeValue(Class fieldClazz, Object cellVal) {
+	public static Object getFieldTypeValue(Class fieldClazz, Object cellVal) {
 		String methodName = null;
 
 		if(fieldClazz == int.class){

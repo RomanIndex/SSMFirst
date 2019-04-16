@@ -5,6 +5,7 @@ import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.view.RecursionMenuVo;
 import com.ssm.admin.entity.SsmModule;
 import com.ssm.base.service.ExcelService;
+import com.ssm.base.util.poi.ReadExcel;
 import com.ssm.base.view.Result;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ObjectUtils;
@@ -22,6 +23,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static com.ssm.common.enumeration.ArtificialKeyEnum.module;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class ModuleTest {
@@ -37,6 +40,21 @@ public class ModuleTest {
         module.setUrl("aa/nn/kkk");
         //moduleService.save(module);
         System.out.println("》》》"+ JSON.toJSONString(module));
+    }
+
+    @Test
+    public void importHelper(){
+        Class clzz = SsmModule.class;
+        Object cellVal = "1";
+        try {
+            //Class fieldClazz = clzz.getDeclaredField("belongModule").getType();
+            Class fieldClazz = clzz.getField("belongModule").getType();
+            Object fieldTypeValue = ReadExcel.getFieldTypeValue(fieldClazz, cellVal);
+            System.out.println("》》"+ JSON.toJSON(fieldTypeValue));
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        System.out.println("---------END!----------");
     }
 
     @Test
@@ -63,7 +81,7 @@ public class ModuleTest {
 
     @Test
     public void getMenus() {
-        Result<?> result = null;//moduleService.listMenuByRoleId(null);
+        Result<?> result = moduleService.listMenuByRoleId(null);
         List<RecursionMenuVo> menus = (List<RecursionMenuVo>) result.getData();
 
         for(RecursionMenuVo each : menus){

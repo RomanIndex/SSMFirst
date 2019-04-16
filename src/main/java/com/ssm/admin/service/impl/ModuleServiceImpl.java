@@ -86,6 +86,7 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         return Result.success(list);
     }
 
+    @Override
     public Result<?> listMenuByRoleId(String roleId) {
         //查询 角色 拥有的 所有菜单权限，待补充
         List<SsmModule> modules = moduleJpaDao.findAll();
