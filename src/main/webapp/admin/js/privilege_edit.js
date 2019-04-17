@@ -56,7 +56,7 @@ $("#firstMenu").change(function () {
     var selectEl = $(this);
     var selectValue = selectEl.val();
     layer.msg(selectValue)
-    $.get("mg/admin/module/getSecond",{"parentId" : selectValue}, function(result){
+    $.get(URL_API.MODULE.getSecond,{"parentId" : selectValue}, function(result){
         if(result.code == 0){
             $("#secondMenu").html("")
             secondCTL = ""
@@ -79,7 +79,7 @@ $("#secondMenu").change(function () {
     var selectEl = $(this);
     var selectValue = selectEl.val();
     layer.msg(selectValue)
-    $.get("mg/admin/module/getBtn",{"belongId" : selectValue}, function(result){
+    $.get(URL_API.MODULE.getBtn,{"belongModule" : selectValue}, function(result){
         if(result.code == 0){
             $("#btn").html("")
             secondCTL = ""

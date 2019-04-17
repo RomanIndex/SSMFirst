@@ -27,7 +27,7 @@
      <ul class="sidebar-menu" data-widget="tree">
        <li class="header">左侧菜单MAIN NAVIGATION</li>
        <#-- 系统模板自带两个首页样式-->
-       <li class="active treeview menu-open">
+       <li class="treeview">
          <a href="#">
            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
            <span class="pull-right-container">
@@ -40,7 +40,7 @@
          </ul>
        </li>
        <#-- 系统初始化配置-->
-       <li class="active treeview menu-open">
+       <li class="treeview">
            <a href="#">
                <i class="fa fa-dashboard"></i> <span>系统初始化配置</span>
                <span class="pull-right-container">
@@ -51,8 +51,13 @@
                <li><a href="../ssm_import.ftl"><i class="fa fa-circle-o"></i>基础数据导入</a></li>
            </ul>
        </li>
+
+         <!-- 调用宏 生成递归树 -->
+       <@bpTree list = treeMenu />
+         <!-- 宏生成菜单结束 -->
+
        <!-- 测试菜单 -->
-       <li class="active treeview menu-open">
+       <li class="treeview menu-open">
          <a href="#">
            <i class="fa fa-files-o"></i>
            <span>测试菜单</span>
@@ -144,10 +149,8 @@
            <li><a href="#"><i class="fa fa-circle-o"></i><span>一级菜单（无子分级）</span></a></li>
          </ul>
        </li>
-       
-       <!-- 调用宏 生成递归树 -->
-       <@bpTree list = treeMenu />
-       <!-- 宏生成菜单结束 -->
+
+     <#--<li class="active treeview menu-open"> 控制左侧菜单 -->
        
        <!-- 递归  宏定义 -->
        <#macro bpTree list>

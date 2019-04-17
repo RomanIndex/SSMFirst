@@ -11,9 +11,9 @@ public interface ModuleService extends CommonService<SsmModule, String>{
 
     Result<?> getTopMenu();
 
-    Result<?> getSecondMenu(String belongId);
+    Result<?> getSecondMenu(String parentId);
 
-    Result<?> getBtnMenu(String parentId);
+    Result<?> getBtnMenu(String belongModule);
 
     List<TreegridView> getModuleForTreegrid(String roleId);
 }

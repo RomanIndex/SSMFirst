@@ -35,7 +35,7 @@ public class ModuleTest {
     public void saveModule(){
         SsmModule module = new SsmModule();
         module.setModuleId("mmmm123456");
-        module.setType((short) 1);
+        module.setType(1);
         module.setName("name");
         module.setUrl("aa/nn/kkk");
         //moduleService.save(module);
@@ -59,7 +59,8 @@ public class ModuleTest {
 
     @Test
     public void importModuleExcel(){
-        String path = "D:\\SSMFile\\initTableExcel\\SSM_MODULE.xlsx";
+        //String path = "D:\\SSMFile\\initTableExcel\\SSM_MODULE.xlsx";
+        String path = "D:\\LocalPicDev\\SSM_MODULE.xlsx";
         System.out.println("文件路径："+ path);
         File file = new File(path);
         try {
@@ -77,6 +78,12 @@ public class ModuleTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void getTop(){
+        Result result = moduleService.getTopMenu();
+        System.out.println("》》》"+ JSON.toJSONString(result.getData()));
     }
 
     @Test

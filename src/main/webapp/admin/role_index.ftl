@@ -12,7 +12,7 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
                     <div class="x_content">
                         <h3>角色列表</h3>
                         <ol class="breadcrumb">
-                            <li><strong><span style="color: #27a0d7">1、现在主要是【菜单类角色】，还有操作类角色；2、还要加入 角色组 的类型，方便批量管理</span></strong></li>
+                            <li><strong><span style="color: #27a0d7">1、现在主要是【菜单类角色】，还有操作类角色；2、还要加入 角色组 的类型，方便批量管理；3、jpaQuery实现模糊查询</span></strong></li>
                         </ol>
                         <div style="width: 100%">
                             <table id="table" class="col-xs-12"></table>
@@ -34,8 +34,8 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
 <div id="toolbar">
     <form id="queryForm" class="form-inline" autocomplete="off">
         <div class="form-group">
-            <label class="control-label" for="name">名称：</label>
-            <input type="text" class="form-control" name="name" placeholder="角色关键词">
+            <label class="control-label" for="roleKeyword">名称：</label>
+            <input type="text" class="form-control" id="roleKeyword" name="roleKeyword" placeholder="角色关键词">
         </div>
         <div class="form-group">
             <label class="control-label" for="type">类型：</label>

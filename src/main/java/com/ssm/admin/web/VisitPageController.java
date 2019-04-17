@@ -4,6 +4,7 @@ import com.ssm.admin.entity.SsmModule;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.service.PrivilegeService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +23,8 @@ public class VisitPageController {
      */
     @RequestMapping(value = "admin/privilege/add", method = RequestMethod.GET)
     public String add(Model model){
-        model.addAttribute("operateList", privilegeService.getOperateList());
-        model.addAttribute("firstMenu", moduleService.getTopMenu());
+        model.addAttribute("operateList", privilegeService.getOperateList().getData());
+        model.addAttribute("topMenu", moduleService.getTopMenu().getData());
         model.addAttribute("operate", "add");
         return "admin/privilege_edit";
     }
@@ -32,22 +33,20 @@ public class VisitPageController {
     public String update(Model model, String code){
         SsmPrivilege privilege = privilegeService.getById(code);
         SsmModule module = moduleService.getById(privilege.getModuleId());
-        int mType = 1;
-        if(module.getType() == 2 && null == module.getParentId()){
-            //二级菜单
-            model.addAttribute("secondMenu", moduleService.getSecondMenu(module.getBelongModule()));
-            mType = 2;
-        }else if (module.getType() == 1) {
-            //按钮
-            SsmModule faModule = moduleService.getById(module.getBelongModule());
-            model.addAttribute("secondMenu", moduleService.getSecondMenu(faModule.getBelongModule()));
-            model.addAttribute("btn", moduleService.getBtnMenu(module.getBelongModule()));
-            mType = 3;
+        int upType = module.getType();
+        if(module.getType() == 2 && StringUtils.isNotBlank(module.getParentId())){
+            //更新 二级菜单
+            model.addAttribute("secondMenu", moduleService.getSecondMenu(module.getParentId()).getData());
+        }else if (module.getType() == 3) {
+            //更新 按钮
+            SsmModule secondMenu = moduleService.getById(module.getBelongModule());
+            model.addAttribute("secondMenu", moduleService.getSecondMenu(secondMenu.getParentId()));
+            model.addAttribute("btnMenu", moduleService.getBtnMenu(module.getBelongModule()));
         }
-        model.addAttribute("firstMenu", moduleService.getTopMenu());//:::需要根据moduleId查询所有父节点的SQL
-        model.addAttribute("mType", mType);
-        model.addAttribute("object", privilege);//初始化有问题，不对
-        model.addAttribute("operateList", privilegeService.getOperateList());
+        model.addAttribute("topMenu", moduleService.getTopMenu().getData());//始终都需要返回
+        model.addAttribute("upType", upType);//页面不需要，仅供验证用
+        model.addAttribute("object", privilege);//---初始化有问题，不对
+        model.addAttribute("operateList", privilegeService.getOperateList().getData());
         model.addAttribute("operate", "update");
         return "admin/privilege_edit";
     }

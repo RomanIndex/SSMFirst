@@ -2,16 +2,11 @@
 <#assign typeList = {"查询":1, "编辑":2, "排序":3, "控制":4}>
 <@my.page 
     title="MODULE页面"
-    css="
-    <style>
-        body{background-color:white;font-size: 14px;}
-        tr th, tr td{text-align:center;}
-    </style>
-    "
+    css=""
     script="
-	<script src='/system/js/ssm_common.js'></script>
-	<script src='/system/js/module_index.js'></script>
-    ">
+	<script src='../admin/js/module_index.js'></script>
+    "
+>
     <div class="right_col" role="main">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -45,8 +40,8 @@
 					</#list>
 				</select>
 			</div>
-			<a class="btn btn-primary" id="query" data-icon="search">查询</a>
-			<a class="btn btn-primary" id="addFirst" >新增一级模块</a>
+			<a class="btn btn-primary" id="query" onclick="api.module.query()" data-icon="search">查询</a>
+			<a class="btn btn-primary" id="addFirst" onclick="api.module.add(this)" >新增一级模块</a>
 		</form>
 	</div>
 	<div id="tk"></div>

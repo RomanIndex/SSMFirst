@@ -36,8 +36,8 @@ api.role = {
                 {field: 'priValues', title: '权限值', sortable: true},
                 {field: 'status', title: '状态', formatter: commonApi.format.status},
                 {field: 'createTime', title: '创建时间', formatter: dateUtilApi.formatDate},
-                {field: 'describe', title: '备注'},
-                {field:'id', title: '操作', formatter: actionFormatter},
+                {field: 'remark', title: '备注'},
+                {field:'id', title: '操作', formatter: this.actionFormatter},
             ],
             onLoadError: function () {layer.msg("数据加载失败！");},
             queryParams: function(params){return queryParams(params);},
@@ -64,14 +64,14 @@ api.role = {
     getUpdateModal: function(e){
         var index = $(e).parents('tr').data("index");
         var row = this.$table.bootstrapTable('getData')[index];
-        api.role.selectId = row.roleId;
+        this.selectId = row.roleId;
         $("#tk").load("admin/role_edit.html")
         setTimeout(function(){
             $("input[name='roleId']").val(row.roleId)
             $("input[name='name']").val(row.name)
             $("#type").val(row.type)
             $("#level").val(row.level)
-            $("#describe").text(row.describe)
+            $("#remark").text(row.remark)
 
             $(":header.modal-title").text("修改角色")
             $("#save").val("update").text("保存")
@@ -86,7 +86,7 @@ api.role = {
             url = URL_API.ROLE.add;
         }else{
             url = URL_API.ROLE.update;
-            param.id = this.selectId;
+            param.roleId = this.selectId;
         }
         //return false;
         var result = AJAX_HELPER("POST", url, param);
@@ -99,14 +99,13 @@ api.role = {
     del: function (e) {
         var index = $(e).parents('tr').data("index");
         var row = this.$table.bootstrapTable('getData')[index];
-
         var tipMsg = "";
+
         if(row.status == 0){
             tipMsg = "对无效状态的模块执行删除，将永久从系统移除，确认？"
         }else{
             tipMsg = "模块改为无效，页面将不会显示，确定？"
         }
-
         var index = layer.confirm(tipMsg, {
             btn: ['确认','取消']
         },function(){
@@ -114,7 +113,8 @@ api.role = {
                 if(result.code == 0){
                     layer.msg(result.msg);
                     setTimeout('$("#tkModal").modal("hide");', 1500);
-                    this.query();
+                    //this.query();//这里的this是ajax对象（确认一下），要下面那样用
+                    api.role.query();
                 }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
             },'json');
         },function(){return});
@@ -380,7 +380,7 @@ $.extend($.fn.treegrid.methods, {
 });
 
 //操作栏的格式化
-function actionFormatter(value, row, index) {
+api.role.actionFormatter = function (value, row, index) {
     var id = value;
     var re = "";
     re += '<a onclick=\'api.role.menuMg(this)\'><span class="btn-sm glyphicon glyphicon-leaf" aria-hidden="true"></a>';

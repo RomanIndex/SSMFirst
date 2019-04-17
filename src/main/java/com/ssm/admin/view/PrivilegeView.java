@@ -5,7 +5,7 @@ import com.ssm.admin.entity.SsmPrivilege;
 public class PrivilegeView extends SsmPrivilege {
     private String moduleName;
 
-    private String operateName;
+    private String operateName;//中文名称
 
     public String getModuleName() {
         return moduleName;

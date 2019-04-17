@@ -33,12 +33,12 @@ api.privilege = {
                 {field: 'moduleId', title: '模块ID', sortable: true},
 
                 {field: 'operateName', title: '关联操作', sortable: true},
-                {field: 'operateId', title: '操作ID', sortable: true},
+                {field: 'operateEnumName', title: '操作Enum', sortable: true},
 
                 {field: 'validDate', title: '生效时间', sortable: true},
 
                 {field: 'createTime', title: '创建时间', formatter: dateUtilApi.formatDate},
-                {field:'id', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: actionFormatter},
+                {field:'id', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: this.actionFormatter},
             ],
             onLoadError: function () {layer.msg("数据加载失败！");},
             queryParams: function(params){return queryParams(params);},
@@ -69,7 +69,7 @@ api.privilege = {
                     layer.msg(result.msg);
                     setTimeout('$("#tkModal").modal("hide");', 1500);
                     //$tr.attr("style", "display:none;")
-                    api.account.query();
+                    api.privilege.query();
                 }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
             },'json');
         },function(){return});
@@ -77,7 +77,7 @@ api.privilege = {
 }
 
 //操作栏的格式化
-function actionFormatter(value, row, index) {
+api.privilege.actionFormatter = function(value, row, index) {
     var id = value;
     var re = "";
     re += '<a onclick=\'api.privilege.getUpdateModal(this)\'><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true"></a>';

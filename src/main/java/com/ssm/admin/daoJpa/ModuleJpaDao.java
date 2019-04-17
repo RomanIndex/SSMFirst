@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ModuleJpaDao extends JpaRepository<SsmModule, String> {
-    List<SsmModule> findByTypeAndParentIdIsNull(int i);
 
-    List<SsmModule> findByTypeAndBelongModule(int i, String belongId);
+    List<SsmModule> findByTypeAndBelongModule(Integer type, String belongModule);
+
+    List<SsmModule> findByTypeAndParentId(Integer type, String parentId);
 }

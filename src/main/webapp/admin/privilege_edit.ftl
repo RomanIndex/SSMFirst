@@ -4,11 +4,11 @@
 <@my.page
 title="权限票据管理"
 css="
-    <link href='../adminn/bootstrapValidator/css/bootstrapValidator.css' rel='stylesheet'>
+    <link href='../admin/bootstrapValidator/css/bootstrapValidator.css' rel='stylesheet'>
     <style></style>
     "
 script="
-	<script src='../adminn/bootstrapValidator/js/bootstrapValidator.js' crossorigin='anonymous'></script>
+	<script src='../admin/bootstrapValidator/js/bootstrapValidator.js' crossorigin='anonymous'></script>
 	<script src='../admin/js/privilege_edit.js'></script>
     ">
     <div class="right_col" role="main">
@@ -55,14 +55,14 @@ script="
                         </div>
                     </div>
 
-                    <div class="form-group" mType:${mType}>
+                    <div class="form-group" updateModuleType:${upType}>
                         <label for="moduleId" class="col-sm-2 control-label">资源模块：</label>
                         <div class="col-sm-8">
                             <div class="row">
                                 <div class="col-xs-4">
                                     <input type="radio" class="col-xs-3" name="xz" style="height:30px;" value="firstMenu" ${getMType(1)}>
                                     <select class="col-xs-8 form-control" style="width:75%;" id="firstMenu" name="firstMenu">
-		                        <#list firstMenu as list>
+		                        <#list topMenu as list>
                                     <option value="${list.moduleId}" ${(list.moduleId == object.moduleId) ?string('selected', '')} >${list.name}</option>
                                 </#list>
                                     </select>
@@ -78,7 +78,7 @@ script="
                                 <div class="col-xs-4">
                                     <input type="radio" class="col-xs-3" name="xz" style="height:30px;" value="option1" ${getMType(3)}>
                                     <select class="col-xs-8 form-control" style="width:75%;" id="btn" name="btn">
-	                          <#list btn as list>
+	                          <#list btnMenu as list>
                                   <option value="${list.moduleId}" ${(list.moduleId == object.moduleId) ?string('selected', '')} >${list.name}</option>
                               </#list>
                                     </select>
@@ -90,9 +90,9 @@ script="
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">操作类型：</label>
                         <div class="col-sm-8">
-                            <select class="form-control" id="operateId" name="operateId">
+                            <select class="form-control" id="operateEnumName" name="operateEnumName">
 	                        <#list operateList as list>
-                                <option value="${list.operateId}" ${(list.operateId == object.operateId) ?string('selected', '')} >${list.name}</option>
+                                <option value="${list.operate}" ${(list.operate == object.operateId) ?string('selected', '')} >${list.name}</option>
                             </#list>
                             </select>
                         </div>
@@ -131,7 +131,7 @@ script="
 
 <!-- ftl函数：判断MType -->
     <#function getMType index>
-        <#if mType == index>
+        <#if upType == index>
             <#return "checked">
         </#if>
     </#function>

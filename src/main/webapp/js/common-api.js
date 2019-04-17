@@ -47,6 +47,16 @@ commonApi.format = {
     }
 }
 
+commonApi.utils = {
+    isBlank: function (data) {
+        var flag = false;
+        if(data == null || data == ''){
+            flag = true;
+        }
+        return flag;
+    }
+}
+
 /**
  * 公共 根据权限控制 页面元素 的显隐
  * @param hasAry 拥有的权限数组

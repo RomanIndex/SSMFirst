@@ -62,27 +62,30 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         return baseTreegrid;
     }
 
-    @Override
-    public Result<?> getTopMenu() {
-        /*SsmModule entity = new SsmModule();
+    /*SsmModule entity = new SsmModule();
         entity.setType((short) 1);
         ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("id", lam -> lam.contains());
         Example<SsmModule> example = Example.of(entity, matcher);
         List<SsmModule> list = this.listByExample(example);*/
-        List<SsmModule> jpaList = moduleJpaDao.findByTypeAndParentIdIsNull(1);
+
+    /* type = 1 的作为预留，最高模块，现在后台并没有用到*/
+    @Override
+    public Result<?> getTopMenu() {
+        /* mysql 巨坑之 【null 和 空值】*/
+        List<SsmModule> jpaList = moduleJpaDao.findByTypeAndParentId(2, "");
         return Result.success(jpaList);
     }
 
     @Override
-    public Result<?> getSecondMenu(String belongId) {
-        List<SsmModule> list = moduleJpaDao.findByTypeAndBelongModule(2, belongId);
+    public Result<?> getSecondMenu(String parentId) {
+        List<SsmModule> list = moduleJpaDao.findByTypeAndParentId(2, parentId);
         return Result.success(list);
     }
 
     //1：模块；2：菜单；3：按钮
     @Override
-    public Result<?> getBtnMenu(String belongId) {
-        List<SsmModule> list = moduleJpaDao.findByTypeAndBelongModule(3, belongId);
+    public Result<?> getBtnMenu(String belongModule) {
+        List<SsmModule> list = moduleJpaDao.findByTypeAndBelongModule(3, belongModule);
         return Result.success(list);
     }
 
@@ -91,7 +94,7 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         //查询 角色 拥有的 所有菜单权限，待补充
         List<SsmModule> modules = moduleJpaDao.findAll();
         //module转成常用menu
-        List<RecursionMenuVo> rootMenus = getMemuFromModule(modules);
+        List<RecursionMenuVo> rootMenus = getMenuFromModule(modules);
         //递归处理menu
         List<RecursionMenuVo> recursionMenuVos = recursionedMenu(rootMenus);
         return Result.success(recursionMenuVos);
@@ -152,10 +155,12 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
     }
 
     //菜单 来自 module，又不完全是，这里特殊处理（菜单比较特殊）
-    private List<RecursionMenuVo> getMemuFromModule(List<SsmModule> modules) {
+    private List<RecursionMenuVo> getMenuFromModule(List<SsmModule> modules) {
         List<RecursionMenuVo> menus = modules.stream().map(each -> {
             RecursionMenuVo menu = new RecursionMenuVo();
-            menu.setParentId(each.getParentId());
+            /* belongModule 和 parentId 应该是 “互斥” 的，即同时最多只能一个有值 */
+            String parentId = StringUtils.isBlank(each.getParentId()) ? each.getBelongModule() : each.getParentId();
+            menu.setParentId(parentId);
             menu.setMenuId(each.getModuleId());
             menu.setName(each.getName());
             menu.setUrl(each.getUrl());

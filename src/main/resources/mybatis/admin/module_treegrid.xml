@@ -19,10 +19,9 @@
     </resultMap>
 
     <select id="getModuleForTreegrid" resultMap="TreegridMap">
-        WITH treegrid AS (
         SELECT f.status, f.type, CASE f.Parent_id WHEN '' THEN null ELSE f.Parent_id END _parent_id, f.Module_id, f.name, f.seq, f.url
         FROM SSM_MODULE f
-        WHERE ISNULL(f.Parent_id, '') = ''
+        WHERE IfNULL(f.Parent_id, '') = ''
         AND f.type = 2
 
         UNION ALL
@@ -34,21 +33,18 @@
 
         UNION ALL
 
-        SELECT sb.status, sb.type, sb.belong_id _parent_id, sb.Module_id, sb.name, sb.seq, sb.url
+        SELECT sb.status, sb.type, sb.belong_module _parent_id, sb.Module_id, sb.name, sb.seq, sb.url
         FROM SSM_MODULE sb
-        INNER JOIN SSM_MODULE f ON f.Module_id = sb.belong_id
-        WHERE ISNULL(f.Parent_id, '') = ''
+        INNER JOIN SSM_MODULE f ON f.Module_id = sb.belong_module
+        WHERE IfNULL(f.Parent_id, '') = ''
         AND sb.type = 1
 
         UNION ALL
 
-        SELECT b.status, b.type, b.Belong_id _parent_id, b.Module_id, b.name, b.seq, b.url
+        SELECT b.status, b.type, b.belong_module _parent_id, b.Module_id, b.name, b.seq, b.url
         FROM SSM_MODULE s
-        INNER JOIN SSM_MODULE b ON s.Module_id = b.Belong_id
+        INNER JOIN SSM_MODULE b ON s.Module_id = b.belong_module
         WHERE b.type = 1
-        )
-        SELECT * FROM treegrid t
-        WHERE 1 = 1 <if test="name != null and name != ''">and t.name LIKE '%${name}%'</if>
     </select>
 
 </mapper>

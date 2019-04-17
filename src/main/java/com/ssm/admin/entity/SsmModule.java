@@ -14,7 +14,15 @@ import java.util.Date;
 public class SsmModule extends SsmBaseEntity{
 
     @JoinColumn(nullable = false, columnDefinition="COMMENT '1：模块；2：菜单；3：按钮'")
-    private short type;
+    /**
+     * 需要 频繁用到计算 的就用基本类型，否则用 包装类型 可以避免很多问题
+     *  基本类型  mysql类型  长度
+     *  short   smallint    6
+     *  boolean   bit       1
+     *  包装类型  mysql类型  长度
+     *  Integer   int      11
+     */
+    private Integer type;
 
     @JoinColumn(columnDefinition="COMMENT '所属模块，也是顶级菜单，type和子菜单一定不相同'")
     private String belongModule;
@@ -22,7 +30,7 @@ public class SsmModule extends SsmBaseEntity{
     @JoinColumn(columnDefinition="COMMENT '父级菜单，type和子菜单一定相同'")
     private String parentId;
 
-    private short seq;
+    private Integer seq;
 
     @Id
     @GeneratedValue(generator = "custom-uuid")
@@ -41,6 +49,22 @@ public class SsmModule extends SsmBaseEntity{
     private String image;
 
     private String remark;
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
 
     public String getBelongModule() {
         return belongModule;
@@ -74,28 +98,12 @@ public class SsmModule extends SsmBaseEntity{
         this.image = image;
     }
 
-    public short getType() {
-        return type;
-    }
-
-    public void setType(short type) {
-        this.type = type;
-    }
-
     public String getParentId() {
         return parentId;
     }
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
-    }
-
-    public short getSeq() {
-        return seq;
-    }
-
-    public void setSeq(short seq) {
-        this.seq = seq;
     }
 
     public String getModuleId() {

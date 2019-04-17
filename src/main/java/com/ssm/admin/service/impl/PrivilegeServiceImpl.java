@@ -31,7 +31,18 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
         pageModel.setTotalRecords(privilegeMapper.getCount(query));
         pageModel.setPageNo(query.getPageNo());
         pageModel.setPageSize(query.getPageSize());
-        pageModel.setList(privilegeMapper.query(query));
+        List<PrivilegeView> list = privilegeMapper.query(query);
+        List<OperateView> enumList = (List<OperateView>) getOperateList().getData();
+        List<PrivilegeView> addEnumList = list.stream().map(i -> {
+            enumList.stream().forEach(e -> {
+                if(e.getOperate().equals(i.getOperateEnumName())){
+                    i.setOperateName(e.getName());
+                    return;
+                }
+            });
+            return i;
+        }).collect(Collectors.toList());
+        pageModel.setList(addEnumList);
 
         return Result.success(pageModel);
     }

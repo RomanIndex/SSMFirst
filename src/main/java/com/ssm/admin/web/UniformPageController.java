@@ -26,7 +26,7 @@ public class UniformPageController {
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
-        return "/system/login/login";
+        return "system/login/login";
     }
 
     //备注下干嘛用的？

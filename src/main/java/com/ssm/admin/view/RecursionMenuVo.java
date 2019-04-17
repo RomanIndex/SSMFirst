@@ -14,17 +14,17 @@ public class RecursionMenuVo {
 
     private String icon;
 
-    private short seq;
+    private Integer seq;
 
     private boolean status;
 
     private Date createTime;
 
-    public short getSeq() {
+    public Integer getSeq() {
         return seq;
     }
 
-    public void setSeq(short seq) {
+    public void setSeq(Integer seq) {
         this.seq = seq;
     }
 

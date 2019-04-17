@@ -27,7 +27,7 @@ public class SsmPrivilege extends SsmBaseEntity{
     @Column(length = 32)
     private String moduleId;
 
-    private String operateEnumName;
+    private String operateEnumName;//存的是英文的
 
     @Column(length = 32)
     private String validDateId;

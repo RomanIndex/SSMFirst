@@ -94,7 +94,7 @@ api.account = {
     getUpdateModal: function(e){
         var index = $(e).parents('tr').data("index");
         var row = this.$table.bootstrapTable('getData')[index];
-        api.account.selectId = row.empNo;
+        this.selectId = row.empNo;
         $("#tk").load("admin/account_edit.html")
         setTimeout(function(){
             $("input[name='empNo']").val(row.empNo).attr("readonly", true).attr("style", "cursor:not-allowed")

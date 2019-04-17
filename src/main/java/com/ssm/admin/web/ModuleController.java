@@ -37,13 +37,13 @@ public class ModuleController {
     }
 
     @RequestMapping(value = "/second", method = RequestMethod.GET)
-    public Result<?> getSecondMenu(String belongId) {
-        return moduleService.getSecondMenu(belongId);
+    public Result<?> getSecondMenu(String parentId) {
+        return moduleService.getSecondMenu(parentId);
     }
 
     @RequestMapping(value = "/btn", method = RequestMethod.GET)
-    public Result<?> getBtn(String parentId) {
-        return moduleService.getBtnMenu(parentId);
+    public Result<?> getBtn(String belongModule) {
+        return moduleService.getBtnMenu(belongModule);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -57,7 +57,7 @@ public class ModuleController {
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.POST)
-    public Result<?> del(String roleId) {
-        return moduleService.deleteById(roleId);
+    public Result<?> del(String moduleId) {
+        return moduleService.deleteById(moduleId);
     }
 }
