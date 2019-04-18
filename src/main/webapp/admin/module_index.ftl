@@ -41,7 +41,7 @@
 				</select>
 			</div>
 			<a class="btn btn-primary" id="query" onclick="api.module.query()" data-icon="search">查询</a>
-			<a class="btn btn-primary" id="addFirst" onclick="api.module.add(this)" >新增一级模块</a>
+			<a class="btn btn-primary" id="addFirst" onclick="api.module.add(this)" >新增顶级菜单</a>
 		</form>
 	</div>
 	<div id="tk"></div>

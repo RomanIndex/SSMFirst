@@ -26,8 +26,8 @@ script="<script src='/admin/js/account_index.js?v2'></script>"
 <div id="toolbar">
     <form id="queryForm" class="form-inline" autocomplete="off">
         <div class="form-group">
-            <label class="control-label" for="name">名称：</label>
-            <input type="text" class="form-control" name="name" placeholder="关键词">
+            <label class="control-label" for="accountKeyword">名称：</label>
+            <input type="text" class="form-control" name="accountKeyword" placeholder="关键词">
         </div>
         <div class="form-group">
             <label class="control-label" for="type">类型：</label>

@@ -19,7 +19,7 @@ api.privilege = {
             showColumns: true,
             showExport: true,
             uniqueId: "empNo",
-            responseHandler: responseHandler,
+            responseHandler: commonApi.table.responseHandler,
             columns: [
                 {field: 'id', title: 'ID', visible: false},
                 {field: 'status', title: '状态', formatter: commonApi.format.status},
@@ -41,7 +41,7 @@ api.privilege = {
                 {field:'id', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: this.actionFormatter},
             ],
             onLoadError: function () {layer.msg("数据加载失败！");},
-            queryParams: function(params){return queryParams(params);},
+            queryParams: function(params){return commonApi.table.queryParams(params);},
         });
         this.$table = jq;
     },

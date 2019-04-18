@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Api(description="用户角色API", value = "用户角色API", tags = {"SSM后台：用户角色接口"})
@@ -27,7 +29,8 @@ public class AccountRoleController {
 
     @ApiOperation(value = "（混合）更新 用户 的 角色", notes = "")
     @RequestMapping(value = "/updateByAccount", method = RequestMethod.POST)
-    public Result<?> mixUpdateRole(String empNo, List<String> roleIds) {
-        return accountRoleService.updateByAccount(empNo, roleIds);
+    public Result<?> mixUpdateRole(String empNo, String[] roleIds) {
+        List<String> list = roleIds == null ? new ArrayList<>() : Arrays.asList(roleIds);
+        return accountRoleService.updateByAccount(empNo, list);
     }
 }

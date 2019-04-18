@@ -114,8 +114,8 @@ api.module.add = function(e){
 	setTimeout(function(){
 		$("input[name='moduleId']").attr("disabled", true).parents(".flexible").hide()
 		if(row == undefined){
-			//row无定义，默认为新增一级菜单
-			$("#inputForm #type").val(1).attr("disabled", true)//原页面有id="type"的dom，不能重复？？限定form，加表单ID
+			//row无定义，默认为新增顶级菜单
+			$("#inputForm #type").val(2).attr("disabled", true);//原页面有id="type"的dom，不能重复？？限定form，加表单ID
 			$("#inputForm input[name='belongModule']").attr("disabled", true).parents(".flexible").hide()
 			$("#inputForm input[name='parentId']").attr("disabled", true).parents(".flexible").hide()
 			
@@ -181,12 +181,16 @@ api.module.save = function(e){
         url = URL_API.MODULE.update;
         param.moduleId = api.module.selectId;
     }
+    //mysql null和空值，暂时特殊处理字段
+    if(param.parentId == undefined){
+        param.parentId = "";
+    }
     var result = AJAX_HELPER("POST", url, param);
     if(result.code == 0){
         setTimeout('$("#tkModal").modal("hide")',800);
         setTimeout('$("#'+ api.module.refresh_table_id +'").bootstrapTable("refresh")', 1500);
         api.module.selectId = null;
-        this.query();
+        api.module.query();
     }
 }
 

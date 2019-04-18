@@ -92,7 +92,7 @@ script="
                         <div class="col-sm-8">
                             <select class="form-control" id="operateEnumName" name="operateEnumName">
 	                        <#list operateList as list>
-                                <option value="${list.operate}" ${(list.operate == object.operateId) ?string('selected', '')} >${list.name}</option>
+                                <option value="${list.operate}" ${(list.operate == object.operateEnumName) ?string('selected', '')} >${list.name}</option>
                             </#list>
                             </select>
                         </div>

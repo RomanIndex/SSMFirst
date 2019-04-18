@@ -57,9 +57,12 @@ api.account = {
         var param = {};
         param.empNo = row.empNo;
         setTimeout(function(){
-            var result = AJAX_HELPER("GET", URL_API.ACCOUNT.getRoleByEmoNo, param);
+            var result = AJAX_HELPER("GET", URL_API.ACCOUNT_ROLE.getRoleScope, param);
+            if(result.code != 0){
+                return false;
+            }
             var map = result.data;
-            var havedRole = map.havedRole;
+            var hadRole = map.hadRole;
             var leftRole = map.leftRole;
 
             $("#from").html("")
@@ -71,7 +74,7 @@ api.account = {
 
             $("#to").html("")
             var options = ""
-            $.each(havedRole, function(i, v){
+            $.each(hadRole, function(i, v){
                 options += "<option value='"+ v.roleId +"'>"+ v.name +"</option>"
             })
             $("#to").html(options)
@@ -118,14 +121,21 @@ api.account = {
 
         var param = {}
         param.empNo = $("#empNo").val()
-        param.roleIds = select
-
-        //return false;
-        var result = AJAX_HELPER("POST", URL_API.ACCOUNT.updateRole, JSON.stringify(param));
-        if(result.code == 0){
-            setTimeout('$("#tkModal").modal("hide")',800);
-            this.$table.bootstrapTable('refresh');
-        }
+        param.roleIds = select;
+        $.ajax({
+            url: URL_API.ACCOUNT_ROLE.updateByAccount,
+            data: param,//JSON.stringify(param)
+            type:"post",
+            traditional: true,
+            success: function(result){
+                if(result.code == 0){
+                    setTimeout('$("#tkModal").modal("hide")',800);
+                    api.account.query();
+                }else{
+                    layer.msg(result.msg)
+                }
+            }
+        })
     },
     save: function (e) {
         var param = commonApi.form.getFormObj("inputForm");

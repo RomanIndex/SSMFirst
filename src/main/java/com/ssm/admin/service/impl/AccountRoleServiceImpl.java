@@ -55,8 +55,9 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
         List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
         List<SsmRole> totalRole = roleService.selectAll();
         Map<String, Object> map = new HashMap<>();
-        map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())));
-        map.put("havedRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())));
+        //List<SsmRole> leftRole = totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())).collect(Collectors.toList());
+        map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())).collect(Collectors.toList()));
+        map.put("hadRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())).collect(Collectors.toList()));
         return Result.success(map);
     }
 

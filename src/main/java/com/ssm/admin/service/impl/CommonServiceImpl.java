@@ -2,25 +2,27 @@ package com.ssm.admin.service.impl;
 
 import com.ssm.admin.entity.SsmBaseEntity;
 import com.ssm.admin.service.CommonService;
-import com.ssm.admin.view.PrivilegeView;
 import com.ssm.base.service.ReflectFieldService;
 import com.ssm.base.view.Result;
 import com.ssm.common.util.BeanUtil;
 import org.apache.commons.lang.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.Id;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * 2、公共 泛型接口 的实现类，
