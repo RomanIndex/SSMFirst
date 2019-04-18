@@ -15,5 +15,5 @@ public interface ModuleService extends CommonService<SsmModule, String>{
 
     Result<?> getBtnMenu(String belongModule);
 
-    List<TreegridView> getModuleForTreegrid(String roleId);
+    List<TreegridView> getMenuTreegrid(String name);
 }

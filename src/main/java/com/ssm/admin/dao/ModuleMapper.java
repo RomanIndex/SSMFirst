@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ModuleMapper {
-    List<TreegridView> getModuleForTreegrid(@Param("name") String name);
+    List<TreegridView> getMenuTreegrid(@Param("name") String name);
 }

@@ -5,45 +5,7 @@ $(function () {
 
 api.role = {
     $table: null,
-    initTable: function (tableId) {
-        var jq = $("#"+ tableId).bootstrapTable({
-            url: URL_API.ROLE.query,                      //请求后台的URL（*）
-            method: 'GET',                      //请求方式（*）
-            cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-            pagination: true,                   //是否显示分页（*）
-            sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-            //queryParamsType: '',              //设置会改变默认传入后台的分页参数
-            contentType: "application/x-www-form-urlencoded",//关键，后台可以以对象形式接收参数
-            //宽高
-            //height: $(window).height() - 110,
-            //width: $(window).width(),
-            toolbar: '#toolbar',              //工具按钮用哪个容器
-            //右上方按钮
-            showRefresh: true,                  //是否显示刷新按钮
-            showToggle: true,                   //是否显示详细视图和列表视图的切换按钮
-            showColumns: true,                  //是否显示所有的列（选择显示的列）
-            showExport: true,                   //导出（配置好）
-            uniqueId: "roleId",                     //每一行的唯一标识，一般为主键列
-            //detailView: true,                   //是否显示父子表
-            responseHandler: responseJpaHandler,
-            columns: [
-                {field: 'id', title: 'ID', visible: false},
-                {field: 'name', title: '名称', sortable: true},
-                {field: 'roleId', title: '角色ID', sortable: true},
-                {field: 'type', title: '类型', sortable: true},
-                {field: 'level', title: '级别'},
-                {field: 'weight', title: '权重值'},
-                {field: 'priValues', title: '权限值', sortable: true},
-                {field: 'status', title: '状态', formatter: commonApi.format.status},
-                {field: 'createTime', title: '创建时间', formatter: dateUtilApi.formatDate},
-                {field: 'remark', title: '备注'},
-                {field:'id', title: '操作', formatter: this.actionFormatter},
-            ],
-            onLoadError: function () {layer.msg("数据加载失败！");},
-            queryParams: function(params){return queryParams(params);},
-        });
-        this.$table = jq;
-    },
+    selectId: null,
     query: function(){
         this.$table.bootstrapTable('refresh');
     },
@@ -77,48 +39,89 @@ api.role = {
             $("#save").val("update").text("保存")
             $("#tkModal").modal("show");
         },400)
-    },
-    selectId: null,
-    save: function (e) {
-        var param = commonApi.form.getFormObj("inputForm");
-        var saveType = $(e).val();
-        if(saveType == "add"){
-            url = URL_API.ROLE.add;
-        }else{
-            url = URL_API.ROLE.update;
-            param.roleId = this.selectId;
-        }
-        //return false;
-        var result = AJAX_HELPER("POST", url, param);
-        if(result.code == 0){
-            setTimeout('$("#tkModal").modal("hide");', 1500);
-            this.selectId = null;
-            this.query();
-        }
-    },
-    del: function (e) {
-        var index = $(e).parents('tr').data("index");
-        var row = this.$table.bootstrapTable('getData')[index];
-        var tipMsg = "";
-
-        if(row.status == 0){
-            tipMsg = "对无效状态的模块执行删除，将永久从系统移除，确认？"
-        }else{
-            tipMsg = "模块改为无效，页面将不会显示，确定？"
-        }
-        var index = layer.confirm(tipMsg, {
-            btn: ['确认','取消']
-        },function(){
-            $.post(URL_API.ROLE.del, {"roleId": row.roleId}, function(result){
-                if(result.code == 0){
-                    layer.msg(result.msg);
-                    setTimeout('$("#tkModal").modal("hide");', 1500);
-                    //this.query();//这里的this是ajax对象（确认一下），要下面那样用
-                    api.role.query();
-                }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
-            },'json');
-        },function(){return});
     }
+}
+
+api.role.initTable = function (tableId) {
+    var jq = $("#"+ tableId).bootstrapTable({
+        url: URL_API.ROLE.query,            //请求后台的URL（*）
+        method: 'GET',                      //请求方式（*）
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+        //queryParamsType: '',              //设置会改变默认传入后台的分页参数
+        contentType: "application/x-www-form-urlencoded",//关键，后台可以以对象形式接收参数
+        //宽高
+        //height: $(window).height() - 110,
+        //width: $(window).width(),
+        toolbar: '#toolbar',                //工具按钮用哪个容器
+        //右上方按钮
+        showRefresh: true,                  //是否显示刷新按钮
+        showToggle: true,                   //是否显示详细视图和列表视图的切换按钮
+        showColumns: true,                  //是否显示所有的列（选择显示的列）
+        showExport: true,                   //导出（配置好）
+        uniqueId: "roleId",                 //每一行的唯一标识，一般为主键列
+        //detailView: true,                 //是否显示父子表
+        responseHandler: commonApi.table.responseJpaHandler,
+        columns: [
+            {field: 'id', title: 'ID', visible: false},
+            {field: 'name', title: '名称', sortable: true},
+            {field: 'roleId', title: '角色ID', sortable: true},
+            {field: 'type', title: '类型', sortable: true},
+            {field: 'level', title: '级别'},
+            {field: 'weight', title: '权重值'},
+            {field: 'priValues', title: '权限值', sortable: true},
+            {field: 'status', title: '状态', formatter: commonApi.format.status},
+            {field: 'createTime', title: '创建时间', formatter: dateUtilApi.formatDate},
+            {field: 'remark', title: '备注'},
+            {field:'id', title: '操作', formatter: this.actionFormatter},
+        ],
+        onLoadError: function () {layer.msg("数据加载失败！");},
+        queryParams: function(params){return commonApi.table.queryParams(params);},
+    });
+    this.$table = jq;
+}
+
+api.role.save = function (e) {
+    var param = commonApi.form.getFormObj("inputForm");
+    var saveType = $(e).val();
+    if(saveType == "add"){
+        url = URL_API.ROLE.add;
+    }else{
+        url = URL_API.ROLE.update;
+        param.roleId = this.selectId;
+    }
+    //return false;
+    var result = AJAX_HELPER("POST", url, param);
+    if(result.code == 0){
+        setTimeout('$("#tkModal").modal("hide");', 1500);
+        this.selectId = null;
+        this.query();
+    }
+}
+
+api.role.del = function (e) {
+    var index = $(e).parents('tr').data("index");
+    var row = this.$table.bootstrapTable('getData')[index];
+    var tipMsg = "";
+
+    if(row.status == 0){
+        tipMsg = "对无效状态的模块执行删除，将永久从系统移除，确认？"
+    }else{
+        tipMsg = "模块改为无效，页面将不会显示，确定？"
+    }
+    var index = layer.confirm(tipMsg, {
+        btn: ['确认','取消']
+    },function(){
+        $.post(URL_API.ROLE.del, {"roleId": row.roleId}, function(result){
+            if(result.code == 0){
+                layer.msg(result.msg);
+                setTimeout('$("#tkModal").modal("hide");', 1500);
+                //this.query();//这里的this是ajax对象（确认一下），要下面那样用
+                api.role.query();
+            }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
+        },'json');
+    },function(){return});
 }
 
 //加载 菜单 管理树
@@ -134,7 +137,7 @@ function getMenuMgTree(divId, roleId){
         modal: true,
         title: '角色 菜单权限 管理',
         buttons:[{
-            text:'Save保存',
+            text:'testBtn',
             handler:function(){
                 var selects = $treegrid.treegrid("getSelections")
                 var checkeds = $treegrid.treegrid("getChecked")
@@ -182,10 +185,11 @@ function getTreegridData(){
             {title:'模块名称',field:'name',width:180,align:'left'},
             {title:'状态',field:'status',width:60},
             {title:'类型',field:'type',width:60},
-            {title:'生成票据',field:'showTicket',width:80, formatter: formatIsST},
-            {title:'角色授权',field:'getShowTicket',width:80, formatter: formatGetST},
+            {title:'生成票据',field:'ticket',width:80, formatter: formatCreateTicket},
+            {title:'角色授权',field:'roleTicket',width:80, formatter: formatRoleAuth},
             {title:'URL',field:'url',width:180,align:'left'}
         ]],
+        //toolbar: '#search_div',//加这个会覆盖掉toolbar的按钮
         toolbar: [{
             text : "测试按钮",
             iconCls : "icon-add",
@@ -200,14 +204,15 @@ function getTreegridData(){
                 //var checkeds = $treegrid.treegrid('getChecked')//同上
                 //var sss = $treegrid.treegrid('getCheckedNodes')//选中所有勾选的行
                 //var moduleIds = $treegrid.treegrid("getAllChecked", true);//选中所有勾选的行及其所有父节点node_id（符合要求）
-                var moduleIds = [];
+                var codes = [];
                 $.each(selects, function(i, item){
-                    moduleIds[i] = item.moduleId;
+                    console.log(item);
+                    codes[i] = item.ticket.code;
                 })
-                updateRolePri(moduleIds);
+                updateRolePri(codes);
             }
         }],
-        loader: myloader,//向后台请求数据
+        loader: treeDataLoader,//向后台请求数据，返回 指定格式 的数据
         onLoadSuccess: function(row, result){
             //被这个函数坑好久，必须使用接口返回的数据结构和“标准”一致
             var data = result.rows;
@@ -219,7 +224,7 @@ function getTreegridData(){
             })
         },
         onSelect: function(node){
-            if(node.showTicket){
+            if(node.ticket != null){
                 //layer.msg(node.moduleId);
                 var pNode = $treegrid.treegrid('getParent',node.moduleId);//得到父节点
                 if(pNode != null){
@@ -244,50 +249,49 @@ function getTreegridData(){
         /*onCheck: function(node, checked){
             layer.msg(node.moduleId);
         },*/
-        //toolbar: '#search_div',
         //searcher: doSearch,//放这里不生效？？
         prompt: 'Please Input Value',
     });
 }
 
-var myloader = function(param, success, error){
+var treeDataLoader = function(param, success, error){
     var roleId = $("#roleId").val();
     $.ajax({
         //url:"json/treegrid.json",
-        url: URL_API.MODULE.getTree,
+        url: URL_API.ROLE_PRIVILEGE.getMenuTree,
         data:{
             "roleId": roleId
         },
-        type:"post",
+        type:"get",
         //dataType:"jsonp",//(跨域)
         //jsonpCallback:"callback",
-        success: function(data){
+        success: function(result){
             //$('#tt').treegrid('reload');//死循环，添加成功重新加载数据
             //$('#tt').treegrid('loadData', []);//清空数据
             //$('#tt').treegrid('selectRow',3);
-            success(data);//这句貌似还不能省，下面会执行到treegrid onLoadSuccess函数
+            success(result.data);//这句貌似还不能省，下面会执行到treegrid onLoadSuccess函数
         }
     })
 }
 
-function formatIsST(value, row){
-    if(value){
+function formatCreateTicket(value, row){
+    var flag = value == null ? false : true;
+    if(flag){
         return "OK!";
     }else{
-        //return "---";
         return '<a class="createTicket btn btn-default btn-sm" data-module-id="'+ row.moduleId +'">生成</a>';
     }
 }
 
-function formatGetST(value, row){
+function formatRoleAuth(value, row){
     //var kv = $("#XXX").treegrid("checkNode",id);  根据ID勾选节点
     //var kv = $("#XXX").treegrid("uncheckNode",id);  根据ID取消勾选节点
     var re = '<input type="checkBox">'
     if(value){
         re = '<input type="checkBox" checked>';
-        var kv = $("#tt").treegrid("checkNode",row.moduleId);//根据ID勾选节点//放到onLoadSuccess里面去
+        var kv = $("#tt").treegrid("checkNode", row.moduleId);//根据ID勾选节点//放到onLoadSuccess里面去
     }else{
-        if(row.showTicket){
+        if(row.ticket != null){
             re = '<input type="checkBox">'
         }else{
             re = '<input type="checkBox" disabled>'
@@ -296,18 +300,18 @@ function formatGetST(value, row){
     return re;
 }
 
-//向 后台 更新角色 的菜单权限
-function updateRolePri(ids){
+//向 后台 更新（有新增有删除）角色 的菜单权限
+function updateRolePri(codes){
     var roleId = $("#roleId").val()
-    console.log("ids的类型："+ typeof(ids))
-    var ss = Array.prototype.slice.call(ids)
-    console.log("ss的类型："+ typeof(ids))
+    console.log("ids的类型："+ typeof(codes))
+    var ss = Array.prototype.slice.call(codes)
+    console.log("ss的类型："+ typeof(codes))
     //return false;
     $.ajax({
-        url: "mg/admin/rolePri/updateRP",
+        url: URL_API.ROLE_PRIVILEGE.updateByRole,
         data:{
             "roleId": roleId,
-            "moduleIds": ids//.replace("[", "{").replace("]", "}")
+            "codes": codes
         },
         type:"post",
         //contentType: "application/json",
@@ -322,24 +326,17 @@ function updateRolePri(ids){
     })
 };
 
+//生成 菜单票据，也是 一种权限
 $(document).on("click", ".createTicket", function(){
-    var moduleId = $(this).data("moduleId")
-    layer.msg(moduleId)
-    $.ajax({
-        url: "mg/admin/privilege/add/show",
-        data:{
-            "moduleId": moduleId
-        },
-        type:"post",
-        success: function(result){
-            if(result.code == 0){
-                //初始化好该行
-                layer.msg(result.msg)
-            }else{
-                layer.msg(result.msg)
-            }
-        }
-    })
+    var moduleId = $(this).data("moduleId");
+    var obj = {}
+    obj.moduleId = moduleId;
+    obj.operateEnumName = "show";
+    obj.name = moduleId+ "（show票据）";
+    var result = AJAX_HELPER("POST", URL_API.PRIVILEGE.add, obj);
+    if(result.code == 0){
+        $(this).parent().html("OK!");
+    }
 })
 
 function doSearch(value,name){

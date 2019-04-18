@@ -3,21 +3,21 @@ package com.ssm.admin.service.impl;
 import com.ssm.admin.dao.AccountRoleMapper;
 import com.ssm.admin.daoJpa.AccountRoleJpaDao;
 import com.ssm.admin.entity.SsmAccountRole;
+import com.ssm.admin.entity.SsmRole;
 import com.ssm.admin.service.AccountRoleService;
+import com.ssm.admin.service.RoleService;
 import com.ssm.base.view.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, Integer> implements AccountRoleService {
     @Autowired private AccountRoleJpaDao accountRoleJpaDao;
     @Autowired private AccountRoleMapper accountRoleMapper;
+    @Autowired private RoleService roleService;
 
     @Override
     public List<SsmAccountRole> getByEmpNo(String empNo) {
@@ -25,7 +25,7 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
     }
 
     @Override
-    public Result<?> updateRoleByEmpNo(String empNo, List<String> newRoleIds) {
+    public Result<?> updateByAccount(String empNo, List<String> newRoleIds) {
         List<SsmAccountRole> oldRoles = getByEmpNo(empNo);
         List<String> oldRoleIds = oldRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
         //先 删 再 增
@@ -48,4 +48,16 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
 
         return Result.success("用户的角色更新成功！", null);
     }
+
+    @Override
+    public Result<?> getRoleScopeByAccount(String empNo) {
+        List<SsmAccountRole> accountRoles = this.getByEmpNo(empNo);
+        List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
+        List<SsmRole> totalRole = roleService.selectAll();
+        Map<String, Object> map = new HashMap<>();
+        map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())));
+        map.put("havedRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())));
+        return Result.success(map);
+    }
+
 }

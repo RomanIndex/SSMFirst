@@ -52,9 +52,13 @@
            </ul>
        </li>
 
+         <li class="header">---Begin---</li>
+
          <!-- 调用宏 生成递归树 -->
        <@bpTree list = treeMenu />
          <!-- 宏生成菜单结束 -->
+
+         <li class="header">---End！---</li>
 
        <!-- 测试菜单 -->
        <li class="treeview menu-open">
@@ -112,6 +116,7 @@
        
        <!-- 多级菜单示例 -->
        <li class="treeview">
+         <#-- 左侧 直接显示的文字及图片-->
          <a href="#">
            <i class="fa fa-share" 左侧图标></i>
            <span 中间文字>顶级菜单Multilevel</span>
@@ -119,8 +124,10 @@
              <i class="fa fa-angle-left pull-right"></i>
            </span>
          </a>
+         <#-- 菜单 展开后 显示的 子菜单 文字和图标 -->
          <ul class="treeview-menu">
            <li><a href="#"><i class="fa fa-circle-o"></i><span>一级菜单（无子分级）</span></a></li>
+
            <li class="treeview">
              <a href="#">
                 <i class="fa fa-circle-o"></i>
@@ -146,6 +153,7 @@
                </li>
              </ul>
            </li>
+
            <li><a href="#"><i class="fa fa-circle-o"></i><span>一级菜单（无子分级）</span></a></li>
          </ul>
        </li>
@@ -158,8 +166,9 @@
 		   <#list list as child>
 		      <#if child.childMenus?? && child.childMenus?size gt 0>
 	          <li class="treeview">
-	            <a data-url="javascript:void(0)">
-	               <i class="${(child.icon=='')?string('fa fa-share',child.icon) }"></i>
+	            <#--<a data-url="javascript:void(0)">-->
+                <a data-url="${child.url}">
+	               <i class="${(child.icon=='')?string('fa fa-share', child.icon) }"></i>
 	               <span>${child.name}</span>
 	               <span class="pull-right-container">
 	                 <i class="fa fa-angle-left pull-right"></i>

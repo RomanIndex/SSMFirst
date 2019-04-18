@@ -8,5 +8,7 @@ import java.util.List;
 public interface AccountRoleService extends CommonService<SsmAccountRole, Integer>{
     List<SsmAccountRole> getByEmpNo(String empNo);
 
-    Result<?> updateRoleByEmpNo(String empNo, List<String> roleIds);
+    Result<?> getRoleScopeByAccount(String empNo);
+
+    Result<?> updateByAccount(String empNo, List<String> roleIds);
 }

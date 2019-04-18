@@ -1,12 +1,18 @@
 package com.ssm.admin.view;
 
+import com.ssm.admin.param.SsmTicket;
+
 public class TreegridView {
 	
 	private Integer status;
 	
 	private Integer type;
-	
-	private String id;
+
+	private String name;
+
+	private Integer seq;
+
+	private String url;
 	
 	private String moduleId;
 	
@@ -14,7 +20,7 @@ public class TreegridView {
 	
 	private String iconCls = "icon-city";//选项前面的图标，如果自己不设定，父级节点默认为文件夹图标，子级节点为文件图标（这里应该根据type的值来显示）
 	
-	private boolean checked;//是否选中（用于复选框）（这个角色是否拥有该菜单的show权限）
+	private boolean checked;//是否选中（用于复选框）（与 roleTicket 一样）
 	
 	/**
 	 * （必须）：记得前面有“_” ，他是用来记录父级节点，没有这个属性，是没法展示父级节点；其次就是这个父级节点必须存在，不然信息也是展示不出来，
@@ -22,42 +28,12 @@ public class TreegridView {
 		state：是否展开
 	 */
 	private String _parentId;
-	
-	private String name;
-	
-	private Integer seq;
-	
-	private String url;
-	
+
 	//扩展几个和权限有关字段
-	private boolean isShowTicket;//模块 是否 已经生成 operate = show 的权限票据
+	SsmTicket ticket;//ticket不为空，说明 该 module 已经生成票据
 	
 	//1、不生成show票据的都是普通页面，向全部角色展示；2、重要页面，加show票据管理，拿到show票据的才有查看权限
-	private boolean getShowTicket;//若module已有show 票据，是否获得
-
-	public boolean isShowTicket() {
-		return isShowTicket;
-	}
-
-	public void setShowTicket(boolean isShowTicket) {
-		this.isShowTicket = isShowTicket;
-	}
-
-	public boolean isGetShowTicket() {
-		return getShowTicket;
-	}
-
-	public void setGetShowTicket(boolean getShowTicket) {
-		this.getShowTicket = getShowTicket;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	private boolean roleTicket;//角色 是否 已经 拥有 ticket的权限（ticket为空，则一定是false）
 
 	public Integer getStatus() {
 		return status;
@@ -73,6 +49,30 @@ public class TreegridView {
 
 	public void setType(Integer type) {
 		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getSeq() {
+		return seq;
+	}
+
+	public void setSeq(Integer seq) {
+		this.seq = seq;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getModuleId() {
@@ -115,30 +115,19 @@ public class TreegridView {
 		this._parentId = _parentId;
 	}
 
-	public String getName() {
-		return name;
+	public SsmTicket getTicket() {
+		return ticket;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTicket(SsmTicket ticket) {
+		this.ticket = ticket;
 	}
 
-	public Integer getSeq() {
-		return seq;
+	public boolean isRoleTicket() {
+		return roleTicket;
 	}
 
-	public void setSeq(Integer seq) {
-		this.seq = seq;
+	public void setRoleTicket(boolean roleTicket) {
+		this.roleTicket = roleTicket;
 	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
-	
-
 }

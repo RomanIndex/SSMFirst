@@ -23,44 +23,7 @@ import java.util.stream.Collectors;
 @Service
 public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> implements ModuleService {
     @Autowired private ModuleJpaDao moduleJpaDao;
-    @Autowired private PrivilegeService privilegeService;
     @Autowired private ModuleMapper moduleMapper;
-
-    //取module，封装成treegril数据格式，带条件查询
-    @Override
-    public List<TreegridView> getModuleForTreegrid(String roleId) {
-        //获取所有 生成了operate = show 的module
-        List<SsmPrivilege> haveTicketModules = privilegeService.getTicket(OperateEnum.select);
-        //获取所有 有show票据的module
-        List<SsmPrivilege> roleGetShowTicket = privilegeService.getTicket("", OperateEnum.select);
-        //所有module表之间的父子关系集合//name参数作模糊查询用
-        List<TreegridView> baseTreegrid = moduleMapper.getModuleForTreegrid("");
-        for(TreegridView eachModule : baseTreegrid){
-
-            if(eachModule.getType() == 1){
-                eachModule.setIconCls("icon-edit");
-            }
-
-            for(SsmPrivilege eachHTM : haveTicketModules){
-                //权限表是否生成了show
-                if(eachHTM.getModuleId().equals(eachModule.getModuleId())){
-                    eachModule.setShowTicket(true);
-                    break;
-                }
-            }
-
-            for(SsmPrivilege eachGST : roleGetShowTicket){
-                //角色 拥有的show的模块
-                if(eachGST.getModuleId().equals(eachModule.getModuleId())){
-                    eachModule.setGetShowTicket(true);
-                    eachModule.setChecked(true);
-                    break;
-                }
-            }
-        }
-
-        return baseTreegrid;
-    }
 
     /*SsmModule entity = new SsmModule();
         entity.setType((short) 1);
@@ -87,6 +50,12 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
     public Result<?> getBtnMenu(String belongModule) {
         List<SsmModule> list = moduleJpaDao.findByTypeAndBelongModule(3, belongModule);
         return Result.success(list);
+    }
+
+    //封装成treegrid可以解析的数据格式，可以 和 菜单的 整合一起
+    @Override
+    public List<TreegridView> getMenuTreegrid(String name) {
+        return moduleMapper.getMenuTreegrid(name);
     }
 
     @Override

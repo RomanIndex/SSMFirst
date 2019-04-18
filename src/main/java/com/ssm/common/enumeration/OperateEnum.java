@@ -8,7 +8,8 @@ public enum OperateEnum {
     sort("排序"),
     filter("过滤"),
     upload("上传"),
-    download("下载");
+    download("下载"),
+    show("菜单");
 
     private String name;
 

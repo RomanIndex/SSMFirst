@@ -1,19 +1,100 @@
 package com.ssm.admin.service.impl;
 
+import com.ssm.admin.dao.RolePrivilegeMapper;
 import com.ssm.admin.daoJpa.RolePrivilegeJpaDao;
+import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.entity.SsmRolePrivilege;
+import com.ssm.admin.param.SsmTicket;
+import com.ssm.admin.service.ModuleService;
+import com.ssm.admin.service.PrivilegeService;
 import com.ssm.admin.service.RolePrivilegeService;
+import com.ssm.admin.view.RolePrivilegeView;
+import com.ssm.admin.view.TreegridView;
+import com.ssm.base.view.Result;
+import com.ssm.common.enumeration.OperateEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege, Integer> implements RolePrivilegeService {
     @Autowired private RolePrivilegeJpaDao rolePrivilegeJpaDao;
+    @Autowired private RolePrivilegeMapper rolePrivilegeMapper;
+    @Autowired private PrivilegeService privilegeService;
+    @Autowired private ModuleService moduleService;
 
     @Override
     public List<SsmRolePrivilege> getByRole() {
         return null;
+    }
+
+    @Override
+    public Result<?> mixUpdatePrivilege(String roleId, List<String> newCodes) {
+        List<SsmRolePrivilege> oldPrivileges = rolePrivilegeJpaDao.findByRoleId(roleId);
+        List<String> oldCodes = oldPrivileges.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
+        //先 删 再 增
+        List<String> delList = oldCodes.stream().filter(i -> !newCodes.contains(i)).collect(Collectors.toList());
+
+        List<String> addList = newCodes.stream().filter(i -> !oldCodes.contains(i)).collect(Collectors.toList());
+
+        rolePrivilegeMapper.deleteByCodes(roleId, delList);
+
+        List<SsmRolePrivilege> addObject = new ArrayList<>();
+        Date createTime = Calendar.getInstance().getTime();
+        addList.forEach(i -> {
+            SsmRolePrivilege obj = new SsmRolePrivilege();
+            obj.setRoleId(roleId);
+            obj.setPriCode(i);
+            obj.setCreateTime(createTime);
+            addObject.add(obj);
+        });
+        this.batchCreate(addObject);
+
+        return Result.success("角色的权限更新成功！", null);
+    }
+
+    @Override
+    public List<TreegridView> getMenuTreegrid(String roleId) {
+        //获取 由module生成的 菜单票据（即operateEnumName = show的 权限）
+        List<SsmPrivilege> menuTicket = privilegeService.getTicket(OperateEnum.show);
+        //角色 已经 拥有的 菜单票据
+        List<RolePrivilegeView> roleTicket = rolePrivilegeMapper.getByRoleAndOperate(roleId, OperateEnum.show.name());
+        ////取module表之间的父子关系集合，封装成treegril可解析的数据格式，带条件查询
+        List<TreegridView> baseTreegrid = moduleService.getMenuTreegrid("");
+        for(TreegridView eachModule : baseTreegrid){
+
+            if(eachModule.getType() == 3){
+                //按钮的样式
+                eachModule.setIconCls("icon-edit");
+            }
+
+            for(SsmPrivilege pri : menuTicket){
+                //权限表是否生成了show
+                if(pri.getModuleId().equals(eachModule.getModuleId())){
+                    SsmTicket ticket = new SsmTicket();
+                    ticket.setCode(pri.getCode());
+                    ticket.setModuleId(pri.getModuleId());
+                    ticket.setOperate(pri.getOperateEnumName());
+                    eachModule.setTicket(ticket);
+                    break;
+                }
+            }
+
+            for(RolePrivilegeView rolePriView : roleTicket){
+                //角色 拥有的show的模块
+                if(rolePriView.getModuleId().equals(eachModule.getModuleId())){
+                    eachModule.setRoleTicket(true);
+                    eachModule.setChecked(true);
+                    break;
+                }
+            }
+        }
+
+        return baseTreegrid;
     }
 }

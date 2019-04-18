@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.admin.dao.RolePrivilegeMapper" >
+    <resultMap id="BaseResultMap" type="com.ssm.admin.entity.SsmRolePrivilege" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="OTHER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="pri_code" property="priCode" jdbcType="VARCHAR" />
+        <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+        <result column="valid_date_id" property="validDateId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="BaseViewMap" type="com.ssm.admin.view.RolePrivilegeView" extends="BaseResultMap">
+        <result column="MODULE_ID" property="moduleId" jdbcType="VARCHAR" />
+        <result column="OPERATE" property="operate" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getByRoleAndOperate" resultMap="BaseViewMap">
+        SELECT p.module_id, p.operate_enum_name operate, rp.*
+        FROM SSM_ROLE_PRIVILEGE rp
+        LEFT JOIN SSM_PRIVILEGE p ON p.CODE = rp.pri_code
+        WHERE rp.role_id = #{roleId} AND p.operate_enum_name = #{operate}
+    </select>
+
+    <delete id="deleteByCodes">
+        DELETE rp
+        FROM
+        SSM.SSM_ROLE_PRIVILEGE AS rp
+        WHERE
+        rp.role_id = #{roleId}
+        <if test="delList.size() > 0">
+            AND rp.pri_code IN
+            <foreach collection="delList" open="(" close=")" separator="," item="item">
+                #{item}
+            </foreach>
+        </if>
+    </delete>
+
+</mapper>

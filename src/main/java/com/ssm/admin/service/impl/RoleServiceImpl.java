@@ -13,9 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,16 +34,5 @@ public class RoleServiceImpl extends CommonServiceImpl<SsmRole, String> implemen
         List<String> roleIds = midList.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
         List<SsmRole> roles = this.selectAllById(roleIds);
         return Result.success(roles);
-    }
-
-    @Override
-    public Result<?> getRoleBranch(String empNo) {
-        List<SsmAccountRole> accountRoles = accountRoleService.getByEmpNo(empNo);
-        List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
-        List<SsmRole> totalRole = this.selectAll();
-        Map<String, Object> map = new HashMap<>();
-        map.put("leftRole", totalRole.stream().filter(i -> !roleIds.contains(i.getRoleId())));
-        map.put("havedRole", totalRole.stream().filter(i -> roleIds.contains(i.getRoleId())));
-        return Result.success(map);
     }
 }

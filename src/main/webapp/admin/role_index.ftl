@@ -1,7 +1,15 @@
 <#import "admin/master/lte_master.ftl" as my>
 <@my.page
 title="ROLE页面"
-css="<style>body{}</style>"
+css="
+<style>
+    .createTicket{
+        padding: 2px 10px;
+        background-color: rgb(232, 219, 220);
+        border-color: rgb(228, 208, 217);
+    }
+</style>
+"
 script="<script src='/admin/js/role_index.js?v2'></script>"
 >
 
@@ -24,9 +32,9 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
     </div>
 
 <div id="repeatDialog">
-    <div id="search_div">
+    <#--<div id="search_div">
         <input class="easyui-searchbox" style="width: 300px" data-options="searcher:doSearch,prompt:'Please Input Value'" name="keyWord"></input>
-    </div>
+    </div>-->
     <table id="tt" style="width: 760px; height: 540px"></table>
     <input type="hidden" id="roleId">
 </div>

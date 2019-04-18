@@ -20,17 +20,6 @@ import java.util.Map;
 public class ModuleController {
     @Autowired private ModuleService moduleService;
 
-    //返回所有静态module，供 树形网络 使用（后续要做出可查询的）
-    @RequestMapping(value = "/tree", method = RequestMethod.POST)
-    public Result<?> treeModule(String roleId) {
-        List<TreegridView> list = moduleService.getModuleForTreegrid(roleId);
-        Map<String, Object> map = new HashMap<>();
-        map.put("total", list.size());
-        map.put("rows", list);
-
-        return Result.success("查询所有静态module成功！", map);
-    }
-
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     public Result<?> getTopMenu() {
         return moduleService.getTopMenu();

@@ -1,37 +1,53 @@
 var URL_API = {};
 
+var base_url = {
+    "account": "/ssm/admin/account",
+    "role": "/ssm/admin/role",
+    "module": "/ssm/admin/module",
+    "privilege": "/ssm/admin/privilege",
+    "accountRole": "/ssm/admin/accountRole",
+    "rolePrivilege": "/ssm/admin/rolePrivilege",
+};
+
+URL_API.ROLE_PRIVILEGE = {
+    "getMenuTree": base_url.rolePrivilege+ "/menuTree",//根据 角色ID 获取 权限（所有菜单权限、已拥有的）
+    "updateByRole": base_url.rolePrivilege+ "/updateByRole",//（混合）更新 角色 的 菜单权限
+}
+
+URL_API.ACCOUNT_ROLE = {
+    "getRoleScope": base_url.accountRole+ "/roleScope",//根据 员工编号 获取 角色（已拥有、未拥有）
+    "updateByAccount": base_url.accountRole+ "/updateByAccount",//（混合）更新 用户 的 角色
+}
+
 URL_API.ACCOUNT = {
-    "query": "/ssm/admin/account/query",
+    "query": base_url.account+ "/query",
     //"getVo": "/ssm/admin/account",// \/{empNo}
-    "add": "/ssm/admin/account/add",
-    "update": "/ssm/admin/account/update",
-    "del": "/ssm/admin/account/del",
+    "add": base_url.account+ "/add",
+    "update": base_url.account+ "/update",
+    "del": base_url.account+ "/del",
 };
 
 URL_API.ROLE = {
-    "query": "/ssm/admin/role/jpaQuery",
-    "add": "/ssm/admin/role/add",
-    "update": "/ssm/admin/role/update",
-    "del": "/ssm/admin/role/del",
-    "getRoleByAccount": "/ssm/admin/role/account",
-    "getRoleBranch": "/ssm/admin/role/branch",//包括员工 已有 和 尚未拥有 的
+    "query": base_url.role+ "/jpaQuery",
+    "add": base_url.role+ "/add",
+    "update": base_url.role+ "/update",
+    "del": base_url.role+ "/del",
+    "getRoleByAccount": base_url.role+ "/account",
 }
 
 URL_API.MODULE = {
-    "getTop": "/ssm/admin/module/top",
-    "getSecond": "/ssm/admin/module/second",
-    "getBtn": "/ssm/admin/module/btn",
-    "add": "/ssm/admin/module/add",
-    "update": "/ssm/admin/module/update",
-    "del": "/ssm/admin/module/del",
-    "getTree": "/ssm/admin/module/tree",
+    "getTop": base_url.module+ "/top",
+    "getSecond": base_url.module+ "/second",
+    "getBtn": base_url.module+ "/btn",
+    "add": base_url.module+ "/add",
+    "update": base_url.module+ "/update",
+    "del": base_url.module+ "/del",
 }
 
 URL_API.PRIVILEGE = {
-    "query": "/ssm/admin/privilege/query",
-    "add": "/ssm/admin/privilege/add",
-    "update": "/ssm/admin/privilege/update",
-    "del": "/ssm/admin/privilege/del",
-    "operateList": "/ssm/admin/privilege/operateList",//操作类型集合
-    "getPrivilegeByRole": "/ssm/admin/privilege/role",//角色拥有的权限
+    "query": base_url.privilege+ "/query",
+    "add": base_url.privilege+ "/add",
+    "update": base_url.privilege+ "/update",
+    "del": base_url.privilege+ "/del",
+    "operateList": base_url.privilege+ "/operateList",//操作类型 枚举转集合
 }

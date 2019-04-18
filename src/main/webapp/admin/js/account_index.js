@@ -19,7 +19,7 @@ api.account = {
             showColumns: true,
             showExport: true,
             uniqueId: "empNo",
-            responseHandler: responseHandler,
+            responseHandler: commonApi.table.responseHandler,
             columns: [
                 //align: 'center' 左右居中；valign: 'middle' 上下居中
                 {field: 'name', title: '名字'},
@@ -35,7 +35,7 @@ api.account = {
                 {field:'id', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: actionFormatter},
             ],
             onLoadError: function () {layer.msg("数据加载失败！");},
-            queryParams: function(params){return queryParams(params);},
+            queryParams: function(params){return commonApi.table.queryParams(params);},
             onLoadSuccess: function () {
                 //layer.msg("成功加载数据！");
                 //var ary = ["#export", "#add", "#query", "#openDialog", ".update", ".delete", ".mgActRole"];

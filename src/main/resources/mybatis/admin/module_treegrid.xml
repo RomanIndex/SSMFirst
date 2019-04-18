@@ -18,7 +18,7 @@
         <result column="url" property="url" jdbcType="NVARCHAR" />
     </resultMap>
 
-    <select id="getModuleForTreegrid" resultMap="TreegridMap">
+    <select id="getMenuTreegrid" resultMap="TreegridMap">
         SELECT f.status, f.type, CASE f.Parent_id WHEN '' THEN null ELSE f.Parent_id END _parent_id, f.Module_id, f.name, f.seq, f.url
         FROM SSM_MODULE f
         WHERE IfNULL(f.Parent_id, '') = ''

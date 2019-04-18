@@ -129,7 +129,10 @@ var AJAX_HELPER = function (requestType, fullUrl, param) {
     return re;
 }
 
-function queryParams(params) {
+//::::一定要先 定义这个，不能“跨级”定义函数，否则不生效！
+commonApi.table = {};
+
+commonApi.table.queryParams = function (params) {
     var temp = $("#queryForm").serializeJsonObject();
     if(temp["valid"] != undefined && !temp["valid"]){
         layer.msg("有不合法字符，请重新输入");
@@ -148,7 +151,7 @@ function queryParams(params) {
  * "server" 改为 sidePagination: "client"， 同时去掉responseHandler:
  * responseHandler就可以了
  */
-function responseHandler(result) {
+commonApi.table.responseHandler = function (result) {
     if (result.code == 0) {
         return {
             "rows" : result.data.list,
@@ -162,7 +165,7 @@ function responseHandler(result) {
     }
 }
 
-function responseJpaHandler(result) {
+commonApi.table.responseJpaHandler = function (result) {
     if (result.code == 0) {
         return {
             "rows" : result.data.content,

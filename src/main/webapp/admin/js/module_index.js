@@ -50,7 +50,7 @@ api.module.initTable = function (tableId) {
         ],
         onLoadSuccess: function () {layer.msg("【一级菜单】加载成功！");},
         onLoadError: function () {layer.msg("【一级菜单】加载失败！");},
-        queryParams: function(params){return queryParams(params);},
+        queryParams: function(params){return commonApi.table.queryParams(params);},
         onPostBody: function(){api.module.initFirstAction()},
         //注册加载子表的事件。注意下这里的三个参数！
         onExpandRow: function (index, row, $detail) {

@@ -121,14 +121,15 @@
      </ul>
     </div>
     
-    <section class="content-header">
+    <#-- 内容最上方，页面指引，暂时注释掉 -->
+	<#--<section class="content-header">
       <h4>页面指引404 Error Page</h4>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Examples</a></li>
         <li class="active">404 error</li>
       </ol>
-    </section>
+    </section>-->
     
 	<!-- Body start -->
 	<div id="tab-content" class="self-defined-class tab-content" style="position: absolute;">
@@ -136,6 +137,7 @@
       <div class="tab-content-item tab-content-show"><iframe src='/welcome'></iframe></div>
     </div>
 	<!-- body end -->
+
   </div>
   <!-- /.content-wrapper -->
 
