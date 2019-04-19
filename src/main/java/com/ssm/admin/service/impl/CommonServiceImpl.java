@@ -10,19 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import javax.persistence.Id;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 /**
  * 2、公共 泛型接口 的实现类，
@@ -41,6 +37,8 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
      * 且对外暴露的方法名，可以自己定义
      */
     @Autowired private JpaRepository<T, ID> baseRepository;
+
+    @Autowired private JpaSpecificationExecutor<T> baseSpecification;
 
     @Override
     public ID getIdValue(T entity) {
@@ -190,6 +188,11 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
     @Override
     public Page<T> page(Pageable pageable) {
         return this.baseRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<T> pageWithFilter(Specification specification, Pageable pageable){
+        return baseSpecification.findAll(specification, pageable);
     }
 
     /**

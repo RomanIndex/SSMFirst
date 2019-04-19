@@ -2,14 +2,17 @@ package com.ssm.admin.service.impl;
 
 import com.ssm.admin.dao.AccountRoleMapper;
 import com.ssm.admin.daoJpa.AccountRoleJpaDao;
+import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.entity.SsmAccountRole;
 import com.ssm.admin.entity.SsmRole;
 import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.RoleService;
 import com.ssm.base.view.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,6 +25,28 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
     @Override
     public List<SsmAccountRole> getByEmpNo(String empNo) {
         return accountRoleJpaDao.findByEmpNo(empNo);
+    }
+
+    //@Override
+    public List<SsmAccountRole> findByCompanyName(final String roleStr, final String accountStr) {
+        //关联--过滤--排序--分页（用mybatis吧！用mybatis吧！用mybatis吧！）
+        List<SsmAccountRole> list = accountRoleJpaDao.findAll(new Specification<SsmAccountRole>() {
+            public Predicate toPredicate(Root<SsmAccountRole> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Join<SsmAccountRole, SsmAccount> accountJoin = root.join("empNo", JoinType.LEFT);
+                Join<SsmAccountRole, SsmRole> roleJoin = root.join("roleId", JoinType.LEFT);
+                Predicate p1 = cb.equal(accountJoin.get("name"), roleStr);
+                Predicate p2 = cb.equal(roleJoin.get("name"), accountStr);
+                /**
+                 * return cb.and(p1, p2);
+                 * 根据spring-data-jpa的源码，可以返回一个Predicate，框架内部会自动做query.where(p)的操作，也可以直接在这里处理，然后返回null，
+                 * 也就是下面一段源码中的实现
+                 */
+                query.where(p1, p2);
+                return null;
+            }
+        });
+
+        return list;
     }
 
     @Override

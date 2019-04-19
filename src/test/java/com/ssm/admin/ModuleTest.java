@@ -1,6 +1,7 @@
 package com.ssm.admin;
 
 import com.alibaba.fastjson.JSON;
+import com.ssm.admin.entity.SsmAccount;
 import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.view.RecursionMenuVo;
 import com.ssm.admin.entity.SsmModule;
