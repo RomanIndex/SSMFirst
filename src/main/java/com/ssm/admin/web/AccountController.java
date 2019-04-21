@@ -19,10 +19,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("ssm/admin/account")
 public class AccountController {
     @Autowired private AccountService accountService;
-    @Autowired private AccountRoleService accountRoleService;
-    @Autowired private RoleService roleService;
-
-
 
     @ApiOperation(value = "根据 用户编号 查询基本信息", notes = "")
     @RequestMapping(value = "/{empNo}", method = RequestMethod.GET)

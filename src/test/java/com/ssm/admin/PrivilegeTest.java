@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:jpa-config.xml"})
 public class PrivilegeTest {
@@ -26,5 +28,13 @@ public class PrivilegeTest {
         System.out.println("插入前》》"+ JSON.toJSONString(obj));
         Result result = privilegeService.create(obj);
         System.out.println("插入后》》"+ JSON.toJSONString(result.getData()));
+    }
+
+    @Test
+    public void getPriByAccount(){
+        String account = "YH302595";
+        OperateEnum operate = OperateEnum.show;
+        List<SsmPrivilege> privileges = privilegeService.listPrivilegeByAccount(account, operate);
+        System.out.println("》》》》"+ JSON.toJSONString(privileges));
     }
 }

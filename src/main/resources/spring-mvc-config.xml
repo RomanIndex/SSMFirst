@@ -43,12 +43,12 @@
             </list>
         </property>
     </bean>
-    
-	<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
- 	<!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
- 	      p:defaultEncoding="UTF-8"
-          p:maxUploadSize="320000000"
- 	/>-->
+
+	<!-- 配置multipartResolver，用于文件上传，比如接收FormData数据，注意：id名必须这样写，不然会报错 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxInMemorySize" value="10240000"></property>
+	</bean>
  	
 	<!--视图解释器 -->
 	<bean id="ftlResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">

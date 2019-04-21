@@ -52,7 +52,7 @@ api.role.initTable = function (tableId) {
         //queryParamsType: '',              //设置会改变默认传入后台的分页参数
         contentType: "application/x-www-form-urlencoded",//关键，后台可以以对象形式接收参数
         //宽高
-        //height: $(window).height() - 110,
+        //height: ($(window).height() - 80) * 0.9,
         //width: $(window).width(),
         toolbar: '#toolbar',                //工具按钮用哪个容器
         //右上方按钮
@@ -78,8 +78,23 @@ api.role.initTable = function (tableId) {
         ],
         onLoadError: function () {layer.msg("数据加载失败！");},
         queryParams: function(params){return commonApi.table.queryParams(params);},
+        /*onLoadSuccess: function (data) {
+            layer.msg("------------------------------------")
+            var h = 400;//getElementToPageTop(el);
+            $("#table").parent().height(h);
+        },*/
+        /*onPostBody: function (data) {
+            layer.msg("sdsdssfsdfsdfsdf")//在onLoadSuccess之前触发
+        }*/
     });
     this.$table = jq;
+}
+
+function getElementToPageTop(el) {
+    if(el.parentElement) {
+        return this.getElementToPageTop(el.parentElement) + el.offsetTop
+    }
+    return el.offsetTop
 }
 
 api.role.save = function (e) {
@@ -135,6 +150,8 @@ function getMenuMgTree(divId, roleId){
         //closed: false,
         //cache: false,
         modal: true,
+        width: 760,
+        height: 540,
         title: '角色 菜单权限 管理',
         buttons:[{
             text:'testBtn',
@@ -183,10 +200,10 @@ function getTreegridData(){
         columns:[[
             //{title:'多选', field:'id', width:60, checkbox:true},
             {title:'模块名称',field:'name',width:180,align:'left'},
-            {title:'状态',field:'status',width:60},
-            {title:'类型',field:'type',width:60},
-            {title:'生成票据',field:'ticket',width:80, formatter: formatCreateTicket},
-            {title:'角色授权',field:'roleTicket',width:80, formatter: formatRoleAuth},
+            {title:'状态',field:'status',width:60,align:'center'},
+            {title:'类型',field:'type',width:60,align:'center'},
+            {title:'生成票据',field:'ticket',width:80, align:'center', formatter: formatCreateTicket},
+            {title:'角色授权（多余）',field:'roleTicket',width:80, align:'center', formatter: formatRoleAuth},
             {title:'URL',field:'url',width:180,align:'left'}
         ]],
         //toolbar: '#search_div',//加这个会覆盖掉toolbar的按钮
@@ -217,7 +234,7 @@ function getTreegridData(){
             //被这个函数坑好久，必须使用接口返回的数据结构和“标准”一致
             var data = result.rows;
             $.each(data, function(index, item){
-                if(item.getShowTicket){
+                if(item.roleTicket){
                     //$treegrid.treegrid('selectRecord', item.moduleId)
                     $treegrid.treegrid('select', item.moduleId)
                 }

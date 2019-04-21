@@ -8,9 +8,7 @@ import com.ssm.common.util.BeanUtil;
 import org.apache.commons.lang.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -38,7 +36,13 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
      */
     @Autowired private JpaRepository<T, ID> baseRepository;
 
-    @Autowired private JpaSpecificationExecutor<T> baseSpecification;
+    /**
+     * @Autowired JpaSpecificationExecutorDao<T> baseSpecification;
+     * 自己定义DAO的接口也不行，接口里面定义的也是泛型T
+     * 编译的时候，没有实例化，报错NoSuchBeanDefinitionException:
+     * No qualifying bean of type '**.JpaSpecificationExecutorDao<**.SsmAccountRole>' available
+     * ，最后，决定哪个需要JpaSpecificationExecutorDao方法的，就去JpaDao里面单独 继承吧！！
+     */
 
     @Override
     public ID getIdValue(T entity) {
@@ -188,11 +192,6 @@ public class CommonServiceImpl<T extends SsmBaseEntity, ID extends Serializable>
     @Override
     public Page<T> page(Pageable pageable) {
         return this.baseRepository.findAll(pageable);
-    }
-
-    @Override
-    public Page<T> pageWithFilter(Specification specification, Pageable pageable){
-        return baseSpecification.findAll(specification, pageable);
     }
 
     /**

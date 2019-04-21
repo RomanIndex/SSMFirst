@@ -22,17 +22,17 @@ api.account = {
             responseHandler: commonApi.table.responseHandler,
             columns: [
                 //align: 'center' 左右居中；valign: 'middle' 上下居中
-                {field: 'name', title: '名字'},
                 {field: 'empNo', title: '编号', align: 'center', sortable: true},
+                {field: 'name', title: '名字'},
                 {field: 'mobile', title: '电话'},
                 {field: 'email', title: '邮箱'},
                 {field: 'loginUrl', title: '登陆首页'},
-                {field: 'onlineStatus', title: '线上状态'},
-                {field: 'lastLoginTime', title: '最近登陆', formatter: dateUtilApi.formatDate},
-                {field: 'status', title: '状态', formatter: commonApi.format.status},
-                {field: 'source', title: '来源'},
-                {field: 'createTime', title: '创建时间', formatter: dateUtilApi.formatDate},
-                {field:'id', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: actionFormatter},
+                {field: 'onlineStatusName', title: '线上状态'},
+                {field: 'lastLoginTimeName', title: '最近登陆'},
+                {field: 'sourceName', title: '来源'},
+                {field: 'statusName', title: '状态'},
+                {field: 'createTimeName', title: '创建时间'},
+                {field: 'empNo', title: '操作', width: 120, align: 'center', valign: 'middle', formatter: actionFormatter},
             ],
             onLoadError: function () {layer.msg("数据加载失败！");},
             queryParams: function(params){return commonApi.table.queryParams(params);},
@@ -150,6 +150,12 @@ api.account = {
             param.id = api.account.selectId;
             //param.modifyUser = OTC_LOGIN_ACCOUNT;
         }
+
+        if(param.source == ""){
+            layer.msg("来源不能为空！");
+            return false;
+        }
+
         //return false;
         var result = AJAX_HELPER("POST", url, param);
         if(result.code == 0){
@@ -179,7 +185,7 @@ api.account = {
 
 //操作栏的格式化
 function actionFormatter(value, row, index) {
-    var id = value;
+    var empNo = value;
     var re = "";
     re += '<a onclick=\'api.account.getRoleMgModal(this)\'><span class="btn-sm glyphicon glyphicon-th-list" aria-hidden="true"></a>';
     re += '<a onclick=\'api.account.getUpdateModal(this)\'><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true"></a>';

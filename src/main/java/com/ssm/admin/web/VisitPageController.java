@@ -18,9 +18,16 @@ public class VisitPageController {
 
     /**
      * 利用ftl做页面跳转，并用model往页面-塞数据-的方式
-     * @param model
-     * @return
      */
+
+    //模块管理，提供另一种单页面的简单方式
+    @RequestMapping(value = "admin/module/ftl", method = RequestMethod.GET)
+    public String indexFtl(Model model) {
+        model.addAttribute("topMenus", moduleService.listMenuByRoleId("").getData());
+        return "admin/module_index_ftl";
+    }
+
+    //编辑 权限 采用跳转新页面的方式
     @RequestMapping(value = "admin/privilege/add", method = RequestMethod.GET)
     public String add(Model model){
         model.addAttribute("operateList", privilegeService.getOperateList().getData());

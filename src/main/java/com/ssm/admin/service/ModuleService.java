@@ -1,6 +1,7 @@
 package com.ssm.admin.service;
 
 import com.ssm.admin.entity.SsmModule;
+import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.view.TreegridView;
 import com.ssm.base.view.Result;
 
@@ -16,4 +17,6 @@ public interface ModuleService extends CommonService<SsmModule, String>{
     Result<?> getBtnMenu(String belongModule);
 
     List<TreegridView> getMenuTreegrid(String name);
+
+    Result<?> privilege2menu(List<SsmPrivilege> privileges);
 }

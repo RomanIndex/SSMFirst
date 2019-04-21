@@ -52,7 +52,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver{
 
 
 		McExceptionHistory exceptionHistory = new McExceptionHistory();
-		exceptionHistory.setMemberId(CookieHelper.getValueByName(Config.MEMBER_ID));
+		exceptionHistory.setMemberId(CookieHelper.getValueByName(Config.SSM_ACCOUNT));
 		exceptionHistory.setRequestUrl(request.getRequestURI());
 		exceptionHistory.setExceptionName(exception.getClass().getName());
 		exceptionHistory.setExceptionInfo(exception.getMessage());

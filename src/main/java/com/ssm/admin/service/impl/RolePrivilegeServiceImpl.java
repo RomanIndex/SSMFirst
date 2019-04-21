@@ -12,13 +12,16 @@ import com.ssm.admin.view.RolePrivilegeView;
 import com.ssm.admin.view.TreegridView;
 import com.ssm.base.view.Result;
 import com.ssm.common.enumeration.OperateEnum;
+import com.ssm.common.util.Java8Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,8 +32,17 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
     @Autowired private ModuleService moduleService;
 
     @Override
-    public List<SsmRolePrivilege> getByRole() {
-        return null;
+    public List<SsmRolePrivilege> getByRole(String roleId) {
+        SsmRolePrivilege entity = new SsmRolePrivilege();
+        entity.setRoleId(roleId);
+        entity.setStatus(true);
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withMatcher("roleId", m -> m.exact())
+                .withMatcher("status", m -> m.equals(true));
+
+        Example<SsmRolePrivilege> example = Example.of(entity, matcher);
+        return this.listByExample(example);
     }
 
     @Override
@@ -97,4 +109,21 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
 
         return baseTreegrid;
     }
+
+    @Override
+    public List<SsmRolePrivilege> listDistinctByRoleIds(List<String> roleIds) {
+        List<SsmRolePrivilege> list = new ArrayList<>();
+        if(roleIds.size() > 0){
+            roleIds.stream().forEach(e -> {
+                List<SsmRolePrivilege> subList = this.getByRole(e);
+                list.addAll(subList);
+            });
+        }
+        //下面这种网上说需要重写实体类的equals和hashcode方法，未亲自测试
+        //List<SsmRolePrivilege> distinct = list.stream().distinct().collect(Collectors.toList());
+        //根据 属性 过滤，顺便引入这个公共方法
+        List<SsmRolePrivilege> distinct = list.stream().filter(Java8Util.distinctByKey(b -> b.getPriCode())).collect(Collectors.toList());
+        return distinct;
+    }
+
 }

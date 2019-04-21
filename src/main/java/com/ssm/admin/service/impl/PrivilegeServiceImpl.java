@@ -2,8 +2,10 @@ package com.ssm.admin.service.impl;
 
 import com.ssm.admin.dao.PrivilegeMapper;
 import com.ssm.admin.daoJpa.PrivilegeJpaDao;
+import com.ssm.admin.entity.SsmAccountRole;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.entity.SsmRolePrivilege;
+import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.PrivilegeService;
 import com.ssm.admin.service.RolePrivilegeService;
 import com.ssm.admin.view.AdminQueryView;
@@ -22,8 +24,9 @@ import java.util.stream.Collectors;
 @Service
 public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String> implements PrivilegeService {
     @Autowired private PrivilegeMapper privilegeMapper;
-    @Autowired private RolePrivilegeService rolePrivilegeService;
     @Autowired private PrivilegeJpaDao privilegeJpaDao;
+    @Autowired private RolePrivilegeService rolePrivilegeService;
+    @Autowired private AccountRoleService accountRoleService;
 
     @Override
     public Result<?> query(AdminQueryView query) {
@@ -62,7 +65,7 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
 
     @Override
     public Result<?> getPrivilegeByRole(String roleId) {
-        List<SsmRolePrivilege> midList = rolePrivilegeService.getByRole();
+        List<SsmRolePrivilege> midList = rolePrivilegeService.getByRole(roleId);
         List<String> codes = midList.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
         List<SsmPrivilege> privileges = this.selectAllById(codes);
         return Result.success(privileges);
@@ -76,5 +79,20 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
     @Override
     public List<SsmPrivilege> getTicket(String moduleId, OperateEnum type) {
         return privilegeJpaDao.findByOperateEnumNameAndModuleId(type.name(), moduleId);
+    }
+
+    @Override
+    public List<SsmPrivilege> listPrivilegeByAccount(String account, OperateEnum operate) {
+        List<SsmAccountRole> accountRoles = accountRoleService.getByEmpNo(account);
+        //account拥有的角色
+        List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
+        List<SsmRolePrivilege> rolePrivileges = rolePrivilegeService.listDistinctByRoleIds(roleIds);
+        //account所有 角色 的不重复的 权限
+        List<String> codes = rolePrivileges.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
+        //系统 拥有的 指定 操作类型的 权限（这里是 菜单的）
+        List<SsmPrivilege> privileges = privilegeJpaDao.findByOperateEnumName(operate.name());
+        //codes 和 privileges 的 交集，就是传入的account的 所有菜单权限
+        List<SsmPrivilege> codesOfAccount = privileges.stream().filter(i -> codes.contains(i.getCode())).collect(Collectors.toList());
+        return account.equalsIgnoreCase("admin") ? privileges : codesOfAccount;
     }
 }

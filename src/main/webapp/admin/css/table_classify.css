@@ -1,0 +1,147 @@
+/* body 初始大方向定位 */
+body {
+    color: rgb(115, 135, 156);
+    background: rgb(247, 249, 251);
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+}
+
+.container {
+    width: 100%;
+    padding: 0px;
+}
+
+.x_content {
+    padding: 0 5px 60px;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.platform_title {
+    border: none;
+    border-top: 1px solid rgb(226, 226, 226);
+    margin-top: 8px;
+}
+
+table {
+    background-color: rgba(0, 0, 0, 0);
+    border-collapse: collapse;
+}
+
+.table_css {
+    margin-bottom: 10px;
+}
+
+.table-bordered {
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.table-bordered>thead>tr>th {
+    /* border: 1px solid rgb(221, 221, 221); *//* 隐藏列之间的分割杆 */
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+/* 控制thead th的主要样式 */
+.table_css thead th {
+    background-color: rgb(244, 244, 244);
+    color: rgb(17, 17, 17);
+    font-weight: 500;
+    padding: 12px 18px !important;
+    border-bottom: 0 !important;
+}
+
+/* 第一行，即表头，左显示 */
+th {
+    text-align: left;
+}
+
+/* 控制tbody td 的主要样式 */
+.table_css tbody tr td {
+    background-color: rgb(255, 255, 255);
+    padding: 8px 12px 8px 20px;
+    /* width: 25%; */
+}
+
+.table_css tbody tr td label {
+    color: rgb(17, 17, 17);
+    font-weight: 400;
+}
+
+.table_css tr label {
+  position: relative;
+}
+
+.table_css tr label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+      left: -3px;
+  margin-left: -20px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out; 
+}
+
+.table_css tr label::after {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+    left: -4px;
+  margin-left: -20px;
+  padding-left: 3px;
+  padding-top: 1px;
+  font-size: 11px;
+  color: #555555; 
+}
+
+
+.table_css tr input[type="checkbox"],.table_css tr input[type="radio"] {
+  opacity: 0;
+  z-index: 1; }
+.table_css tr input[type="checkbox"]:checked + label::after,.table_css tr input[type="radio"]:checked + label::after {
+  font-family: "FontAwesome";
+  content: "\f00c";}
+.table_css tr input[type="checkbox"]:indeterminate + label::after,.table_css tr input[type="radio"]:indeterminate + label::after {
+  display: block;
+  content: "";
+  width: 10px;
+  height: 3px;
+  background-color: #555555;
+  border-radius: 2px;
+  margin-left: -16.5px;
+  margin-top: 7px;
+}
+.table_css tr input[type="checkbox"]:disabled + label,.table_css tr input[type="radio"]:disabled + label {
+      opacity: 0.65; }
+.table_css tr input[type="checkbox"]:disabled + label::before,.table_css tr input[type="radio"]:disabled + label::before {
+  background-color: #eeeeee;
+        cursor: not-allowed; }
+.table_css tr input[type="checkbox"]:checked + label::before,.table_css tr input[type="radio"]:checked + label::before {
+  background-color: #00a6eb;
+  border-color: #00a6eb; }
+.table_css tr input[type="checkbox"]:checked + label::after,.table_css tr input[type="radio"]:checked + label::after {
+  color: #fff;}
+
+
+.table_css tr input[type="checkbox"]:indeterminate + label::before,.table_css tr input[type="radio"]:indeterminate + label::before {
+  background-color: #00a6eb;
+  border-color: #00a6eb;
+}
+.table_css tr input[type="checkbox"]:indeterminate + label::after,.table_css tr input[type="radio"]:indeterminate + label::after {
+  background-color: #fff;
+}

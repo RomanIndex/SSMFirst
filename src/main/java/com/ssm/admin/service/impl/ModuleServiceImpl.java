@@ -25,11 +25,12 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
     @Autowired private ModuleJpaDao moduleJpaDao;
     @Autowired private ModuleMapper moduleMapper;
 
-    /*SsmModule entity = new SsmModule();
-        entity.setType((short) 1);
-        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("id", lam -> lam.contains());
-        Example<SsmModule> example = Example.of(entity, matcher);
-        List<SsmModule> list = this.listByExample(example);*/
+    @Override
+    public Result<?> privilege2menu(List<SsmPrivilege> privileges) {
+        List<String> moduleIds = privileges.stream().map(i -> i.getModuleId()).collect(Collectors.toList());
+        List<SsmModule> modules = moduleJpaDao.findByModuleIdIn(moduleIds);
+        return Result.success(this.module2menu(modules));
+    }
 
     /* type = 1 的作为预留，最高模块，现在后台并没有用到*/
     @Override
@@ -62,11 +63,21 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
     public Result<?> listMenuByRoleId(String roleId) {
         //查询 角色 拥有的 所有菜单权限，待补充
         List<SsmModule> modules = moduleJpaDao.findAll();
+        return Result.success(this.module2menu(modules));
+    }
+
+    /**
+     * 将 module 转换成 menu，且按父子关系封装好的
+     * @param modules
+     * @return
+     */
+    private List<RecursionMenuVo> module2menu(List<SsmModule> modules){
         //module转成常用menu
-        List<RecursionMenuVo> rootMenus = getMenuFromModule(modules);
+        List<RecursionMenuVo> rootMenus = this.getMenuFromModule(modules);
         //递归处理menu
-        List<RecursionMenuVo> recursionMenuVos = recursionedMenu(rootMenus);
-        return Result.success(recursionMenuVos);
+        List<RecursionMenuVo> recursionMenuVos = this.recursionedMenu(rootMenus);
+
+        return recursionMenuVos;
     }
 
     private List<RecursionMenuVo> recursionedMenu(List<RecursionMenuVo> rootMenus) {

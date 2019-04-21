@@ -10,4 +10,6 @@ public interface ModuleJpaDao extends JpaRepository<SsmModule, String> {
     List<SsmModule> findByTypeAndBelongModule(Integer type, String belongModule);
 
     List<SsmModule> findByTypeAndParentId(Integer type, String parentId);
+
+    List<SsmModule> findByModuleIdIn(List<String> moduleIds);
 }

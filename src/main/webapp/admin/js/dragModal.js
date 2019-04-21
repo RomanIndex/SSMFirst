@@ -18,8 +18,8 @@ $(document).on("mousedown",".modal-header",function(e){
     if($(e.target).hasClass("close"))//点关闭按钮不能移动对话框  
         return;  
     dragModal.mouseDragDown = true;  
-    dragModal.moveTarget = $(this).parent().parent();         
-    dragModal.mouseStartPoint = {"left":e.clientX,"top":  e.pageY};  
+    dragModal.moveTarget = $(this).parent().parent();
+    dragModal.mouseStartPoint = {"left":e.clientX,"top":  e.pageY};
     dragModal.basePoint = dragModal.moveTarget.offset();  
     dragModal.topLeng=e.pageY-e.clientY;
 });

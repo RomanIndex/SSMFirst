@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface CommonService<T extends SsmBaseEntity, ID> {
 
-
     /**
      * 从实体类 获取 主键（实体类有@id标签的） 的值
     */
@@ -58,8 +57,6 @@ public interface CommonService<T extends SsmBaseEntity, ID> {
      *  分页查询
      */
     Page<T> page(Pageable pageable);
-
-    Page<T> pageWithFilter(Specification specification, Pageable pageable);
 
     /**
      * 判断id是否存在

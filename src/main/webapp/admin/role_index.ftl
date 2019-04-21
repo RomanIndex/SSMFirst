@@ -13,31 +13,26 @@ css="
 script="<script src='/admin/js/role_index.js?v2'></script>"
 >
 
-    <div class="right_col" role="main">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_content">
-                        <h3>角色列表</h3>
-                        <ol class="breadcrumb">
-                            <li><strong><span style="color: #27a0d7">1、现在主要是【菜单类角色】，还有操作类角色；2、还要加入 角色组 的类型，方便批量管理；3、jpaQuery实现模糊查询</span></strong></li>
-                        </ol>
-                        <div style="width: 100%">
-                            <table id="table" class="col-xs-12"></table>
-                        </div>
-                    </div>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- 一个table对应一个box-->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">用户列表</h3>
+                    <ol class="breadcrumb">
+                        <li><strong><span>1、现在主要是【菜单类角色】，还有操作类角色；2、还要加入 角色组 的类型，方便批量管理；3、jpaQuery实现模糊查询</span></strong></li>
+                    </ol>
+                </div>
+                <div class="box-body" style="width: 100%; background-color: #f7f7f7;overflow-y: auto;" 这个div的高度应该用JS动态计算得出>
+                    <table id="table" class="col-xs-12"></table>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-<div id="repeatDialog">
-    <#--<div id="search_div">
-        <input class="easyui-searchbox" style="width: 300px" data-options="searcher:doSearch,prompt:'Please Input Value'" name="keyWord"></input>
-    </div>-->
-    <table id="tt" style="width: 760px; height: 540px"></table>
-    <input type="hidden" id="roleId">
-</div>
+<div id="tk"></div>
 
 <div id="toolbar">
     <form id="queryForm" class="form-inline" autocomplete="off">
@@ -58,6 +53,12 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
     </form>
 </div>
 
-<div id="tk"></div>
+<div id="repeatDialog">
+<#--<div id="search_div">
+    <input class="easyui-searchbox" style="width: 300px" data-options="searcher:doSearch,prompt:'Please Input Value'" name="keyWord"></input>
+</div>-->
+    <table id="tt"></table>
+    <input type="hidden" id="roleId">
+</div>
 
 </@my.page>

@@ -18,7 +18,7 @@
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   
-  <resultMap id="AccountViewMap" type="com.ssm.admin.view.AccountView" extends="BaseResultMap">
+  <resultMap id="BaseViewMap" type="com.ssm.admin.view.AccountView" extends="BaseResultMap">
     <!--select="getFaqAnswer" column="faqNo"-->
     <collection property="roles" ofType="com.ssm.admin.entity.SsmRole">
       <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
@@ -32,7 +32,7 @@
     ) rp
   </select>
   
-  <select id="query" resultMap="BaseResultMap">
+  <select id="query" resultMap="BaseViewMap">
     select *
     from (
         <include refid="base_query" />

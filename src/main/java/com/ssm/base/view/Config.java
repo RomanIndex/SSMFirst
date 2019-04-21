@@ -11,12 +11,9 @@ public final class Config {
 	//
 	public static final String SESSION_OPEN_ID_KEY = "open_id_key";//自动提示生成
 	
-	public static String SECURITY_LOGIN_KEY = "SSM_MAVEN";  //标识是否登录的Session
-	public static String SECURITY_IS_LOGIN = "SSM_MAVEN_Login";
-	public static String MEMBER_ID = "memberId";
-	public static String USER_ACCOUNT = "userAccount";
-	public static String WX_OPEN_ID = "openId";
-	
+	public static String SECURITY_LOGIN_KEY = "ssm_login";//标识是否登录的Session
+	public static String SECURITY_IS_LOGIN = "ssm_online";
+	public static String SSM_ACCOUNT = "ssmAccount";
 	
 	public static int COOKIE_AGE = 60*60*24*60;	//cookie有效时间(7天)
 	

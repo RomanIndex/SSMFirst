@@ -5,24 +5,19 @@ import javax.servlet.http.HttpSession;
 
 import com.ssm.admin.service.AccountService;
 import com.ssm.common.util.HttpRequest;
+import io.swagger.annotations.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssm.admin.entity.SsmAccount;
 import com.ssm.base.util.CookieHelper;
 import com.ssm.base.view.Config;
 import com.ssm.base.view.Result;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 @Api(description="登录接口")
 @CrossOrigin("*")
@@ -49,20 +44,22 @@ public class HomeController {
     public String logout(HttpServletRequest request) {
         HttpRequest.getRequest().getSession().removeAttribute(Config.SECURITY_LOGIN_KEY);
 		HttpRequest.getRequest().getSession().removeAttribute("menu");
-        //return "/system/login/login.ftl";
 		return "/system/login/login";
     }
-	
-    @ApiOperation(value = "登录账号密码校样", notes="可以选择免登录，有效时间*天", response = Result.class)
-    @ResponseBody
+
+	@ApiOperation(value = "登录账号密码校样", notes = "可以选择免登录，有效时间*天", response = Result.class)
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "empNo", value = "员工编号", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String", paramType = "query"),
+			@ApiImplicitParam(name = "boxFlag", value = "是否免登录", required = true, dataType = "Boolean", paramType = "query"),
+	})
+	@ResponseBody
     @RequestMapping(value = "login/check", method = RequestMethod.POST)
-    public Result<?> check(@ApiParam(name = "empNo", value = "用户编号", required = true, defaultValue = "jason")@RequestParam(value = "empNo") String empNo,
-    		@ApiParam(name = "password", value = "密码", required = true)@RequestParam(value = "password") String password,
-    		@ApiParam(name = "boxFlag", value = "是否免登录", required = false, defaultValue = "false")@RequestParam(value = "boxFlag") boolean boxFlag) {
+    public Result<?> check(String empNo, String password, boolean boxFlag) {
         Result<String> result = new Result<>();
 
         if(StringUtils.isBlank(empNo) || StringUtils.isBlank(password)){
-        	return new Result<>(Result.FAIL, "账号密码不能为空！", null, null);
+        	return Result.fail("账号密码不能为空！");
         }
         
         boolean pass = false;
@@ -75,9 +72,9 @@ public class HomeController {
         		if(loginUser.getPassword().equals(password)) {
         			//记住账号
         			if (boxFlag) {
-        				CookieHelper.addCookie(Config.USER_ACCOUNT, empNo);
+        				CookieHelper.addCookie(Config.SSM_ACCOUNT, empNo);
         			}else {
-        				CookieHelper.eraseCookie(Config.USER_ACCOUNT);
+        				CookieHelper.eraseCookie(Config.SSM_ACCOUNT);
         			}
         			pass = true;
         		}else{
@@ -91,6 +88,7 @@ public class HomeController {
         if(pass){
         	HttpSession session = HttpRequest.getRequest().getSession();
 			session.setAttribute(Config.SECURITY_LOGIN_KEY, Config.SECURITY_IS_LOGIN);
+			session.setAttribute(Config.SSM_ACCOUNT, empNo);
 			result.setCode(0);
 			result.setMsg("登录成功，正在前往首页...");
 			result.setData("admin/route/index");

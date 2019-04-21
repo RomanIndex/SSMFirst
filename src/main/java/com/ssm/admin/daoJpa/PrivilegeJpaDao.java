@@ -9,4 +9,6 @@ public interface PrivilegeJpaDao extends JpaRepository<SsmPrivilege, String> {
     List<SsmPrivilege> findByOperateEnumName(String name);
 
     List<SsmPrivilege> findByOperateEnumNameAndModuleId(String name, String moduleId);
+
+    List<SsmPrivilege> findByCodeIn(List<String> codes);
 }

@@ -28,7 +28,7 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
     }
 
     //@Override
-    public List<SsmAccountRole> findByCompanyName(final String roleStr, final String accountStr) {
+    /*public List<SsmAccountRole> findByCompanyName(final String roleStr, final String accountStr) {
         //关联--过滤--排序--分页（用mybatis吧！用mybatis吧！用mybatis吧！）
         List<SsmAccountRole> list = accountRoleJpaDao.findAll(new Specification<SsmAccountRole>() {
             public Predicate toPredicate(Root<SsmAccountRole> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
@@ -36,18 +36,18 @@ public class AccountRoleServiceImpl extends CommonServiceImpl<SsmAccountRole, In
                 Join<SsmAccountRole, SsmRole> roleJoin = root.join("roleId", JoinType.LEFT);
                 Predicate p1 = cb.equal(accountJoin.get("name"), roleStr);
                 Predicate p2 = cb.equal(roleJoin.get("name"), accountStr);
-                /**
+                *//**
                  * return cb.and(p1, p2);
                  * 根据spring-data-jpa的源码，可以返回一个Predicate，框架内部会自动做query.where(p)的操作，也可以直接在这里处理，然后返回null，
                  * 也就是下面一段源码中的实现
-                 */
+                 *//*
                 query.where(p1, p2);
                 return null;
             }
         });
 
         return list;
-    }
+    }*/
 
     @Override
     public Result<?> updateByAccount(String empNo, List<String> newRoleIds) {

@@ -13,8 +13,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssm.admin.entity.SsmPrivilege;
+import com.ssm.admin.service.ModuleService;
+import com.ssm.admin.service.PrivilegeService;
 import com.ssm.admin.view.RecursionMenuVo;
-import com.ssm.admin.service.impl.ModuleServiceImpl;
+import com.ssm.common.enumeration.OperateEnum;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -27,7 +30,8 @@ public class SecurityFilter implements Filter{
 
 	public static Logger logger = Logger.getLogger(SecurityFilter.class.getName());
 	
-	@Autowired private ModuleServiceImpl moduleServiceImpl;
+	@Autowired private ModuleService moduleService;
+    @Autowired private PrivilegeService privilegeService;
 	
 	private FilterConfig filterConfig;	// 过滤器配置对象
 	private String[] freePages;		// 不操作的页面数组
@@ -61,15 +65,13 @@ public class SecurityFilter implements Filter{
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
-        
 
         String requestURI = request.getRequestURI();
         System.out.println("SecurityFilter--doFilter："+ requestURI);
         
-        //SsmMenuService menuService = new SsmMenuService();
-        
         if(!isFreePage(requestURI)) {
-        	if(!isValidSession(request)) { //Session失效
+            //Session失效
+        	if(!isValidSession(request)) {
         		try {
                     String toPageURL = request.getContextPath() + toPage;
                     response.encodeRedirectURL(toPageURL);
@@ -78,17 +80,22 @@ public class SecurityFilter implements Filter{
                 	ex.printStackTrace();
                 }
         	}else {
-        		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleServiceImpl.listMenuByRoleId(null).getData();
+        	    String account = (String)request.getSession().getAttribute(Config.SSM_ACCOUNT);
+        	    //account = account.equalsIgnoreCase("admin") ? null : account;
+                //只取菜单权限
+                List<SsmPrivilege> privileges = privilegeService.listPrivilegeByAccount(account, OperateEnum.show);
+        		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleService.privilege2menu(privileges).getData();
         		request.getSession().setAttribute("menu", menus);
         	}
         }
-        
-        if(!response.isCommitted()) { //如果响应未提交,交给过滤器链
+
+        //如果响应未提交,交给过滤器链
+        if(!response.isCommitted()) {
             try {
             	filterChain.doFilter(servletRequest, servletResponse);
             } catch(Exception ex) {
                 filterConfig.getServletContext().log(ex.getMessage());
-            } 
+            }
         }
 	}
 	
@@ -98,7 +105,10 @@ public class SecurityFilter implements Filter{
         if(requestURI.indexOf("login/check") >= 0 //登录验证
         		|| requestURI.indexOf("logout") >= 0 //退出
         		|| requestURI.indexOf("login") >= 0 //退出
-        		|| requestURI.indexOf("login.ftl") >= 0){ //登录首页
+        		|| requestURI.indexOf("login.ftl") >= 0
+                || requestURI.endsWith(".js")
+                || requestURI.endsWith(".css")
+                || requestURI.endsWith(".ftl")){
             return true;
         }
         

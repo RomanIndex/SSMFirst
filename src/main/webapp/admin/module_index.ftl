@@ -7,23 +7,25 @@
 	<script src='../admin/js/module_index.js'></script>
     "
 >
-    <div class="right_col" role="main">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-              <div class="x_content">
-                <h3>模块列表</h3>
-				<ol class="breadcrumb">
-					<li><strong><span style="color: #27a0d7">。。。</span></strong></li>
-				</ol>
-                <div style="width: 100%">
-					<table id="table" class="col-xs-12"></table>
-				</div>
-              </div>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- 一个table对应一个box-->
+            <div class="box">
+                <div class="box-header">
+                    <!--<h3 class="box-title">模块列表</h3>-->
+                    <ol class="breadcrumb">
+                        <li><strong><span>（这里是页面等备注说明）</span></strong></li>
+                    </ol>
+                </div>
+                <div class="box-body" style="width: 100%">
+                    <table id="table" class="col-xs-12"></table>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</section>
       
       <div id="toolbar">
 		<form id="queryForm" class="form-inline" autocomplete="off">

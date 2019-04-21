@@ -1,12 +1,10 @@
 package com.ssm.admin.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
 @Entity
 @DynamicUpdate
 @DynamicInsert

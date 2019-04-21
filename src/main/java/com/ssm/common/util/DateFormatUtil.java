@@ -42,14 +42,17 @@ public class DateFormatUtil {
     /**
      * 格式化时间
      *
-     * @param theDate
+     * @param date
      * @return String
      */
-    public static String formatTime(Date theDate) {
+    public static String formatTime(Date date) {
+        if(date == null){
+            return "";
+        }
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(theDate);
+        calendar.setTime(date);
 
-        long time = theDate.getTime() / 1000;
+        long time = date.getTime() / 1000;
         long now = new Date().getTime() / 1000;
         long ago = now - time;
 
@@ -70,24 +73,24 @@ public class DateFormatUtil {
             return "前天" + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
 
         }else{
-            return sdfYmd.format(theDate);
+            return sdfYmd.format(date);
         }
     }
 
     /**
      * 获取一个日期和当前日期相差的天数
      *
-     * @param theDate
+     * @param date
      * @return int
      */
-    public static int daysBetween(Date theDate) throws ParseException {
+    public static int daysBetween(Date date) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         Date dNow = sdf.parse(sdf.format(cal.getTime()));   //当前时间
         cal.setTime(dNow);
         long nowTime = cal.getTimeInMillis();
-        theDate = sdf.parse(sdf.format(theDate));
-        cal.setTime(theDate);
+        date = sdf.parse(sdf.format(date));
+        cal.setTime(date);
         long theTime = cal.getTimeInMillis();
         long between_days= (nowTime-theTime) /(1000*3600*24);
 

@@ -1,8 +1,9 @@
 package com.ssm.admin.service.impl;
 
+import com.ssm.admin.daoJpa.AccountRoleJpaDao;
+import com.ssm.admin.daoJpa.RoleJpaDao;
 import com.ssm.admin.entity.SsmAccountRole;
 import com.ssm.admin.entity.SsmRole;
-import com.ssm.admin.entity.SsmRolePrivilege;
 import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.RoleService;
 import com.ssm.admin.view.AdminQueryView;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl extends CommonServiceImpl<SsmRole, String> implements RoleService {
+    @Autowired private RoleJpaDao roleJpaDao;
     @Autowired private AccountRoleService accountRoleService;
 
     @Override
@@ -58,7 +60,7 @@ public class RoleServiceImpl extends CommonServiceImpl<SsmRole, String> implemen
 
         Sort sort = Sort.by(Sort.Direction.DESC, "createTime");//2.x写法，推荐
         Pageable pageable = PageRequest.of(param.getPageNo() - 1, param.getPageSize(), sort);//分页信息
-        Page<SsmRole> pageData = this.pageWithFilter(spec, pageable);
+        Page<SsmRole> pageData = roleJpaDao.findAll(spec, pageable);
 
         //将返回page对象转换为datagrid所需要的数据格式
         /*Map<String,Object> map = new HashMap<>();

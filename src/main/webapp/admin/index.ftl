@@ -32,59 +32,44 @@
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
   
   <style>
-    .self-defined-class .tab-title-list{
-        background-color: rgb(245, 248, 251);
-        padding: 10px 0;/* 可以换成margin，感受一下区别 */
-        text-align: left!important;
+    .self-defined-class.tab-title-list{
+        background-color: #BEE7E9;
     }
-    .self-defined-class .tab-title-list ul{
-        margin: 0;
-	    padding: 0;
-	    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    .self-defined-class.tab-title-list > ul{
+        /*margin: 0 0 0 15px;*/
+        padding: 0;
+        /*border-bottom: 1px solid rgb(226, 226, 226);*/
     }
-     .self-defined-class .tab-title{
-        position: relative;
-        left: 8px;
-        margin-bottom: 0px;
-		height: 40px;
-		white-space: nowrap;
-		font-size: 0;
-		border-bottom: 1px solid rgb(226, 226, 226);
-		-webkit-transition: all .2s;
-	}
-	.self-defined-class .tab-title li{
+	.self-defined-class.tab-title-list > ul > li{
+	   list-style: none;
 	   line-height: 40px;
-	   padding: 0 10px 0 15px;
-	   color: rgb(85, 85, 85);
+	   padding: 0 0 0 8px;
+       margin-right: 4px;
+	   color: #A9A9A9;
 	   -webkit-transition: none;
-	   display: inline-block;
+	   display: inline-block; /*保证都在一行*/
 	   vertical-align: middle;
 	   font-size: 14px;
-	   position: relative;
 	   min-width: 65px;
 	   cursor: pointer;
 	   text-align: center;
+       background-color: beige;
 	}
-	.self-defined-class .tab_close{
-	   height: 18px;
-	   line-height: 20px;
-	   width: 18px;
-	   font-size: 14px;
-	}
+    .self-defined-class.tab-title-list > ul > li > span{
+        margin-right: 12px;
+    }
+    .self-defined-class.tab-title-list > ul > li > i{
+        width: 24px;
+    }
 	.self-defined-class .tab_close::before{
-	   font-size: 18px;
+	   font-size: 18px;/* 控制 X 大小的关键*/
 	}
-	.self-defined-class .tab-content{
-	   position: absolute;
-	    height: 374.01px;
-	    width: 1924px;
-	    display: block;
-	}
-	.self-defined-class .tab-title .tab-title-show:after {
+
+	.self-defined-class > ul > li.tab-title-show:after {
 	    position: absolute;
 	    left: 0;
 	    top: 0;
-	    content: '';
+	    content: none;
 	    width: 100%;
 	    height: 41px;
 	    border: 1px solid rgb(226, 226, 226);
@@ -93,15 +78,27 @@
 	    box-sizing: border-box!important;
 	    pointer-events: none;
     }
+    .self-defined-class .tab-content-item{display: none;}
+    .self-defined-class .tab-content-show{display: block!important;}
+    .self-defined-class .tab-title-show{color: #875eff !important;}
+
+    /* --------------表格内容模块------------------ */
+    .self-defined-class.tab-content{
+        position: relative;/* 很重要 */
+        display: block;
+        height: -webkit-fill-available;;
+        /* 如果不加 绝对定位，表格右侧会超出视距，效果可以吗？*/
+    }
+
 	.self-defined-class iframe {
 	    border: 0;
 	    width: 100%;
-	    height: 100%;
-	    position: absolute;
+	    height: 100%;/* 最好由JS计算得出来*/
+	    position: absolute;/* 也比较重要 */
 	}
-	.self-defined-class .tab-content-item{display: none;}
-	.self-defined-class .tab-content-show{display: block!important;}
-	.self-defined-class .tab-title-show{color: rgb(11, 152, 225) !important;}
+      .breadcrumb{
+          margin: 0px;
+      }
   </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -111,32 +108,38 @@
 
   <!-- Left side column. contains the logo and sidebar -->
   <#include "/admin/master/left_menu.ftl">
+
   <!-- Content Wrapper. Contains page content -->
-  
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="self-defined-class tab-title-list">
-     <ul id="tab-title" class="tab-title">
-       <li class="tab-title-show" data-url="/welcome"><i><img src="images/home.png" style="padding-right: 5px; width: 28px;position: relative;top: -2px;" ></i></li>
-     </ul>
-    </div>
+
+	<!-- 最上方，打开页面的Tab -->
     
-    <#-- 内容最上方，页面指引，暂时注释掉 -->
-	<#--<section class="content-header">
-      <h4>页面指引404 Error Page</h4>
+    <!-- 第二部分，页面指引，暂时是写死的 -->
+	<section class="content-header" style="padding: 0px;">
+      <#--<h4>《《页面指引》》</h4>-->
+      <div class="self-defined-class tab-title-list">
+          <ul id="tab-title">
+              <li class="tab-title-show" data-url="/welcome">
+                  <i><img src="images/home.png" style="margin-right: 8px; width: 26px; position: relative; top: -2px;"></i>
+              </li>
+          </ul>
+      </div>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
         <li><a href="#">Examples</a></li>
         <li class="active">404 error</li>
       </ol>
-    </section>-->
+    </section>
     
-	<!-- Body start -->
-	<div id="tab-content" class="self-defined-class tab-content" style="position: absolute;">
-      <!-- 每个打开的子页面 对应 一个子iframe -->
+	<!-- 内容部分 start -->
+
+    <div id="tab-content" class="self-defined-class tab-content">
+      <!-- 默认一直存在的 首页，即一张封面图 -->
       <div class="tab-content-item tab-content-show"><iframe src='/welcome'></iframe></div>
+	  <!--每个打开的子页面 对应 一个子iframe-->
     </div>
-	<!-- body end -->
+
+	<!-- 内容部分 end -->
 
   </div>
   <!-- /.content-wrapper -->

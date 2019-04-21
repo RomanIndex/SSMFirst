@@ -29,19 +29,25 @@ public class SsmAccount extends SsmBaseEntity{
 
     private String email;
 
-    @Column(name = "role_value", length = 32)
+    @Column(length = 32)
     private String roleValues;
 
-    @Column(name = "login_url", length = 32)
+    @Column(length = 32)
     private String loginUrl;
 
-    @Column(name = "online_status")
     private short onlineStatus;
 
-    @Column(name = "last_login_time")
     private Date lastLoginTime;
 
-    private String source;
+    private short source;
+
+    public short getSource() {
+        return source;
+    }
+
+    public void setSource(short source) {
+        this.source = source;
+    }
 
     public String getEmpNo() {
         return empNo;
@@ -113,13 +119,5 @@ public class SsmAccount extends SsmBaseEntity{
 
     public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
     }
 }

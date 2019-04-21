@@ -20,6 +20,8 @@ public class RecursionMenuVo {
 
     private Date createTime;
 
+    private List<RecursionMenuVo> childMenus;
+
     public Integer getSeq() {
         return seq;
     }
@@ -35,8 +37,6 @@ public class RecursionMenuVo {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
-    private List<RecursionMenuVo> childMenus;
 
 	public List<RecursionMenuVo> getChildMenus() {
 		return childMenus;

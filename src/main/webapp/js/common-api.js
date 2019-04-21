@@ -166,7 +166,7 @@ commonApi.table.responseHandler = function (result) {
 }
 
 commonApi.table.responseJpaHandler = function (result) {
-    if (result.code == 0) {
+    if (result.code == 0 && result.data != null) {
         return {
             "rows" : result.data.content,
             "total" : result.data.totalElements

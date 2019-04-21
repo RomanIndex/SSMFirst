@@ -32,8 +32,6 @@ import java.util.stream.Collectors;
 public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> implements AccountService {
 	@Autowired private AccountJpaDao accountJpaDao;
 	@Autowired private AccountMapper accountMapper;
-	@Autowired private RoleService roleService;
-	@Autowired private AccountRoleService accountRoleService;
 
 	/* -----------------------基于JPA的一套实现逻辑 -----------------------------------*/
 
