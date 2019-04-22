@@ -3,9 +3,7 @@ package com.ssm.admin.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.ssm.admin.dao.AccountMapper;
 import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.service.AccountRoleService;
 import com.ssm.admin.service.AccountService;
-import com.ssm.admin.service.RoleService;
 import com.ssm.admin.view.AccountView;
 import com.ssm.admin.view.AdminQueryView;
 import com.ssm.base.view.PageModel;
@@ -97,32 +95,6 @@ public class AccountServiceImpl extends CommonServiceImpl<SsmAccount, String> im
 	}
 
 	/* -------------------------Mapper 的一套实现逻辑【可谓标准化、极速开发】------------------------------------ */
-
-
-	/*public Result<?> mapperQuery(QueryModelView query) {
-		Example example = new Example(SsmAccount.class);
-		Example.Criteria criteria = example.createCriteria();
-		//criteria.andEqualTo("status", 1);//
-		if(StringUtils.isNotBlank(query.getKeyWord())){
-			criteria.andCondition("(name like '%"+ query.getKeyWord() +"%' or mobile like '%"+ query.getKeyWord() +"%')");
-		}
-		PageModel<SsmAccount> pageModel = new PageModel<>();
-		pageModel.setTotalRecords(accountDao.selectCountByExample(example));
-		pageModel.setPageNo(query.getPageNo());
-		pageModel.setPageSize(query.getPageSize());
-		RowBounds rowBound = new RowBounds((query.getPageNo() - 1) * query.getPageSize(), query.getPageSize());
-		pageModel.setList(accountDao.selectByExampleAndRowBounds(example, rowBound));
-		
-		return new Result<>(0, "", "", pageModel);
-	}*/
-
-	/*public Result<?> listAccountByKey() {
-		return new Result<>(0, "", "", accountDao.selectAll());
-	}
-
-	public Result<?> getAccountByKey(String empNo) {
-		return new Result<>(0, "", "", accountDao.selectByPrimaryKey(empNo));
-	}*/
 
 	/*public Result<?> mapperSave(SsmAccount account, String operate) {
 		Result<?> result = new Result<>();

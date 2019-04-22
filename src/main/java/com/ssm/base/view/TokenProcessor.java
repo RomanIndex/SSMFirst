@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 import sun.misc.BASE64Encoder;
 
-public class TokenProccessor {
+public class TokenProcessor {
 
     /*
      *单例设计模式（保证类的对象在内存中只有一个）
@@ -13,15 +13,15 @@ public class TokenProccessor {
      *2、自己创建一个类的对象
      *3、对外提供一个公共的方法，返回类的对象
      */
-    private TokenProccessor(){}
+    private TokenProcessor(){}
     
-    private static final TokenProccessor instance = new TokenProccessor();
+    private static final TokenProcessor instance = new TokenProcessor();
     
     /**
      * 返回类的对象
      * @return
      */
-    public static TokenProccessor getInstance(){
+    public static TokenProcessor getInstance(){
         return instance;
     }
     

@@ -1,7 +1,7 @@
 package com.ssm.common.util;
 
 import com.ssm.base.view.Result;
-import com.ssm.base.view.TokenProccessor;
+import com.ssm.base.view.TokenProcessor;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class CheckSubmitUtil {
      * @return
      */
     public static String addSubmitToken(HttpServletRequest request) {
-        String token = TokenProccessor.getInstance().makeToken();//创建令牌
+        String token = TokenProcessor.getInstance().makeToken();//创建令牌
         logger.info(new Date()+ " 生成的token："+ token);
         request.getSession().setAttribute(TOKEN_SIGN, token);//在服务器使用session保存token(令牌)
         return  token;

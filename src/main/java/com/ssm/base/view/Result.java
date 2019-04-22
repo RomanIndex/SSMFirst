@@ -1,9 +1,5 @@
 package com.ssm.base.view;
 
-import com.ssm.admin.entity.SsmAccount;
-import com.ssm.admin.entity.SsmBaseEntity;
-import org.springframework.data.domain.Page;
-
 /**
  * 传给前端数据的统一格式
  * code = 0时，表示调用成功，msg = OK！

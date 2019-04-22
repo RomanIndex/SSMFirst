@@ -20,7 +20,7 @@ public class QueryModel {
 	private String endDate;
 
 	public int getPageStart() {
-		pageStart = (pageNo - 1) * pageSize;
+		this.pageStart = (pageNo - 1) * pageSize;
 		return pageStart;
 	}
 
