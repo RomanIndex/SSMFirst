@@ -34,7 +34,6 @@
     <!-- 页面基本布局样式 -->
     <link href="../css/sub_iframe_layout.css" rel="stylesheet">
 
-    <!-- <link href="../css/custom.min.css" rel="stylesheet"> --><!-- 也是外部导的css文件 -->
     <!-- ${css} css -->
 
     <style>
@@ -91,8 +90,8 @@
 </div>
 
 <div id="tk"></div>
-<div id="mjs:tip" class="tip" style="position:absolute;left:0;top:0;display:none;"></div>
-    <#include "/admin/bt_fileInput.html">
+<div id="mjs:tip" class="tip" style="position:absolute; left:0; top:0; display:none;"></div>
+<#include "/admin/bt_fileInput.html">
 
 <div id="filter_div">
     <form id="fform" class="form-inline">
@@ -143,9 +142,9 @@
 
         <a class="btn btn-default" onclick="accountApi.query()" id="query"><span><i class="fa fa-camera-retro fa-lg"></i>查询</span></a>
 
-        <a class="btn btn-default" onclick="getTKModal()"><span>（测mapper+外html弹窗）</span></a>
+        <a class="btn btn-default" onclick="commonApi.utils.getTKModal('addModal')"><span>（测mapper+外html弹窗）</span></a>
 
-        <!-- 有引入单独js，id需保留 -->
+        <!-- 有引入单独js，id 需保留 -->
         <a class="btn btn-default" id="addModel"><span>上传图片tkModal</span></a>
 
         <a class="btn btn-default" onclick="submitForm()"><span>表单重复提交</span></a>
@@ -183,6 +182,7 @@
 <!-- ${script} js -->
 <script src='../js/common-api.js'></script>
 <script src='../js/date-util-api.js'></script>
+<script src='../admin/js/url_config.js'></script>
 <script src='../admin/js/bootstrap_index.js'></script>
 <script src="../admin/js/fileInput.js"></script>
 <script src="../admin/js/dragModal.js"></script>

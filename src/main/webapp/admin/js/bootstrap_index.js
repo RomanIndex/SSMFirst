@@ -97,7 +97,7 @@ function initTable() {
 			param.pageSize = data.length;
 			 $.ajax({
 				  type: "GET",
-				  url: "ssm/admin/account/query",
+				  url: URL_API.ACCOUNT.query,
 				  cache: false,
 				  data: param,
 				  dataType: "json",
@@ -116,18 +116,15 @@ function initTable() {
 			 });
 		},
 		"columns": [
-		  { "data": "id", "visible": false},
 		  { "data": "name", "title":"用户", "render": function (data, type, full, meta) {
 			  return '<a style="cursor:pointer;color:red;" onclick="accountApi.getAccountDetail(this)">'+ data +'</a>';
 		  }},
 		  { "data": "empNo", "title":"登录账号", "className": "mouseShow"},
 		  { "data": "mobile", "title":"电话"},
-		  { "data": "birth", "title":"年龄" },
 		  { "data": "email", "title":"邮箱"},
-		  { "data": "address", "title":"地址" },
-		  { "data": "onlineStatus", "title":"在线" },
-		  { "data": "status", "title":"状态", "render": function (data, type, full, meta) {return commonApi.format.status(data);}},
-		  { "data": "createTime", "title":"创建时间", "render": function (data, type, full, meta) {return formatDate(data);}},
+		  { "data": "onlineStatusName", "title":"在线"},
+		  { "data": "statusName", "title":"状态"},
+		  { "data": "createTimeName", "title":"创建时间"},
 		  { "data": null, "title":"操作", "render": function (data, type, full, meta) {
 				var re = '<a onclick="accountApi.getAccountDetail(this)"><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true"></a>'
 				re += '<a onclick="accountApi.delAccount(this)"><span class="btn-sm glyphicon glyphicon-trash" aria-hidden="true"></a>'
@@ -136,31 +133,12 @@ function initTable() {
 		  }
 		],
 		"columnDefs" : [],
-		//buttons : []
 	});
 };
 
 /**
- * 一些测试函数
+ * 一些测试函数（测完通过后，就 “强行” 应用到别的页面，这里删除）
  */
-function getTKModal(){
-	/**
-	 * 1、load 可以加载html页面，也可以是ftl页面
-	 * 2、加载公共tk_modal里面，id的部分模态框
-	 * 2、可以引入对应的js
-	 */
-	$("#tk").load("admin/tk_modal.ftl #addAccountModal", function(){
-		jQuery.getScript("admin/js/tk_modal.js", function(){
-			$("#save").css({'color': 'red;'})
-		})
-	})
-	setTimeout(function(){
-		init_singleDatePicker();
-		$(":header.modal-title").text("头部名称（JS自定义）")
-		$("#save").val("add").text("新增（JS自定义）")
-		$("#addAccountModal").modal("show");
-	},400)
-}
 
 /**
  * ------------本页面特别处理JS-----------------
@@ -219,7 +197,10 @@ var tip = {
 	mousePos:function(e){
 		var x,y;
 		var e = e||window.event;
-		return{x:e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,y:e.clientY+document.body.scrollTop+document.documentElement.scrollTop}; 
+		return{
+			x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
+			y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+		};
 	}, 
 	start:function(obj){
 		var self = this;

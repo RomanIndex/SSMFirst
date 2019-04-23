@@ -13,8 +13,8 @@
     <link href="../webPlug/bootstrap-v3.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <link href="../admin/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet"><!-- 自动校样 -->
-    <!-- bootstrap-daterangepicker -->
-    
+
+      <!-- bootstrap-daterangepicker -->
     <link href="../webPlug/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     
     <!--唯一保留layui--弹出框样式-->
