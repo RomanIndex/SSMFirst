@@ -1,6 +1,7 @@
 package com.ssm.base.intercept;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,25 +22,34 @@ import net.sf.json.JSONObject;
 
 /**
  * 权限认证拦截器
+ *
+ * 被拦截的所有请求（url？），都是有“双重”校验的
+ *
+ * 1、会对controller层的【@Authority注解】进行判断，并根据方法返回值类型，判断是返回json还是重定向页面
+ *
+ * 2、对（1）里面，需要权限认证的进行校验
  */
 public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		String url = request.getRequestURI();//获取请求的全路径
+		String contextPath = request.getContextPath();
+		String subUrl = url.substring(contextPath.length());
+		System.out.println("权限拦截器preHandle："+ url +"<--前 || 后-->"+ subUrl);
+
 		if (handler instanceof HandlerMethod) {
 			HandlerMethod hm = (HandlerMethod) handler;
 			
 			Class<?> clazz = hm.getBeanType();
 			Method m = hm.getMethod();
-			
-			String url = request.getRequestURI();//获取请求的全路径
-	        String contextPath = request.getContextPath();
-	        String subUrl = url.substring(contextPath.length());
-	        System.out.println("权限拦截器 -- preHandle："+ url +"：前--后："+ subUrl);
 	        
 	        /*Authority permission = hm.getMethodAnnotation(Authority.class);
 	        if(permission != null){
 	        	System.out.println("permission："+ permission.value());
 	        }*/
+
+			Type t = m.getGenericReturnType();//获取返回值类型
+			System.out.println("被拦截方法 返回值 类型："+ t.toString() + "，.getTypeName"+ t.getTypeName());
 	        
 	        ResponseBody reBody = hm.getMethodAnnotation(ResponseBody.class);
 	        if(reBody != null){
@@ -67,6 +77,8 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 							return true;
 						}else{
 							// 验证登录及权限
+
+							//提问：一个url对应一个privilege吗，或者说应该对应一个吗，url = module + operate? = code?
 							result.setCode(0);
 							result.setMsg("验证成功！【开放接口，且有访问权限】");
 							return true;
