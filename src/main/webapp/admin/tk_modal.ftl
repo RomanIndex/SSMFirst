@@ -37,6 +37,20 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">精确到天：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="startDay" class="col-sm-8 form-control datePickerYMD">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">精确到秒：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="endDay" class="col-sm-8 form-control datePicker">
+                        </div>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">

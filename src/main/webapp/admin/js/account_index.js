@@ -1,6 +1,15 @@
 $(function () {
     var tableId = "table";
-    api.account.initTable(tableId)
+    dateUtilApi.calendar.daterange_picker("reportrange");
+    api.account.initTable(tableId);
+
+    $("#uploadImgModel").on("click", function(){
+        $("#picModal").modal("show");
+    })
+
+    /* 初始化fileinput */
+    var oFileInput = new FileInput();
+    oFileInput.Init("file-pic", "/admin/file/addPic");
 });
 
 api.account = {
@@ -41,8 +50,12 @@ api.account = {
                 //var ary = ["#export", "#add", "#query", "#openDialog", ".update", ".delete", ".mgActRole"];
                 var hasAry = ["#add", "#query", "#openDialog", ".update"];
                 var doms = $("a[id], button[id], a.update, a.delete, a.mgActRole");
-                doms.attr("style", "display:none;")
-                ssmAuthCtr(hasAry, doms);
+                //doms.attr("style", "display:none;");//注释掉
+                /**
+                 * 2019-04-25巨坑，#toolbar 里面 a标签只要 有id，不管是什么值，甚至只要id=""，a标签都会被隐藏掉
+                 * 胡乱试半天。接近8点才找到，问题来自这里------定位问题 思维！Import！
+                 */
+                ssmAuthCtr(hasAry, doms);//注释掉
             },
         });
         this.$table = jq;

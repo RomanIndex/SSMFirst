@@ -10,40 +10,6 @@ $(function(){
 	$("#filter_div").appendTo('.top');//依赖于dom里面定义的.top，可浏览器F12看生成页面样式
 })
 
-$('body').on('mouseover','td.mouseShow', function(){
-	var that = $(this)
-	var row = table.row(that.parents('tr')).data();
-	var rowindex = that[0]._DT_CellIndex.row; //行号
-	var cellindex = that[0]._DT_CellIndex.column; //列号
-	var data = table.cell(rowindex, cellindex).data();
-	tip.start(this)
-	that.attr('tips', data);
-})
-
-//弹框html里面的dom，绑定事件
-$(document).on("click", "#save", function(){
-	var type = $("#save").val()
-	console.log("type = "+ type)
-	var data = $('#inputForm').serialize();
-	var param = parseQuery(data)
-	$.ajax({
-		  type: "POST",
-		  url: "/admin/account/mapper/save?type="+ type,
-		  cache: false,
-		  data: {"str":JSON.stringify(param)},
-		  dataType: "json",
-		  success: function (result) {
-			  if(result.code == 0){
-				  layer.msg(result.msg);
-				  $("#tkModal").modal("hide");
-				  table.draw();
-			  }else{
-				  layer.msg(result.msg);
-			  }
-		  }
-	 });
-})
-
 /**
  * 表单重复提交
  */
@@ -137,13 +103,11 @@ function initTable() {
 };
 
 /**
- * 一些测试函数（测完通过后，就 “强行” 应用到别的页面，这里删除）
- */
-
-/**
  * ------------本页面特别处理JS-----------------
  */
-var accountApi = {
+var accountApi = {};
+
+accountApi = {
 	query: function(){
 		table.draw();
 	},
@@ -185,35 +149,6 @@ var accountApi = {
 	}
 }
 
-//鼠标悬浮提示
-var tip = {
-	$: function(ele){
-		if(typeof(ele)=="object")
-			return ele;
-		else if(typeof(ele)=="string"||typeof(ele)=="number")
-			return document.getElementById(ele.toString());
-		return null;
-	},
-	mousePos:function(e){
-		var x,y;
-		var e = e||window.event;
-		return{
-			x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
-			y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop
-		};
-	}, 
-	start:function(obj){
-		var self = this;
-		var t = self.$("mjs:tip");
-		obj.onmousemove=function(e){
-			var mouse = self.mousePos(e);
-			t.style.left = mouse.x + 10 + 'px';
-			t.style.top = mouse.y + 10 + 'px';
-			t.innerHTML = obj.getAttribute("tips");
-			t.style.display = '';
-		}; 
-		obj.onmouseout=function(){
-			t.style.display = 'none';
-		};
-	}
-}
+/**
+ * 一些测试函数（测完通过后，就 “强行” 应用到别的页面，这里删除）
+ */

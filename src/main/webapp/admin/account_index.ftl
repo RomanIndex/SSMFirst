@@ -1,8 +1,12 @@
 <#import "admin/master/lte_master.ftl" as my>
 <@my.page
 title="ACCOUNT页面"
-css="<style>body{}</style>"
-script="<script src='/admin/js/account_index.js?v2'></script>"
+css="
+    <style>body{}</style>"
+script="
+    <script src='/admin/js/account_index.js?v2'></script>
+    <script src='/admin/js/fileInput.js'></script>
+"
 >
 
 <section class="content">
@@ -38,11 +42,21 @@ script="<script src='/admin/js/account_index.js?v2'></script>"
                 <option value="2">会员</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="">时间：</label>
+            <div id="reportrange" class="form-control" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                <span></span><b class="caret"></b>
+            </div>
+        </div>
         <a class="btn btn-primary" onclick="api.account.query()" data-icon="search">查询</a>
-        <a class="btn btn-primary" onclick="api.account.getAddModal(this)">新增</a>
+        <a class="btn btn-primary" onclick="api.account.getAddModal(this)"><span>新增</span></a>
+        <!-- 有引入单独js，id 需保留 -->
+        <a class="btn btn-default" id="uploadImgModel"><span>多图上传</span></a>
     </form>
 </div>
 
 <div id="tk"></div>
+<#include "/admin/bt_fileInput.html">
 
 </@my.page>

@@ -66,7 +66,7 @@ commonApi.utils = {
             })
         })
         setTimeout(function(){
-            init_singleDatePicker();
+            //dateUtilApi.calendar.single_datepicker();
             $(":header.modal-title").text("头部名称（JS自定义）")
             $("#save").val("add").text("新增（JS自定义）")
             $("#"+ modalId).modal("show");
@@ -113,6 +113,7 @@ commonApi.utils.mouseTip = {
  * @param doms 页面需要进行控制的元素
  * @returns
  */
+
 function ssmAuthCtr(hasAry, doms){
     $.each(doms, function(index, item){
         var that = $(this);

@@ -2,22 +2,19 @@ package com.ssm.base.intercept;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssm.base.view.Config;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-//import com.google.zxing.Result;
 import com.ssm.base.Enum.AuthorityTypeEnum;
 import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
@@ -48,13 +45,15 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 	        	System.out.println("permission："+ permission.value());
 	        }*/
 
-			Type t = m.getGenericReturnType();//获取返回值类型
-			System.out.println("被拦截方法 返回值 类型："+ t.toString() + "，.getTypeName"+ t.getTypeName());
-	        
-	        ResponseBody reBody = hm.getMethodAnnotation(ResponseBody.class);
-	        if(reBody != null){
-	        	System.out.println("reBody："+ reBody.toString() + "，annotation" + m.getAnnotation(ResponseBody.class));
-	        }
+			ResponseBody returnAnnotation = hm.getMethodAnnotation(ResponseBody.class);
+			if(returnAnnotation != null){
+				System.out.println("被拦截方法 注解："+ returnAnnotation.toString() + "，get指定注解" + m.getAnnotation(ResponseBody.class));
+			}
+
+			Type returnType = m.getGenericReturnType();//获取返回值类型
+			if(null != returnType){
+				System.out.println("被拦截方法 返回值："+ returnType.toString() + "，getTypeName"+ returnType.getTypeName());
+			}
 			
 			try {
 				if (clazz != null && m != null) {
@@ -67,55 +66,62 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 					}else if (isClzAnnotation) {
 						authority = clazz.getAnnotation(Authority.class);
 					}
-					Result<?> result = new Result<>();
+
+					Result<?> authResult = null;
 					if (authority != null) {
 						if(AuthorityTypeEnum.NoValidate == authority.value()){
 							// 标记为不验证,放行
-							return true;
+							authResult = Result.success("不验证,放行！", null);
 						}else if (AuthorityTypeEnum.NoAuthority == authority.value()){
 							// 不验证权限，验证是否登录
-							return true;
+							authResult = Result.success("不验证权限，验证是否登录！", null);
 						}else{
 							// 验证登录及权限
-
 							//提问：一个url对应一个privilege吗，或者说应该对应一个吗，url = module + operate? = code?
-							result.setCode(0);
-							result.setMsg("验证成功！【开放接口，且有访问权限】");
-							return true;
+							//TODO 模拟失败或成功
+							authResult = Result.fail("无权操作该功能！");
+							//authResult = Result.success("验证成功！【开放接口，且有访问权限】", "需要返回什么");
 						}
 					}
-					
-					if(reBody == null){
-						// 1、跳转（似乎不是很友好）
-						String tzUrl = "/admin/noAuthority/page";
-						//String tzUrl = "/admin/404.html";
-						response.getWriter().write("<script>self.location.href='"+ tzUrl + "'</script>");
-					}else{
-						String tzUrl = "window.parent.openNewTab('无权限访问', '/admin/noAuthority/page');";
-						response.setContentType("application/json; charset=utf-8");
-						//response.getWriter().write("<script type=\"text/javascript\">(function() {"+ tzUrl +"})();</script>");
-						
-						result.setCode(-300);
-						result.setMsg("访问失败！【非开放接口，禁止访问！】");
-						result.setData(null);
-						String json = JSONObject.fromObject(result).toString();//注意，是json对象，不是数组
-						response.getWriter().write(json);
+
+					if(authResult.getCode() == Result.SUCCESS){
+						return true;
+					}else {
+						/**
+						 * 如何确定返回类型，是 Result 还是 页面？
+						 *
+						 * 1、根据controller方法 有无@ResponseBody标签
+						 *
+						 * 2、根据controller的返回值 类型，是否是Result
+						 */
+
+						//TODO returnAnnotation 和 returnType
+
+						if(returnAnnotation == null){
+							//response.getWriter().write("<script>self.location.href='"+ AUTH_REJECT_PAGE + "'</script>");
+							//response.getWriter().write("<script type=\"text/javascript\">(function() {"+ tzUrl +"})();</script>");
+							//String tzUrl = "window.parent.openNewTab('无权限访问', '/admin/noAuthority/page');";
+							//谨防跨域问题（现在前后端一起部署，域名相同，是不会有跨域的错的）
+							response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);
+						}else{
+							Result rejectResult = Result.fail("访问失败！【非开放接口，禁止访问！】");
+							String json = JSONObject.fromObject(rejectResult).toString();//注意，是json对象，不是数组
+							//response.setCharacterEncoding("UTF-8");
+							response.setContentType("application/json; charset=utf-8");
+							response.getWriter().write(json);
+						}
+
+						/*if(returnType != Result.class){
+							response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);
+						}else{
+							Result rejectResult = Result.fail("访问失败！【非开放接口，禁止访问！】");
+							String json = JSONObject.fromObject(rejectResult).toString();
+							response.setContentType("application/json; charset=utf-8");
+							response.getWriter().write(json);
+						}*/
+
+						return false;
 					}
-					return false;
-					
-					// 2、未通过验证，返回提示json
-					/*Map<String, Object> responseMap = new HashMap<String, Object>();
-					responseMap.put("code", code);
-					responseMap.put("msg", msg);
-					responseMap.put("params", "");
-					responseMap.put("rows", "");
-					responseMap.put("被拦截的url", subUrl);
-					//String json = new Gson().toJson(responseMap);
-					String json = JSONArray.fromObject(responseMap).toString();
-					response.setCharacterEncoding("UTF-8");
-					response.setContentType("application/json; charset=utf-8");
-					response.getWriter().write(json);
-					return false;*/
 				}
 			} catch (Exception e) {
 				//

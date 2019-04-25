@@ -18,8 +18,8 @@
     <!-- Datatables -->
     <link href="../webPlug/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
-    <!-- bootstrap-daterangepicker -->
-    <link href="../admin/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet"><!-- 自动校样 -->
+    <!-- 自动校样 bootstrap-daterangepicker -->
+    <link href="../admin/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet">
 
     <!-- 日历选择样式 -->
     <link href="../webPlug/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
@@ -54,14 +54,6 @@
         a {
             cursor: pointer;
         }
-
-        .tip {
-            width: 200px;
-            border: 2px solid #ddd;
-            padding: 8px;
-            background: #f1f1f1;
-            color: #666;
-        }
     </style>
 </head>
 
@@ -76,9 +68,11 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_content">
-                            <table id="ssmtable" class="table table-bordered dt-responsive table-hover" cellspacing="0" width="100%">
+                            <table id="table" class="col-xs-12"></table>
+
+                            <!--<table id="ssmtable" class="table table-bordered dt-responsive table-hover" cellspacing="0" width="100%">
                                 <tfoot class="my_tfoot"></tfoot>
-                            </table>
+                            </table>-->
                         </div>
                     </div>
                 </div>
@@ -90,11 +84,10 @@
 </div>
 
 <div id="tk"></div>
-<div id="mjs:tip" class="tip" style="position:absolute; left:0; top:0; display:none;"></div>
 <#include "/admin/bt_fileInput.html">
 
-<div id="filter_div">
-    <form id="fform" class="form-inline">
+<div id="toolbar">
+    <form id="queryForm" class="form-inline">
         <a class="btn btn-default" id="export_member"><span>导出</span></a>
 
         <div class="form-group">

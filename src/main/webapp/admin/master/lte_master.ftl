@@ -23,14 +23,25 @@
     <!-- Ionicons -->
     <link href="../webPlug/Ionicons/css/ionicons.min.css" rel="stylesheet">
 
-    <!-- bootstrap-daterangepicker -->
+    <!-- 自动校样 bootstrap-daterangepicker -->
+    <link href="../admin/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet">
+
+    <!-- 日历选择样式bootstrap-daterangepicker -->
     <link href="../webPlug/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- fileinput -->
+    <link rel="stylesheet" href="../webPlug/bootstrap-fileinput/css/fileinput.min.css">
+
+    <!--唯一保留layui--弹出框样式-->
+    <link href="../webPlug/layui-v2.2.6/css/layui.css" rel="stylesheet">
+    <link href="../webPlug/layer/skin/default/layer.css" rel="stylesheet">
 
     <!-- Theme style 页面整体布局样式 -->
     <link href="../admin/dist/css/AdminLTE.min.css" rel="stylesheet">
     <!--选择一个页面 色调，可以从右上方的设置的下方选择-->
     <link href="../admin/dist/css/skins/_all-skins.min.css" rel="stylesheet">
-    <#-- 表格样式 -->
+
+    <!-- 表格样式 -->
     <link href="../admin/css/sub_iframe_layout.css" rel="stylesheet">
     ${css}
 </head>
@@ -56,28 +67,37 @@
 <!-- 处理移动端click事件 300 毫秒延迟FastClick -->
 <#--<script src="../../webPlug/fastclick/lib/fastclick.js"></script>-->
 
-<!-- AdminLTE App -->
-<script src="../admin/dist/js/adminlte.min.js"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="../admin/dist/js/demo.js"></script>
-<script src="../webPlug/layer/layer.js"></script>
+<#-- 自动校样 -->
+<script src="../admin/bootstrapValidator/js/bootstrapValidator.min.js" crossorigin="anonymous"></script>
 
 <!-- cuntom.js 日历相关的 -->
 <script src="../webPlug/moment/min/moment.min.js"></script>
 <script src="../webPlug/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-<#-- 可拖拽模态框 -->
-<script src="../admin/js/dragModal.js"></script>
+<!-- fileinput -->
+<script src="../webPlug/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script src="../webPlug/bootstrap-fileinput/js/locales/zh.js"></script>
+
+<script src="../webPlug/layer/layer.js"></script>
 
 <#-- 自己定义的公共api -->
 <script src='../js/common-api.js'></script>
 <script src='../js/date-util-api.js'></script>
 
+<!-- AdminLTE App -->
+<script src="../admin/dist/js/adminlte.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../admin/dist/js/demo.js"></script>-->
+
 <#-- admin公共配置js-->
 <script src='../admin/js/config.js'></script>
 <script src='../admin/js/url_config.js'></script>
+
     ${script}
+
+<#-- 可拖拽模态框 -->
+<script src="../admin/js/dragModal.js"></script>
 </body>
 
 </html>
