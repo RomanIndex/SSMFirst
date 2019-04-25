@@ -1,11 +1,20 @@
 package com.ssm.common.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.ssm.common.entity.SpringMonth;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class DateUtil {
     private static final long ONE_DAY = 1000 * 24 * 60 * 60; //毫秒
@@ -96,5 +105,21 @@ public class DateUtil {
         long time = endDate.getTime() - beginDate.getTime();
         double hour = MathUtil.div(time, ONE_HOUR, 1);
         return hour;
+    }
+
+    //是否是中国春节月
+    public static boolean chinaSpringMonth(Integer year, Integer month) {
+        ObjectMapper mapper = new ObjectMapper();
+        TypeFactory typeFactory = mapper.getTypeFactory();
+        CollectionType collectionType = typeFactory.constructCollectionType(List.class, SpringMonth.class);
+        List<SpringMonth> list = new ArrayList<>();
+        try {
+            InputStream is = SpringMonth.class.getResourceAsStream("/springMonth.json");
+            list = mapper.readValue(is, collectionType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        long flag = list.stream().filter(i -> i.getYear() == year && i.getSpringMonth() == month).count();
+        return flag >= 1 ? true : false;
     }
 }
