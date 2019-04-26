@@ -14,7 +14,8 @@
     <link href="../webPlug/jquery-easyui/themes/icon.css" rel="stylesheet" />
 
     <!-- Bootstrap 3.3.7 -->
-    <link href="./admin/dist/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="./admin/dist/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link href="../webPlug/bootstrap-v3.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- 3.bootstrap table组件以及中文包的引用-->
     <link href="../webPlug/bootstrap-table/src/bootstrap-table.css" rel="stylesheet" />
@@ -51,14 +52,16 @@
     <#nested>
 
 <!-- jQuery 3 -->
-<script src="../admin/dist/jquery/dist/jquery.min.js"></script>
+<!--<script src="../admin/dist/jquery/dist/jquery.min.js"></script>-->
+<script src="../webPlug/jquery/jquery-2.2.4.min.js"></script>
 
 <!-- Jquery easyui -->
 <script src="../webPlug/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="../webPlug/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
 
 <!-- Bootstrap 3.3.7 -->
-<script src="../admin/dist/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="../admin/dist/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<script src="../webPlug/bootstrap-v3.3.5/dist/js/bootstrap.min.js"></script>
 
 <!-- bootstrap table组件以及中文包的引用-->
 <script src="../webPlug/bootstrap-table/src/bootstrap-table.js"></script>

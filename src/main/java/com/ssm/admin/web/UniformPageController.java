@@ -1,5 +1,7 @@
 package com.ssm.admin.web;
 
+import com.ssm.base.Enum.AuthorityTypeEnum;
+import com.ssm.base.util.Authority;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,7 @@ public class UniformPageController {
     }
 
     //权限后台管理（设置菜单时，route不能漏）
+    @Authority(AuthorityTypeEnum.NoAuthority)//不合理的这样，因为菜单权限会虚设
     @RequestMapping(value = "admin/route/{url}", method = RequestMethod.GET)
     public String route(@PathVariable String url) {
         return "admin/"+ url;

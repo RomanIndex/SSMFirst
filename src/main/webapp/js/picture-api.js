@@ -16,6 +16,14 @@ var pictureApi = {
     getFullPath: function(e){
         pictureApi.CHANGE_PIC = true;
 
+        /*if (e) {
+			var src = e.value;
+			if (e.files) {
+				src =  window.URL.createObjectURL(e.files.item(0));
+			}
+			$("#pictureFile").next().find("img").attr("src", src);
+		}*/
+
         var files = e.files[0]
         if (!e || !window.FileReader) return
         var reader = new FileReader()
@@ -34,7 +42,7 @@ var pictureApi = {
             var formdata = new FormData();
             formdata.append("file", anfiles);
             $.ajax({
-                url: API_IMG.uploadImg+ "?access_token="+ ACCESS_TOKEN,
+                url: "/admin/uploadImg/accountImg",
                 type:'post',
                 data: formdata,
                 async:false,//更改为同步

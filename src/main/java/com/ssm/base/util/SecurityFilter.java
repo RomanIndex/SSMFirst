@@ -10,6 +10,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +25,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.ssm.base.view.Config;
 
-public class SecurityFilter implements Filter{
+public class SecurityFilter extends HttpServlet implements Filter{
 
 	//private static final long serialVersionUID = -6214204746258756402L;
 
@@ -67,7 +68,7 @@ public class SecurityFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse)servletResponse;
 
         String requestURI = request.getRequestURI();
-        System.out.println("SecurityFilter--doFilter："+ requestURI);
+        //System.out.println("SecurityFilter--doFilter："+ requestURI);
         
         if(!isFreePage(requestURI)) {
             //Session失效
@@ -87,12 +88,19 @@ public class SecurityFilter implements Filter{
         		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleService.privilege2menu(privileges).getData();
         		request.getSession().setAttribute("menu", menus);
         	}
+        }else{
+            if(requestURI.indexOf("freeView") > -1){
+                //response.sendRedirect(requestURI);
+                request.getRequestDispatcher(requestURI).forward(request, response);
+                System.out.println("转发后的请求："+ request.getRequestURI());
+                return;
+            }
         }
 
         //如果响应未提交,交给过滤器链
         if(!response.isCommitted()) {
             try {
-            	filterChain.doFilter(servletRequest, servletResponse);
+                filterChain.doFilter(servletRequest, servletResponse);
             } catch(Exception ex) {
                 filterConfig.getServletContext().log(ex.getMessage());
             }
@@ -108,6 +116,7 @@ public class SecurityFilter implements Filter{
         		|| requestURI.indexOf("login.ftl") >= 0
                 || requestURI.endsWith(".js")
                 || requestURI.endsWith(".css")
+                || requestURI.endsWith(".html")
                 || requestURI.endsWith(".ftl")){
             return true;
         }

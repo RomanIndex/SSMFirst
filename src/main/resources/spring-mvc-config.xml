@@ -99,13 +99,15 @@
         <!-- 权限操作 拦截器 （待开发）-->
         <mvc:interceptor>
             <!-- 这个必须写在前面，也就是写在【不拦截】的上面 -->
-            <mvc:mapping path="/admin/account/**"/><!--现在假设这种url的是权限拦截器所拦截的 -->
+            <mvc:mapping path="/admin/route/*"/><!--现在假设这种url的是权限拦截器所拦截的 -->
+			<mvc:mapping path="/ssm/admin/**"/>
             
             <!-- 要拦截的 方法或类，首先要被 上面 的 path 拦截下来，其次进入 拦截器类，进入类后，如果没有添加自定义@标签，自动返回错误信息，添加了，则会根据 标签类型 相应处理 -->
             
             <!-- 但是排除下面这些，也就是【不拦截】请求 -->
-            <!-- <mvc:exclude-mapping path="/admin/noAuthority/page"/> -->
-            <bean class="com.ssm.base.intercept.AuthorityAnnotationInterceptor"/>
+            <mvc:exclude-mapping path="/admin/noAuthority/page"/>
+			<mvc:exclude-mapping path="/admin/route/index"/><!-- 改了拦截器要重启服务才生效 -->
+			<bean class="com.ssm.base.intercept.AuthorityAnnotationInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

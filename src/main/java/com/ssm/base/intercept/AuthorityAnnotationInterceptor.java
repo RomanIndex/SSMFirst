@@ -40,10 +40,10 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 			Class<?> clazz = hm.getBeanType();
 			Method m = hm.getMethod();
 	        
-	        /*Authority permission = hm.getMethodAnnotation(Authority.class);
+	        Authority permission = hm.getMethodAnnotation(Authority.class);
 	        if(permission != null){
 	        	System.out.println("permission："+ permission.value());
-	        }*/
+	        }
 
 			ResponseBody returnAnnotation = hm.getMethodAnnotation(ResponseBody.class);
 			if(returnAnnotation != null){
@@ -67,7 +67,7 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 						authority = clazz.getAnnotation(Authority.class);
 					}
 
-					Result<?> authResult = null;
+					Result<?> authResult = new Result<>();
 					if (authority != null) {
 						if(AuthorityTypeEnum.NoValidate == authority.value()){
 							// 标记为不验证,放行
@@ -97,34 +97,36 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 
 						//TODO returnAnnotation 和 returnType
 
-						if(returnAnnotation == null){
+						/*if(returnAnnotation == null){
 							//response.getWriter().write("<script>self.location.href='"+ AUTH_REJECT_PAGE + "'</script>");
 							//response.getWriter().write("<script type=\"text/javascript\">(function() {"+ tzUrl +"})();</script>");
 							//String tzUrl = "window.parent.openNewTab('无权限访问', '/admin/noAuthority/page');";
 							//谨防跨域问题（现在前后端一起部署，域名相同，是不会有跨域的错的）
-							response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);
+							//response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);
+							response.sendRedirect(Config.AUTH_REJECT_PAGE);
 						}else{
 							Result rejectResult = Result.fail("访问失败！【非开放接口，禁止访问！】");
 							String json = JSONObject.fromObject(rejectResult).toString();//注意，是json对象，不是数组
 							//response.setCharacterEncoding("UTF-8");
 							response.setContentType("application/json; charset=utf-8");
 							response.getWriter().write(json);
-						}
+						}*/
 
-						/*if(returnType != Result.class){
-							response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);
+						//判断有问题？？
+						if(returnType != Result.class){
+							response.sendRedirect(Config.AUTH_REJECT_PAGE);
 						}else{
 							Result rejectResult = Result.fail("访问失败！【非开放接口，禁止访问！】");
 							String json = JSONObject.fromObject(rejectResult).toString();
 							response.setContentType("application/json; charset=utf-8");
 							response.getWriter().write(json);
-						}*/
+						}
 
 						return false;
 					}
 				}
 			} catch (Exception e) {
-				//
+				System.out.println("======="+ e);
 			}
 		}
 		return true;

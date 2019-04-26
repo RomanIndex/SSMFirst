@@ -1,11 +1,11 @@
-<#import "admin/lte_master.ftl" as my> 
-<@my.page title="医患咨询报表" 
+<#import "admin/master/lte_master.ftl" as my>
+<@my.page title="表单重复提交"
 	css="
 		<link href='../webPlug/layui-v2.2.6/css/layui.css' rel='stylesheet'>
 	    <link href='../webPlug/layer/skin/default/layer.css' rel='stylesheet'>
 	"
 	script="
-	   <script src='../admin/js/account_form.js'></script>
+	   <script src='../admin/js/resubmit_form.js'></script>
 	">
 	<section class="content">
 		<div class="error-page">

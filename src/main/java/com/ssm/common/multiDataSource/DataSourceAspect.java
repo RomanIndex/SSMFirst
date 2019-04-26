@@ -17,8 +17,8 @@ public class DataSourceAspect {
 
     @Before("dataSourceSwitch()")
     public void before(JoinPoint jp) {
-        System.out.println("@Before getSignature："+ jp.getSignature().getName());//调用的方法名
-        System.out.println("@Before getTarget："+ jp.getTarget().getClass().getName());//@4679554d 这种"类实例？"
+        //System.out.println("@Before getSignature："+ jp.getSignature().getName());//调用的方法名
+        //System.out.println("@Before getTarget："+ jp.getTarget().getClass().getName());//@4679554d 这种"类实例？"
         /**
          * dao层继承接口方式：根据连接点所属的 类实例，动态切换数据源
          * 另外，还有一种 注解 的方式，但是没有接口的细粒，简单方便，配置也相对麻烦一点
