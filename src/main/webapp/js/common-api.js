@@ -35,7 +35,6 @@ commonApi.form = {
 		})
 		return flag;
 	}
-
 }
 
 commonApi.format = {
@@ -54,8 +53,59 @@ commonApi.utils = {
             flag = true;
         }
         return flag;
-    }
+    },
+    getTKModal: function(modalId){
+        /**
+         * 1、load 可以加载html页面，也可以是ftl页面
+         * 2、加载公共tk_modal里面，id的部分模态框
+         * 2、可以引入对应的js
+         */
+        $("#tk").load("admin/tk_modal.ftl #"+ modalId +"", function(){
+            jQuery.getScript("admin/js/tk_modal.js", function(){
+                $("#save").css({'color': 'red;'})
+            })
+        })
+        setTimeout(function(){
+            //dateUtilApi.calendar.single_datepicker();
+            $(":header.modal-title").text("头部名称（JS自定义）")
+            $("#save").val("add").text("新增（JS自定义）")
+            $("#"+ modalId).modal("show");
+        },400)
+    },
 }
+
+/* 该功能还需要 一定格式 的div 才可以实现 */
+commonApi.utils.mouseTip = {
+    $: function(ele){
+        if(typeof(ele)=="object")
+            return ele;
+        else if(typeof(ele)=="string"||typeof(ele)=="number")
+            return document.getElementById(ele.toString());
+        return null;
+    },
+    mousePos:function(e){
+        var x,y;
+        var e = e||window.event;
+        return{
+            x: e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
+            y: e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+        };
+    },
+    start:function(obj){
+        var self = this;
+        var t = self.$("mjs:tip");
+        obj.onmousemove = function(e){
+            var mouse = self.mousePos(e);
+            t.style.left = mouse.x + 10 + 'px';
+            t.style.top = mouse.y + 10 + 'px';
+            t.innerHTML = obj.getAttribute("tips");
+            t.style.display = '';
+        };
+        obj.onmouseout=function(){
+            t.style.display = 'none';
+        };
+    }
+};
 
 /**
  * 公共 根据权限控制 页面元素 的显隐
@@ -63,6 +113,7 @@ commonApi.utils = {
  * @param doms 页面需要进行控制的元素
  * @returns
  */
+
 function ssmAuthCtr(hasAry, doms){
     $.each(doms, function(index, item){
         var that = $(this);

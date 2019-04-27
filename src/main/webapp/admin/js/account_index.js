@@ -1,7 +1,25 @@
 $(function () {
     var tableId = "table";
-    api.account.initTable(tableId)
+    dateUtilApi.calendar.daterange_picker("reportrange");
+    api.account.initTable(tableId);
+
+    $("#uploadImgModel").on("click", function(){
+        $("#picModal").modal("show");
+    })
+
+    /* 多图上传，初始化fileinput */
+    var oFileInput = new FileInput();
+    oFileInput.Init("file-pic", "/admin/file/addPic");
 });
+
+/**
+ * -----------鼠标移动事件
+ */
+//<a class="mouseMove" style="cursor:pointer;color:#6d9eef;">${emp.name}、</a>
+//鼠标移上去触发事件，由于是分页，所以绑定事件要写在callback后面，这里定义触发效果（描述不好）
+function mouseMove(){
+    layer.msg("点击会触发调整事件！")
+}
 
 api.account = {
     $table: null,
@@ -23,7 +41,7 @@ api.account = {
             columns: [
                 //align: 'center' 左右居中；valign: 'middle' 上下居中
                 {field: 'empNo', title: '编号', align: 'center', sortable: true},
-                {field: 'name', title: '名字'},
+                {field: 'name', title: '名字', formatter: this.nameFormatter},
                 {field: 'mobile', title: '电话'},
                 {field: 'email', title: '邮箱'},
                 {field: 'loginUrl', title: '登陆首页'},
@@ -41,14 +59,25 @@ api.account = {
                 //var ary = ["#export", "#add", "#query", "#openDialog", ".update", ".delete", ".mgActRole"];
                 var hasAry = ["#add", "#query", "#openDialog", ".update"];
                 var doms = $("a[id], button[id], a.update, a.delete, a.mgActRole");
-                doms.attr("style", "display:none;")
+                //doms.attr("style", "display:none;");//注释掉
+                /**
+                 * 2019-04-25巨坑，#toolbar 里面 a标签只要 有id，不管是什么值，甚至只要id=""，a标签都会被隐藏掉
+                 * 胡乱试半天。接近8点才找到，问题来自这里------定位问题 思维！Import！
+                 */
                 ssmAuthCtr(hasAry, doms);
+                //测试鼠标移动事件
+                doms.on('click', function(){
+                    layer.msg("控制权限点！");
+                }).mouseover(mouseMove);//推荐这种用法
             },
         });
         this.$table = jq;
     },
     query: function(){
         this.$table.bootstrapTable('refresh');
+    },
+    nameFormatter: function(value, row, index){
+        return '<a style="cursor:pointer;color:red;" onclick="api.account.getUpdateModal(this)">'+ value +'</a>';
     },
     getRoleMgModal: function(e){
         var index = $(e).parents('tr').data("index");

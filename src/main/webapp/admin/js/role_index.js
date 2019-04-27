@@ -65,7 +65,7 @@ api.role.initTable = function (tableId) {
         responseHandler: commonApi.table.responseJpaHandler,
         columns: [
             {field: 'id', title: 'ID', visible: false},
-            {field: 'name', title: '名称', sortable: true},
+            {field: 'name', title: '名称', class: "mouseShow", sortable: true},
             {field: 'roleId', title: '角色ID', sortable: true},
             {field: 'type', title: '类型', sortable: true},
             {field: 'level', title: '级别'},
@@ -96,6 +96,17 @@ function getElementToPageTop(el) {
     }
     return el.offsetTop
 }
+
+/* 鼠标移动显示详情内容 */
+$('body').on('mouseover','td.mouseShow', function(e){
+    var index = $(e.target).parents('tr').data("index");
+    var row = api.role.$table.bootstrapTable('getData')[index];
+    var data = row.roleId;
+
+    var that = $(this);//区别
+    commonApi.utils.mouseTip.start(this);
+    that.attr('tips', data);
+})
 
 api.role.save = function (e) {
     var param = commonApi.form.getFormObj("inputForm");

@@ -14,6 +14,21 @@ div.box-header > ol.breadcrumb > li{
     color: #27a0d7;
 }
 
+/* a 标签 统一样式 */
+a, a:visited {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #f60;
+    text-decoration: underline;
+}
+
+a {
+    cursor: pointer;
+}
+
 /**
 CSS常用样式
  */

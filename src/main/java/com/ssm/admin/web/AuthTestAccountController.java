@@ -1,28 +1,16 @@
 package com.ssm.admin.web;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-
 import javax.servlet.http.HttpServletRequest;
 
-import com.ssm.admin.service.AccountService;
 import com.ssm.common.util.CheckSubmitUtil;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ssm.admin.entity.SsmAccount;
-import com.ssm.base.Enum.AuthorityTypeEnum;
-import com.ssm.common.entity.ValidateAccount;
 import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
-
-import net.sf.json.JSONObject;
 
 /**
  * 说下这个 控制器 要进行测试的内容
@@ -36,69 +24,6 @@ import net.sf.json.JSONObject;
 
 @Controller
 public class AuthTestAccountController {
-	private static Logger logger = Logger.getLogger(AuthTestAccountController.class);
-	
-	@Autowired private AccountService accountService;
-
-	@Authority(AuthorityTypeEnum.Validate)//不加直接返回“无权限访问页面”
-	@RequestMapping(value = "admin/account/index", method = RequestMethod.GET)
-	public String index() {
-		return "/admin/bootstrap_index.ftl";
-	}
-	
-	@ResponseBody
-	@Authority(AuthorityTypeEnum.Validate)//上面加，这里不加的话，页面出来，但数据为空
-	@RequestMapping(value = "admin/account/mapperQuery", method = RequestMethod.POST)
-	public Result<?> mapperQuery(SsmAccount query) {
-		//logger.debug("----Temperature set to {}. Old temperature was {}.", new Date(), "测试logger.debug----");
-		logger.debug("----Temperature set to {}. Old temperature was {}  测试logger.debug----");
-        logger.info("----Temperature has risen above 50 degrees.测试logger.info----");
-		return null;//accountService.mapperQuery(query);
-	}
-	
-	//这应该是一个公共接口
-	@ResponseBody
-	@Authority
-	@RequestMapping(value="admin/account/checkAuth", method = RequestMethod.POST)
-	public Result<?> checkAuth(String url) {
-		return new Result<>(0, "访问成功【开发接口，允许任何人访问！】", "", url);
-	}
-
-	@Authority
-	@RequestMapping(value="admin/account/add", method = RequestMethod.GET)
-	public String add(){
-		return "/admin/bootstrap_edit.ftl";
-	}
-
-	@Authority
-	@RequestMapping(value="admin/account/update", method = RequestMethod.GET)
-	public String update() {
-		return "/admin/bootstrap_edit.ftl";
-	}
-
-	@ResponseBody
-	@RequestMapping(value="admin/account/delete", method = RequestMethod.POST)
-	public Result<?> delete(String empNo) {
-		return Result.success(accountService.deleteById(empNo));
-	}
-
-	@ResponseBody
-	@RequestMapping(value="admin/account/{empNO}", method = RequestMethod.GET)
-	public Result<?> getAccountByKey(@PathVariable("empNo") String empNo) {
-		return Result.success(accountService.getById(empNo));
-	}
-
-	@ResponseBody
-	@RequestMapping(value="admin/account/add", method = RequestMethod.POST)
-	public Result<?> mapperSave(String str) throws UnsupportedEncodingException {
-		String decStr = URLDecoder.decode(str, "utf-8");
-		System.out.println("String入参对象："+ decStr);
-		JSONObject jsonObject = JSONObject.fromObject(str);
-		SsmAccount account = (SsmAccount) JSONObject.toBean(jsonObject, ValidateAccount.class);
-
-		return null;//accountService.mapperSave(account, operate);
-	}
-	
 	/**
 	 * 测试session防止重复提交----begin------begin----------begin-----------
 	 * 跳转表单页面
@@ -132,8 +57,4 @@ public class AuthTestAccountController {
 		}
 		return new Result<>(Result.SUCCESS, "特定业务处理完成！", null, null);
 	}
-
-	/**
-	 * 测试session防止重复提交 --------------end----------end----------------end-------------
-	 */
 }

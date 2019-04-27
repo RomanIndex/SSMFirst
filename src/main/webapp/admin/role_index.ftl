@@ -8,6 +8,13 @@ css="
         background-color: rgb(232, 219, 220);
         border-color: rgb(228, 208, 217);
     }
+    .tip {
+            width: 200px;
+            border: 2px solid #ddd;
+            padding: 8px;
+            background: #f1f1f1;
+            color: #666;
+        }
 </style>
 "
 script="<script src='/admin/js/role_index.js?v2'></script>"
@@ -33,6 +40,7 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
 </section>
 
 <div id="tk"></div>
+<div id="mjs:tip" class="tip" style="position:absolute; left:0; top:0; display:none;"></div>
 
 <div id="toolbar">
     <form id="queryForm" class="form-inline" autocomplete="off">
@@ -50,6 +58,7 @@ script="<script src='/admin/js/role_index.js?v2'></script>"
         </div>
         <a class="btn btn-primary" onclick="api.role.query()" data-icon="search">查询</a>
         <a class="btn btn-primary" onclick="api.role.getAddModal(this)">新增</a>
+        <a class="btn btn-default" onclick="commonApi.utils.getTKModal('addModal')"><span>（TKModal+加载JS）</span></a>
     </form>
 </div>
 

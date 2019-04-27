@@ -1,12 +1,3 @@
-$(function() {
-	$("#addModel").on("click", function(){
-		$("#picModal").modal("show");
-	})
-	
-	//初始化fileinput
-    var oFileInput = new FileInput();
-    oFileInput.Init("file-pic", "/admin/file/addPic");
-});
 
 //$("#add_bachPic").fileinput('reset'); //重置预览表中的所有文件
 //$("#add_bachPic").fileinput('clear'); //只是清理还未上传的预览，上传成功的不会清除

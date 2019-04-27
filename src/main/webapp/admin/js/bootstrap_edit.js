@@ -1,5 +1,5 @@
 $(function () {
-	init_singleDatePicker();
+	dateUtilApi.calendar.single_datepicker();
 	init_btValidator();
 	//模拟修改环境，初始化数据
 	get_init_data();
@@ -44,77 +44,6 @@ function get_init_data(){
 			});
 		}
 	});
-}
-
-var pictureApi = {
-	CHANGE_PIC: false,
-	uploadResult: function(){
-		var result = {}
-		result.code = -1;
-		result.msg = "";
-		result.imgPath = "";
-		if(pictureApi.CHANGE_PIC){
-			result.imgPath = pictureApi.uploadImg();
-			if(result.imgPath == undefined || result.imgPath == false){
-				result.msg = "图片上传异常！【"+ result.imgPath +"】";
-			}else{
-				result.code = 0;
-			}
-		}else{
-			result.imgPath = $("#formId input[name='pictureFile']").val()
-			result.code = 0;
-		}
-		pictureApi.CHANGE_PIC = false;
-		return result;
-	},
-	getFullPath: function(e){
-		pictureApi.CHANGE_PIC = true;
-		
-		/*if (e) {
-			var src = e.value;
-			if (e.files) {
-				src =  window.URL.createObjectURL(e.files.item(0));
-			}
-			$("#pictureFile").next().find("img").attr("src", src);
-		}*/
-		
-		var files = e.files[0]
-		//是否支持FileReader
-		if (!e || !window.FileReader) return
-		let reader = new FileReader()
-		//将图片将转成 base64 格式
-		reader.readAsDataURL(files)
-		reader.onloadend = function () {
-			$("#pictureFile").next().find("img").attr("src", this.result);
-		}
-	},
-	uploadImg: function(){
-		var backImgPath;//这里直接返回 图片地址
-		var anfiles = $("#pictureFile")[0].files[0]
-		if(anfiles == undefined){
-			layer.msg('请选择文件');
-			return false;
-		}else{
-			var formdata = new FormData();
-			formdata.append("files", anfiles);
-		    $.ajax({
-		    	url: "/admin/uploadImg/accountImg",
-		    	type:'post',
-		        data: formdata,
-		        async:false,//更改为同步 
-		        processData: false,
-		        contentType: false,
-		        success:function(result){
-		            if(result.code == 0){
-		            	backImgPath = result.data;
-		            }else{
-		            	layer.msg(result.msg)
-		            }
-		        }
-		    });
-		}
-		return backImgPath;
-	}
 }
 
 function init_btValidator(){
@@ -186,15 +115,14 @@ function init_btValidator(){
 			if(new Date(param.startDay) >= new Date(param.endDay)){layer.msg("开始时间要小于结束时间！");return false;}
 			if(new Date(param.startDay) >= new Date()){layer.msg("开始时间要小于当前时间！");return false;}
 			//var intValue = Number("123")//string转int
-			
-			//处理图片
+
+            //上传图片
 			//var imgResult = pictureApi.uploadResult();
-			if(imgResult.code == 0){
-				param.imgPath = imgResult.imgPath;
-			}else{
-				layer.msg(imgResult.msg);
-				return false;
-			}
+            if(imgResult.code != 0){
+                layer.msg(imgResult.msg);
+                return false;
+            }
+            param.imgPath = imgResult.imgPath;//""字符串传到后台还是""，但是undefined字段到后台就是null
 			
 			layer.open({
 				type: 1,

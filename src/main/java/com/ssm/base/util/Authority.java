@@ -9,13 +9,11 @@ import java.lang.annotation.Target;
 import com.ssm.base.Enum.AuthorityTypeEnum;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 //@Target({ElementType.TYPE})
 @Documented
-
 
 public @interface Authority {
 	//默认验证
 	AuthorityTypeEnum value() default AuthorityTypeEnum.Validate;
-
 }
