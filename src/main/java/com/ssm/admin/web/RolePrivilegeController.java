@@ -2,6 +2,7 @@ package com.ssm.admin.web;
 
 import com.ssm.admin.service.RolePrivilegeService;
 import com.ssm.admin.view.TreegridView;
+import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +17,8 @@ import java.util.*;
 @Api(description="角色权限API", value = "角色权限API", tags = {"SSM后台：角色权限接口"})
 @CrossOrigin("*")
 @RestController
-@RequestMapping("ssm/admin/rolePrivilege")
+@Authority
+@RequestMapping("admin/rolePrivilege")
 public class RolePrivilegeController {
     @Autowired
     private RolePrivilegeService rolePrivilegeService;

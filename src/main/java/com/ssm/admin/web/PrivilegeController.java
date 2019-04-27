@@ -3,6 +3,7 @@ package com.ssm.admin.web;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.service.PrivilegeService;
 import com.ssm.admin.view.AdminQueryView;
+import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @Api(description="权限API", value = "权限API", tags = {"SSM后台：权限接口"})
 @CrossOrigin("*")
 @RestController
-@RequestMapping("ssm/admin/privilege")
+@Authority
+@RequestMapping("admin/privilege")
 public class PrivilegeController {
     @Autowired private PrivilegeService privilegeService;
 

@@ -4,6 +4,7 @@ import com.ssm.admin.entity.SsmModule;
 import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.view.AdminQueryView;
 import com.ssm.admin.view.TreegridView;
+import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ import java.util.Map;
 @Api(description="模块API", value = "模块API", tags = {"SSM后台：模块接口（含左侧菜单）"})
 @CrossOrigin("*")
 @RestController
-@RequestMapping("ssm/admin/module")
+@Authority
+@RequestMapping("admin/module")
 public class ModuleController {
     @Autowired private ModuleService moduleService;
 

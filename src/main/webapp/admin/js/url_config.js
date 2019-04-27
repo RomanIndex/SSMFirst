@@ -1,12 +1,12 @@
 var URL_API = {};
 
 var base_url = {
-    "account": "/ssm/admin/account",
-    "role": "/ssm/admin/role",
-    "module": "/ssm/admin/module",
-    "privilege": "/ssm/admin/privilege",
-    "accountRole": "/ssm/admin/accountRole",
-    "rolePrivilege": "/ssm/admin/rolePrivilege",
+    "account": "/admin/account",
+    "role": "/admin/role",
+    "module": "/admin/module",
+    "privilege": "/admin/privilege",
+    "accountRole": "/admin/accountRole",
+    "rolePrivilege": "/admin/rolePrivilege",
 };
 
 URL_API.ROLE_PRIVILEGE = {
@@ -50,4 +50,6 @@ URL_API.PRIVILEGE = {
     "update": base_url.privilege+ "/update",
     "del": base_url.privilege+ "/del",
     "operateList": base_url.privilege+ "/operateList",//操作类型 枚举转集合
+    "addPage": "/admin/route/privilege/add",
+    "updatePage": "/admin/route/privilege/update",
 }

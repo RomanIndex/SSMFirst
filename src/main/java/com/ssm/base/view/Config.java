@@ -14,9 +14,11 @@ public final class Config {
 	public static String SECURITY_LOGIN_KEY = "ssm_login";//标识是否登录的Session
 	public static String SECURITY_IS_LOGIN = "ssm_online";
 	public static String SSM_ACCOUNT = "ssmAccount";
+	public static String SSM_MASTER_ACCOUNT = "admin";
 
 	public static String SSM_DOMAIN = "localhost:8080";//结尾不要加/，不加/
-	public static String AUTH_REJECT_PAGE = "/admin/noAuthority/page";
+	public static String AUTH_REJECT_PAGE = "/admin/authority/reject";
+	public static String AUTH_FORGET_PAGE = "/admin/authority/forget";
 	
 	public static int COOKIE_AGE = 60*60*24*60;	//cookie有效时间(7天)
 	

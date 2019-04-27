@@ -1,6 +1,7 @@
 package com.ssm.admin.web;
 
 import com.ssm.admin.service.AccountRoleService;
+import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +18,8 @@ import java.util.List;
 @Api(description="用户角色API", value = "用户角色API", tags = {"SSM后台：用户角色接口"})
 @CrossOrigin("*")
 @RestController
-@RequestMapping("ssm/admin/accountRole")
+@Authority
+@RequestMapping("admin/accountRole")
 public class AccountRoleController {
     @Autowired private AccountRoleService accountRoleService;
 

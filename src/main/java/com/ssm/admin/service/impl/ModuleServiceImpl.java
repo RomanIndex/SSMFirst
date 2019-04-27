@@ -32,6 +32,11 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         return Result.success(this.module2menu(modules));
     }
 
+    @Override
+    public SsmModule getByUrl(String url) {
+        return moduleJpaDao.findByUrlAndStatus(url, true);
+    }
+
     /* type = 1 的作为预留，最高模块，现在后台并没有用到*/
     @Override
     public Result<?> getTopMenu() {

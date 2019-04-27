@@ -77,4 +77,5 @@ public class RoleServiceImpl extends CommonServiceImpl<SsmRole, String> implemen
         List<SsmRole> roles = this.selectAllById(roleIds);
         return Result.success(roles);
     }
+
 }

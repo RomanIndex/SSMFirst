@@ -19,4 +19,6 @@ public interface ModuleService extends CommonService<SsmModule, String>{
     List<TreegridView> getMenuTreegrid(String name);
 
     Result<?> privilege2menu(List<SsmPrivilege> privileges);
+
+    SsmModule getByUrl(String authUrl);
 }

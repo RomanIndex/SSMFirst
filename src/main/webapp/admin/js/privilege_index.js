@@ -49,13 +49,13 @@ api.privilege = {
         this.$table.bootstrapTable('refresh');
     },
     getAddModal: function(e){
-        window.parent.openNewTab("新增权限票据","/admin/privilege/add")
+        window.parent.openNewTab("新增权限票据", URL_API.PRIVILEGE.addPage)
     },
     getUpdateModal: function(e){
         var index = $(e).parents('tr').data("index");
         var row = this.$table.bootstrapTable('getData')[index];
         //带参数的，统一路径处理可能不行了
-        window.parent.openNewTab("修改","admin/privilege/update?code="+ row.code)
+        window.parent.openNewTab("修改",URL_API.PRIVILEGE.updatePage + "?code=" + row.code)
     },
     del: function (e) {
         var index = $(e).parents('tr').data("index");

@@ -3,6 +3,7 @@ package com.ssm.admin.web;
 import com.ssm.admin.entity.SsmRole;
 import com.ssm.admin.service.RoleService;
 import com.ssm.admin.view.AdminQueryView;
+import com.ssm.base.util.Authority;
 import com.ssm.base.view.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @Api(description="角色API", value = "角色API", tags = {"SSM后台：角色接口"})
 @CrossOrigin("*")
 @RestController
-@RequestMapping("ssm/admin/role")
+@Authority
+@RequestMapping("admin/role")
 public class RoleController {
     @Autowired private RoleService roleService;
 

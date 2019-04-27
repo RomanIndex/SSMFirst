@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @Api(description="用户API", value = "用户API", tags = {"SSM后台：用户接口"})
 @CrossOrigin("*")
 @RestController
-@Authority(AuthorityTypeEnum.Validate)
-@RequestMapping("ssm/admin/account")
+@Authority
+@RequestMapping("admin/account")
 public class AccountController {
     private static Logger logger = Logger.getLogger(AuthTestAccountController.class);
 

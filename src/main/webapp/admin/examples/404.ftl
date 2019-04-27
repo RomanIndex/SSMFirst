@@ -1,4 +1,4 @@
-<#import "admin/lte_master.ftl" as my>
+<#import "admin/master/lte_master.ftl" as my>
 <@my.page 
     title="医患咨询报表"
     css="

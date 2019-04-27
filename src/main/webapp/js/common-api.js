@@ -190,7 +190,7 @@ commonApi.table.queryParams = function (params) {
         return false;
     }
     temp["pageSize"] = params.limit;
-    temp["pageNo"] = params.offset/params.limit+1;
+    temp["pageNo"] = params.offset/params.limit + 1;
     //temp["sort"] = params.sort,      //排序列名
     //temp["sortOrder"] = params.order //排位命令（desc，asc）
     //特殊格式的条件处理...
@@ -209,6 +209,7 @@ commonApi.table.responseHandler = function (result) {
             "total" : result.data.totalRecords
         };
     } else {
+        layer.msg("来自common-api responseHandler："+ result.msg);
         return {
             "rows" : [],
             "total" : 0
@@ -223,6 +224,7 @@ commonApi.table.responseJpaHandler = function (result) {
             "total" : result.data.totalElements
         };
     } else {
+        layer.msg("来自common-api responseJpaHandler："+ result.msg);
         return {
             "rows" : [],
             "total" : 0

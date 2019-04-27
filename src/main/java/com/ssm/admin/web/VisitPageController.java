@@ -4,6 +4,7 @@ import com.ssm.admin.entity.SsmModule;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.service.PrivilegeService;
+import com.ssm.base.util.Authority;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Authority
 @Controller
 public class VisitPageController {
     @Autowired private PrivilegeService privilegeService;
@@ -21,14 +23,15 @@ public class VisitPageController {
      */
 
     //模块管理，提供另一种单页面的简单方式
-    @RequestMapping(value = "admin/module/ftl", method = RequestMethod.GET)
+    //@RequestMapping(value = "admin/module/ftl", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/route/module/ftl", method = RequestMethod.GET)
     public String indexFtl(Model model) {
         model.addAttribute("topMenus", moduleService.listMenuByRoleId("").getData());
         return "admin/module_index_ftl";
     }
 
     //编辑 权限 采用跳转新页面的方式
-    @RequestMapping(value = "admin/privilege/add", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/route/privilege/add", method = RequestMethod.GET)
     public String add(Model model){
         model.addAttribute("operateList", privilegeService.getOperateList().getData());
         model.addAttribute("topMenu", moduleService.getTopMenu().getData());
@@ -36,7 +39,7 @@ public class VisitPageController {
         return "admin/privilege_edit";
     }
 
-    @RequestMapping(value = "admin/privilege/update", method = RequestMethod.GET)
+    @RequestMapping(value = "admin/route/privilege/update", method = RequestMethod.GET)
     public String update(Model model, String code){
         SsmPrivilege privilege = privilegeService.getById(code);
         SsmModule module = moduleService.getById(privilege.getModuleId());

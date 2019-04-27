@@ -44,7 +44,7 @@ public class UniformPageController {
     }
 
     //权限后台管理（设置菜单时，route不能漏）
-    @Authority(AuthorityTypeEnum.NoAuthority)//不合理的这样，因为菜单权限会虚设
+    @Authority(AuthorityTypeEnum.Validate)
     @RequestMapping(value = "admin/route/{url}", method = RequestMethod.GET)
     public String route(@PathVariable String url) {
         return "admin/"+ url;
@@ -59,8 +59,23 @@ public class UniformPageController {
     /**
      * 无权限操作 提示页面
      */
-    @RequestMapping(value = "admin/noAuthority/page", method = RequestMethod.GET)
-    public String noAuthorityPage() {
-        return "/admin/examples/404.ftl";
+    @RequestMapping(value = "admin/authority/reject", method = RequestMethod.GET)
+    public String reject() {
+        /**
+         * org.springframework.web.util.NestedServletException:
+         * Request processing failed;
+         * nested exception is java.lang.IllegalArgumentException: Non-normalized name, starts with "/": /admin/examples/404_zh_CN.ftl
+         */
+        //return "/admin/examples/404";
+        //return "/admin/examples/404.ftl";//what? .ftl ?
+        return "admin/examples/404";
+    }
+
+    /**
+     * 被拦截的方法，忘了加@Authority提示页面
+     */
+    @RequestMapping(value = "admin/authority/forget", method = RequestMethod.GET)
+    public String forget() {
+        return "admin/examples/500";
     }
 }
