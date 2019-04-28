@@ -22,7 +22,8 @@
         SELECT p.module_id, p.operate_enum_name operate, rp.*
         FROM SSM_ROLE_PRIVILEGE rp
         LEFT JOIN SSM_PRIVILEGE p ON p.CODE = rp.pri_code
-        WHERE rp.role_id = #{roleId} AND p.operate_enum_name = #{operate}
+        WHERE rp.role_id = #{roleId}
+        <if test="operate != null and operate != ''">AND p.operate_enum_name = #{operate}</if>
     </select>
 
     <delete id="deleteByCodes">

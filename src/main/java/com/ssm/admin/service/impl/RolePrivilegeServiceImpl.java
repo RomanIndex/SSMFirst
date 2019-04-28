@@ -70,6 +70,15 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
         return Result.success("角色的权限更新成功！", null);
     }
 
+    /**
+     * 菜单权限易混点
+     * 显示的地方：
+     * （1）左侧菜单栏，符合要求，点击要有页面加载的，【在哪标记、怎么标记】
+     *
+     * （2）module管理表格，就是module表，即所有的静态资源都要显示（parentId、belongModule都要显示）
+     * （3）角色授权列表，也是module，也是要加载所有module静态资源
+     */
+
     @Override
     public List<TreegridView> getMenuTreegrid(String roleId) {
         //获取 由module生成的 菜单票据（即operateEnumName = show的 权限）
