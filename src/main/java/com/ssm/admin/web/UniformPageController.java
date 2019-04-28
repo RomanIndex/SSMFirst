@@ -64,18 +64,29 @@ public class UniformPageController {
         /**
          * org.springframework.web.util.NestedServletException:
          * Request processing failed;
-         * nested exception is java.lang.IllegalArgumentException: Non-normalized name, starts with "/": /admin/examples/404_zh_CN.ftl
+         * nested exception is java.lang.IllegalArgumentException:
+         * Non-normalized name, starts with "/": /admin/examples/404_zh_CN.ftl
+         *
+         * 还有：ftl页面的import路径检查对不对
          */
         //return "/admin/examples/404";
         //return "/admin/examples/404.ftl";//what? .ftl ?
-        return "admin/examples/404";
+        return "admin/examples/authority_reject";
     }
 
-    /**
-     * 被拦截的方法，忘了加@Authority提示页面
-     */
-    @RequestMapping(value = "admin/authority/forget", method = RequestMethod.GET)
-    public String forget() {
-        return "admin/examples/500";
+    @RequestMapping(value = "admin/authority/annotation", method = RequestMethod.GET)
+    public String missAnnotation() {
+        return "admin/examples/miss_annotation";
     }
+
+    @RequestMapping(value = "admin/authority/code", method = RequestMethod.GET)
+    public String missCode() {
+        return "admin/examples/miss_code";
+    }
+
+    @RequestMapping(value = "admin/authority/module", method = RequestMethod.GET)
+    public String missModule() {
+        return "admin/examples/miss_module";
+    }
+
 }

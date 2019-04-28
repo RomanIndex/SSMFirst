@@ -17,8 +17,11 @@ public final class Config {
 	public static String SSM_MASTER_ACCOUNT = "admin";
 
 	public static String SSM_DOMAIN = "localhost:8080";//结尾不要加/，不加/
+
 	public static String AUTH_REJECT_PAGE = "/admin/authority/reject";
-	public static String AUTH_FORGET_PAGE = "/admin/authority/forget";
+	public static String AUTH_MISS_ANNOTATION = "/admin/authority/annotation";
+	public static String AUTH_MISS_CODE = "/admin/authority/code";
+	public static String AUTH_MISS_MODULE = "/admin/authority/module";
 	
 	public static int COOKIE_AGE = 60*60*24*60;	//cookie有效时间(7天)
 	

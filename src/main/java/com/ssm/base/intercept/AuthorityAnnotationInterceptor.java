@@ -82,7 +82,7 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 							authResult = privilegeService.checkAuth(account, url);
 						}
 					}else{
-						authResult = new Result<>(-9, "啊欧！被拦截的方法没有@Authority注解！", null, null);
+						authResult = new Result<>(501, "啊欧！被拦截的方法没有@Authority注解！", null, null);
 					}
 
 					if(authResult.getCode() == Result.SUCCESS){
@@ -107,12 +107,15 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 							//response.getWriter().write("<script>self.location.href='"+ AUTH_REJECT_PAGE + "'</script>");
 							//response.getWriter().write("<script type=\"text/javascript\">(function() {"+ tzUrl +"})();</script>");
 							//谨防跨域问题（现在前后端一起部署，域名相同，是不会有跨域的错的）
-							//response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);//这样反而不行
-							if(authResult.getCode() == -9){
-								//防止有些方法忘了加@Authority注解，特别页面
-								//response.sendRedirect(Config.AUTH_FORGET_PAGE);
-								request.getRequestDispatcher(Config.AUTH_FORGET_PAGE).forward(request, response);
+							/* 501：漏加注解，502：未生成模块；503：未生成code */
+							if(authResult.getCode() == 501){
+								request.getRequestDispatcher(Config.AUTH_MISS_ANNOTATION).forward(request, response);
+							}else if(authResult.getCode() == 502){
+								request.getRequestDispatcher(Config.AUTH_MISS_MODULE).forward(request, response);
+							}else if(authResult.getCode() == 503){
+								request.getRequestDispatcher(Config.AUTH_MISS_CODE).forward(request, response);
 							}else{
+								//response.sendRedirect(Config.SSM_DOMAIN + Config.AUTH_REJECT_PAGE);//这样反而不行
 								//response.sendRedirect(Config.AUTH_REJECT_PAGE);
 								request.getRequestDispatcher(Config.AUTH_REJECT_PAGE).forward(request, response);
 							}

@@ -191,6 +191,8 @@ api.account = {
             setTimeout('$("#tkModal").modal("hide");', 1500);
             api.account.selectId = null;
             api.account.query();
+        }else{
+            layer.msg(result.msg, {icon : 2});
         }
     },
     del: function (e) {
@@ -206,7 +208,7 @@ api.account = {
                     setTimeout('$("#tkModal").modal("hide");', 1500);
                     //$tr.attr("style", "display:none;")
                     api.account.query();
-                }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
+                }else{layer.msg(result.msg, {icon : 2});}
             },'json');
         },function(){return});
     }

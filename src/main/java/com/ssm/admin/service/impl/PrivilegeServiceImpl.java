@@ -106,12 +106,12 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
     public Result<?> checkAuth(String account, String authUrl) {
         SsmModule module = moduleService.getByUrl(authUrl);
         if(null == module){
-            return Result.fail("【" + authUrl + "】对应的模块为空！");
+            return new Result<>(502, "【" + authUrl + "】对应的模块为空！", null, null);
         }
 
         SsmPrivilege privilege = this.getTicket(module.getModuleId());
         if(null == privilege){
-            return Result.fail("【" + authUrl + "】模块尚未注册成票据！");
+            return new Result<>(503, "【" + authUrl + "】模块尚未注册成票据！", null, null);
         }
 
         if(Config.SSM_MASTER_ACCOUNT.equalsIgnoreCase(account)){

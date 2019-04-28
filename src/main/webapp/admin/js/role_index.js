@@ -17,7 +17,7 @@ api.role = {
     getAddModal: function(e){
         $("#tk").load("admin/role_edit.html")
         setTimeout(function(){
-            init_singleDatePicker();
+            dateUtilApi.calendar.single_datepicker();
             $("#tkModal :header.modal-title").text("新增")
             $("#save").val("add").text("新增")
             $("#tkModal").modal("show");
