@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.admin.entity.xml.SsmMenuMapper">
-  <resultMap id="BaseResultMap" type="com.ssm.admin.view.RecursionMenuVo">
+  <resultMap id="BaseResultMap" type="com.ssm.admin.view.RecursionChildVo">
     <id column="MENU_ID" jdbcType="VARCHAR" property="menuId" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="URL" jdbcType="VARCHAR" property="url" />
@@ -102,7 +102,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <insert id="insert" parameterType="com.ssm.admin.view.RecursionChildVo">
     insert into SSM_MENU (MENU_ID, NAME, URL, 
       PARENT_ID, ICON, SEQUENCE, 
       STATUS, CREATE_TIME)
@@ -110,7 +110,7 @@
       #{parentId,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{sequence,jdbcType=DECIMAL}, 
       #{status,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <insert id="insertSelective" parameterType="com.ssm.admin.view.RecursionChildVo">
     insert into SSM_MENU
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="menuId != null">
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.admin.view.RecursionChildVo">
     update SSM_MENU
     <set>
       <if test="name != null">
@@ -244,7 +244,7 @@
     </set>
     where MENU_ID = #{menuId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <update id="updateByPrimaryKey" parameterType="com.ssm.admin.view.RecursionChildVo">
     update SSM_MENU
     set NAME = #{name,jdbcType=VARCHAR},
       URL = #{url,jdbcType=VARCHAR},
@@ -255,7 +255,7 @@
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
     where MENU_ID = #{menuId,jdbcType=VARCHAR}
   </update>
-  <resultMap id="BaseResultMap" type="com.ssm.admin.view.RecursionMenuVo">
+  <resultMap id="BaseResultMap" type="com.ssm.admin.view.RecursionChildVo">
     <id column="MENU_ID" jdbcType="VARCHAR" property="menuId" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="URL" jdbcType="VARCHAR" property="url" />
@@ -356,7 +356,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <insert id="insert" parameterType="com.ssm.admin.view.RecursionChildVo">
     insert into SSM_MENU (MENU_ID, NAME, URL, 
       PARENT_ID, ICON, SEQUENCE, 
       STATUS, CREATE_TIME)
@@ -364,7 +364,7 @@
       #{parentId,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{sequence,jdbcType=DECIMAL}, 
       #{status,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <insert id="insertSelective" parameterType="com.ssm.admin.view.RecursionChildVo">
     insert into SSM_MENU
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="menuId != null">
@@ -471,7 +471,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.admin.view.RecursionChildVo">
     update SSM_MENU
     <set>
       <if test="name != null">
@@ -498,7 +498,7 @@
     </set>
     where MENU_ID = #{menuId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.admin.view.RecursionMenuVo">
+  <update id="updateByPrimaryKey" parameterType="com.ssm.admin.view.RecursionChildVo">
     update SSM_MENU
     set NAME = #{name,jdbcType=VARCHAR},
       URL = #{url,jdbcType=VARCHAR},

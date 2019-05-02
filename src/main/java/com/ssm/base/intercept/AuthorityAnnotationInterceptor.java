@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ssm.admin.service.PrivilegeService;
 import com.ssm.base.view.Config;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
@@ -79,6 +80,7 @@ public class AuthorityAnnotationInterceptor extends HandlerInterceptorAdapter {
 						}else{
 							// 验证登录及权限（一个url对应一个code，即一个url可以生成一张票据，但这张票据可以分给多个角色使用）
 							String account = (String) request.getSession().getAttribute(Config.SSM_ACCOUNT);
+							//String ssmStatus = request.getParameter("ssmStatus");//判定是初始化系统
 							authResult = privilegeService.checkAuth(account, url);
 						}
 					}else{

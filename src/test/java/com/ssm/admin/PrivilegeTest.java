@@ -33,8 +33,7 @@ public class PrivilegeTest {
     @Test
     public void getPriByAccount(){
         String account = "YH302595";
-        OperateEnum operate = OperateEnum.show;
-        List<SsmPrivilege> privileges = privilegeService.listPrivilegeByAccount(account, operate);
+        List<SsmPrivilege> privileges = privilegeService.listByRoleAndOperate(account, OperateEnum.menu);
         System.out.println("》》》》"+ JSON.toJSONString(privileges));
     }
 }

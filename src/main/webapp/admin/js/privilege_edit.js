@@ -15,8 +15,8 @@ $(function () {
                     },
                     stringLength: {
                         min: 2,
-                        max: 10,
-                        message: '用户名长度必须在2到10位之间'
+                        max: 32,
+                        message: '用户名长度必须在2到32位之间'
                     },
                 }
             },

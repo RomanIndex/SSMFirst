@@ -9,7 +9,7 @@ public enum OperateEnum {
     filter("过滤"),
     upload("上传"),
     download("下载"),
-    show("菜单");
+    menu("菜单");
 
     private String name;
 

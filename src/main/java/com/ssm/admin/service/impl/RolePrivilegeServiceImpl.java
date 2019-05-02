@@ -73,20 +73,25 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
     /**
      * 菜单权限易混点
      * 显示的地方：
-     * （1）左侧菜单栏，符合要求，点击要有页面加载的，【在哪标记、怎么标记】
+     * （1）左侧菜单栏，符合要求，点击要有页面加载的，【在哪标记、怎么标记：module.type == 2 || privilege.operate == menu】
      *
      * （2）module管理表格，就是module表，即所有的静态资源都要显示（parentId、belongModule都要显示）
      * （3）角色授权列表，也是module，也是要加载所有module静态资源
      */
 
     @Override
+    //这里是给选定角色授权的方法，取所有module
     public List<TreegridView> getMenuTreegrid(String roleId) {
-        //获取 由module生成的 菜单票据（即operateEnumName = show的 权限）
-        List<SsmPrivilege> menuTicket = privilegeService.getTicket(OperateEnum.show);
-        //角色 已经 拥有的 菜单票据
-        List<RolePrivilegeView> roleTicket = rolePrivilegeMapper.getByRoleAndOperate(roleId, OperateEnum.show.name());
-        ////取module表之间的父子关系集合，封装成treegril可解析的数据格式，带条件查询
-        List<TreegridView> baseTreegrid = moduleService.getMenuTreegrid("");
+        //所有 已有票据 的module
+        List<SsmPrivilege> moduleTicket = privilegeService.selectAll();//牢记：code 和 url 一一对应
+        //角色 已经 拥有的 票据
+        List<SsmPrivilege> roleTicket = privilegeService.listByRole(roleId);
+        //这种查询复用性极低，禁止使用
+        //List<RolePrivilegeView> roleTicket = rolePrivilegeMapper.getByRoleAndOperate(roleId, OperateEnum.menu.name());
+
+        //【treegril可解析】的数据格式（id 和 parentId 的简单形式），后面要支持名字模糊查询模块及其子模块
+        String moduleName = "";
+        List<TreegridView> baseTreegrid = moduleService.getTreegridView(moduleName);
         for(TreegridView eachModule : baseTreegrid){
 
             if(eachModule.getType() == 3){
@@ -94,21 +99,21 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
                 eachModule.setIconCls("icon-edit");
             }
 
-            for(SsmPrivilege pri : menuTicket){
-                //权限表是否生成了show
-                if(pri.getModuleId().equals(eachModule.getModuleId())){
+            for(SsmPrivilege active : moduleTicket){
+                //module表是否生成了 票据
+                if(active.getModuleId().equals(eachModule.getModuleId())){
                     SsmTicket ticket = new SsmTicket();
-                    ticket.setCode(pri.getCode());
-                    ticket.setModuleId(pri.getModuleId());
-                    ticket.setOperate(pri.getOperateEnumName());
+                    ticket.setCode(active.getCode());
+                    ticket.setModuleId(active.getModuleId());
+                    ticket.setOperate(active.getOperateEnumName());
                     eachModule.setTicket(ticket);
                     break;
                 }
             }
 
-            for(RolePrivilegeView rolePriView : roleTicket){
-                //角色 拥有的show的模块
-                if(rolePriView.getModuleId().equals(eachModule.getModuleId())){
+            for(SsmPrivilege had : roleTicket){
+                //角色 是否拥有权限
+                if(had.getModuleId().equals(eachModule.getModuleId())){
                     eachModule.setRoleTicket(true);
                     eachModule.setChecked(true);
                     break;
@@ -116,7 +121,7 @@ public class RolePrivilegeServiceImpl extends CommonServiceImpl<SsmRolePrivilege
             }
         }
 
-        return baseTreegrid;
+        return baseTreegrid.stream().filter(i -> i.getType() != 1).collect(Collectors.toList());
     }
 
     @Override

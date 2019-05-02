@@ -89,11 +89,11 @@ api.module.update = function(e){
 	
 	$("#tk").load("admin/module_edit.html")
 	setTimeout(function(){
-		$("input[name='belongModule']").attr("disabled", true).parents(".flexible").hide()
-		$("input[name='parentId']").attr("disabled", true).parents(".flexible").hide()
-		$("#inputForm #type").val(row.type).attr("disabled", true)
+		$("#inputForm input[name='belongModule']").val(row.belongModule).attr("disabled", true);
+		$("#inputForm input[name='parentId']").val(row.parentId).attr("disabled", true);
+		$("#inputForm #type").val(row.type).attr("disabled", true);
 		
-		$("input[name='moduleId']").val(row.moduleId).attr("readonly", true)//.attr("style", "cursor:not-allowed")
+		$("#inputForm input[name='moduleId']").val(row.moduleId).attr("readonly", true)//.attr("style", "cursor:not-allowed")
 		$("#inputForm input[name='name']").val(row.name)
 		$("#inputForm input[name='style']").val(row.style)
 		$("#inputForm input[name='url']").val(row.url)
@@ -180,9 +180,11 @@ api.module.save = function(e){
     }else{
         url = URL_API.MODULE.update;
         param.moduleId = api.module.selectId;
+        param.belongModule = undefined;//null传到后台就是“”空，undefined就是null
+        param.parentId = undefined;
     }
     //mysql null和空值，暂时特殊处理字段
-    if(param.parentId == undefined){
+    if(saveType == "add" && param.parentId == undefined){
         param.parentId = "";
     }
     var result = AJAX_HELPER("POST", url, param);

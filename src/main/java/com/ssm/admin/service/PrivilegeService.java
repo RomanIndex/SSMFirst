@@ -12,13 +12,19 @@ public interface PrivilegeService extends CommonService<SsmPrivilege, String>{
 
     Result<?> getOperateList();
 
-    Result<?> getPrivilegeByRole(String roleId);
-
-    List<SsmPrivilege> getTicket(OperateEnum type);
-
-    SsmPrivilege getTicket(String moduleId);
-
-    List<SsmPrivilege> listPrivilegeByAccount(String account, OperateEnum show);
-
     Result<?> checkAuth(String account, String authUrl);
+
+    /* 单表基础性查询 */
+    SsmPrivilege getByModule(String moduleId);
+
+    List<SsmPrivilege> listByRole(String roleId);
+
+    List<SsmPrivilege> listByRoleAndOperate(String roleId, OperateEnum operateEnum);
+
+    List<SsmPrivilege> listByOperate(OperateEnum operateEnum);
+
+    List<SsmPrivilege> listByAccount(String account);
+
+    List<SsmPrivilege> listByAccountAndOperate(String account, OperateEnum operateEnum);
+
 }

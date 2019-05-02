@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.service.ModuleService;
 import com.ssm.admin.service.PrivilegeService;
-import com.ssm.admin.view.RecursionMenuVo;
+import com.ssm.admin.view.RecursionChildVo;
 import com.ssm.common.enumeration.OperateEnum;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,10 +82,8 @@ public class SecurityFilter extends HttpServlet implements Filter{
                 }
         	}else {
         	    String account = (String)request.getSession().getAttribute(Config.SSM_ACCOUNT);
-        	    //account = account.equalsIgnoreCase("admin") ? null : account;
-                //只取菜单权限
-                List<SsmPrivilege> privileges = privilegeService.listPrivilegeByAccount(account, OperateEnum.show);
-        		List<RecursionMenuVo> menus = (List<RecursionMenuVo>) moduleService.privilege2menu(privileges).getData();
+                List<SsmPrivilege> privileges = privilegeService.listByAccountAndOperate(account, OperateEnum.menu);
+        		List<RecursionChildVo> menus = (List<RecursionChildVo>) moduleService.privilege2menu(privileges).getData();
         		request.getSession().setAttribute("menu", menus);
         	}
         }else{

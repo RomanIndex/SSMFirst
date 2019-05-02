@@ -13,7 +13,10 @@ script="<script src='/admin/js/privilege_index.js?v2'></script>"
                 <div class="box-header">
                     <!--<h3 class="box-title">权限列表</h3>-->
                     <ol class="breadcrumb">
-                        <li><strong><span>（这里是页面等备注说明）</span></strong></li>
+                        <li><strong><span>1、在【角色--权限管理】页面，可以快速生成票据<br>
+                            2、左侧菜单显隐说明：
+                            （1）要把对应模块设置成票据，且是“菜单类型”
+                            （2）要把对应票据授权给当前登录账户<br>这样就是该账户的可见左侧菜单了</span></strong></li>
                     </ol>
                 </div>
                 <div class="box-body" style="width: 100%">

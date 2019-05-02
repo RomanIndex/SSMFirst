@@ -3,8 +3,8 @@ package com.ssm.admin.view;
 import java.util.Date;
 import java.util.List;
 
-public class RecursionMenuVo {
-    private String menuId;
+public class RecursionChildVo {
+    private String id;
 
     private String name;
 
@@ -20,7 +20,23 @@ public class RecursionMenuVo {
 
     private Date createTime;
 
-    private List<RecursionMenuVo> childMenus;
+    private List<RecursionChildVo> children;//child的复数是children
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<RecursionChildVo> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<RecursionChildVo> children) {
+        this.children = children;
+    }
 
     public Integer getSeq() {
         return seq;
@@ -36,22 +52,6 @@ public class RecursionMenuVo {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-	public List<RecursionMenuVo> getChildMenus() {
-		return childMenus;
-	}
-
-	public void setChildMenus(List<RecursionMenuVo> childMenus) {
-		this.childMenus = childMenus;
-	}
-
-	public String getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(String menuId) {
-        this.menuId = menuId;
     }
 
     public String getName() {

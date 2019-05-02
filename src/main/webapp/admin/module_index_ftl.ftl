@@ -49,16 +49,16 @@
 	                  </thead>
 	                </table>
 	                
-	                  <#list topMenus as mix>
+	                  <#list topList as top>
 	                  
-	                  <#assign subClassSize = mix.childMenus?size + 1><!-- 计算当前 td 数目，子类数目+1“添加” -->
+	                  <#assign subClassSize = top.children?size + 1><!-- 计算当前 td 数目，子类数目+1“添加” -->
 	                  <#assign maxRow = ((subClassSize - 1)/colspan)?floor + 1>
 	                  <#assign needNum = (subClassSize%colspan == 0) ?string(0, colspan - subClassSize%colspan)><!-- needNum这个字很关键 -->
 	                  <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap order-column table_css" cellspacing="0" width="100%">
 	                    <thead>
-	                      <tr data-toggle="collapse" data-target="#${mix.menuId}" data-parent="#accordion" data-first-classify-id=${mix.menuId} >
+	                      <tr data-toggle="collapse" data-target="#${top.id}" data-parent="#accordion" data-first-classify-id=${top.id} >
 	                        <th colspan=${colspan} subClassSize：${subClassSize}；maxRow：${maxRow}；needNum：${needNum} zhanbi:${zhanbi}>
-	                        <span style="font-size: 18px;color: rgb(127, 85, 165);">${mix.name}</span>
+	                        <span style="font-size: 18px;color: rgb(127, 85, 165);">${top.name}</span>
 	                        <a class="btn" name="exchange" disabled="disabled"><span class="btn-sm glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
 	                        <div style="float: right;">
 	                            <a class="btn" name="update" data-type="first"><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true">编辑</span></a>
@@ -67,7 +67,7 @@
 	                        </th>
 	                      </tr>
 	                    </thead>
-	                    <tbody id="${mix.menuId}" class="collapse ${(mix_index + 1 == 1) ? string('in','')}">
+	                    <tbody id="${top.id}" class="collapse ${(top_index + 1 == 1) ? string('in','')}">
 	                      
 	                      <#list 1..subClassSize + (needNum?eval) as num>
 	                        <!-- 如果 子集合[index]个存在，显示出来，是否是最后一个，多余的全部补空td对 -->
@@ -75,12 +75,12 @@
 	                          
 	                          <#if num &lt; subClassSize>
 	                          
-	                              <#list mix.childMenus as ms>
+	                              <#list top.children as child>
 	                              
-	                              <#if ms_index == num - 1>
+	                              <#if child_index == num - 1>
 	                              <td class='dt-left' style="width: ${zhanbi}%">
-	                                <input class="menuItem" type="checkbox" id="${ms.menuId}" name="menuItem">
-	                                <label for="${ms.menuId}" data-seq=${ms_index + 1}><span>${ms.name}</span></label>
+	                                <input class="menuItem" type="checkbox" id="${child.id}" name="menuItem">
+	                                <label for="${child.id}" data-seq=${child_index + 1}><span>${child.name}</span></label>
 	                                <div style="float: right;">
 	                                    <a class="btn" data-type="second" name="update"><span class="btn-sm glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 	                                    <a class="btn" name="delete"><span class="btn-sm glyphicon glyphicon-trash" aria-hidden="true"></span></a>

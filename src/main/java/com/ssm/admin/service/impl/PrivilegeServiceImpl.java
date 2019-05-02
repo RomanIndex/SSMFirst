@@ -65,64 +65,91 @@ public class PrivilegeServiceImpl extends CommonServiceImpl<SsmPrivilege, String
     }
 
     @Override
-    public Result<?> getPrivilegeByRole(String roleId) {
-        List<SsmRolePrivilege> midList = rolePrivilegeService.getByRole(roleId);
-        List<String> codes = midList.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
-        List<SsmPrivilege> privileges = this.selectAllById(codes);
-        return Result.success(privileges);
-    }
-
-    @Override
-    public List<SsmPrivilege> getTicket(OperateEnum type) {
-        return privilegeJpaDao.findByOperateEnumName(type.name());
-    }
-
-    @Override
-    public SsmPrivilege getTicket(String moduleId) {
-        return privilegeJpaDao.findByModuleId(moduleId);
-    }
-
-    @Override
-    public List<SsmPrivilege> listPrivilegeByAccount(String account, OperateEnum operate) {
-        List<String> codes = this.listCodeByEmpNo(account);
-        //系统 拥有的 指定 操作类型的 权限（这里是 菜单的）
-        List<SsmPrivilege> privileges = privilegeJpaDao.findByOperateEnumName(operate.name());
-        //codes 和 privileges 的 交集，就是传入的account的 所有菜单权限
-        List<SsmPrivilege> codesOfAccount = privileges.stream().filter(i -> codes.contains(i.getCode())).collect(Collectors.toList());
-        return Config.SSM_MASTER_ACCOUNT.equalsIgnoreCase(account) ? privileges : codesOfAccount;
-    }
-
-    private List<String> listCodeByEmpNo(String empNo){
-        List<SsmAccountRole> accountRoles = accountRoleService.getByEmpNo(empNo);
-        //account拥有的角色
-        List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
-        List<SsmRolePrivilege> rolePrivileges = rolePrivilegeService.listDistinctByRoleIds(roleIds);
-        //account所有 角色 的不重复的 权限
-        List<String> codes = rolePrivileges.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
-        return codes;
-    }
-
-    @Override
     public Result<?> checkAuth(String account, String authUrl) {
         SsmModule module = moduleService.getByUrl(authUrl);
         if(null == module){
             return new Result<>(502, "【" + authUrl + "】对应的模块为空！", null, null);
         }
 
-        SsmPrivilege privilege = this.getTicket(module.getModuleId());
-        if(null == privilege){
-            return new Result<>(503, "【" + authUrl + "】模块尚未注册成票据！", null, null);
+        SsmPrivilege privilege = this.getByModule(module.getModuleId());
+        boolean adminFreeUrl = this.adminFreeUrl(account, authUrl);
+        if(adminFreeUrl){
+            //初始化系统时，为admin初始化设置系统，需要额外放行的几个url
+        }else{
+            if(null == privilege){
+                return new Result<>(503, "【" + authUrl + "】模块尚未注册成票据！", null, null);
+            }
         }
 
         if(Config.SSM_MASTER_ACCOUNT.equalsIgnoreCase(account)){
             return Result.success("至高无上的admin光临系统！", "admin默认拥有所有存在的票据！");
         }
 
-        List<String> codes = this.listCodeByEmpNo(account);
+        List<SsmPrivilege> privileges = this.listByAccount(account);
+        List<String> codes = privileges.stream().map(i -> i.getCode()).collect(Collectors.toList());
         if(codes.contains(privilege.getCode())){
             return Result.success("检测到用户已授权！", privilege);
         }
 
         return Result.fail("未检测到授权！");
+    }
+
+    private boolean adminFreeUrl(String account, String url) {
+        List<String> freeUrl = new ArrayList<>();
+        freeUrl.add("/admin/route/privilege/add");
+        freeUrl.add("/admin/module/second");
+        freeUrl.add("/admin/module/btn");
+        freeUrl.add("/admin/privilege/add");
+        if(freeUrl.contains(url) && account.equalsIgnoreCase("admin")){
+            return true;
+        }
+        return false;
+    }
+
+    /* 以下是该类，也是数据表对应的通用查询，返回值也不是Result */
+
+    @Override
+    public SsmPrivilege getByModule(String moduleId) {
+        return privilegeJpaDao.findByModuleId(moduleId);
+    }
+
+    @Override
+    public List<SsmPrivilege> listByRole(String roleId) {
+        List<SsmRolePrivilege> midList = rolePrivilegeService.getByRole(roleId);
+        List<String> codes = midList.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
+        List<SsmPrivilege> privileges = this.selectAllById(codes);
+        return privileges;
+    }
+
+    @Override
+    public List<SsmPrivilege> listByRoleAndOperate(String roleId, OperateEnum operateEnum) {
+        List<SsmPrivilege> privileges = this.listByRole(roleId);
+        return privileges.stream().filter(f -> f.getOperateEnumName().equals(operateEnum.name())).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SsmPrivilege> listByOperate(OperateEnum operateEnum) {
+        return privilegeJpaDao.findByOperateEnumName(operateEnum.name());
+    }
+
+    @Override
+    public List<SsmPrivilege> listByAccount(String empNo) {
+        //admin是默认拥有系统全部权限的
+        if(Config.SSM_MASTER_ACCOUNT.equalsIgnoreCase(empNo)){
+            return this.selectAll();
+        }
+        List<SsmAccountRole> accountRoles = accountRoleService.getByEmpNo(empNo);
+        //account拥有的角色
+        List<String> roleIds = accountRoles.stream().map(i -> i.getRoleId()).collect(Collectors.toList());
+        List<SsmRolePrivilege> rolePrivileges = rolePrivilegeService.listDistinctByRoleIds(roleIds);
+        //account所有 角色 的不重复的 权限
+        List<String> codes = rolePrivileges.stream().map(i -> i.getPriCode()).collect(Collectors.toList());
+        return this.selectAllById(codes);
+    }
+
+    @Override
+    public List<SsmPrivilege> listByAccountAndOperate(String empNo, OperateEnum operateEnum) {
+        List<SsmPrivilege> privileges = this.listByAccount(empNo);
+        return privileges.stream().filter(f -> f.getOperateEnumName().equals(operateEnum.name())).collect(Collectors.toList());
     }
 }

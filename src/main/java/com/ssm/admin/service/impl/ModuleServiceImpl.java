@@ -4,16 +4,12 @@ import com.ssm.admin.dao.ModuleMapper;
 import com.ssm.admin.daoJpa.ModuleJpaDao;
 import com.ssm.admin.entity.SsmPrivilege;
 import com.ssm.admin.service.ModuleService;
-import com.ssm.admin.service.PrivilegeService;
-import com.ssm.admin.view.RecursionMenuVo;
+import com.ssm.admin.view.RecursionChildVo;
 import com.ssm.admin.entity.SsmModule;
 import com.ssm.admin.view.TreegridView;
 import com.ssm.base.view.Result;
-import com.ssm.common.enumeration.OperateEnum;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,10 +22,18 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
     @Autowired private ModuleMapper moduleMapper;
 
     @Override
+    /* 利用ftl页面，打算用于管理module的另一种方式*/
+    public Result<?> listByRole(String roleId) {
+        List<SsmModule> modules = moduleJpaDao.findAll();
+        return Result.success(this.module2ChildVo(modules));
+    }
+
+    @Override
+    /* 左侧菜单，并且是生成票据的，只有在过滤器才用到 */
     public Result<?> privilege2menu(List<SsmPrivilege> privileges) {
         List<String> moduleIds = privileges.stream().map(i -> i.getModuleId()).collect(Collectors.toList());
         List<SsmModule> modules = moduleJpaDao.findByModuleIdIn(moduleIds);
-        return Result.success(this.module2menu(modules));
+        return Result.success(this.module2ChildVo(modules));
     }
 
     @Override
@@ -51,102 +55,114 @@ public class ModuleServiceImpl extends CommonServiceImpl<SsmModule, String> impl
         return Result.success(list);
     }
 
-    //1：模块；2：菜单；3：按钮
+    //1：模块；2：菜单；3：按钮（路由也算其中一种）
     @Override
     public Result<?> getBtnMenu(String belongModule) {
         List<SsmModule> list = moduleJpaDao.findByTypeAndBelongModule(3, belongModule);
         return Result.success(list);
     }
 
-    //封装成treegrid可以解析的数据格式，可以 和 菜单的 整合一起
     @Override
-    public List<TreegridView> getMenuTreegrid(String name) {
-        return moduleMapper.getMenuTreegrid(name);
+    /* 封装成treegrid可以解析的数据格式，没有经过递归处理的，可以 和 菜单的 整合一起 */
+    public List<TreegridView> getTreegridView(String moduleName) {
+        //List<TreegridView> treegridViews = moduleMapper.getMenuTreegrid(moduleName);
+        List<TreegridView> treegridViews = this.module2treegrid();
+        return treegridViews;
     }
 
-    @Override
-    public Result<?> listMenuByRoleId(String roleId) {
-        //查询 角色 拥有的 所有菜单权限，待补充
-        List<SsmModule> modules = moduleJpaDao.findAll();
-        return Result.success(this.module2menu(modules));
+    private List<TreegridView> module2treegrid() {
+        List<SsmModule> allModule = this.selectAll();
+        List<TreegridView> list = new ArrayList<>();
+        for(SsmModule base : allModule){
+            TreegridView view = new TreegridView();
+            view.setModuleId(base.getModuleId());
+            view.setType(base.getType());
+            view.setName(base.getName());
+            view.setUrl(base.getUrl());
+            view.setSeq(base.getSeq());
+            //这里不要封装SsmTicket，因为还不知道module有没有生成票据
+            //确定parentId，又一次Mysql null 和 空 引发的BUG现场
+            String parentId = null;
+            if(StringUtils.isNotBlank(base.getBelongModule())){
+                parentId = base.getBelongModule();
+            }
+            if(StringUtils.isNotBlank(base.getParentId())){
+                parentId = base.getParentId();
+            }
+            view.set_parentId(parentId);
+            list.add(view);
+        }
+        return list;
     }
 
     /**
-     * 将 module 转换成 menu，且按父子关系封装好的
-     * @param modules
-     * @return
+     * -------------------将 module 转换成 childVo，且递归处理好（左侧菜单、模块ftl管理页面）-------------------------------
      */
-    private List<RecursionMenuVo> module2menu(List<SsmModule> modules){
-        //module转成常用menu
-        List<RecursionMenuVo> rootMenus = this.getMenuFromModule(modules);
-        //递归处理menu
-        List<RecursionMenuVo> recursionMenuVos = this.recursionedMenu(rootMenus);
+    private List<RecursionChildVo> module2ChildVo(List<SsmModule> modules){
+        //module转成常用childVo
+        List<RecursionChildVo> childVoList = this.setModule2ChildVo(modules);
+        //递归处理childVo
+        List<RecursionChildVo> recursionChildVos = this.recursionHandle(childVoList);
 
-        return recursionMenuVos;
+        return recursionChildVos;
     }
 
-    private List<RecursionMenuVo> recursionedMenu(List<RecursionMenuVo> rootMenus) {
-        List<RecursionMenuVo> menuList = new ArrayList<RecursionMenuVo>();
+    private List<RecursionChildVo> recursionHandle(List<RecursionChildVo> primitiveList) {
+        List<RecursionChildVo> topList = new ArrayList<RecursionChildVo>();
 
-        // 先找到所有的一级菜单
-        for (int i = 0; i < rootMenus.size(); i++) {
-            // 一级菜单没有parentId
-            if (StringUtils.isBlank(rootMenus.get(i).getParentId())) {
-                menuList.add(rootMenus.get(i));
+        // 先找到所有顶级节点，也就是parentId为空的那些
+        for (int i = 0; i < primitiveList.size(); i++) {
+            // 顶级节点没有parentId
+            if (StringUtils.isBlank(primitiveList.get(i).getParentId())) {
+                topList.add(primitiveList.get(i));
             }
         }
 
-        // 为一级菜单设置子菜单，getChild是递归调用的
-        for (RecursionMenuVo menu : menuList) {
-            menu.setChildMenus(getChild(menu.getMenuId(), rootMenus));
+        // 为顶级节点设置子节点，getChild是递归调用的
+        for (RecursionChildVo each : topList) {
+            each.setChildren(getChild(each.getId(), primitiveList));
         }
 
-        return menuList;
+        return topList;
     }
 
     /**
-     * 递归查找子菜单
+     * 递归查找子节点（用你学的数据结构与算法优化一下?）
      *
-     * @param id 当前菜单id
-     * @param rootMenu 要查找的列表
+     * @param id 当前节点id
+     * @param primitiveList 要查找的列表
      * @return
      */
-    private List<RecursionMenuVo> getChild(String id, List<RecursionMenuVo> rootMenu) {
-        // 子菜单
-        List<RecursionMenuVo> childList = new ArrayList<>();
-        for (RecursionMenuVo menu : rootMenu) {
-            // 遍历所有节点，将父菜单id与传过来的id比较
-            if (StringUtils.isNotBlank(menu.getParentId())) {
-                if (menu.getParentId().equals(id)) {
-                    childList.add(menu);
-                }
+    private List<RecursionChildVo> getChild(String id, List<RecursionChildVo> primitiveList) {
+        List<RecursionChildVo> childList = new ArrayList<>();
+
+        for (RecursionChildVo each : primitiveList) {
+            // 遍历所有节点，将父节点id与传过来的id比较
+            if (id.equals(each.getParentId())) {
+                childList.add(each);
             }
         }
-        // 把子菜单的子菜单再循环一遍
-        for (RecursionMenuVo menu : childList) {
-	    	// 没有url子菜单还有子菜单（与 我现在的场景不符，不需要这个判断）
-	        if (StringUtils.isBlank(menu.getUrl())) {
-	            // 递归
-	            menu.setChildMenus(getChild(menu.getMenuId(), rootMenu));
-	        }
-            menu.setChildMenus(getChild(menu.getMenuId(), rootMenu));
+
+        // 把子节点的子节点再循环一遍
+        for (RecursionChildVo child : childList) {
+            child.setChildren(getChild(child.getId(), primitiveList));
         }
+
         // 递归退出条件
-        if (childList.size() == 0) {
+        if (childList.size() <= 0) {
             return null;
         }
 
         return childList;
     }
 
-    //菜单 来自 module，又不完全是，这里特殊处理（菜单比较特殊）
-    private List<RecursionMenuVo> getMenuFromModule(List<SsmModule> modules) {
-        List<RecursionMenuVo> menus = modules.stream().map(each -> {
-            RecursionMenuVo menu = new RecursionMenuVo();
-            /* belongModule 和 parentId 应该是 “互斥” 的，即同时最多只能一个有值 */
+    private List<RecursionChildVo> setModule2ChildVo(List<SsmModule> modules) {
+        List<RecursionChildVo> menus = modules.stream().map(each -> {
+            RecursionChildVo menu = new RecursionChildVo();
+            /* belongModule 和 parentId 应该是 “互斥” 的，即同时最多只能一个有值，且谨防null和空 */
             String parentId = StringUtils.isBlank(each.getParentId()) ? each.getBelongModule() : each.getParentId();
             menu.setParentId(parentId);
-            menu.setMenuId(each.getModuleId());
+            menu.setId(each.getModuleId());
             menu.setName(each.getName());
             menu.setUrl(each.getUrl());
             menu.setSeq(each.getSeq());

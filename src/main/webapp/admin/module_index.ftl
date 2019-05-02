@@ -16,7 +16,11 @@
                 <div class="box-header">
                     <!--<h3 class="box-title">模块列表</h3>-->
                     <ol class="breadcrumb">
-                        <li><strong><span>（这里是页面等备注说明）</span></strong></li>
+                        <li><strong><span>
+                            模块划分：顶级模块 --> 二级模块 --> 按钮模块、路由模块<br>
+                            特别说明：顶级模块的作用主要用来 分类，真正有页面存在的是从二级模块开始，所有按钮、路由等模块都是依附二级模块而存在的<br>
+                            也就是说，顶级模块不能有 按钮 或 路由 这种东西（先约定好，避免很多瞎比设置和操作）
+                        </span></strong></li>
                     </ol>
                 </div>
                 <div class="box-body" style="width: 100%">

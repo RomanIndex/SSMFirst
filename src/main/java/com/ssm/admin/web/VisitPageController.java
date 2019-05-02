@@ -26,7 +26,11 @@ public class VisitPageController {
     //@RequestMapping(value = "admin/module/ftl", method = RequestMethod.GET)
     @RequestMapping(value = "admin/route/module/ftl", method = RequestMethod.GET)
     public String indexFtl(Model model) {
-        model.addAttribute("topMenus", moduleService.listMenuByRoleId("").getData());
+        /**
+         * 区别于表格管理module，表格管理是单独接口，每次取指定类型 或 父级的
+         * 这里是想一次性全部取出module，并封装好父子级关系，页面直接 遍历 显示就行
+         */
+        model.addAttribute("topList", moduleService.listByRole("").getData());
         return "admin/module_index_ftl";
     }
 
@@ -50,8 +54,8 @@ public class VisitPageController {
         }else if (module.getType() == 3) {
             //更新 按钮
             SsmModule secondMenu = moduleService.getById(module.getBelongModule());
-            model.addAttribute("secondMenu", moduleService.getSecondMenu(secondMenu.getParentId()));
-            model.addAttribute("btnMenu", moduleService.getBtnMenu(module.getBelongModule()));
+            model.addAttribute("secondMenu", moduleService.getSecondMenu(secondMenu.getParentId()).getData());
+            model.addAttribute("btnMenu", moduleService.getBtnMenu(module.getBelongModule()).getData());
         }
         model.addAttribute("topMenu", moduleService.getTopMenu().getData());//始终都需要返回
         model.addAttribute("upType", upType);//页面不需要，仅供验证用

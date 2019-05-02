@@ -8,7 +8,7 @@ import com.ssm.base.view.Result;
 import java.util.List;
 
 public interface ModuleService extends CommonService<SsmModule, String>{
-    Result<?> listMenuByRoleId(String roleId);
+    Result<?> listByRole(String roleId);
 
     Result<?> getTopMenu();
 
@@ -16,9 +16,9 @@ public interface ModuleService extends CommonService<SsmModule, String>{
 
     Result<?> getBtnMenu(String belongModule);
 
-    List<TreegridView> getMenuTreegrid(String name);
-
     Result<?> privilege2menu(List<SsmPrivilege> privileges);
 
     SsmModule getByUrl(String authUrl);
+
+    List<TreegridView> getTreegridView(String moduleName);
 }

@@ -35,6 +35,8 @@ public class TreegridView {
 	//1、不生成show票据的都是普通页面，向全部角色展示；2、重要页面，加show票据管理，拿到show票据的才有查看权限
 	private boolean roleTicket;//角色 是否 已经 拥有 ticket的权限（ticket为空，则一定是false）
 
+	/* ------------------get and set--------------------- */
+
 	public Integer getStatus() {
 		return status;
 	}

@@ -49,6 +49,7 @@
            </a>
            <ul class="treeview-menu">
                <li><a href="../ssm_import.ftl"><i class="fa fa-circle-o"></i>基础数据导入</a></li>
+               <li><a href="/admin/route/privilege/add?ssmStatus=initSystem"><i class="fa fa-circle-o"></i>新增票据</a></li>
            </ul>
        </li>
 
@@ -164,7 +165,7 @@
        <#macro bpTree list>
 	       <#if list?? && list?size gt 0>
 		   <#list list as child>
-		      <#if child.childMenus?? && child.childMenus?size gt 0>
+		      <#if child.children?? && child.children?size gt 0>
 	          <li class="treeview">
 	            <#--<a data-url="javascript:void(0)">-->
                 <a data-url="${child.url}">
@@ -176,7 +177,7 @@
 	            </a>
 	            
 	            <ul class="treeview-menu">
-	              <@bpTree list = child.childMenus />
+	              <@bpTree list = child.children />
 	            </ul>
 	          </li>
 	          <#else>

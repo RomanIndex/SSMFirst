@@ -145,7 +145,7 @@ api.role.del = function (e) {
                 setTimeout('$("#tkModal").modal("hide");', 1500);
                 //this.query();//这里的this是ajax对象（确认一下），要下面那样用
                 api.role.query();
-            }else{layer.msg("操作异常，请稍后重试！", {icon : 2});}
+            }else{layer.msg(result.msg, {icon : 2});}
         },'json');
     },function(){return});
 }
@@ -359,8 +359,8 @@ $(document).on("click", ".createTicket", function(){
     var moduleId = $(this).data("moduleId");
     var obj = {}
     obj.moduleId = moduleId;
-    obj.operateEnumName = "show";
-    obj.name = moduleId+ "（show票据）";
+    //obj.operateEnumName = "show";
+    obj.name = moduleId+ "（票据）";
     var result = AJAX_HELPER("POST", URL_API.PRIVILEGE.add, obj);
     if(result.code == 0){
         $(this).parent().html("OK!");
