@@ -54,17 +54,17 @@
 
 	<!--<bean id="wwMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
 		&lt;!&ndash;<property name="driverClassName" value="com.mysql.jdbc.Driver" />&ndash;&gt;
-		<property name="url" value="jdbc:mysql://172.18.1.122:3306/otctest?serverTimezone=GMT%2B8"/>
-		<property name="username" value="otc"/>
-		<property name="password" value="Otc_2019Te"/>
+		<property name="url" value="jdbc:mysql://172.0.0.1:3306/otctest?serverTimezone=GMT%2B8"/>
+		<property name="username" value="admin"/>
+		<property name="password" value="123"/>
 	</bean>-->
 
 	<!-- class="org.apache.commons.dbcp.BasicDataSource" -->
 	<!--<bean id="wwOracleDS" parent="parentDataSource" init-method="init" destroy-method="close">
 		&lt;!&ndash;<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />&ndash;&gt;
-		<property name="url" value="jdbc:oracle:thin:@172.18.1.40:1521/EIP3DEV" />
-		<property name="username" value="UCENTER" />
-		<property name="password" value="HuaMing" />
+		<property name="url" value="jdbc:oracle:thin:@172.0.0.1:1521/EIP3DEV" />
+		<property name="username" value="admin" />
+		<property name="password" value="123" />
 	</bean>-->
 
 	<bean id="aliMysqlDS" parent="parentDataSource" init-method="init" destroy-method="close">
