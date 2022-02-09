@@ -104,7 +104,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <!-- jdk8版本不能用5.4.0，报module-info.java几个jar包的错，因为模块化是jdk9的新特性 -->
-            <version>5.4.0.Final</version>
+            <version>5.4.24.Final</version>
         </dependency>
 
         <!-- spring data jpa 数据库持久层 -->
