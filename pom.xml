@@ -240,7 +240,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.44</version>
+            <version>1.2.83</version>
         </dependency>
 
         <!-- 有些jar包里面有用到这种 解析json-->
